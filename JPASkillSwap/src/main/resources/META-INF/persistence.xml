@@ -10,10 +10,9 @@
 		<!-- begin entities -->
 		<class>com.skilldistillery.skillswap.entities.Address</class>
 		<class>com.skilldistillery.skillswap.entities.Project</class>
+		<class>com.skilldistillery.skillswap.entities.ProjectMember</class>
 		<class>com.skilldistillery.skillswap.entities.Skill</class>
 		<class>com.skilldistillery.skillswap.entities.User</class>
-
-
 
 
 		<!-- end entities -->
