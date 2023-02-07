@@ -1,15 +1,19 @@
 package com.skilldistillery.skillswap.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Project {
 	
 	@Id
@@ -38,6 +42,9 @@ public class Project {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@OneToMany(mappedBy = "project")
+	private List <ProjectImage> projectImages;
 
 	@Override
 	public int hashCode() {
@@ -56,11 +63,13 @@ public class Project {
 		return id == other.id;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Project [id=" + id + ", name=" + name + ", datePosted=" + datePosted + ", description=" + description
 				+ ", activeStatus=" + activeStatus + ", imagePrimary=" + imagePrimary + ", startDate=" + startDate
-				+ ", projectedDate=" + projectedDate + ", user=" + user + "]";
+				+ ", projectedDate=" + projectedDate + "]";
 	}
 
 	public int getId() {
@@ -135,6 +144,14 @@ public class Project {
 		this.user = user;
 	}
 
+	public List<ProjectImage> getProjectImages() {
+		return projectImages;
+	}
+
+	public void setProjectImages(List<ProjectImage> projectImages) {
+		this.projectImages = projectImages;
+	}
+
 	public Project(int id, String name, LocalDateTime datePosted, String description, Boolean activeStatus,
 			String imagePrimary, LocalDateTime startDate, LocalDateTime projectedDate, User user) {
 		super();
@@ -146,7 +163,7 @@ public class Project {
 		this.imagePrimary = imagePrimary;
 		this.startDate = startDate;
 		this.projectedDate = projectedDate;
-		this.user = user;
+		//this.user = user;
 	}
 
 	public Project() {
