@@ -9,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -55,6 +59,20 @@ public class User {
 	
 	@OneToOne(mappedBy = "user")
 	private Address address;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	
+	@ManyToMany
+	@JoinTable(name="followed_user_id",
+	joinColumns=@JoinColumn(name="user_id"),
+	inverseJoinColumns=@JoinColumn(name="followed_user_id"))
+	private List<User> following;
+	
+	@ManyToMany(mappedBy="following")
+	private List<User> followedBy;
 	
 	private String role;
 
