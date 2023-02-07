@@ -43,8 +43,8 @@ public class Project {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
-	@OneToMany(mappedBy = "project")
-	private List <ProjectImage> projectImages;
+//	@OneToMany(mappedBy = "project")
+//	private List <ProjectImage> projectImages;
 
 	@Override
 	public int hashCode() {
@@ -144,13 +144,13 @@ public class Project {
 		this.user = user;
 	}
 
-	public List<ProjectImage> getProjectImages() {
-		return projectImages;
-	}
-
-	public void setProjectImages(List<ProjectImage> projectImages) {
-		this.projectImages = projectImages;
-	}
+//	public List<ProjectImage> getProjectImages() {
+//		return projectImages;
+//	}
+//
+//	public void setProjectImages(List<ProjectImage> projectImages) {
+//		this.projectImages = projectImages;
+//	}
 
 	public Project(int id, String name, LocalDateTime datePosted, String description, Boolean activeStatus,
 			String imagePrimary, LocalDateTime startDate, LocalDateTime projectedDate, User user) {
