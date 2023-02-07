@@ -2,47 +2,50 @@ package com.skilldistillery.skillswap.entities;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="project_member")
 public class ProjectMember {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int id;
-	
+	@Column(name="project_id")
 	private int projectId;
 	private String comments;
 	private Integer rating;
-	private String rating_comments;
+	@Column(name="rating_comments")
+	private String ratingComments;
 
 //	@ManyToOne
 //	@JoinColumn(name="project_id")
 //	private Project project;
-	
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+//	
+//	@ManyToOne
+//	@JoinColumn(name="user_id")
+//	private User user;
 	public ProjectMember() {}
 
 	public int getId() {
 		return id;
 	}
 
-	public ProjectMember(int id, int projectId, String comments, Integer rating, String rating_comments,
+	public ProjectMember(int id, int projectId, String comments, Integer rating, String ratingComments,
 			User user) {
 		super();
 		this.id = id;
 		this.projectId = projectId;
 		this.comments = comments;
 		this.rating = rating;
-		this.rating_comments = rating_comments;
+		this.ratingComments = ratingComments;
 //		this.project = project;
-		this.user = user;
+//		this.user = user;
 	}
 
 	public void setId(int id) {
@@ -74,11 +77,11 @@ public class ProjectMember {
 	}
 
 	public String getRating_comments() {
-		return rating_comments;
+		return ratingComments;
 	}
 
-	public void setRating_comments(String rating_comments) {
-		this.rating_comments = rating_comments;
+	public void setRating_comments(String ratingComments) {
+		this.ratingComments = ratingComments;
 	}
 //	public Project getProject() {
 //		return project;
@@ -87,14 +90,14 @@ public class ProjectMember {
 //	public void setProject(Project project) {
 //		this.project = project;
 //	}
-	
-	public User getUser() {
-		return user;
-	}
-	
-	public void setUser(User user) {
-		this.user = user;
-	}
+//	
+//	public User getUser() {
+//		return user;
+//	}
+//	
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
 
 	@Override
 	public int hashCode() {
