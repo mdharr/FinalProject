@@ -9,8 +9,9 @@
 
 		<!-- begin entities -->
 		<class>com.skilldistillery.skillswap.entities.Address</class>
-		<class>com.skilldistillery.skillswap.entities.User</class>
+		<class>com.skilldistillery.skillswap.entities.Project</class>
 		<class>com.skilldistillery.skillswap.entities.Skill</class>
+		<class>com.skilldistillery.skillswap.entities.User</class>
 
 
 
@@ -40,10 +41,6 @@
 			<property name="hibernate.c3p0.max_statements" value="0" />
 			<property name="hibernate.c3p0.timeout" value="60" />
 		</properties>
-	
-	
-	
-	
 	
 	
 	
