@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -18,9 +19,19 @@ public class Address {
 	private String state;
 	private String zip;
 	
-	public Address() {
-		super();
-	}
+//	@OneToOne(mappedBy="user")
+//	private User user;
+//	
+//	public User getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(User user) {
+//		this.user = user;
+//	}
+
+	public Address() {}
+	
 	public int getId() {
 		return id;
 	}
@@ -69,7 +80,9 @@ public class Address {
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ "]";
+				+ 
+//				", user=" + user + 
+				"]";
 	}
 	
 	
