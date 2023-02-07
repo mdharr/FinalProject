@@ -1,11 +1,16 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -16,9 +21,40 @@ public class User {
 	
 	private String username;
 	
+	
 	private String password;
 	
+	@Column(name="first_name")
+	private String firstName;
+	
+	@Column(name="last_name")
+	private String lastName;
+	
 	private Boolean enabled;
+	
+	private Boolean availability;
+	
+	private String email;
+	
+	private String bio;
+	
+	@Column(name="profile_image")
+	private String profileImage;
+	
+	@Column(name="created_date")
+	private LocalDateTime createdDate;
+	
+	@Column(name="last_active")
+	private LocalDateTime lastActive;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Project> projects;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Comment> comments;
+	
+	@OneToOne(mappedBy = "user")
+	private Address address;
 	
 	private String role;
 
