@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Skill {
@@ -18,6 +21,10 @@ public class Skill {
 	private String description;
 	@Column(name="image_url")
 	private String imageUrl;
+	
+//	@OneToMany
+//	@JoinColumn(name="user_skill")
+//	private User user ;
 	
 	public Skill() {}
 
