@@ -8,7 +8,9 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- begin entities -->
+		<class>com.skilldistillery.skillswap.entities.Address</class>
 		<class>com.skilldistillery.skillswap.entities.User</class>
+		<class>com.skilldistillery.skillswap.entities.Skill</class>
 
 
 
