@@ -12,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ProjectTest {
+class ProjectImageTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Project project;
+	private ProjectImage projectImage;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,26 +31,19 @@ class ProjectTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		project = em.find(Project.class, 1);
+		projectImage = em.find(ProjectImage.class, 2);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		project = null;
+		projectImage = null;
 	}
 
 	@Test
 	void test_project_entity_mapping() {
-		assertNotNull(project);
-		assertEquals("Repair a tear in my mask ", project.getName());
+		assertNotNull(projectImage);
+		assertEquals("caption", projectImage.getCaption());
 		
 	}
-	
-	//@Test
-	//void test_mapping_MTO_with_user() {
-	//	assertNotNull(project);
-		
-	//}
-
 }
