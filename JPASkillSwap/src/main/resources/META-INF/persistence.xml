@@ -9,7 +9,11 @@
 
 		<!-- begin entities -->
 		<class>com.skilldistillery.skillswap.entities.Address</class>
+
 		<class>com.skilldistillery.skillswap.entities.Comment</class>
+
+		<class>com.skilldistillery.skillswap.entities.ExperienceLevel</class>
+
 		<class>com.skilldistillery.skillswap.entities.Project</class>
 
 		<class>com.skilldistillery.skillswap.entities.ProjectImage</class>
