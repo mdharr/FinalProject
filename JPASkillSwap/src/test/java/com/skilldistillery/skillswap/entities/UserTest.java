@@ -46,5 +46,36 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 	}
+	@Test
+	void test_User_Project_one_to_many_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getProjects().size() > 0);
+	}
+	@Test
+	void test_User_Comment_one_to_many_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getComments().size() > 0);
+	}
+	@Test
+	void test_User_Following_many_to_many_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getFollowing().size() > 0);
+	}
+	@Test
+	void test_User_FollowedBy_many_to_many_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getFollowedBy().size() > 0);
+	}
+	@Test
+	void test_User_Address_one_to_one_mapping() {
+		assertNotNull(user);
+		assertTrue();
+	}
+	@Test
+	void test_User_UserSkill_one_to_many_mapping() {
+		assertNotNull(user);
+
+	}
+	
 
 }

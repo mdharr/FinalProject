@@ -25,7 +25,6 @@ public class User {
 	
 	private String username;
 	
-	
 	private String password;
 	
 	@Column(name="first_name")
@@ -63,7 +62,6 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-
 	
 	@ManyToMany
 	@JoinTable(name="followed_user_id",
