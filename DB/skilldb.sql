@@ -206,9 +206,9 @@ DROP TABLE IF EXISTS `followed_user` ;
 
 CREATE TABLE IF NOT EXISTS `followed_user` (
   `user_id` INT NOT NULL,
-  `followed_used_id` INT NOT NULL,
-  PRIMARY KEY (`user_id`, `followed_used_id`),
-  INDEX `fk_user_has_user_user2_idx` (`followed_used_id` ASC),
+  `followed_user_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `followed_user_id`),
+  INDEX `fk_user_has_user_user2_idx` (`followed_user_id` ASC),
   INDEX `fk_user_has_user_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_user_has_user_user1`
     FOREIGN KEY (`user_id`)
@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `followed_user` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_user_user2`
-    FOREIGN KEY (`followed_used_id`)
+    FOREIGN KEY (`followed_user_id`)
     REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -383,7 +383,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `followed_user` (`user_id`, `followed_used_id`) VALUES (1, 2);
+INSERT INTO `followed_user` (`user_id`, `followed_user_id`) VALUES (1, 2);
 
 COMMIT;
 

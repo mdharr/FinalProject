@@ -9,6 +9,7 @@
 
 		<!-- begin entities -->
 		<class>com.skilldistillery.skillswap.entities.User</class>
+		<class>com.skilldistillery.skillswap.entities.Project</class>
 
 
 
