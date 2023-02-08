@@ -16,6 +16,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 
@@ -50,9 +52,11 @@ public class User {
 	@Column(name = "last_active")
 	private LocalDateTime lastActive;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
@@ -61,20 +65,25 @@ public class User {
 //	@JoinTable(name = "user_skill", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 //	private List<Skill> skills;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<UserSkill> userSkills;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Project> projectOwner;
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "project_member", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
 	private List<Project> projectsHelper;
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "followed_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "followed_user_id"))
 	private List<User> following;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "following")
 	private List<User> followedBy;
 

@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name= "project_image")
 public class ProjectImage {
@@ -28,6 +30,7 @@ public class ProjectImage {
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "project_id")
 	private Project project;

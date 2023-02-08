@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Skill {
 
@@ -23,6 +25,7 @@ public class Skill {
 	@Column(name="image_url")
 	private String imageUrl;
 	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name="user_skill", 
 	joinColumns = @JoinColumn(name="user_id"), 

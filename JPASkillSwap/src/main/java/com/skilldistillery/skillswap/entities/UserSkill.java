@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="user_skill")
 public class UserSkill {
@@ -20,6 +22,7 @@ public class UserSkill {
 	@Column(name="experience_level_id")
 	private Integer experienceId;
 	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	@MapsId(value="userId")
