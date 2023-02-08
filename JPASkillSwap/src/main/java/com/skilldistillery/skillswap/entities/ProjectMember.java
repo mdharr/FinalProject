@@ -22,14 +22,6 @@ public class ProjectMember {
 	private Integer rating;
 	@Column(name="rating_comments")
 	private String ratingComments;
-
-//	@ManyToOne
-//	@JoinColumn(name="project_id")
-//	private Project project;
-//	
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	private User user;
 	
 	public ProjectMember() {}
 
@@ -45,8 +37,7 @@ public class ProjectMember {
 		this.comments = comments;
 		this.rating = rating;
 		this.ratingComments = ratingComments;
-//		this.project = project;
-//		this.user = user;
+
 	}
 
 	public void setId(int id) {
@@ -84,21 +75,6 @@ public class ProjectMember {
 	public void setRating_comments(String ratingComments) {
 		this.ratingComments = ratingComments;
 	}
-//	public Project getProject() {
-//		return project;
-//	}
-//
-//	public void setProject(Project project) {
-//		this.project = project;
-//	}
-//	
-//	public User getUser() {
-//		return user;
-//	}
-//	
-//	public void setUser(User user) {
-//		this.user = user;
-//	}
 
 	@Override
 	public int hashCode() {
