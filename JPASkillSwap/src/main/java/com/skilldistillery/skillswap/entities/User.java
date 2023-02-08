@@ -51,9 +51,6 @@ public class User {
 	private LocalDateTime lastActive;
 	
 	@OneToMany(mappedBy = "user")
-	private List<Project> projects;
-	
-	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 	
 	@OneToOne
@@ -65,6 +62,12 @@ public class User {
 	joinColumns = @JoinColumn(name="user_id"), 
 	inverseJoinColumns = @JoinColumn(name="skill_id"))
 	private List<Skill> skills;
+	
+	@ManyToMany
+	@JoinTable(name="project_member", 
+	joinColumns = @JoinColumn(name="user_id"), 
+	inverseJoinColumns = @JoinColumn(name="project_id"))
+	private List<Project> projects;
 
 	@ManyToMany
 	@JoinTable(name="followed_user",

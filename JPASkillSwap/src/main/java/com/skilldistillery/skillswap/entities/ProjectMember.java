@@ -30,6 +30,7 @@ public class ProjectMember {
 //	@ManyToOne
 //	@JoinColumn(name="user_id")
 //	private User user;
+	
 	public ProjectMember() {}
 
 	public int getId() {

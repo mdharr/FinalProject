@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -42,6 +44,12 @@ public class Project {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@ManyToMany
+	@JoinTable(name="project_member", 
+	joinColumns = @JoinColumn(name="user_id"), 
+	inverseJoinColumns = @JoinColumn(name="project_id"))
+	private List<User> users;
 	
 //	@OneToMany(mappedBy = "project")
 //	private List <ProjectImage> projectImages;
@@ -151,6 +159,14 @@ public class Project {
 //	public void setProjectImages(List<ProjectImage> projectImages) {
 //		this.projectImages = projectImages;
 //	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 
 	public Project(int id, String name, LocalDateTime datePosted, String description, Boolean activeStatus,
 			String imagePrimary, LocalDateTime startDate, LocalDateTime projectedDate, User user) {

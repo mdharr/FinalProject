@@ -47,6 +47,12 @@ class ProjectTest {
 		
 	}
 	
+	@Test
+	void test_Project_User_many_to_many_mapping() {
+		assertNotNull(project);
+		assertTrue(project.getUsers().size() > 0);
+	}
+	
 	//@Test
 	//void test_mapping_MTO_with_user() {
 	//	assertNotNull(project);
