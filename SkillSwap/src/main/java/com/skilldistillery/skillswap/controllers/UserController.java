@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -42,10 +42,10 @@ public class UserController {
 	}
 	
 	@PostMapping("users")
-	public User create(@RequestBody User user, HttpServletResponse res, HttpServletRequest req) {
+	public User register(@RequestBody User user, HttpServletResponse res, HttpServletRequest req) {
 
 		try {
-			userService.create(user);
+			userService.register(user);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());
@@ -57,11 +57,12 @@ public class UserController {
 		return user;
 	}
 	
-	@PutMapping("users/{id}")
-	public User update(@PathVariable Integer id, @RequestBody User user, HttpServletResponse res) {
+
+	@PutMapping("users/")
+	public User userUpdate(Principal principal, @RequestBody User user, HttpServletResponse res) {
 
 		try {
-			user = userService.update(id, user);
+			user = userService.updateOwn(principal.getName(), user);
 
 			if (user == null) {
 				res.setStatus(404);
@@ -75,10 +76,10 @@ public class UserController {
 		return user;
 	}
 	
-	@DeleteMapping("users/{id}")
-	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
+	@PutMapping("users/{id}")
+	public void archiveUser (@PathVariable int id, HttpServletResponse res) {
 		try {
-			if (userService.destroy(id)) {
+			if (userService.archiveUser(id)) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);

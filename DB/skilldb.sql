@@ -67,7 +67,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `skill` ;
 
 CREATE TABLE IF NOT EXISTS `skill` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `description` TEXT NULL,
   `image_url` VARCHAR(2500) NULL,

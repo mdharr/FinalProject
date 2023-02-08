@@ -31,13 +31,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User create(User user) {
+	public User register(User user) {
 		return userRepo.saveAndFlush(user);
 	}
 
 	@Override
-	public User update(int id, User user) {
+	public User updateAdmin(int id, User user) {
 		User userUpdate = show(id);
+		userUpdate.setFirstName(user.getFirstName());
+		userUpdate.setLastName(user.getLastName());
+		userUpdate.setEnabled(user.getEnabled());
+		userUpdate.setAvailability(user.getAvailability());
+		userUpdate.setEmail(user.getEmail());
+		userUpdate.setBio(user.getBio());
+		userUpdate.setProfileImage(user.getProfileImage());
+		//might have to look at Address
+		userUpdate.setAddress(user.getAddress());
+		return userRepo.save(userUpdate);
+	}
+	
+	@Override
+	public User updateOwn(String username, User user) {
+		User userUpdate = userRepo.findByUsername(username);
 		userUpdate.setFirstName(user.getFirstName());
 		userUpdate.setLastName(user.getLastName());
 		userUpdate.setEnabled(user.getEnabled());
@@ -51,10 +66,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean destroy(int id) {
+	public boolean archiveUser(int id) {
+		Optional<User> userOpt = userRepo.findById(id);
+		if (userOpt.isPresent()) {
+			User user = userOpt.get();
+			user.setEnabled(false);
+			userRepo.saveAndFlush(user);
+		}
+		return true;
+	}
+
+	@Override
+	public boolean deleteAdmin(int id) {
 		userRepo.deleteById(id);
 		return !userRepo.existsById(id);
 	}
-
-
 }

@@ -11,10 +11,14 @@ public interface UserService {
 
 	public User show(int id);
 	
-	public User create(User user);
+	public User register(User user);
 	
-	public User update(int id, User user);
+	public User updateAdmin(int id, User user);
 	
-	public boolean destroy(int id);
+	public User updateOwn(String username, User user);
+
+	public boolean archiveUser(int id);
+	
+	public boolean deleteAdmin(int id);
 	
 }
