@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Skill {
@@ -25,7 +24,9 @@ public class Skill {
 	private String imageUrl;
 	
 	@ManyToMany
-	@JoinTable(name="user_skill", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="skill_id"))
+	@JoinTable(name="user_skill", 
+	joinColumns = @JoinColumn(name="user_id"), 
+	inverseJoinColumns = @JoinColumn(name="skill_id"))
 	private List<User> users;
 	
 	public Skill() {}
@@ -61,14 +62,6 @@ public class Skill {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
-//	public UserSkill getUserSkill() {
-//		return userSkill;
-//	}
-//
-//	public void setUserSkill(UserSkill userSkill) {
-//		this.userSkill = userSkill;
-//	}
 
 	public List<User> getUsers() {
 		return users;

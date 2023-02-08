@@ -30,7 +30,7 @@ class UserSkillTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		userSkill = em.find(UserSkill.class, new UserSkillId(1, 4));
+		userSkill = em.find(UserSkill.class, new UserSkillId(1, 1));
 	}
 
 	@AfterEach
@@ -42,7 +42,7 @@ class UserSkillTest {
 	@Test
 	void test_Address_entity_mapping() {
 		assertNotNull(userSkill);
-//		assertEquals(4, userSkill. );
+		assertEquals("this is a description", userSkill.getDescription());
 	}
 
 }
