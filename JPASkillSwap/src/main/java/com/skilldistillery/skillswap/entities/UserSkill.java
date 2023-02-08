@@ -6,8 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
@@ -20,19 +20,33 @@ public class UserSkill {
 	@Column(name="experience_level_id")
 	private Integer experienceId;
 	
-//	@ManyToOne
-//	@JoinColumn(name="user_id")
-//	@Column(nullable=false)
-//	private User user;
-//	
-//	@ManyToOne
-//	@JoinColumn(name="skill_id")
-//	@Column(nullable=false)
-//	private Skill skill;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	@MapsId(value="userId")
+	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name="skill_id")
+	@MapsId(value="skillId")
+	private Skill skill;
+	
+	
+	public User getUser() {
+		return user;
+	}
 
-	
-	
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+
 	private String description;
 
 	public UserSkillId getId() {

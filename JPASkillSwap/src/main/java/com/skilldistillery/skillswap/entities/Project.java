@@ -213,4 +213,22 @@ public class Project {
 			user.removeProjectHelper(this);
 		}
 	}
+	
+	
+	public void addComment(Comment comment) {
+		if (comment == null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(comment)) {
+			comments.add(comment);
+			comment.setProject(this);
+}
+	}
+	
+	public void removeComment(Comment comment) {
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+			comment.setProject(null);
+		}
+	}
 }

@@ -57,9 +57,12 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
-	@ManyToMany
-	@JoinTable(name = "user_skill", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
-	private List<Skill> skills;
+//	@ManyToMany
+//	@JoinTable(name = "user_skill", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
+//	private List<Skill> skills;
+
+	@OneToMany(mappedBy = "user")
+	private List<UserSkill> userSkills;
 
 	@OneToMany(mappedBy = "user")
 	private List<Project> projectOwner;
@@ -82,8 +85,9 @@ public class User {
 
 	public User(int id, String username, String password, String firstName, String lastName, Boolean enabled,
 			Boolean availability, String email, String bio, String profileImage, LocalDateTime createdDate,
-			LocalDateTime lastActive, List<Comment> comments, Address address, List<Skill> skills, List<Project> projectOwner,
-			List<Project> projectsHelper, List<User> following, List<User> followedBy, String role) {
+			LocalDateTime lastActive, List<Comment> comments, Address address, List<UserSkill> userSkills,
+			List<Project> projectOwner, List<Project> projectsHelper, List<User> following, List<User> followedBy,
+			String role) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -99,7 +103,7 @@ public class User {
 		this.lastActive = lastActive;
 		this.comments = comments;
 		this.address = address;
-		this.skills = skills;
+		this.userSkills = userSkills;
 		this.projectOwner = projectOwner;
 		this.projectsHelper = projectsHelper;
 		this.following = following;
@@ -243,13 +247,13 @@ public class User {
 		this.role = role;
 	}
 
-	public List<Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
-	}
+//	public List<Skill> getSkills() {
+//		return skills;
+//	}
+//
+//	public void setSkills(List<Skill> skills) {
+//		this.skills = skills;
+//	}
 
 	public List<Project> getProjectsHelper() {
 		return projectsHelper;
@@ -259,14 +263,20 @@ public class User {
 		this.projectsHelper = projectsHelper;
 	}
 
-
-
 	public List<Project> getProjectOwner() {
 		return projectOwner;
 	}
 
 	public void setProjectOwner(List<Project> projectOwner) {
 		this.projectOwner = projectOwner;
+	}
+
+	public List<UserSkill> getUserSkills() {
+		return userSkills;
+	}
+
+	public void setUserSkills(List<UserSkill> userSkills) {
+		this.userSkills = userSkills;
 	}
 
 	@Override
@@ -302,6 +312,43 @@ public class User {
 			project.removeUser(this);
 		}
 	}
+
+	public void addUserSkill(UserSkill userSkill) {
+		if (userSkills == null) {
+			userSkills = new ArrayList<>();
+		}
+		if (!userSkills.contains(userSkill)) {
+			userSkills.add(userSkill);
+			userSkill.setUser(this);
+		}
+	}
+
+	public void removeUserSkill(UserSkill userSkill) {
+		if (userSkills != null && userSkills.contains(userSkill)) {
+			userSkills.remove(userSkill);
+			userSkill.setUser(null);
+		}
+	}
+
+	public User addFollower(User friend) {
+		following.add(friend);
+		return friend;
+	}
+
+	public User removeFollower(User friend) {
+		following.remove(friend);
+		return friend;
+	}
+
+	public User addFollowedBy(User friend) {
+		followedBy.add(friend);
+		return friend;
+	}
+	public User removeFollowedBy(User friend) {
+		followedBy.add(friend);
+		return friend;
+	}
+	
 	public void addProjectOwner(Project project) {
 		if (projectOwner == null) {
 			projectOwner = new ArrayList<>();
@@ -311,13 +358,29 @@ public class User {
 			project.addUser(this);
 		}
 	}
-	
+
 	public void removeProjectOwner(Project project) {
 		if (projectOwner != null && projectOwner.contains(project)) {
 			projectOwner.remove(project);
 			project.removeUser(this);
 		}
 	}
-	
-	
+
+	public void addComment(Comment comment) {
+		if (comment == null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(comment)) {
+			comments.add(comment);
+			comment.setUser(this);
+		}
+	}
+
+	public void removeComment(Comment comment) {
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+			comment.setUser(null);
+		}
+	}
+
 }
