@@ -1,6 +1,5 @@
 package com.skilldistillery.skillswap.controllers;
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,70 +16,70 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillswap.entities.User;
-import com.skilldistillery.skillswap.services.UserService;
+import com.skilldistillery.skillswap.entities.Skill;
+import com.skilldistillery.skillswap.services.SkillService;
 
 @CrossOrigin({"*", "http://localhost/"})
 @RestController
 @RequestMapping("api")
-public class UserController {
-	
+public class SkillController {
+
+
 	@Autowired
-	private UserService userService;
+	private SkillService skillService;
 	
-	@GetMapping("users")
-	public List<User> index() {
-		return userService.index();
+	@GetMapping("skill")
+	public List<Skill> index() {
+		return skillService.index();
 	}
 	
-	@GetMapping("users/{id}")
-	public User show(@PathVariable Integer id, HttpServletResponse res) {
-		User user = userService.show(id);
-		if (user == null) {
+	@GetMapping("skill/{id}")
+	public Skill show(@PathVariable Integer id, HttpServletResponse res) {
+		Skill skill = skillService.show(id);
+		if (skill == null) {
 			res.setStatus(404);
 		}
-		return user;
+		return skill;
 	}
 	
-	@PostMapping("users")
-	public User register(@RequestBody User user, HttpServletResponse res, HttpServletRequest req) {
+	@PostMapping("skill")
+	public Skill create(@RequestBody Skill skill, HttpServletResponse res, HttpServletRequest req) {
 
 		try {
-			userService.register(user);
+			skillService.create(skill);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
-			url.append("/").append(user.getId());
+			url.append("/").append(skill.getId());
 			res.setHeader("Location", url.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(404);
 		}
-		return user;
+		return skill;
 	}
 	
-
-	@PutMapping("users/")
-	public User userUpdate(Principal principal, @RequestBody User user, HttpServletResponse res) {
+	@PutMapping("skill/{id}")
+	public Skill update(@PathVariable Integer id, @RequestBody Skill skill, HttpServletResponse res) {
 
 		try {
-			user = userService.updateOwn(principal.getName(), user);
+			skill = skillService.update(id, skill);
 
-			if (user == null) {
+			if (skill == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			user= null;
-		
+			skill= null;
 		}
-		return user;
+
+		return skill;
 	}
 	
-	@PutMapping("users/{id}")
-	public void archiveUser (@PathVariable int id, HttpServletResponse res) {
+	@DeleteMapping("skill/{id}")
+	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
 		try {
-			if (userService.archiveUser(id)) {
+			if (skillService.destroy(id)) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);
@@ -89,5 +89,4 @@ public class UserController {
 			res.setStatus(400);
 		}
 	}
- 
 }
