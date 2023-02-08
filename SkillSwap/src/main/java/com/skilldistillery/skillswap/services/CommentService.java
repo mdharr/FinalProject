@@ -13,8 +13,8 @@ public interface CommentService {
 	
 	public Comment create(String username, Comment comment, int projectId);
 	
-	public Comment update(String username, int commentId, Comment comment);
+	public Comment update(String username, int commentId, Comment comment, int projectId);
 	
-	public boolean destroy(String username, int commentId);
+	public boolean destroy(String username, int commentId, int projectId);
 
 }

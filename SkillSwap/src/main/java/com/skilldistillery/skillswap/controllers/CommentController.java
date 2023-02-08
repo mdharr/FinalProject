@@ -60,7 +60,7 @@ public class CommentController {
 	public Comment update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("pid") int projectId, @PathVariable("cid") int commentId, @RequestBody Comment comment) {
 		
 		try {
-			comment = commentService.update(principal.getName(), commentId, comment);
+			comment = commentService.update(principal.getName(), commentId, comment, projectId);
 			if(comment == null) {
 				res.setStatus(404);
 			}

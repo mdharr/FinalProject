@@ -56,14 +56,14 @@ public class CommentServiceImpl implements CommentService {
 	}
 	
 	@Override
-	public Comment update(String username, int commentId, Comment comment) {
+	public Comment update(String username, int commentId, Comment comment, int projectId) {
 		Comment existing = show(username, commentId);
 		existing.setComment(comment.getComment());
 		return commentRepo.save(existing);
 	}
 
 	@Override
-	public boolean destroy(String username, int commentId) {
+	public boolean destroy(String username, int commentId, int projectId) {
 		commentRepo.deleteById(commentId);
 		return !commentRepo.existsById(commentId);
 	}
