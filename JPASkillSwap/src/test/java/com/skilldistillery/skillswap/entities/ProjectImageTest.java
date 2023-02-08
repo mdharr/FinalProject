@@ -46,4 +46,10 @@ class ProjectImageTest {
 		assertEquals("caption", projectImage.getCaption());
 		
 	}
+	
+	@Test
+	void test_mapping_ManyToOne_Mapping_To_Projects() {
+	assertNotNull(projectImage);
+	assertEquals(2, projectImage.getProject().getId());
+}
 }

@@ -62,8 +62,8 @@ public class Project {
 	inverseJoinColumns = @JoinColumn(name="project_id"))
 	private List<User> users;
 	
-//	@OneToMany(mappedBy = "project")
-//	private List <ProjectImage> projectImages;
+	@OneToMany(mappedBy = "project")
+	private List <ProjectImage> projectImages;
 
 	@Override
 	public int hashCode() {
@@ -163,20 +163,20 @@ public class Project {
 		this.user = user;
 	}
 
-//	public List<ProjectImage> getProjectImages() {
-//		return projectImages;
-//	}
-//
-//	public void setProjectImages(List<ProjectImage> projectImages) {
-//		this.projectImages = projectImages;
-//	}
-
 	public List<User> getUsers() {
 		return users;
 	}
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public List<ProjectImage> getProjectImages() {
+		return projectImages;
+	}
+
+	public void setProjectImages(List<ProjectImage> projectImages) {
+		this.projectImages = projectImages;
 	}
 
 	public Project(int id, String name, LocalDateTime datePosted, String description, Boolean activeStatus,
@@ -190,7 +190,6 @@ public class Project {
 		this.imagePrimary = imagePrimary;
 		this.startDate = startDate;
 		this.projectedDate = projectedDate;
-		//this.user = user;
 	}
 
 	public Project() {
