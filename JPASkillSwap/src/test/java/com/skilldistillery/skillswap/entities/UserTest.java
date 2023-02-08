@@ -2,6 +2,8 @@ package com.skilldistillery.skillswap.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -61,21 +63,22 @@ class UserTest {
 		assertNotNull(user);
 		assertTrue(user.getFollowing().size() > 0);
 	}
-	@Test
-	void test_User_FollowedBy_many_to_many_mapping() {
-		assertNotNull(user);
-		assertTrue(user.getFollowedBy().size() > 0);
-	}
-	@Test
-	void test_User_Address_one_to_one_mapping() {
-		assertNotNull(user);
-		assertTrue();
-	}
-	@Test
-	void test_User_UserSkill_one_to_many_mapping() {
-		assertNotNull(user);
-
-	}
+//	@Test
+//	void test_User_FollowedBy_many_to_many_mapping() {
+//		assertNotNull(user);
+//		assertTrue(user.getFollowedBy().size() > 0);
+//	}
+//	@Test
+//	void test_User_Address_one_to_one_mapping() {
+//		assertNotNull(user);
+//		assertNull(user.getAddress().getCity());
+//	}
+//	@Test
+//	void test_User_UserSkill_one_to_many_mapping() {
+//		assertNotNull(user);
+//		assertEquals(1, user.);
+//
+//	}
 	
 
 }

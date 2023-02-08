@@ -17,6 +17,9 @@
 		<class>com.skilldistillery.skillswap.entities.Project</class>
 
 		<class>com.skilldistillery.skillswap.entities.ProjectImage</class>
+		<class>com.skilldistillery.skillswap.entities.UserSkillId</class>
+		<class>com.skilldistillery.skillswap.entities.UserSkill</class>
+		<class>com.skilldistillery.skillswap.entities.ProjectMemberId</class>
 
 
 

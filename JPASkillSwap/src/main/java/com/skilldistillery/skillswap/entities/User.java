@@ -56,15 +56,17 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 	
-	@OneToOne(mappedBy = "user")
+
+	@OneToOne
+	@JoinColumn(name="address_id")
 	private Address address;
 	
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+//	@ManyToOne
+//	@JoinColumn(name = "user_id")
+//	private User user;
 	
 	@ManyToMany
-	@JoinTable(name="followed_user_id",
+	@JoinTable(name="followed_user",
 	joinColumns=@JoinColumn(name="user_id"),
 	inverseJoinColumns=@JoinColumn(name="followed_user_id"))
 	private List<User> following;
@@ -85,6 +87,110 @@ public class User {
 		this.role = role;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+	
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	public Boolean getAvailability() {
+		return availability;
+	}
+	
+	public void setAvailability(Boolean availability) {
+		this.availability = availability;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public String getBio() {
+		return bio;
+	}
+	
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+	
+	public String getProfileImage() {
+		return profileImage;
+	}
+	
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
+	
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+	
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+	
+	public LocalDateTime getLastActive() {
+		return lastActive;
+	}
+	
+	public void setLastActive(LocalDateTime lastActive) {
+		this.lastActive = lastActive;
+	}
+	
+	public List<Project> getProjects() {
+		return projects;
+	}
+	
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+	
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
+	public Address getAddress() {
+		return address;
+	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	
+	public List<User> getFollowing() {
+		return following;
+	}
+	
+	public void setFollowing(List<User> following) {
+		this.following = following;
+	}
+	
+	public List<User> getFollowedBy() {
+		return followedBy;
+	}
+	
+	public void setFollowedBy(List<User> followedBy) {
+		this.followedBy = followedBy;
+	}
 	public int getId() {
 		return id;
 	}
@@ -127,8 +233,12 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled
-				+ ", role=" + role + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", enabled=" + enabled + ", availability=" + availability + ", email="
+				+ email + ", bio=" + bio + ", profileImage=" + profileImage + ", createdDate=" + createdDate
+				+ ", lastActive=" + lastActive + ", projects=" + projects + ", comments=" + comments + ", address="
+				+ address + ", user=" + ", following=" + following + ", followedBy=" + followedBy + ", role="
+				+ role + "]";
 	}
 
 	@Override
