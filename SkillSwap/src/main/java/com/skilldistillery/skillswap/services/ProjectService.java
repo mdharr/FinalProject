@@ -8,5 +8,5 @@ public interface ProjectService {
 
 	List<Project> index();
 	
-	Project findByUsername(String username);
+	List<Project> findByUsername(String username);
 }

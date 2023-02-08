@@ -1,6 +1,8 @@
 package com.skilldistillery.skillswap.services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +22,13 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Project> findByUsername(String username) {
+		List<Project> project = new ArrayList<>();
+		List<Project> projectOpt = projectRepo.findByUser_UsernameLike(username);
+		if(!projectOpt.isEmpty()) {
+			project.addAll(projectOpt);
+		}
+		return project;
 	}
 
 //	@Override
