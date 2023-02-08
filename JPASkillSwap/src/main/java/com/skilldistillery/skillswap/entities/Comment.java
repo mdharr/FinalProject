@@ -29,10 +29,22 @@ public class Comment {
 	@JoinColumn(name="user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name="project_id")
+	private Project project;
+	
 	//map proj
 	
 	//map reply
 	
+	public Project getProject() {
+		return project;
+	}
+
+	public void setProject(Project project) {
+		this.project = project;
+	}
+
 	public Comment() {
 		super();
 	}

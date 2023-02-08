@@ -45,6 +45,17 @@ public class Project {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@OneToMany(mappedBy = "project")
+	private List<Comment> comments;
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@ManyToMany
 	@JoinTable(name="project_member", 
 	joinColumns = @JoinColumn(name="user_id"), 

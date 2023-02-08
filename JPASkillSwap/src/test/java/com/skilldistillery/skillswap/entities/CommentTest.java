@@ -47,5 +47,11 @@ class CommentTest {
 		assertNotNull(comment);
 		assertEquals("Thats really cool that you got lessons! ", comment.getComment());
 	}
+	
+	@Test
+	void test_Comment_Project_many_to_one_mapping() {
+		assertNotNull(comment);
+		assertNotNull(comment.getProject());
+	}
 
 }

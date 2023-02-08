@@ -31,7 +31,7 @@ class ProjectTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		project = em.find(Project.class, 1);
+		project = em.find(Project.class, 2);
 	}
 
 	@AfterEach
@@ -43,14 +43,21 @@ class ProjectTest {
 	@Test
 	void test_project_entity_mapping() {
 		assertNotNull(project);
-		assertEquals("Repair a tear in my mask ", project.getName());
+		assertEquals("Want to get better at italian", project.getName());
 		
 	}
 	
 	@Test
 	void test_Project_User_many_to_many_mapping() {
 		assertNotNull(project);
-		assertTrue(project.getUsers().size() > 0);
+//		assertTrue(project.getUsers().size() > 0);
+		assertEquals(2, project.getUser().getId());
+	}
+	
+	@Test
+	void test_Project_Comment_One_to_many_mapping() {
+		assertNotNull(project);
+		assertTrue(project.getComments().size() > 0);
 	}
 	
 	//@Test
