@@ -1,6 +1,7 @@
 package com.skilldistillery.skillswap.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -194,5 +195,22 @@ public class Project {
 
 	public Project() {
 		super();
+	}
+	
+	public void addUser(User user) {
+		if (user == null) {
+			users = new ArrayList<>();
+		}
+		if (!users.contains(user)) {
+			users.add(user);
+			user.addProjectHelper(this);
+		}
+	}
+	
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeProjectHelper(this);
+		}
 	}
 }
