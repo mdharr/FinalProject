@@ -30,7 +30,8 @@ class ProjectMemberTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		projectMember = em.find(ProjectMember.class, 1);
+		projectMember = em.find(ProjectMember.class, new ProjectMemberId(1,1));
+		
 	}
 
 	@AfterEach

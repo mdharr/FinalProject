@@ -23,6 +23,16 @@ public class ProjectMemberId implements Serializable {
 		return userId;
 	}
 
+	public ProjectMemberId() {
+		super();
+	}
+
+	public ProjectMemberId(int userId, int projectId) {
+		super();
+		this.userId = userId;
+		this.projectId = projectId;
+	}
+
 	@Override
 	public String toString() {
 		return "ProjectMemberId [userId=" + userId + ", projectId=" + projectId + "]";
