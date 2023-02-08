@@ -68,17 +68,17 @@ class UserTest {
 //		assertNotNull(user);
 //		assertTrue(user.getFollowedBy().size() > 0);
 //	}
-//	@Test
-//	void test_User_Address_one_to_one_mapping() {
-//		assertNotNull(user);
-//		assertNull(user.getAddress().getCity());
-//	}
-//	@Test
-//	void test_User_UserSkill_one_to_many_mapping() {
-//		assertNotNull(user);
-//		assertEquals(1, user.);
-//
-//	}
+	@Test
+	void test_User_Address_one_to_one_mapping() {
+		assertNotNull(user);
+		assertEquals("New York City", user.getAddress().getCity());
+	}
+	@Test
+	void test_User_Skill_one_to_many_mapping() {
+		assertNotNull(user);
+    	assertTrue(user.getSkills().size() > 0);
+
+	}
 	
 
 }

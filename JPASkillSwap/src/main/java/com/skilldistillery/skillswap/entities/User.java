@@ -56,7 +56,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 	
-
+	@OneToMany(mappedBy = "user")
+	private List<Skill> skills;
+	
 	@OneToOne
 	@JoinColumn(name="address_id")
 	private Address address;
@@ -229,6 +231,14 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
 	}
 
 	@Override
