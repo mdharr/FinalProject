@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillswap.entities.Comment;
+import com.skilldistillery.skillswap.entities.Project;
 import com.skilldistillery.skillswap.repositories.CommentRepository;
 import com.skilldistillery.skillswap.services.CommentService;
 

@@ -11,7 +11,7 @@ public interface CommentService {
 	
 	public Comment show(String username, int commentId);
 	
-	public Comment create(String username, Comment comment, Project project);
+	public Comment create(String username, Comment comment, int projectId);
 	
 	public Comment update(String username, int commentId, Comment comment);
 	
