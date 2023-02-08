@@ -5,6 +5,9 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,19 @@ public class UserSkill {
 	
 	@Column(name="experience_level_id")
 	private Integer experienceId;
+	
+//	@ManyToOne
+//	@JoinColumn(name="user_id")
+//	@Column(nullable=false)
+//	private User user;
+//	
+//	@ManyToOne
+//	@JoinColumn(name="skill_id")
+//	@Column(nullable=false)
+//	private Skill skill;
+	
+
+	
 	
 	private String description;
 

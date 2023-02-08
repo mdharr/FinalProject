@@ -73,12 +73,13 @@ class UserTest {
 //		assertNotNull(user);
 //		assertNull(user.getAddress().getCity());
 //	}
-//	@Test
-//	void test_User_UserSkill_one_to_many_mapping() {
-//		assertNotNull(user);
-//		assertEquals(1, user.);
-//
-//	}
+	
+	@Test
+	void test_User_UserSkill_one_to_many_mapping() {
+		assertNotNull(user);
+		assertTrue(user.getSkills().size() > 0);
+
+	}
 	
 
 }

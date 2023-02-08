@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,7 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,9 +24,9 @@ public class Skill {
 	@Column(name="image_url")
 	private String imageUrl;
 	
-//	@OneToMany
-//	@JoinColumn(name="user_skill")
-//	private User user ;
+	@ManyToMany
+	@JoinTable(name="user_skill", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="skill_id"))
+	private List<User> users;
 	
 	public Skill() {}
 
@@ -58,6 +60,22 @@ public class Skill {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+//	public UserSkill getUserSkill() {
+//		return userSkill;
+//	}
+//
+//	public void setUserSkill(UserSkill userSkill) {
+//		this.userSkill = userSkill;
+//	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

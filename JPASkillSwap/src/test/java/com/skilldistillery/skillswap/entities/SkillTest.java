@@ -2,6 +2,7 @@ package com.skilldistillery.skillswap.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,6 +46,11 @@ class SkillTest {
 	void test_Skill_entity_mapping() {
 		assertNotNull(skill);
 		assertEquals("woodworking", skill.getName());
+	}
+	@Test
+	void test_Skill_description() {
+		assertNotNull(skill);
+		assertTrue(skill.getUsers().size() > 0);
 	}
 
 }

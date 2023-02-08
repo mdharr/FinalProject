@@ -56,6 +56,9 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 	
+//	@OneToMany(mappedBy = "user")
+//	private List<Skill> skills;
+
 
 	@OneToOne
 	@JoinColumn(name="address_id")
@@ -65,6 +68,18 @@ public class User {
 //	@JoinColumn(name = "user_id")
 //	private User user;
 	
+	@ManyToMany
+	@JoinTable(name="user_skill", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="skill_id"))
+	private List<Skill> skills;
+	
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
 	@ManyToMany
 	@JoinTable(name="followed_user",
 	joinColumns=@JoinColumn(name="user_id"),
