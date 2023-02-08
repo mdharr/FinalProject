@@ -71,14 +71,7 @@ CREATE TABLE IF NOT EXISTS `skill` (
   `name` VARCHAR(45) NULL,
   `description` TEXT NULL,
   `image_url` VARCHAR(2500) NULL,
-  `user_id` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_skill_user1_idx` (`user_id` ASC),
-  CONSTRAINT `fk_skill_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -320,11 +313,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (1, 'woodworking', 'basic power tool uses, sanding, painting', 'https://www.familyhandyman.com/wp-content/uploads/2022/02/10-Woodworking-Portable-Power-Tools-e1645736309828.jpg', 1);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (2, 'cooking', 'whip up a delightful pastry ', NULL, NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (3, 'computing', 'JAVA, OOP expert', NULL, NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (4 , 'electrician', 'can walk you through basic electric installs ', NULL, NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`, `user_id`) VALUES (5, 'sewing', 'Repair and darn back to new', NULL, NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (1, 'woodworking', 'basic power tool uses, sanding, painting', 'https://www.familyhandyman.com/wp-content/uploads/2022/02/10-Woodworking-Portable-Power-Tools-e1645736309828.jpg');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (2, 'cooking', 'whip up a delightful pastry ', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (3, 'computing', 'JAVA, OOP expert', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (4 , 'electrician', 'can walk you through basic electric installs ', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (5, 'sewing', 'Repair and darn back to new', NULL);
 
 COMMIT;
 
