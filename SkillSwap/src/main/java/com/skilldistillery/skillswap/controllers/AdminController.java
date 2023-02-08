@@ -42,8 +42,7 @@ public class AdminController {
 	}
 
 	@DeleteMapping("users/admin/{id}")
-	public void deleteAdmin(@PathVariable int id, HttpServletRequest req, HttpServletResponse res,
-			@PathVariable int tid) {
+	public void deleteAdmin(@PathVariable int id, HttpServletRequest req, HttpServletResponse res) {
 		try {
 			if (userService.deleteAdmin(id)) {
 				res.setStatus(204);

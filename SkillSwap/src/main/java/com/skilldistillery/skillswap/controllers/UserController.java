@@ -71,8 +71,8 @@ public class UserController {
 			e.printStackTrace();
 			res.setStatus(400);
 			user= null;
+		
 		}
-
 		return user;
 	}
 	
