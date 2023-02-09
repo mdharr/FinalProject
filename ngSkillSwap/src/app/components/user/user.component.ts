@@ -33,9 +33,9 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     let idString = this.route.snapshot.paramMap.get('userId');
     console.log('userId: ' + idString);
-    let todoId = Number(idString);
-    if (!isNaN(todoId)) {
-      this.userService.show(todoId).subscribe({
+    let userId = Number(idString);
+    if (!isNaN(userId)) {
+      this.userService.show(userId).subscribe({
         next: (user) => {
           this.selected = user;
         },
@@ -70,20 +70,6 @@ export class UserComponent implements OnInit {
     this.selected = null;
   }
 
-  addUser(user: User) {
-    this.userService.create(user).subscribe({
-      next: (data) => {
-        this.newUser = new User(data.id);
-        this.reload();
-      },
-
-      error: (darn) => {
-        console.error('UserComponent.addUser: Error creating user');
-        console.error(darn);
-      },
-    });
-  }
-
   setEditUser() {
     this.editUser = Object.assign({}, this.selected);
   }
@@ -112,7 +98,7 @@ export class UserComponent implements OnInit {
       },
 
       error: (fail) => {
-        console.error('ProjectComponent.deleteProject: error deleting:');
+        console.error('User Component.deleteUser: error deleting:');
         console.error(fail);
       },
     });

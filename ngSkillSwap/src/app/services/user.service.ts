@@ -46,22 +46,6 @@ export class UserService {
     );
   }
 
-  create(user: User): Observable<User> {
-    const httpOptions = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-    return this.http.post<User>(this.url, user).pipe(
-      catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () => new Error('UserService.index(): error creating user: ' + err)
-        );
-      })
-    );
-  }
-
   update(user: User): Observable<User> {
     const httpOptions = {
       headers: {

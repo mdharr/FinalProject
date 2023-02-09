@@ -15,7 +15,7 @@ import { ProjectService } from 'src/app/services/project.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
-  private url = environment.baseUrl + 'api/profile';
+  private url = environment.baseUrl + 'api/users';
 
   loggedInUser: User = new User();
   userProjectList: Project[] = [];

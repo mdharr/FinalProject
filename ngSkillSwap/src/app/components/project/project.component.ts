@@ -32,19 +32,17 @@ export class ProjectComponent implements OnInit {
         this.projectService.show(userId).subscribe({
           next: (project) => {
             this.selected = project;
+            this.router.navigateByUrl('/project');
           },
           error: (fail) => {
             console.error(fail);
             this.router.navigateByUrl('ProjectNotFound');
           },
         });
-      } else {
-        this.router.navigateByUrl('invalidProjectId');
       }
+      this.reload();
     }
-    this.reload();
   }
-
   reload() {
     this.projectService.projectsForUser().subscribe({
       next: (projectList) => {
