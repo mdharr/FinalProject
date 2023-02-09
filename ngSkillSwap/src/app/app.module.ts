@@ -7,11 +7,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserComponent } from './components/user/user.component';
+import { SkillComponent } from './components/skill/skill.component';
+import { ProjectComponent } from './components/project/project.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    SkillComponent,
+    ProjectComponent,
+    NavbarComponent,
+    RegisterComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
