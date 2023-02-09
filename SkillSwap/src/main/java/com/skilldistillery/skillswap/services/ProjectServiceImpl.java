@@ -8,13 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillswap.entities.Project;
+import com.skilldistillery.skillswap.entities.User;
 import com.skilldistillery.skillswap.repositories.ProjectRepository;
+import com.skilldistillery.skillswap.repositories.UserRepository;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
 	@Autowired
 	private ProjectRepository projectRepo;
+	@Autowired
+	private UserRepository userRepo;
 	
 	@Override
 	public List<Project> index(){
@@ -39,5 +43,18 @@ public class ProjectServiceImpl implements ProjectService {
 			project.addAll(projectOpt);
 		}
 		return project;
+	}
+	
+	@Override
+	public Project createProject(int userId, Project project) {
+		Project projectNew = null;
+		User user = null;
+		Optional<User> userOpt = userRepo.findById(userId);
+		if (userOpt.isPresent()) {
+			user = userOpt.get();
+			project.setUser(user);
+			projectNew = projectRepo.saveAndFlush(project);
+		}
+		return projectNew;
 	}
 }

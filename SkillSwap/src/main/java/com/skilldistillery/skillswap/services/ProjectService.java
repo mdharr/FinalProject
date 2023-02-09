@@ -11,4 +11,6 @@ public interface ProjectService {
 	List<Project> findByUsername(String username);
 
 	List<Project> findByDescription(String name);
+
+	Project createProject(int userId, Project project);
 }
