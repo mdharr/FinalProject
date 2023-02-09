@@ -9,4 +9,6 @@ public interface ProjectService {
 	List<Project> index();
 	
 	List<Project> findByUsername(String username);
+
+	List<Project> findByDescription(String name);
 }
