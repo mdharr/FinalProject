@@ -1,1 +1,32 @@
 <p>project works!</p>
+<div class="container" *ngIf="!selected">
+  <h2 class="projectList" id = "projectList">Project List</h2>
+  <table>
+    <thead>
+      <tr>
+       <th>Name: </th>
+      <!-- <th>Date Posted: </th> -->
+      <th>Description:</th>
+      <th>Date Started: </th>
+      <th>Active Status: </th>
+    </tr>
+    </thead>
+    <tbody class="scrolling-box">
+      <tr *ngFor="let project of projectList">
+        <td (click)="displayProject(project)">{{ project.name }}</td>
+        <!-- <td (click)="displayProject(project)">{{ project.datePosted | date : "shortDate" }}</td> -->
+        <td>{{ project.description }}</td>
+        <td>{{ project.activeStatus }}</td>
+            <td>
+          <button
+            type="button"
+            class="btn btn-info"
+            (click)="deleteProject(project.id)"
+          >
+            X
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

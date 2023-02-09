@@ -17,6 +17,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

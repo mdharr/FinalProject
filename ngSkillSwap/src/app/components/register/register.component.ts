@@ -23,7 +23,7 @@ constructor(private authService: AuthService, private router: Router) {
       next: (registeredUser) => {
         this.authService.login(newUser.username, newUser.password).subscribe({
           next: (loggedInUser) => {
-            this.router.navigateByUrl('/todo');
+            this.router.navigateByUrl('/home');
           },
           error: (problem) => {
             console.error('RegisterComponent.register(): Error logging in user:');

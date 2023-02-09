@@ -13,22 +13,9 @@ constructor(private auth: AuthService, private homeServ: HomeService){}
  projects: Project[] = [];
 
 ngOnInit(){
-  // this.testTestDeleteLater();
+ this.testTestDeleteLater();
   this.reload();
 }
-
-// testTestDeleteLater(){
-//   this.auth.login('admin', 'wombat1').subscribe({
-//     next: (data) => {
-//       console.log('logged in')
-//       console.log(data);
-//   },
-//     error:(fail) => {
-//       console.error('Error authenticating:')
-//       console.error(fail);
-//     }
-//   });
-//}
 reload(): void{
   this.homeServ.index().subscribe({
     next: (projects) =>{
@@ -39,6 +26,19 @@ reload(): void{
       console.error(fail);
     }
   });
+}
+
+testTestDeleteLater(){
+  // this.auth.login('admin', 'wombat1').subscribe({
+  //   next: (data) => {
+  //     console.log('logged in')
+  //     console.log(data);
+  // },
+  //   error:(fail) => {
+  //     console.error('Error authenticating:')
+  //     console.error(fail);
+  //   }
+  // });
 }
 
 }
