@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> index() {
 		return userRepo.findAll();
 	}
-	
+
 	@Override
 	public User show(int id) {
 		User user = null;
@@ -38,6 +38,13 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateAdmin(int id, User user) {
 		User userUpdate = show(id);
+		System.out.println(userUpdate);
+		Optional<User> addressCheck = userRepo.findById(id);
+		User origUser = addressCheck.get();
+		if (origUser != null && user.getAddress() != null) {
+			userUpdate.setAddress(user.getAddress());
+		}
+
 		userUpdate.setFirstName(user.getFirstName());
 		userUpdate.setLastName(user.getLastName());
 		userUpdate.setEnabled(user.getEnabled());
@@ -45,11 +52,10 @@ public class UserServiceImpl implements UserService {
 		userUpdate.setEmail(user.getEmail());
 		userUpdate.setBio(user.getBio());
 		userUpdate.setProfileImage(user.getProfileImage());
-		//might have to look at Address
-		userUpdate.setAddress(user.getAddress());
+	
 		return userRepo.save(userUpdate);
 	}
-	
+
 	@Override
 	public User updateOwn(String username, User user) {
 		User userUpdate = userRepo.findByUsername(username);
@@ -60,7 +66,7 @@ public class UserServiceImpl implements UserService {
 		userUpdate.setEmail(user.getEmail());
 		userUpdate.setBio(user.getBio());
 		userUpdate.setProfileImage(user.getProfileImage());
-		//might have to look at Address
+		// might have to look at Address
 		userUpdate.setAddress(user.getAddress());
 		return userRepo.save(userUpdate);
 	}

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.skillswap.entities.Address;
 import com.skilldistillery.skillswap.entities.User;
+import com.skilldistillery.skillswap.services.AddressService;
 import com.skilldistillery.skillswap.services.UserService;
 
 @CrossOrigin({"*", "http://localhost/"})
@@ -26,6 +28,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AddressService addressService;
 	
 	@GetMapping("users")
 	public List<User> index() {
@@ -45,7 +50,10 @@ public class UserController {
 	public User register(@RequestBody User user, HttpServletResponse res, HttpServletRequest req) {
 
 		try {
+			addressService.createAddress(user.getAddress());
 			userService.register(user);
+			
+			
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());

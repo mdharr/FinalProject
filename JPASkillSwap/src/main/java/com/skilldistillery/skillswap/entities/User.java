@@ -56,7 +56,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments;
 
-	@JsonIgnore
+	
 	@OneToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
@@ -390,6 +390,11 @@ public class User {
 			comments.remove(comment);
 			comment.setUser(null);
 		}
+	}
+
+	@Override
+	public String toString() {
+		return "User id=" + id;
 	}
 
 }
