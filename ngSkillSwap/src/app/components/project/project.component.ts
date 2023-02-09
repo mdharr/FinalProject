@@ -25,26 +25,28 @@ export class ProjectComponent implements OnInit {
 
   ngOnInit(): void {
     let idString = this.route.snapshot.paramMap.get('userId');
-    console.log('userId: ' + idString);
-    let todoId = Number(idString);
-    if (!isNaN(todoId)) {
-      this.projectService.show(todoId).subscribe({
-        next: (project) => {
-          this.selected = project;
-        },
-        error: (fail) => {
-          console.error(fail);
-          this.router.navigateByUrl('ProjectNotFound');
-        },
-      });
-    } else {
-      this.router.navigateByUrl('invalidProjectId');
+    if (idString) {
+      console.log('userId: ' + idString);
+      let userId = Number(idString);
+      if (!isNaN(userId)) {
+        this.projectService.show(userId).subscribe({
+          next: (project) => {
+            this.selected = project;
+          },
+          error: (fail) => {
+            console.error(fail);
+            this.router.navigateByUrl('ProjectNotFound');
+          },
+        });
+      } else {
+        this.router.navigateByUrl('invalidProjectId');
+      }
     }
     this.reload();
   }
 
   reload() {
-    this.projectService.index().subscribe({
+    this.projectService.projectsForUser().subscribe({
       next: (projectList) => {
         this.projectList = projectList;
       },
