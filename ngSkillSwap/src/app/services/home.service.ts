@@ -27,7 +27,7 @@ export class HomeService {
         return throwError(
           () =>
             new Error(
-              'TodoService.index() error retrieving list of todos' + err
+              'HomeService.index() error retrieving list of todos' + err
             )
         );
       })

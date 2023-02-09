@@ -2,6 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { Project } from 'src/app/models/project';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ constructor(private auth: AuthService, private homeServ: HomeService){}
 ngOnInit(){
 // this.testTestDeleteLater();
   this.reload();
+  console.log("**************************reloading");
 }
 reload(): void{
   this.homeServ.index().subscribe({
