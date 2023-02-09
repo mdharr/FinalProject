@@ -24,9 +24,23 @@ export class ProjectService {
     };
     return options;
   }
-
-  index(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.url).pipe(
+  //user specific list
+  projectsForUser(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.url + "/authenticated", this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+          new Error(
+            'ProjectService.index(): error retrieving project list: ' + err
+            )
+        );
+      })
+    );
+  }
+  //all projects
+  indexAll(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -40,7 +54,7 @@ export class ProjectService {
   }
 
   show(id: number): Observable<Project> {
-    return this.http.get<Project>(`${this.url}/${id}`).pipe(
+    return this.http.get<Project>(`${this.url}/${id}`, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
