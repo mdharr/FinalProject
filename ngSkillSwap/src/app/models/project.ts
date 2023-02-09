@@ -1,24 +1,24 @@
 export class Project {
   id: number;
   name: string;
-  datePosted: Date;
+  datePosted: string;
   description: string;
   activeStatus: boolean;
   userId: number;
   imagePrimary: string;
-  startDate: Date;
-  projectedDate: Date;
+  startDate: string;
+  projectedDate: string;
 
   constructor(
     id: number = 0,
     name: string = '',
-    datePosted: Date,
+    datePosted:string = '',
     description: string = '',
     activeStatus: boolean = false,
     userId: number = 0,
     imagePrimary: string = '',
-    startDate: Date,
-    projectedDate: Date
+    startDate: string = '',
+    projectedDate: string = ''
   ) {
     this.id = id;
     this.name = name;
