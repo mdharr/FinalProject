@@ -1,13 +1,15 @@
 <form>
   <div class="row">
-    <label class="col" for="username"></label>
-    <input class="col" type="text" name="username" [(ngModel)]="loginUser.username">
+  <div class="col">
+    <label for="username"></label>
+    <input type="text" name="username" [(ngModel)]="loginUser.username">
   </div>
-  <div class="row">
-    <label class="col" for="password"></label>
-    <input class="col" type="password" name="password" [(ngModel)]="loginUser.password">
+  <div class="col">
+    <label for="password"></label>
+    <input type="password" name="password" [(ngModel)]="loginUser.password">
   </div>
-  <div class="row">
-    <button class="col" (click)="login(loginUser)">Login</button>
+  <div class="col">
+    <button (click)="login(loginUser)">Login</button>
   </div>
+</div>
 </form>
