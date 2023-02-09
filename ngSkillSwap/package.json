@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.1.0",
+    "@angular/cdk": "^15.0.0",
     "@angular/common": "^15.1.0",
     "@angular/compiler": "^15.1.0",
     "@angular/core": "^15.1.0",
@@ -21,6 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
+    "mdb-angular-ui-kit": "^4.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"

@@ -1,3 +1,4 @@
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -39,8 +40,9 @@ import { DatePipe } from '@angular/common';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
-  ],
+    NgbModule,
+    MdbCarouselModule
+      ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
