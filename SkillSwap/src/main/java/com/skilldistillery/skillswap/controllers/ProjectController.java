@@ -56,11 +56,13 @@ public class ProjectController {
 	}
 
 	@PostMapping("users/{id}/projects")
-	public Project createProject(@PathVariable int id, @RequestBody Project project, HttpServletResponse res,
+	public Project createProject(
+			//@PathVariable int id,
+			Principal principal, @RequestBody Project project, HttpServletResponse res,
 			HttpServletRequest req) {
 		Project newProject = null;
 		try {
-			newProject = projectService.createProject(id, project);
+			newProject = projectService.createProject(principal.getName(), project);
 			res.setStatus(201);
 			// StringBuffer url = req.getRequestURL();
 			// url.append("/").append(user.getId());

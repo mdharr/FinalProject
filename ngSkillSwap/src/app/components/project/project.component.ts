@@ -14,7 +14,7 @@ export class ProjectComponent implements OnInit {
 selected : null | Project = null
 projectList: Project[] = [];
 editProject: Project | null = null;
-newProject: Project = new Project();
+project: Project = new Project();
 projects: any;
 log: any;
 
@@ -65,8 +65,9 @@ ngOnInit(): void {
 
    addProject(project: Project) {
     this.projectService.create(project).subscribe({
-      next: (data) => {
-        this.newProject = new Project();
+    next: (data) => {
+
+        this.project = new Project();
         this.reload();
       },
 

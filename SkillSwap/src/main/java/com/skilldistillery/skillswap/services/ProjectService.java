@@ -12,7 +12,7 @@ public interface ProjectService {
 
 	List<Project> findByDescription(String name);
 	
-	Project createProject(int userId, Project project);
+	Project createProject(String username, Project project);
 	
 	Project update(int userId, int projectId, Project project);
 
