@@ -15,15 +15,15 @@ ngOnInit(){
 }
 
 testTestDeleteLater(){
-  this.auth.login('admin', 'wombat1').subscribe({
-    next: (data) => {
-      console.log('logged in')
-      console.log(data);
-  },
-    error:(fail) => {
-      console.error('Error authenticating:')
-      console.error(fail);
-    }
-  });
+  // this.auth.login('admin', 'wombat1').subscribe({
+  //   next: (data) => {
+  //     console.log('logged in')
+  //     console.log(data);
+  // },
+  //   error:(fail) => {
+  //     console.error('Error authenticating:')
+  //     console.error(fail);
+  //   }
+  // });
 }
 }
