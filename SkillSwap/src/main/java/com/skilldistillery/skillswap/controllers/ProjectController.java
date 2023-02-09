@@ -1,11 +1,11 @@
 package com.skilldistillery.skillswap.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.filters.ExpiresFilter.XHttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,10 +36,10 @@ public class ProjectController {
 		return projectService.index();
 	}
 
-	@GetMapping("projects/{username}")
-	public List<Project> showByUsername(@PathVariable String username, HttpServletRequest req,
+	@GetMapping("projects/authenticated")
+	public List<Project> showByUsername(Principal principal, HttpServletRequest req,
 			HttpServletResponse res) {
-		List<Project> proj = projectService.findByUsername(username);
+		List<Project> proj = projectService.findByUsername(principal.getName());
 		if (proj.isEmpty()) {
 			res.setStatus(404);
 		}
