@@ -1,17 +1,57 @@
-<h1>This is the register page</h1>
+<h1>Register</h1>
 
-<form>
-  <!-- <div class="row">
+<!-- <form class="form-control">
+  <div class="row">
     <label class="col" for="email">Email</label>
     <input class="col" type="text" name="email" [(ngModel)]="newUser.email">
-  </div> -->
+  </div>
+  <div>
   <div class="row">
-    <label class="col" for="username">Username</label>
-    <input class="col" type="text" name="username" [(ngModel)]="newUser.username">
+    <label class="col" for="username"></label>
+    <input class="col" type="text" name="username" [(ngModel)]="newUser.username" placeholder="username">
   </div>
   <div class="row">
-    <label class="col" for="password">Password</label>
-    <input class="col" type="password" name="password" [(ngModel)]="newUser.password">
+    <label class="col" for="password"></label>
+    <input class="col" type="password" name="password" [(ngModel)]="newUser.password" placeholder="password">
   </div>
   <button (click)="register(newUser)">Register</button>
+</div>
+</form> -->
+
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputFirstName">First Name</label>
+      <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="newUser.firstName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputLastName">Last Name</label>
+      <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="newUser.lastName">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail">Email</label>
+      <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="newUser.email">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputUsername">Username</label>
+      <input type="text" class="form-control" name="username" placeholder="Username" [(ngModel)]="newUser.username">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword">Password</label>
+      <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="newUser.password">
+    </div>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputDescription">Description</label>
+    <textarea type="text" class="form-control" name="bio" placeholder="Introduce yourself..." [(ngModel)]="newUser.bio" rows="2"></textarea>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="inputProfilePic">Profile Picture</label>
+    <input type="text" class="form-control" name="profileImage" placeholder="Link to profile pic..." [(ngModel)]="newUser.profileImage">
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="register(newUser)">Sign up</button>
 </form>
