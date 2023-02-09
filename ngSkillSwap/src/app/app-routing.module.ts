@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'skill', component: SkillComponent },
   { path: 'project', component: ProjectComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'user', component: UserComponent },
   { path: '**', component: NotFoundComponent }, //page not found route
 ];
