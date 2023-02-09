@@ -17,9 +17,9 @@ constructor(private authService: AuthService, private router: Router) {
 
   login(loginUser: User) {
     console.log("Logging in");
-    console.log(loginUser);
     this.authService.login(loginUser.username, loginUser.password).subscribe({
       next: (loggedInUser) => {
+        console.log(loggedInUser);
         this.router.navigateByUrl('home');
       },
       error: (fail) => {
