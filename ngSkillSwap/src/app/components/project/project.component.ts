@@ -22,10 +22,10 @@ constructor(private projectService: ProjectService, private route: ActivatedRout
 
 ngOnInit(): void {
   let idString = this.route.snapshot.paramMap.get('userId');
-  console.log('userId: ' + idString);
-  let todoId = Number(idString);
-  if (!isNaN(todoId)) {
-    this.projectService.show(todoId).subscribe({
+  if (idString) { console.log('userId: ' + idString);
+  let userId = Number(idString);
+  if (!isNaN(userId)) {
+    this.projectService.show(userId).subscribe({
       next: (project) => {
         this.selected = project;
         this.router.navigateByUrl('/project');
@@ -38,12 +38,12 @@ ngOnInit(): void {
   }
   else{
     this.router.navigateByUrl('invalidProjectId');
-  }
+  }};
   this.reload();
 }
 
   reload() {
-    this.projectService.index().subscribe({
+    this.projectService.projectsForUser().subscribe({
       next: (projectList) => {
         this.projectList = projectList;
       },

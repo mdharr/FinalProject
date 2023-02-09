@@ -13,7 +13,7 @@ constructor(private auth: AuthService, private homeServ: HomeService){}
  projects: Project[] = [];
 
 ngOnInit(){
- this.testTestDeleteLater();
+// this.testTestDeleteLater();
   this.reload();
 }
 reload(): void{
