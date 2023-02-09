@@ -1,12 +1,14 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,19 +24,20 @@ public class Address {
 	private String zip;
 	
 	@JsonIgnore
-	@OneToOne(mappedBy="address")
-	private User user;
+	@OneToMany(mappedBy = "address")
+	private List<User> users;
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public Address() {}
 	
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -65,6 +68,26 @@ public class Address {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+	
+
+	public void addUser(User user) {
+		if (user == null) {
+			users = new ArrayList<>();
+		}
+		if (!users.contains(user)) {
+			users.add(user);
+			user.setAddress(this);
+		}
+	}
+
+	public void removeUser(User user) {
+		if (users != null && users.contains(user)) {
+			users.remove(user);
+			user.setAddress(null);
+		}
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -84,7 +107,7 @@ public class Address {
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
 				+ 
-				", user=" + user + 
+				", user=" + users + 
 				"]";
 	}
 	

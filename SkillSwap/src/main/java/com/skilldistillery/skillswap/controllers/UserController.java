@@ -68,10 +68,10 @@ public class UserController {
 
 	@PutMapping("users/")
 	public User userUpdate(Principal principal, @RequestBody User user, HttpServletResponse res) {
-
+System.out.println(user);
 		try {
 			user = userService.updateOwn(principal.getName(), user);
-
+			
 			if (user == null) {
 				res.setStatus(404);
 			}

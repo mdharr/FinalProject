@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.skillswap.entities.Address;
 import com.skilldistillery.skillswap.entities.User;
+import com.skilldistillery.skillswap.repositories.AddressRepository;
 import com.skilldistillery.skillswap.repositories.UserRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private AddressRepository addressRepo;
 
 	@Override
 	public List<User> index() {
@@ -38,7 +43,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User updateAdmin(int id, User user) {
 		User userUpdate = show(id);
-		System.out.println(userUpdate);
 		Optional<User> addressCheck = userRepo.findById(id);
 		User origUser = addressCheck.get();
 		if (origUser != null && user.getAddress() != null) {
@@ -58,7 +62,14 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User updateOwn(String username, User user) {
+		
 		User userUpdate = userRepo.findByUsername(username);
+		System.out.println(username);
+		Address addressCheck = user.getAddress();
+		System.out.println(addressCheck);
+		if (addressCheck != null) {
+			userUpdate.setAddress(addressRepo.saveAndFlush(user.getAddress()));
+		}
 		userUpdate.setFirstName(user.getFirstName());
 		userUpdate.setLastName(user.getLastName());
 		userUpdate.setEnabled(user.getEnabled());
@@ -66,8 +77,7 @@ public class UserServiceImpl implements UserService {
 		userUpdate.setEmail(user.getEmail());
 		userUpdate.setBio(user.getBio());
 		userUpdate.setProfileImage(user.getProfileImage());
-		// might have to look at Address
-		userUpdate.setAddress(user.getAddress());
+	
 		return userRepo.save(userUpdate);
 	}
 
