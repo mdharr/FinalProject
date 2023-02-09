@@ -37,4 +37,14 @@ public class ProjectController {
 		}
 		return proj;
 	}
+	@GetMapping("projects/description/{name}")
+	public List<Project> showByComment(@PathVariable String name, HttpServletRequest req,
+			HttpServletResponse res){
+		System.out.println("************************"+name);
+		List<Project> proj = projectService.findByDescription(name);
+		if(proj.isEmpty()) {
+			res.setStatus(404);
+		}
+		return proj;
+	}
 }

@@ -31,8 +31,13 @@ public class ProjectServiceImpl implements ProjectService {
 		return project;
 	}
 
-//	@Override
-//	public Project findByUsername(String username) {
-//		return ;
-//	}
+	@Override
+	public List<Project> findByDescription(String name) {
+		List<Project> project = new ArrayList<>();
+		List<Project> projectOpt = projectRepo.findByDescriptionContaining(name);
+		if(!projectOpt.isEmpty()) {
+			project.addAll(projectOpt);
+		}
+		return project;
+	}
 }
