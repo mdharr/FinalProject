@@ -84,10 +84,9 @@ export class UserComponent implements OnInit {
 
   updateUserAdmin(user: User, id: number): void {
     console.log('in editInformation');
-    this.userService.update(user).subscribe({
+    this.userService.disableAdmin(user).subscribe({
       next: (user) => {
-        this.user = user;
-
+        user.enabled = false;
         this.reload();
       },
       error: (error) => {
