@@ -52,16 +52,18 @@ export class UserService {
         'Content-Type': 'application/json',
       },
     };
-    return this.http.put<User>(`${this.url}/`, user, this.getHttpOptions()).pipe(
-      catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () => new Error('userService.update(): error updating user: ' + err)
-        );
-      })
-    );
+    return this.http
+      .put<User>(`${this.url}/`, user, this.getHttpOptions())
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () => new Error('userService.update(): error updating user: ' + err)
+          );
+        })
+      );
   }
-//add ID to the above and they can archive account
+  //add ID to the above and they can archive account
   destroy(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`).pipe(
       catchError((err: any) => {
@@ -71,5 +73,26 @@ export class UserService {
         );
       })
     );
+  }
+
+  disableAdmin(user: User): Observable<User> {
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    return this.http
+      .put<User>(`${this.url}/${user.id}`, user, this.getHttpOptions())
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () =>
+              new Error(
+                'userService.disableAdmin(): error disabling user: ' + err
+              )
+          );
+        })
+      );
   }
 }

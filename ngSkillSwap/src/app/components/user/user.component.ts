@@ -20,6 +20,7 @@ export class UserComponent implements OnInit {
   userList: User[] = [];
   newUser: User = new User();
   editUser: User | null = null;
+  user: User | null = null;
 
   constructor(
     private userService: UserService,
@@ -33,7 +34,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     let idString = this.route.snapshot.paramMap.get('userId');
     if (idString) {
-      console.log("******************");
+      console.log('******************');
 
       console.log('userId: ' + idString);
       let userId = Number(idString);
@@ -42,7 +43,7 @@ export class UserComponent implements OnInit {
           next: (user) => {
             console.log('user: ' + user);
             console.log(user.id);
-            console.log("ngOnInit method in user");
+            console.log('ngOnInit method in user');
             this.selected = user;
           },
           error: (fail) => {
@@ -81,21 +82,19 @@ export class UserComponent implements OnInit {
     this.editUser = Object.assign({}, this.selected);
   }
 
-  updateUser(user: User, goToDetail = true): void {
-    // this.userService.update(user).subscribe({
-    //   next: (updatedUser) => {
-    //     if (goToDetail) {
-    //       this.selected = updatedUser;
-    //     } else {
-    //       this.selected = null;
-    //     }
-    //     (this.editUser = null), this.reload();
-    //   },
-    //   error: (darn) => {
-    //     console.error('UserComponent.updateUser: error updating');
-    //     console.error(darn);
-    //   },
-    // });
+  updateUserAdmin(user: User, id: number): void {
+    console.log('in editInformation');
+    this.userService.update(user).subscribe({
+      next: (user) => {
+        this.user = user;
+
+        this.reload();
+      },
+      error: (error) => {
+        console.log('Error getting loggedInUser Profile Component');
+        console.log(error);
+      },
+    });
   }
 
   deleteUser(id: number) {
@@ -103,7 +102,6 @@ export class UserComponent implements OnInit {
     //   next: () => {
     //     this.reload();
     //   },
-
     //   error: (fail) => {
     //     console.error('User Component.deleteUser: error deleting:');
     //     console.error(fail);
