@@ -96,8 +96,8 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  skillUpdate(skillId : number) {
-    this.projectService.updateSkill(skillId, this.project.id).subscribe ({
+  skillUpdate(skillId : number, projectId : number) {
+    this.projectService.updateSkill(skillId, projectId).subscribe ({
       next: (data) => {
         this.project = data;
     },
@@ -131,6 +131,20 @@ export class ProjectComponent implements OnInit {
       },
     });
   }
+
+  checkSkill(skill : Skill) {
+  if (this.editProject) {
+    for ( let i = 0; i < this.editProject.skills.length; i++) {
+      if (this.editProject?.skills[i].id === skill.id) {
+        return true;
+    }
+
+    }
+  }
+    return false;
+  }
+
+
   // deleteProject(id: number) {
   //   this.projectService.destroy(id).subscribe({
   //     next: () => {
