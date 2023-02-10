@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   loggedInUser: User = new User();
   userProjectList: Project[] = [];
   selected: null | User = null;
-
+  edit: null | User = null;
   constructor(
     private userService: UserService,
     private http: HttpClient,
@@ -49,4 +49,19 @@ ngOnInit(): void{
 
 }})
 }
+
+editInformation(loggedInUser: User): void{
+  console.log("in editInformation");
+  this.userService.update(loggedInUser).subscribe({
+  next: (user) => {
+    this.loggedInUser = user;
+    // this.selected = null;
+  },
+  error: (error) => {
+    console.log("Error getting loggedInUser Profile Component");
+    console.log(error);
+  }
+})
+}
+
 }
