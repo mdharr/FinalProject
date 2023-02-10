@@ -69,8 +69,9 @@ export class ProjectComponent implements OnInit {
   addProject(project: Project) {
     this.projectService.create(project).subscribe({
       next: (data) => {
-        this.project = new Project();
         this.reload();
+        this.project = new Project();
+        //this.project = null;
       },
 
       error: (nojoy) => {

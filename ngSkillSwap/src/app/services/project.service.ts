@@ -76,9 +76,7 @@ export class ProjectService {
   return this.http.post<Project>(this.url ,project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
-      return throwError(
-        () =>
-        new Error(
+      return throwError( () => new Error(
           'ProjectService.index(): error creating project: ' + err
           )
       );
@@ -94,7 +92,7 @@ export class ProjectService {
       'Content-Type': 'application/json',
     },
   };
- return this.http.put<Project>(`${this.url}/${project.id}`, project).pipe(
+ return this.http.put<Project>(`${this.url}/${project.id}`, project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
