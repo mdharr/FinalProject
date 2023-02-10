@@ -14,6 +14,7 @@ export class ProjectComponent implements OnInit {
   selected: null | Project = null;
   projectList: Project[] = [];
   editProject: Project | null = null;
+  addProjectMod: Project | null = null;
   project: Project = new Project();
   projects: any;
   log: any;
@@ -72,6 +73,10 @@ export class ProjectComponent implements OnInit {
 
   displayTable() {
     this.selected = null;
+  }
+
+  setAddProject() {
+    this.addProjectMod =  Object.assign({}, this.selected);
   }
 
   addProject(project: Project) {

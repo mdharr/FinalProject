@@ -1,0 +1,39 @@
+.container {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+th,
+td {
+  padding: 15px;
+  background-color: rgba(77, 178, 187, 0.398);
+  color: rgb(6, 5, 5);
+}
+
+th {
+  text-align: left;
+}
+
+thead,
+  th {
+    background-color: #4bbfda;
+
+  }
+
+.divelist{
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-size: xx-large;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: antiquewhite;
+}
