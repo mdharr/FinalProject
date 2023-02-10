@@ -3,11 +3,11 @@
     <div class="row">
       <div class="row">
         <h1>{{loggedInUser.firstName}} {{loggedInUser.lastName}}</h1>
-        <img src="{{ loggedInUser.profileImage }}" alt="not found"/><br />
+        <!-- <img src="{{ loggedInUser.profileImage }}" alt="not found"/><br /> -->
         <div class="text-center text-white">
           <h4>User Profile</h4>
           <p>
-            {{ loggedInUser.profileImage }}
+            <!-- {{ loggedInUser.profileImage }} -->
             {{ loggedInUser.bio }}
 
           <br>
@@ -71,6 +71,7 @@
 <form *ngIf="selected">
   <div class="form-row">
     <div class="form-group col-md-6">
+      <input type="number" name="id" [(ngModel)]="loggedInUser.id" hidden />
       <label for="inputFirstName">First Name</label>
       <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="loggedInUser.firstName">
     </div>
@@ -78,7 +79,7 @@
       <label for="inputLastName">Last Name</label>
       <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="loggedInUser.lastName">
     </div>
-  </div>
+    </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail">Email</label>
@@ -89,9 +90,6 @@
     <label for="inputDescription">Description</label>
     <textarea type="text" class="form-control" name="bio" placeholder="Introduce yourself..." [(ngModel)]="loggedInUser.bio" rows="2"></textarea>
   </div>
-  <div class="form-group col-md-6">
-    <label for="inputProfilePic">Profile Picture</label>
-    <input type="text" class="form-control" name="profileImage" placeholder="Link to profile pic..." [(ngModel)]="loggedInUser.profileImage">
-  </div>
   <button type="submit" class="btn btn-primary" (click)="editInformation(loggedInUser) ; selected = null">Submit Changes</button>
+  <button type="submit" class="btn btn-danger" (click)="selected = null">Cancel</button>
 </form>

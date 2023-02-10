@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   loggedInUser: User = new User();
   userProjectList: Project[] = [];
   selected: null | User = null;
-  edit: null | User = null;
+  editUser: null | User = null;
   constructor(
     private userService: UserService,
     private http: HttpClient,
@@ -38,30 +38,40 @@ export class ProfileComponent implements OnInit {
     };
     return options;
   }
-ngOnInit(): void{
-  this.authService.getLoggedInUser().subscribe({
-    next: (user) => {
-      this.loggedInUser = user;
-  },
-  error: (error) => {
-    console.log("Error getting loggedInUser Profile Component");
-    console.log(error);
-
-}})
-}
-
-editInformation(loggedInUser: User): void{
-  console.log("in editInformation");
-  this.userService.update(loggedInUser).subscribe({
-  next: (user) => {
-    this.loggedInUser = user;
-    // this.selected = null;
-  },
-  error: (error) => {
-    console.log("Error getting loggedInUser Profile Component");
-    console.log(error);
+  ngOnInit(): void {
+    this.authService.getLoggedInUser().subscribe({
+      next: (user) => {
+        this.loggedInUser = user;
+      },
+      error: (error) => {
+        console.log('Error getting loggedInUser Profile Component');
+        console.log(error);
+      },
+    });
   }
-})
-}
+  reload(): void {
+    this.authService.getLoggedInUser().subscribe({
+      next: (user) => {
+        this.loggedInUser = user;
+      },
+      error: (error) => {
+        console.log('Error getting loggedInUser Profile Component');
+        console.log(error);
+      },
+    });
+  }
 
+  editInformation(user: User): void {
+    console.log('in editInformation');
+    this.userService.update(user).subscribe({
+      next: (user) => {
+        user = this.loggedInUser;
+        this.reload();
+      },
+      error: (error) => {
+        console.log('Error getting loggedInUser Profile Component');
+        console.log(error);
+      },
+    });
+  }
 }

@@ -52,7 +52,7 @@ export class UserService {
         'Content-Type': 'application/json',
       },
     };
-    return this.http.put<User>(`${this.url}/${user.id}`, user).pipe(
+    return this.http.put<User>(`${this.url}/`, user, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
