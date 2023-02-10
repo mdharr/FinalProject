@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,10 +27,7 @@ public class Skill {
 	private String imageUrl;
 
 	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "project_has_skill", 
-	joinColumns = @JoinColumn(name = "project_id"),
-	inverseJoinColumns = @JoinColumn(name = "skill_id"))
+	@ManyToMany(mappedBy = "skills")
 	private List<Project> projects;
 
 	@JsonIgnore
@@ -87,6 +85,24 @@ public class Skill {
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
+	
+	public void addProject(Project project) {
+		if (projects == null) {
+			projects = new ArrayList<>();
+		}
+		if (!projects.contains(project)) {
+			projects.add(project);
+			project.addSkill(this);
+		}
+	}
+
+	public void removeProject(Project project) {
+		if (projects != null && projects.contains(project)) {
+			projects.remove(project);
+			project.removeSkill(this);
+		}
+	}
+	
 
 	@Override
 	public int hashCode() {

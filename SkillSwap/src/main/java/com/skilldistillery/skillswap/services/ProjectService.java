@@ -16,7 +16,8 @@ public interface ProjectService {
 	
 	Project update(int userId, int projectId, Project project);
 
-	boolean destroy(int projectId);
+	boolean archive(int projectId);
 	
+	Project updateSkills(int skillId, int projectId);
 	
 }

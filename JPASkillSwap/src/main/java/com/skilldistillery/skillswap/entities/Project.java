@@ -47,8 +47,8 @@ public class Project {
 
 	@ManyToMany
 	@JoinTable(name="project_has_skill", 
-	joinColumns=@JoinColumn(name="skill_id"),
-	inverseJoinColumns= @JoinColumn(name="project_id"))
+	joinColumns=@JoinColumn(name="project_id"),
+	inverseJoinColumns= @JoinColumn(name="skill_id"))
 	private List<Skill> skills;
 	
 
@@ -245,4 +245,24 @@ public class Project {
 			comment.setProject(null);
 		}
 	}
+	
+	public void addSkill(Skill skill) {
+		if (skills == null) {
+			skills = new ArrayList<>();
+		}
+		if (!skills.contains(skill)) {
+			skills.add(skill);
+			skill.addProject(this);
+		}
+	}
+
+	public void removeSkill(Skill skill) {
+		if (skills != null && skills.contains(skill)) {
+			skills.remove(skill);
+			skill.removeProject(this);
+		}
+	}
+	
+	
+	
 }

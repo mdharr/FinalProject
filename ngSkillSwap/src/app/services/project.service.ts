@@ -106,7 +106,21 @@ private otherUrl = environment.baseUrl;
 
    }
 
- destroy(id : number):Observable<void>  {
+   updateSkill(skillId : number, projectId : number) {
+    return this.http.put<Project>(`${this.url}/projectId/${projectId}/skillId/${skillId}`, null, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+          new Error(
+            'ProjectService.updateSkill(): error updating project skills: ' + err
+            )
+        );
+      })
+    )
+   }
+
+ archive(id : number):Observable<void>  {
   return this.http.delete<void>(`${this.url}/${id}`).pipe(
     catchError((err: any) => {
       console.log(err);

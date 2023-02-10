@@ -56,6 +56,8 @@ export class ProjectComponent implements OnInit {
     this.projectService.projectsForUser().subscribe({
       next: (projectList) => {
         this.projectList = projectList;
+        this.projectCreated = false;
+        this.project = new Project();
       },
       error: (err) => {
         console.error('Error loading project list: ');
@@ -75,8 +77,10 @@ export class ProjectComponent implements OnInit {
   addProject(project: Project) {
     this.projectService.create(project).subscribe({
       next: (data) => {
-        this.reload();
-        this.project = new Project();
+        //this.reload();
+        this.project = data;
+        this.projectCreated = true;
+        //this.project = new Project();
         //this.project = null;
       },
 
@@ -88,7 +92,16 @@ export class ProjectComponent implements OnInit {
   }
 
   skillUpdate(skillId : number) {
+    this.projectService.updateSkill(skillId, this.project.id).subscribe ({
+      next: (data) => {
+        this.project = data;
+    },
 
+    error: (nojoy) => {
+      console.error('ProjectComponent.skillUpdate: Error updating skills');
+      console.error(nojoy);
+    },
+  });
   }
 
 
@@ -113,18 +126,18 @@ export class ProjectComponent implements OnInit {
       },
     });
   }
-  deleteProject(id: number) {
-    this.projectService.destroy(id).subscribe({
-      next: () => {
-        this.reload();
-      },
+  // deleteProject(id: number) {
+  //   this.projectService.destroy(id).subscribe({
+  //     next: () => {
+  //       this.reload();
+  //     },
 
-      error: (fail) => {
-        console.error('ProjectComponent.deleteProject: error deleting:');
-        console.error(fail);
-      },
-    });
-  }
+  //     error: (fail) => {
+  //       console.error('ProjectComponent.deleteProject: error deleting:');
+  //       console.error(fail);
+  //     },
+  //   });
+  // }
 
 
   displaySkills() {

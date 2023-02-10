@@ -73,6 +73,17 @@ public class ProjectController {
 		}
 		return newProject;
 	}
+	
+	@PutMapping ("projects/projectId/{pId}/skillId/{sId}")
+	public Project updateSkills(Principal principal, @PathVariable("sId") int skillId, 
+			@PathVariable("pId") int projectId, HttpServletResponse res,
+			HttpServletRequest req) {
+		
+			Project proj = projectService.updateSkills(skillId, projectId);
+			res.setStatus(200);
+			return proj;
+		} 
+	
 
 	@PutMapping("users/{uId}/projects/{pId}")
 	public Project update(@PathVariable int uId, @PathVariable int pId, @RequestBody Project project,
@@ -89,7 +100,7 @@ public class ProjectController {
 	@DeleteMapping("project/{id}")
 	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
 		try {
-			if (projectService.destroy(id)) {
+			if (projectService.archive(id)) {
 				res.setStatus(204);
 			} else {
 				res.setStatus(404);

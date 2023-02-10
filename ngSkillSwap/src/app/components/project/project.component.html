@@ -19,13 +19,13 @@
         <td>{{ project.startDate | date : "shortDate" }}</td>
         <td>{{ project.activeStatus }}</td>
             <td>
-          <button
+          <!-- <button
             type="button"
             class="btn btn-info"
-            (click)="deleteProject(project.id)"
+           // (click)="deleteProject(project.id)"
           >
             X
-          </button>
+          </button> -->
         </td>
       </tr>
     </tbody>
@@ -33,7 +33,7 @@
 </div>
 
 
-//future goals child/parent forms etc
+<!-- future goals child/parent forms etc -->
 <form>
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -65,11 +65,11 @@
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
 <label>{{ skill.name }}</label>
-  <input (change)="skillUpdate(skill.id)" type="checkbox" class="form-control" >
+  <input (change)="skillUpdate(skill.id)" type="checkbox"  >
 </div>
 </div>
-
-    <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+<button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
+    <button *ngIf="!projectCreated" type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
   </div>
   </div>
   </form>

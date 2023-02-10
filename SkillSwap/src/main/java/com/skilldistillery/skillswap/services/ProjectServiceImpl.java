@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillswap.entities.Project;
+import com.skilldistillery.skillswap.entities.Skill;
 import com.skilldistillery.skillswap.entities.User;
 import com.skilldistillery.skillswap.repositories.ProjectRepository;
+import com.skilldistillery.skillswap.repositories.SkillRepository;
 import com.skilldistillery.skillswap.repositories.UserRepository;
 
 @Service
@@ -19,6 +21,8 @@ public class ProjectServiceImpl implements ProjectService {
 	private ProjectRepository projectRepo;
 	@Autowired
 	private UserRepository userRepo;
+	@Autowired
+	private SkillRepository skillRepo;
 
 	@Override
 	public List<Project> index() {
@@ -80,10 +84,42 @@ public class ProjectServiceImpl implements ProjectService {
 		}
 		return projectRepo.save(update);
 	}
-	
+
 	@Override
-	public boolean destroy(int projectId) {
+	public boolean archive(int projectId) {
 		projectRepo.deleteById(projectId);
 		return !projectRepo.existsById(projectId);
+	}
+
+	@Override
+	public Project updateSkills(int skillId, int projectId) {
+		Optional<Skill> skillOpt = skillRepo.findById(skillId);
+		Optional<Project> projectOpt = projectRepo.findById(projectId);
+		Skill skill = null;
+		Project project = null;
+		
+		if (skillOpt.isPresent() && projectOpt.isPresent()) {
+			skill = skillOpt.get();
+			project = projectOpt.get();
+			
+			if (project.getSkills().contains(skill)) {
+				project.removeSkill(skill);
+				skill.removeProject(project);
+	
+			} else {
+				project.addSkill(skill);
+				skill.addProject(project);
+				System.out.println(skill +"-------------------------");
+			}  
+			System.out.println(project.getSkills());
+			skillRepo.saveAndFlush(skill);
+			//projectRepo.saveAndFlush(project);
+		
+			projectOpt = projectRepo.findById(projectId);
+			project = projectOpt.get();
+		}
+		
+		
+		return project;
 	}
 }
