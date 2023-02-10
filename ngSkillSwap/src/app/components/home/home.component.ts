@@ -17,6 +17,7 @@ ngOnInit(){
 // this.testTestDeleteLater();
   this.reload();
   console.log("**************************reloading");
+  // this.checkLogin();
 }
 reload(): void{
   this.homeServ.index().subscribe({
@@ -30,17 +31,17 @@ reload(): void{
   });
 }
 
-testTestDeleteLater(){
-  // this.auth.login('admin', 'wombat1').subscribe({
-  //   next: (data) => {
-  //     console.log('logged in')
-  //     console.log(data);
-  // },
-  //   error:(fail) => {
-  //     console.error('Error authenticating:')
-  //     console.error(fail);
-  //   }
-  // });
+checkLogin():void {
+  this.auth.getLoggedInUser().subscribe({
+    next: (user) =>{
+      console.log(user);
+
+    },
+    error:(fail) => {
+      console.error('Error getting user:')
+      console.error(fail);
+    }
+  });
 }
 
 }
