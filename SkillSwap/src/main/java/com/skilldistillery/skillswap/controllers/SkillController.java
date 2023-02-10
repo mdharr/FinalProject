@@ -28,12 +28,12 @@ public class SkillController {
 	@Autowired
 	private SkillService skillService;
 	
-	@GetMapping("skill")
+	@GetMapping("skills")
 	public List<Skill> index() {
 		return skillService.index();
 	}
 	
-	@GetMapping("skill/{id}")
+	@GetMapping("skills/{id}")
 	public Skill show(@PathVariable Integer id, HttpServletResponse res) {
 		Skill skill = skillService.show(id);
 		if (skill == null) {
@@ -42,7 +42,7 @@ public class SkillController {
 		return skill;
 	}
 	
-	@PostMapping("skill")
+	@PostMapping("skills")
 	public Skill create(@RequestBody Skill skill, HttpServletResponse res, HttpServletRequest req) {
 
 		try {
@@ -58,7 +58,7 @@ public class SkillController {
 		return skill;
 	}
 	
-	@PutMapping("skill/{id}")
+	@PutMapping("skills/{id}")
 	public Skill update(@PathVariable Integer id, @RequestBody Skill skill, HttpServletResponse res) {
 
 		try {
@@ -76,7 +76,7 @@ public class SkillController {
 		return skill;
 	}
 	
-	@DeleteMapping("skill/{id}")
+	@DeleteMapping("skills/{id}")
 	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
 		try {
 			if (skillService.destroy(id)) {

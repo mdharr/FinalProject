@@ -53,10 +53,27 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputProjectedEndDate">Projected Completition Date:</label>
-      <input type="date" class="form-control" name="projectedDate" placeholder="Projected Date" [(ngModel)]="project.projectedDate">
+      <label for="inputStartDate">Projected Start Date:</label>
+      <input type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="project.startDate">
+    </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputProjectedEndDate">Projected Completion Date:</label>
+      <input type="date" class="form-control" name="projectedDate" placeholder="Projected Compleition Date" [(ngModel)]="project.projectedDate">
     </div>
 
-  <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+
+
+    <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+  </div>
   </div>
   </form>
+
+
+  <h1> skill </h1>
+  <div >
+    <ul *ngFor="let skill of skillList">
+      <li> {{ skill.name }} </li>
+    </ul>
+  </div>
+

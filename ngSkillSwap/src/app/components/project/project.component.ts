@@ -3,6 +3,8 @@ import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { SkillService } from 'src/app/services/skill.service';
+import { Skill } from 'src/app/models/skill';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -15,12 +17,14 @@ export class ProjectComponent implements OnInit {
   project: Project = new Project();
   projects: any;
   log: any;
+  skillList: Skill[] = [];
 
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private skillService: SkillService,
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +47,7 @@ export class ProjectComponent implements OnInit {
         this.router.navigateByUrl('ProjectNotFound');
       }
     }
+    this.displaySkills();
     this.reload();
   }
 
@@ -114,4 +119,17 @@ export class ProjectComponent implements OnInit {
       },
     });
   }
+
+
+  displaySkills() {
+    this.skillService.indexAll().subscribe({
+      next: (skillList) => {
+        this.skillList = skillList;
+      },
+      error: (err) => {
+        console.error('Error loading skill list: ');
+        console.error(err);
+      },
+  })
+}
 }
