@@ -63,33 +63,33 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
-      <input type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
+      <input required type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
     </div>
     <div class="form-group col-md-6">
       <label for="inputDescription">Desciption</label>
-      <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
+      <input required type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputImage">Image</label>
-      <input type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="project.imagePrimary">
+      <input required type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="project.imagePrimary">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputStartDate">Projected Start Date:</label>
-      <input type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="project.startDate">
+      <input required type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="project.startDate">
     </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputProjectedEndDate">Projected Completion Date:</label>
-      <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="project.projectedDate">
+      <input required type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="project.projectedDate">
     </div>
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
 <label>{{ skill.name }}</label>
-  <input (change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
+  <input required (change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
 </div>
 </div>
 <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>

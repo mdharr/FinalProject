@@ -92,7 +92,7 @@ private otherUrl = environment.baseUrl;
       'Content-Type': 'application/json',
     },
   };
- return this.http.put<Project>(`${this.url}/${project.id}`, project, this.getHttpOptions()).pipe(
+ return this.http.put<Project>(`${this.url}/`, project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
