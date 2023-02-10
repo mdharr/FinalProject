@@ -52,7 +52,7 @@ export class UserService {
         'Content-Type': 'application/json',
       },
     };
-    return this.http.put<User>(`${this.url}/${user.id}`, user).pipe(
+    return this.http.put<User>(`${this.url}/`, user, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -61,7 +61,7 @@ export class UserService {
       })
     );
   }
-
+//add ID to the above and they can archive account
   destroy(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`).pipe(
       catchError((err: any) => {
