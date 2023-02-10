@@ -55,7 +55,7 @@ public class ProjectController {
 		return proj;
 	}
 
-	@PostMapping("users/{id}/projects")
+	@PostMapping("projects")
 	public Project createProject(
 			//@PathVariable int id,
 			Principal principal, @RequestBody Project project, HttpServletResponse res,

@@ -11,7 +11,7 @@ import { Project } from '../models/project';
 })
 export class ProjectService {
   private url = environment.baseUrl + 'api/projects';
-
+private otherUrl = environment.baseUrl;
 
   constructor(private http: HttpClient, private datePipe: DatePipe, private authService: AuthService) {}
 

@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +29,7 @@ public class Project {
 	private String name;
 	
 	@Column(name = "date_posted")
-	private LocalDateTime datePosted;
+	private LocalDate datePosted;
 	
 	private String description;
 	
@@ -39,10 +40,10 @@ public class Project {
 	private String imagePrimary;
 	
 	@Column(name = "start_date")
-	private LocalDateTime startDate;
+	private LocalDate startDate;
 	
 	@Column(name = "projected_date")
-	private LocalDateTime projectedDate;
+	private LocalDate projectedDate;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -112,11 +113,11 @@ public class Project {
 		this.name = name;
 	}
 
-	public LocalDateTime getDatePosted() {
+	public LocalDate getDatePosted() {
 		return datePosted;
 	}
 
-	public void setDatePosted(LocalDateTime datePosted) {
+	public void setDatePosted(LocalDate datePosted) {
 		this.datePosted = datePosted;
 	}
 
@@ -144,19 +145,19 @@ public class Project {
 		this.imagePrimary = imagePrimary;
 	}
 
-	public LocalDateTime getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public LocalDateTime getProjectedDate() {
+	public LocalDate getProjectedDate() {
 		return projectedDate;
 	}
 
-	public void setProjectedDate(LocalDateTime projectedDate) {
+	public void setProjectedDate(LocalDate projectedDate) {
 		this.projectedDate = projectedDate;
 	}
 
@@ -184,8 +185,8 @@ public class Project {
 		this.projectImages = projectImages;
 	}
 
-	public Project(int id, String name, LocalDateTime datePosted, String description, Boolean activeStatus,
-			String imagePrimary, LocalDateTime startDate, LocalDateTime projectedDate, User user) {
+	public Project(int id, String name, LocalDate datePosted, String description, Boolean activeStatus,
+			String imagePrimary, LocalDate startDate, LocalDate projectedDate, User user) {
 		super();
 		this.id = id;
 		this.name = name;

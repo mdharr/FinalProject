@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.entities;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class User {
 	private LocalDateTime createdDate;
 
 	@Column(name = "last_active")
-	private LocalDateTime lastActive;
+	private LocalDate lastActive;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
@@ -94,7 +95,7 @@ public class User {
 
 	public User(int id, String username, String password, String firstName, String lastName, Boolean enabled,
 			Boolean availability, String email, String bio, String profileImage, LocalDateTime createdDate,
-			LocalDateTime lastActive, List<Comment> comments, Address address, List<UserSkill> userSkills,
+			LocalDate lastActive, List<Comment> comments, Address address, List<UserSkill> userSkills,
 			List<Project> projectOwner, List<Project> projectsHelper, List<User> following, List<User> followedBy,
 			String role) {
 		super();
@@ -176,11 +177,11 @@ public class User {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDateTime getLastActive() {
+	public LocalDate getLastActive() {
 		return lastActive;
 	}
 
-	public void setLastActive(LocalDateTime lastActive) {
+	public void setLastActive(LocalDate lastActive) {
 		this.lastActive = lastActive;
 	}
 
