@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
-  private url = environment.baseUrl + 'api/projects';
+  private url = environment.baseUrl + 'api/users';
 
   selected: null | User = null;
   userList: User[] = [];
@@ -32,20 +32,22 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     let idString = this.route.snapshot.paramMap.get('userId');
-    console.log('userId: ' + idString);
-    let userId = Number(idString);
-    if (!isNaN(userId)) {
-      this.userService.show(userId).subscribe({
-        next: (user) => {
-          this.selected = user;
-        },
-        error: (fail) => {
-          console.error(fail);
-          this.router.navigateByUrl('UserNotFound');
-        },
-      });
-    } else {
-      this.router.navigateByUrl('invalidUserId');
+    if (idString) {
+      console.log('userId: ' + idString);
+      let userId = Number(idString);
+      if (!isNaN(userId)) {
+        this.userService.show(userId).subscribe({
+          next: (user) => {
+            this.selected = user;
+          },
+          error: (fail) => {
+            console.error(fail);
+            this.router.navigateByUrl('UserNotFound');
+          },
+        });
+      } else {
+        this.router.navigateByUrl('invalidUserId');
+      }
     }
     this.reload();
   }
@@ -56,7 +58,7 @@ export class UserComponent implements OnInit {
         this.userList = userList;
       },
       error: (err) => {
-        console.error('Error loading project list: ');
+        console.error('Error loading user list: ');
         console.error(err);
       },
     });

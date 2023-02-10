@@ -12,7 +12,7 @@ export class ProjectComponent implements OnInit {
   selected: null | Project = null;
   projectList: Project[] = [];
   editProject: Project | null = null;
-  newProject: Project = new Project();
+  project: Project = new Project();
   projects: any;
   log: any;
 
@@ -39,10 +39,13 @@ export class ProjectComponent implements OnInit {
             this.router.navigateByUrl('ProjectNotFound');
           },
         });
+      } else {
+        this.router.navigateByUrl('ProjectNotFound');
       }
-      this.reload();
     }
+    this.reload();
   }
+
   reload() {
     this.projectService.projectsForUser().subscribe({
       next: (projectList) => {
@@ -66,7 +69,7 @@ export class ProjectComponent implements OnInit {
   addProject(project: Project) {
     this.projectService.create(project).subscribe({
       next: (data) => {
-        this.newProject = new Project();
+        this.project = new Project();
         this.reload();
       },
 

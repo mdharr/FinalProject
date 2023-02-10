@@ -13,7 +13,7 @@
     <tbody class="scrolling-box">
       <tr *ngFor="let user of userList">
         <td (click)="displayUser(user)">
-          {{ user.firstName }} + " " + {{ user.lastName }}
+          {{ user.firstName }} {{ user.lastName }}
         </td>
         <!-- <td (click)="displayProject(project)">{{ project.datePosted | date : "shortDate" }}</td> -->
         <!-- <td>{{ project.description }}</td>

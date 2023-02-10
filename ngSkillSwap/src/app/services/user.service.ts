@@ -9,7 +9,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class UserService {
-  private url = environment.baseUrl + 'api/profile';
+  private url = environment.baseUrl + 'api/users';
 
   constructor(private authService: AuthService, private http: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class UserService {
   }
 
   index(): Observable<User[]> {
-    return this.http.get<User[]>(this.url).pipe(
+    return this.http.get<User[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

@@ -73,7 +73,7 @@ export class ProjectService {
         'Content-Type': 'application/json',
       },
     };
-  return this.http.post<Project>(this.url, project).pipe(
+  return this.http.post<Project>(this.url ,project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(

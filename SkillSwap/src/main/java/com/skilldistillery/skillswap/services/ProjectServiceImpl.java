@@ -46,12 +46,12 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project createProject(int userId, Project project) {
+	public Project createProject(String username, Project project) {
 		Project projectNew = null;
 		User user = null;
-		Optional<User> userOpt = userRepo.findById(userId);
-		if (userOpt.isPresent()) {
-			user = userOpt.get();
+		User userOpt = userRepo.findByUsername(username);
+		if (userOpt != null) {
+			user = userOpt;
 			project.setUser(user);
 			projectNew = projectRepo.saveAndFlush(project);
 		}
