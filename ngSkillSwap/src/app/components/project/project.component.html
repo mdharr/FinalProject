@@ -16,6 +16,7 @@
         <td (click)="displayProject(project)">{{ project.name }}</td>
         <!-- <td (click)="displayProject(project)">{{ project.datePosted | date : "shortDate" }}</td> -->
         <td>{{ project.description }}</td>
+        <td>{{ project.startDate | date : "shortDate" }}</td>
         <td>{{ project.activeStatus }}</td>
             <td>
           <button
@@ -30,3 +31,32 @@
     </tbody>
   </table>
 </div>
+
+
+
+<form >
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputName">Name of Project: </label>
+      <input type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputDescription">Desciption</label>
+      <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputImage">Image</label>
+      <input type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="project.imagePrimary">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputProjectedEndDate">Projected Completition Date:</label>
+      <input type="date" class="form-control" name="projectedDate" placeholder="Projected Date" [(ngModel)]="project.projectedDate">
+    </div>
+
+  <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+  </div>
+  </form>
