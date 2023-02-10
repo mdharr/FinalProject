@@ -18,6 +18,7 @@ export class ProjectComponent implements OnInit {
   projects: any;
   log: any;
   skillList: Skill[] = [];
+  projectCreated = false;
 
   constructor(
     private projectService: ProjectService,
@@ -85,6 +86,11 @@ export class ProjectComponent implements OnInit {
       },
     });
   }
+
+  skillUpdate(skillId : number) {
+
+  }
+
 
   setEditProject() {
     this.editProject = Object.assign({}, this.selected);

@@ -52,10 +52,11 @@ class SkillTest {
 		assertNotNull(skill);
 		assertTrue(skill.getUsers().size() > 0);
 	}
-//	@Test
-//	void test_Skill_Mapping_ManyToMany_Project() {
-//		assertNotNull(skill);
-//		assertEquals(1, skill.getProjects().get)
-//	}
+	
+	@Test
+	void test_Skill_Mapping_ManyToMany_Project() {
+		assertNotNull(skill);
+		assertTrue(skill.getProjects().size() > 0);
+	}
 
 }
