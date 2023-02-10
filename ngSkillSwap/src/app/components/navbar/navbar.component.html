@@ -15,16 +15,54 @@
         <a class="nav-link" [routerLink]="['/profile']">Profile</a>
       </li>
       <li class="nav-item" *ngIf="!loggedIn()">
-        <a class="nav-link" [routerLink]="['/register']">Register</a>
+        <!-- <a class="nav-link" [routerLink]="['/register']">Register</a> -->
+        <a class="nav-link" (click)="open(myregistermodal)">Register</a>
       </li>
-      <li class="nav-item" *ngIf="!loggedIn()">
-        <!-- <a class="nav-link" [routerLink]="['/login']">Login</a> -->
+      <!-- <li class="nav-item" *ngIf="!loggedIn()">
         <app-login></app-login>
+      </li> -->
+      <li class="nav-item" *ngIf="!loggedIn()">
+        <a class="nav-link" (click)="open(mymodal)">Login</a>
       </li>
-
     </ul>
     <div id="loginDiv" *ngIf="loggedIn()">
       <app-logout></app-logout>
     </div>
   </div>
 </nav>
+
+<ng-template #mymodal let-modal>
+  <div *ngIf="!loggedIn()">
+  <div class="modal-header">
+    <h4 style="color: black" class="modal-title" id="modal-basic-title">Login</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-login></app-login>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</div>
+</ng-template>
+
+<ng-template #myregistermodal let-modal>
+  <div *ngIf="!loggedIn()">
+  <div class="modal-header">
+    <h4 style="color: black" class="modal-title" id="modal-basic-title">Register</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-register></app-register>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</div>
+</ng-template>
+
+

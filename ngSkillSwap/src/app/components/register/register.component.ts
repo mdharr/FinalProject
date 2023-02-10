@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,7 +13,7 @@ export class RegisterComponent {
 
   newUser: User = new User();
 
-constructor(private authService: AuthService, private router: Router) {
+constructor(private authService: AuthService, private router: Router, private modalService: NgbModal) {
 
 }
 
@@ -23,6 +24,7 @@ constructor(private authService: AuthService, private router: Router) {
       next: (registeredUser) => {
         this.authService.login(newUser.username, newUser.password).subscribe({
           next: (loggedInUser) => {
+            this.modalService.dismissAll();
             this.router.navigateByUrl('/home');
           },
           error: (problem) => {
