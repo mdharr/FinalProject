@@ -20,6 +20,7 @@ constructor(private authService: AuthService, private router: Router, private mo
     console.log("Logging in");
     this.authService.login(loginUser.username, loginUser.password).subscribe({
       next: (loggedInUser) => {
+        console.log("Loggin comp")
         console.log(loggedInUser);
         this.modalService.dismissAll();
         this.router.navigateByUrl('home');

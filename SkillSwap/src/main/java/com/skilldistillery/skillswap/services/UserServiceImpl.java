@@ -41,6 +41,19 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User showByUsername(String username) {
+		User user = null;
+		//Optional<User> userOpt = userRepo.findById(id);
+		
+		User userOpt = userRepo.findByUsername(username);
+		if (userOpt != null) {
+			user = userOpt;
+		}
+		System.out.println(user.getFirstName());
+		return user;
+	}
+	
+	@Override
 	public User updateAdmin(int id, User user) {
 		User userUpdate = show(id);
 		Optional<User> addressCheck = userRepo.findById(id);

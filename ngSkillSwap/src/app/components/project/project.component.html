@@ -19,13 +19,13 @@
         <td>{{ project.startDate | date : "shortDate" }}</td>
         <td>{{ project.activeStatus }}</td>
             <td>
-          <button
+          <!-- <button
             type="button"
             class="btn btn-info"
-            (click)="deleteProject(project.id)"
+           // (click)="deleteProject(project.id)"
           >
             X
-          </button>
+          </button> -->
         </td>
       </tr>
     </tbody>
@@ -33,8 +33,8 @@
 </div>
 
 
-
-<form >
+<!-- future goals child/parent forms etc -->
+<form>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
@@ -61,16 +61,16 @@
       <label for="inputProjectedEndDate">Projected Completion Date:</label>
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Compleition Date" [(ngModel)]="project.projectedDate">
     </div>
-    <h1> skill </h1>
-    <div>
-      <select>
-        <option name="name" *ngFor="let skill of skillList" value="{{skill.name}}" [(ngModel)]="skill.name"> {{ skill.name }} </option>
-      </select>
-    </div>
 
-    <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+<div *ngIf="projectCreated" >
+  <div *ngFor="let skill of skillList">
+<label>{{ skill.name }}</label>
+  <input (change)="skillUpdate(skill.id)" type="checkbox"  >
+</div>
+</div>
+<button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
+    <button *ngIf="!projectCreated" type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
   </div>
   </div>
   </form>
-
 

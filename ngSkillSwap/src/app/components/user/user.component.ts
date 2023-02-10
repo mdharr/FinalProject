@@ -33,11 +33,16 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     let idString = this.route.snapshot.paramMap.get('userId');
     if (idString) {
+      console.log("******************");
+
       console.log('userId: ' + idString);
       let userId = Number(idString);
       if (!isNaN(userId)) {
         this.userService.show(userId).subscribe({
           next: (user) => {
+            console.log('user: ' + user);
+            console.log(user.id);
+            console.log("ngOnInit method in user");
             this.selected = user;
           },
           error: (fail) => {
@@ -77,32 +82,32 @@ export class UserComponent implements OnInit {
   }
 
   updateUser(user: User, goToDetail = true): void {
-    this.userService.update(user).subscribe({
-      next: (updatedUser) => {
-        if (goToDetail) {
-          this.selected = updatedUser;
-        } else {
-          this.selected = null;
-        }
-        (this.editUser = null), this.reload();
-      },
-      error: (darn) => {
-        console.error('UserComponent.updateUser: error updating');
-        console.error(darn);
-      },
-    });
+    // this.userService.update(user).subscribe({
+    //   next: (updatedUser) => {
+    //     if (goToDetail) {
+    //       this.selected = updatedUser;
+    //     } else {
+    //       this.selected = null;
+    //     }
+    //     (this.editUser = null), this.reload();
+    //   },
+    //   error: (darn) => {
+    //     console.error('UserComponent.updateUser: error updating');
+    //     console.error(darn);
+    //   },
+    // });
   }
 
   deleteUser(id: number) {
-    this.userService.destroy(id).subscribe({
-      next: () => {
-        this.reload();
-      },
+    // this.userService.destroy(id).subscribe({
+    //   next: () => {
+    //     this.reload();
+    //   },
 
-      error: (fail) => {
-        console.error('User Component.deleteUser: error deleting:');
-        console.error(fail);
-      },
-    });
+    //   error: (fail) => {
+    //     console.error('User Component.deleteUser: error deleting:');
+    //     console.error(fail);
+    //   },
+    // });
   }
 }
