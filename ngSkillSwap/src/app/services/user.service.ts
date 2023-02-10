@@ -61,7 +61,7 @@ export class UserService {
       })
     );
   }
-
+//add ID to the above and they can archive account
   destroy(id: number): Observable<void> {
     return this.http.delete<void>(`${this.url}/${id}`).pipe(
       catchError((err: any) => {
