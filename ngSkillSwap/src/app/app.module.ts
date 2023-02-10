@@ -33,7 +33,7 @@ import { DatePipe } from '@angular/common';
     LogoutComponent,
     AboutComponent,
     NotFoundComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
