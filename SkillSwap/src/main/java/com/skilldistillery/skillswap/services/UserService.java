@@ -20,5 +20,7 @@ public interface UserService {
 	public boolean archiveUser(int id);
 	
 	public boolean deleteAdmin(int id);
+
+	public User showByUsername(String username);
 	
 }

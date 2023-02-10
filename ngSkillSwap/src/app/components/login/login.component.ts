@@ -19,6 +19,7 @@ constructor(private authService: AuthService, private router: Router) {
     console.log("Logging in");
     this.authService.login(loginUser.username, loginUser.password).subscribe({
       next: (loggedInUser) => {
+        console.log("Loggin comp")
         console.log(loggedInUser);
         this.router.navigateByUrl('home');
       },

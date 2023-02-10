@@ -37,9 +37,10 @@ public class UserController {
 		return userService.index();
 	}
 	
-	@GetMapping("users/{id}")
-	public User show(@PathVariable Integer id, HttpServletResponse res) {
-		User user = userService.show(id);
+	@GetMapping("users/{username}")
+	public User show(Principal principal, @PathVariable String username, HttpServletResponse res) {
+		System.out.println(principal.getName());
+		User user = userService.showByUsername(username);
 		if (user == null) {
 			res.setStatus(404);
 		}
