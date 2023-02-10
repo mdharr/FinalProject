@@ -21,39 +21,46 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Project {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	@Column(name = "date_posted")
 	private LocalDate datePosted;
-	
+
 	private String description;
-	
+
 	@Column(name = "active_status")
 	private Boolean activeStatus;
-	
+
 	@Column(name = "image_primary")
 	private String imagePrimary;
-	
+
 	@Column(name = "start_date")
 	private LocalDate startDate;
-	
+
 	@Column(name = "projected_date")
 	private LocalDate projectedDate;
+
+	@ManyToMany
+	@JoinTable(name="project_has_skill", 
+	joinColumns=@JoinColumn(name="skill_id"),
+	inverseJoinColumns= @JoinColumn(name="project_id"))
+	private List<Skill> skills;
 	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "project")
 	private List<Comment> comments;
-	
+
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -63,13 +70,11 @@ public class Project {
 	}
 
 	@ManyToMany
-	@JoinTable(name="project_member", 
-	joinColumns = @JoinColumn(name="user_id"), 
-	inverseJoinColumns = @JoinColumn(name="project_id"))
+	@JoinTable(name = "project_member", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
 	private List<User> users;
-	
+
 	@OneToMany(mappedBy = "project")
-	private List <ProjectImage> projectImages;
+	private List<ProjectImage> projectImages;
 
 	@Override
 	public int hashCode() {
@@ -87,8 +92,6 @@ public class Project {
 		Project other = (Project) obj;
 		return id == other.id;
 	}
-
-
 
 	@Override
 	public String toString() {
@@ -184,6 +187,13 @@ public class Project {
 	public void setProjectImages(List<ProjectImage> projectImages) {
 		this.projectImages = projectImages;
 	}
+	public List<Skill> getSkills() {
+		return skills;
+	}
+	
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
 
 	public Project(int id, String name, LocalDate datePosted, String description, Boolean activeStatus,
 			String imagePrimary, LocalDate startDate, LocalDate projectedDate, User user) {
@@ -201,7 +211,7 @@ public class Project {
 	public Project() {
 		super();
 	}
-	
+
 	public void addUser(User user) {
 		if (user == null) {
 			users = new ArrayList<>();
@@ -211,15 +221,14 @@ public class Project {
 			user.addProjectHelper(this);
 		}
 	}
-	
+
 	public void removeUser(User user) {
 		if (users != null && users.contains(user)) {
 			users.remove(user);
 			user.removeProjectHelper(this);
 		}
 	}
-	
-	
+
 	public void addComment(Comment comment) {
 		if (comment == null) {
 			comments = new ArrayList<>();
@@ -227,9 +236,9 @@ public class Project {
 		if (!comments.contains(comment)) {
 			comments.add(comment);
 			comment.setProject(this);
-}
+		}
 	}
-	
+
 	public void removeComment(Comment comment) {
 		if (comments != null && comments.contains(comment)) {
 			comments.remove(comment);

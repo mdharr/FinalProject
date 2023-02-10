@@ -22,17 +22,23 @@ public class Skill {
 	private int id;
 	private String name;
 	private String description;
-	@Column(name="image_url")
+	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name="user_skill", 
-	joinColumns = @JoinColumn(name="user_id"), 
-	inverseJoinColumns = @JoinColumn(name="skill_id"))
+	@JoinTable(name = "project_has_skill", 
+	joinColumns = @JoinColumn(name = "project_id"),
+	inverseJoinColumns = @JoinColumn(name = "skill_id"))
+	private List<Project> projects;
+
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "user_skill", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private List<User> users;
-	
-	public Skill() {}
+
+	public Skill() {
+	}
 
 	public int getId() {
 		return id;
@@ -74,6 +80,14 @@ public class Skill {
 		this.users = users;
 	}
 
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -95,7 +109,5 @@ public class Skill {
 	public String toString() {
 		return "Skill [id=" + id + ", name=" + name + ", description=" + description + ", imageUrl=" + imageUrl + "]";
 	}
-	
-	
-	
+
 }

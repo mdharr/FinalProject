@@ -17,6 +17,7 @@ class ProjectTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Project project;
+	private Project project1;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,6 +33,7 @@ class ProjectTest {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		project = em.find(Project.class, 2);
+		project1 = em.find(Project.class, 1);
 	}
 
 	@AfterEach
@@ -66,4 +68,11 @@ class ProjectTest {
 	assertTrue(project.getProjectImages().size() > 0);
 	}
 
+	@Test
+	void test_mapping_ManyToMany_Mapping_To_Skill() {
+		assertNotNull(project1);
+		assertTrue(project1.getSkills().size() > 0);
+		//assertEquals(1, project1.getSkills().equals(1));
+		}
+	
 }

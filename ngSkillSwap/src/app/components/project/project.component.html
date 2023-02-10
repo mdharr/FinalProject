@@ -61,19 +61,16 @@
       <label for="inputProjectedEndDate">Projected Completion Date:</label>
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Compleition Date" [(ngModel)]="project.projectedDate">
     </div>
-
-
+    <h1> skill </h1>
+    <div>
+      <select>
+        <option name="name" *ngFor="let skill of skillList" value="{{skill.name}}" [(ngModel)]="skill.name"> {{ skill.name }} </option>
+      </select>
+    </div>
 
     <button type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
   </div>
   </div>
   </form>
 
-
-  <h1> skill </h1>
-  <div >
-    <ul *ngFor="let skill of skillList">
-      <li> {{ skill.name }} </li>
-    </ul>
-  </div>
 
