@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'project', component: ProjectComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: UserComponent },
-  { path: 'feed', component: FeedComponent},
+  { path: 'feed', component: FeedComponent },
   { path: '**', component: NotFoundComponent }, //page not found route
 ];
 

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { ProjectService } from './project.service';
@@ -20,4 +21,37 @@ export class CommentService {
     private http: HttpClient,
     private router: Router
   ) {}
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.authService.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+
+  index(): Observable<Comment[]> {
+    return this.http.get<Comment[]>(this.url, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('UserService.index(): error retrieving user: ' + err)
+        );
+      })
+    );
+  }
+
+  show(id: number): Observable<Comment> {
+    return this.http.get<Comment>(`${this.url}/${id}`).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('UserService.index(): error retrieving user list: ' + err)
+        );
+      })
+    );
+  }
 }
