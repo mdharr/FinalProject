@@ -19,6 +19,7 @@ import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DatePipe } from '@angular/common';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DatePipe } from '@angular/common';
     AboutComponent,
     NotFoundComponent,
     ProfileComponent,
+    FeedComponent,
   ],
   imports: [
     BrowserModule,
