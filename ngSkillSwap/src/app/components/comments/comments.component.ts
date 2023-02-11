@@ -1,6 +1,8 @@
+import { CommentService } from './../../services/comment.service';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { UserService } from 'src/app/services/user.service';
@@ -11,10 +13,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./comments.component.css'],
 })
 export class CommentsComponent {
-  comments: any;
-  userComments: any;
+  comments: Comment[] = [];
+  userComments: Comment[] = [];
 
   constructor(
+    private commentService: CommentService,
     private userService: UserService,
     private projectService: ProjectService,
     private http: HttpClient,
@@ -22,4 +25,47 @@ export class CommentsComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+  createComment(newComment: Comment, loggedInUser: User): void {
+    console.log('Creating new comment:');
+    console.log(loggedInUser);
+    this.commentService.createComment(newComment).subscribe({
+      next: (comment: Comment) => {
+        console.log(comment);
+        this.comments.push(comment);
+        this.userComments.push(comment);
+      },
+      error: (fail) => {
+        console.error('CommentComponent.createComment(), fail');
+        console.log(fail);
+      },
+    });
+    error: (darn: Error) => {
+      console.error('RegisterComponent.register(): Error registering account');
+      console.error(darn);
+    };
+  }
+
+  deleteUser(id: number) {
+    this.userService.destroy(id).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (fail) => {
+        console.error('User Component.deleteUser: error deleting:');
+        console.error(fail);
+      },
+    });
+  }
+  reload() {
+    this.commentService.index().subscribe({
+      next: (comments) => {
+        this.userComments = comments;
+      },
+      error: (err) => {
+        console.error('Error loading user list: ');
+        console.error(err);
+      },
+    });
+  }
 }

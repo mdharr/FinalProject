@@ -32,6 +32,18 @@ export class CommentService {
     return options;
   }
 
+  createComment(comment: Comment): Observable<Comment> {
+    return this.http.post<Comment>(this.url, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+            new Error('CommentService.createComment(): error creating comment.')
+        );
+      })
+    );
+  }
+
   index(): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.url, this.getHttpOptions()).pipe(
       catchError((err: any) => {
