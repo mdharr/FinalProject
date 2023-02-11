@@ -63,16 +63,16 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project update(int userId, int projectId, Project project) {
-		Optional<Project> proj = projectRepo.findById(projectId);
+	public Project update(String username, Project project) {
+		Optional<Project> proj = projectRepo.findById(project.getId());
 		User user = null;
 		Project update = null;
-		Optional<User> userOpt = userRepo.findById(userId);
-		if (userOpt.isPresent() && proj.isPresent()) {
-			user = userOpt.get();
+		User userOpt = userRepo.findByUsername(username);
+		if (userOpt != null && proj.isPresent()) {
+			user = userOpt;
 			update = proj.get();
 
-			update.setId(projectId);
+			update.setId(project.getId());
 			update.setUser(user);
 			update.setName(project.getName());
 			update.setDatePosted(project.getDatePosted());
@@ -87,8 +87,13 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public boolean archive(int projectId) {
-		projectRepo.deleteById(projectId);
-		return !projectRepo.existsById(projectId);
+		Optional<Project> projOpt = projectRepo.findById(projectId);
+		if (projOpt.isPresent()) {
+			Project project = projOpt.get();
+			project.setEnabled(false);
+			projectRepo.saveAndFlush(project);
+		}
+		return true;
 	}
 
 	@Override

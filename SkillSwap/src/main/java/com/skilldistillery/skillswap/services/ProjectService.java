@@ -14,7 +14,7 @@ public interface ProjectService {
 	
 	Project createProject(String username, Project project);
 	
-	Project update(int userId, int projectId, Project project);
+	Project update(String username, Project project);
 
 	boolean archive(int projectId);
 	

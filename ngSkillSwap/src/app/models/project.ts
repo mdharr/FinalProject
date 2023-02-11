@@ -11,6 +11,7 @@ export class Project {
   startDate: string;
   projectedDate: string;
   skills: Skill[];
+  enabled: boolean;
 
   constructor(
     id: number = 0,
@@ -22,7 +23,8 @@ export class Project {
     imagePrimary: string = '',
     startDate: string = '',
     projectedDate: string = '',
-    skills: Skill[] = []
+    skills: Skill[] = [],
+    enabled: boolean = false
   ) {
     this.id = id;
     this.name = name;
@@ -34,5 +36,6 @@ export class Project {
     this.startDate = startDate;
     this.projectedDate = projectedDate;
     this.skills = skills;
+    this.enabled = enabled;
   }
 }

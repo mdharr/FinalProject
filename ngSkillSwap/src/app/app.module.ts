@@ -20,6 +20,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { FeedComponent } from './components/feed/feed.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,9 @@ import { FooterComponent } from './components/footer/footer.component';
     NotFoundComponent,
     ProfileComponent,
     FooterComponent,
+    CommentsComponent,
+    FeedComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -44,9 +49,9 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     NgbModule,
     MdbCarouselModule,
-    ReactiveFormsModule
-      ],
+    ReactiveFormsModule,
+  ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

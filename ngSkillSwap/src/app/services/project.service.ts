@@ -92,7 +92,7 @@ private otherUrl = environment.baseUrl;
       'Content-Type': 'application/json',
     },
   };
- return this.http.put<Project>(`${this.url}/${project.id}`, project, this.getHttpOptions()).pipe(
+ return this.http.put<Project>(`${this.url}/`, project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
@@ -120,14 +120,19 @@ private otherUrl = environment.baseUrl;
     )
    }
 
- archive(id : number):Observable<void>  {
-  return this.http.delete<void>(`${this.url}/${id}`).pipe(
+ archive(project : Project):Observable<Project>  {
+  const httpOptions = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return this.http.put<Project>(`${this.url}/${project.id}`,project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
       console.log(err);
       return throwError(
         () =>
         new Error(
-          'ProjectService.delete(): error deleting project: ' + err
+          'ProjectService.archive(): error archiving project: ' + err
           )
       );
     })

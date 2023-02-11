@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   `image_primary` VARCHAR(2500) NULL,
   `start_date` DATE NULL,
   `projected_date` DATE NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_project_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_project_user1`
@@ -328,8 +329,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`) VALUES (1, 'Repair a tear in my mask ', '2023-02-07', 'Mask has a rip and I need to to fight crime! ', 0, 1, NULL, '2022-02-01', '2022-03-01');
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`) VALUES (2, 'Want to get better at italian', '2023-02-07', 'Looking for help with my italian , can offer cupckae making tips', 1, 2, NULL, NULL, NULL);
+INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (1, 'Repair a tear in my mask ', '2023-02-07', 'Mask has a rip and I need to to fight crime! ', 0, 1, NULL, '2022-02-01', '2022-03-01', 1);
+INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (2, 'Want to get better at italian', '2023-02-07', 'Looking for help with my italian , can offer cupckae making tips', 1, 2, NULL, NULL, NULL, 1);
 
 COMMIT;
 

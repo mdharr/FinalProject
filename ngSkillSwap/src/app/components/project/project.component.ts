@@ -82,11 +82,9 @@ export class ProjectComponent implements OnInit {
   addProject(project: Project) {
     this.projectService.create(project).subscribe({
       next: (data) => {
-        //this.reload();
         this.project = data;
         this.projectCreated = true;
-        //this.project = new Project();
-        //this.project = null;
+
       },
 
       error: (nojoy) => {
@@ -114,15 +112,18 @@ export class ProjectComponent implements OnInit {
     this.editProject = Object.assign({}, this.selected);
   }
 
-  updateProject(project: Project, goToDetail = true): void {
-    //const completedDate = this.datePipe.transform(Date.now(), 'shortDate'); // 8/24/1999
+  updateProject(project: Project,): void {
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
     this.projectService.update(project).subscribe({
       next: (updatedProject) => {
-        if (goToDetail) {
+
           this.selected = updatedProject;
-        } else {
-          this.selected = null;
-        }
+
+
         (this.editProject = null), this.reload();
       },
       error: (toobad) => {
@@ -158,6 +159,18 @@ export class ProjectComponent implements OnInit {
   //   });
   // }
 
+  archiveAction(project: Project, projectId: number): void {
+    this.projectService.archive(project).subscribe({
+      next: (project) => {
+        project.enabled = false;
+        this.reload();
+      },
+      error: (fail) => {
+        console.error('ProjectComponent.archiveAction: error archiving');
+        console.error(fail);
+      },
+    });
+  }
 
   displaySkills() {
     this.skillService.indexAll().subscribe({

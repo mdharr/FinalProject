@@ -85,20 +85,21 @@ public class ProjectController {
 		} 
 	
 
-	@PutMapping("users/{uId}/projects/{pId}")
-	public Project update(@PathVariable int uId, @PathVariable int pId, @RequestBody Project project,
+	@PutMapping("projects")
+	public Project update(Principal principal, @RequestBody Project project,
 			HttpServletRequest req, HttpServletResponse res) {
 		Project updateProject = null;
 		try {
-			projectService.update(uId, pId, project);
+			updateProject = projectService.update(principal.getName(), project);
+			res.setStatus(200);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return updateProject;
 	}
 	
-	@DeleteMapping("project/{id}")
-	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
+	@PutMapping("projects/{id}")
+	public void archiveProject (Principal principal, @PathVariable int id, HttpServletResponse res) {
 		try {
 			if (projectService.archive(id)) {
 				res.setStatus(204);
