@@ -50,6 +50,8 @@ export class ProfileComponent implements OnInit {
     this.authService.getLoggedInUser().subscribe({
       next: (user) => {
         this.loggedInUser = user;
+        console.log(user);
+
       },
       error: (error) => {
         console.log('Error getting loggedInUser Profile Component');

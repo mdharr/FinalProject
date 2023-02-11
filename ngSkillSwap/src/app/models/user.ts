@@ -1,5 +1,6 @@
 import { Address } from './address';
 import { Project } from './project';
+import { UserSkill } from './user-skill';
 export class User {
   id: number;
   username: string;
@@ -16,6 +17,7 @@ export class User {
   lastActive: string;
   address: Address | null;
   projects: Project[];
+  userSkills: UserSkill[];
   constructor(
     id: number = 0,
     username: string = '',
@@ -31,7 +33,8 @@ export class User {
     createdDate: string = '',
     lastActive: string = '',
     address: Address | null = null,
-    projects: Project[] = []
+    projects: Project[] = [],
+    userSkills: UserSkill[] = []
   ) {
     this.id = id;
     this.username = username;
@@ -48,5 +51,6 @@ export class User {
     this.lastActive = lastActive;
     this.projects = projects;
     this.address = address;
+    this.userSkills = userSkills;
   }
 }
