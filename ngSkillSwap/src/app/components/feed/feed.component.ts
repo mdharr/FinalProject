@@ -11,7 +11,7 @@ import { SkillService } from 'src/app/services/skill.service';
   styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
-
+  display = true;
   projects: Project[] = [];
 
   constructor(
@@ -22,10 +22,11 @@ export class FeedComponent implements OnInit {
     private skillService: SkillService,
   ) {}
   ngOnInit(): void {
+    this.display = false;
     this.projectService.indexAll().subscribe({
       next: (projects) => {
         this.projects = projects;
-    },
+        this.display = true;},
     error: (error) => {
       console.log(error);
       console.log("Error loading all projects")
