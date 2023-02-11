@@ -1,7 +1,9 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+@import 'material-icons/iconfont/material-icons.css';
 /* You can add global styles to this file, and also import other style files */
 body{
-  background-color: #233631;
+  background-color: #08243B;
 color: white;
 }
 h1{

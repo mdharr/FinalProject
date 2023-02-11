@@ -8,6 +8,8 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ProjectService } from 'src/app/services/project.service';
+import { Skill } from 'src/app/models/skill';
+import { SkillService } from 'src/app/services/skill.service';
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +23,16 @@ export class ProfileComponent implements OnInit {
   userProjectList: Project[] = [];
   selected: null | User = null;
   editUser: null | User = null;
+  display = true;
+  projects: Project[] = [];
+  skills: Skill[] = [];
+
   constructor(
     private userService: UserService,
+    private projectService: ProjectService,
     private http: HttpClient,
     private authService: AuthService,
+    private skillService: SkillService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -48,6 +56,16 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       },
     });
+    this.display = false;
+    this.projectService.indexAll().subscribe({
+      next: (projects) => {
+        this.projects = projects;
+        this.display = true;},
+    error: (error) => {
+      console.log(error);
+      console.log("Error loading all projects")
+    }
+  })
   }
   reload(): void {
     this.authService.getLoggedInUser().subscribe({

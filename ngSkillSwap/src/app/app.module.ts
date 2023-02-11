@@ -1,3 +1,4 @@
+import { ProjectsAllComponent } from './components/projects-all/projects-all.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -32,6 +33,7 @@ import { FeedComponent } from './components/feed/feed.component';
     ProjectComponent,
     NavbarComponent,
     RegisterComponent,
+    ProjectsAllComponent,
     LoginComponent,
     LogoutComponent,
     AboutComponent,

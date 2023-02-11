@@ -1,1 +1,78 @@
-<p>projects-all works!</p>
+<div class="container" *ngIf="!createProject">
+  <div class="table-wrapper" *ngIf="!selected">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2><b>Projects</b></h2>
+        </div>
+        <div class="col-sm-6">
+          <a class="btn btn-success" data-toggle="modal" (click)="createProject = true"><i class="material-icons">&#xE147;</i> <span>Add New Project</span></a>
+          <a class="btn btn-danger" data-toggle="modal" (click)="deleteProjects()"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>
+          </th>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projects">
+          <td>
+            <span class="custom-checkbox">
+              <input type="checkbox" id="checkbox1" name="options[]" value="1" (change)="addProjectToDelete(project)">
+              <label for="checkbox1"></label>
+            </span>
+          </td>
+          <td (click)="displayProject(project)">{{project.id}}</td>
+          <td (click)="displayProject(project)">{{project.name}}</td>
+          <td (click)="displayProject(project)" class="ellipsis">{{project.description}}</td>
+          <td (click)="displayProject(project)"><img id="projectImage" src="{{project.imagePrimary}}"></td>
+          <td>
+            <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="selected && !editProject" class="box">
+  <img style="max-width: 300px; margin-bottom: 20px;" src="{{selected.imagePrimary}}">
+  <p>ID: {{selected.id}}</p>
+  <p>NAME: {{selected.name}}</p>
+  <p>DESCRIPTION: {{selected.description}}</p>
+  <button style="margin-right: 10px;" class="btn btn-primary" (click)="setEditProject()">Edit</button>
+  <button class="btn btn-primary" (click)="displayTable()">Back</button>
+</div>
+
+<div *ngIf="selected && editProject" class="box">
+  <label class="form-label" for="task">Name</label>
+  <input class="form-control" type="text" name="editProject.name" [(ngModel)]="editProject.name" placeholder="{{selected.name}}"><br>
+  <label class="form-label" for="description">Description</label>
+  <input class="form-control" type="text" name="editProject.description" [(ngModel)]="editProject.description" placeholder="{{selected.description}}"><br>
+  <label for="imageUrl">Image URL</label>
+  <input type="text" name="editProject.imagePrimary" [(ngModel)]="editProject.imagePrimary" placeholder="{{selected.imagePrimary}}"><br>
+
+  <button class="btn btn-primary" (click)="updateProject(editProject)">Save</button>
+  <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
+</div>
+
+<div *ngIf="createProject" class="box">
+  <label class="form-label" for="task">Name</label>
+  <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
+  <label class="form-label" for="description">Description</label>
+  <input class="form-control" type="text" name="addProject.description" [(ngModel)]="newProject.description" required><br>
+  <label for="imageUrl">Image URL</label>
+  <input type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
+
+  <button class="btn btn-primary" (click)="addProject(newProject)">Save</button>
+  <button class="btn btn-primary" (click)="createProject = false">Back</button>
+</div>

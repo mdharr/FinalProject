@@ -1,12 +1,39 @@
 a {
   cursor: pointer;
+  color: white;
 }
 
+a:visited {
+  color: white;
+}
+a:hover {
+  color: #C79360;
+}
+
+a:active {
+  color: #C79360;
+}
+
+
 nav > div {
-  background-color: #426F63;
+  margin-left: 20px;
+  background-color: #08243B;
 }
 
 .navbar {
-  background-color: #426F63;
+  background-color: #08243B;
+}
+
+#loginDiv {
+  width: 100%;
+
+}
+
+.logoutWrapper {
+  justify-content: right;
+}
+
+.nav-item {
+
 }
 

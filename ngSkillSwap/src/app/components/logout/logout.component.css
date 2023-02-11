@@ -1,4 +1,9 @@
 button {
-  color: white;
-  background-color: #306191;
+  color: black;
+  background-color:  #D4D4D6;
+}
+
+#logoutBtn {
+  margin-right: 20px !important;
+
 }

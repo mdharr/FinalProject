@@ -14,7 +14,7 @@ export class User {
   profileImage: string;
   createdDate: string;
   lastActive: string;
-  addressId: Address[];
+  address: Address | null;
   projects: Project[];
   constructor(
     id: number = 0,
@@ -30,7 +30,7 @@ export class User {
     profileImage: string = '',
     createdDate: string = '',
     lastActive: string = '',
-    addressId: Address[] = [],
+    address: Address | null = null,
     projects: Project[] = []
   ) {
     this.id = id;
@@ -47,6 +47,6 @@ export class User {
     this.createdDate = createdDate;
     this.lastActive = lastActive;
     this.projects = projects;
-    this.addressId = addressId;
+    this.address = address;
   }
 }
