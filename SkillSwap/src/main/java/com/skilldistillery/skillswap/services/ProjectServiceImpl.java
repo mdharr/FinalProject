@@ -87,8 +87,13 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public boolean archive(int projectId) {
-		projectRepo.deleteById(projectId);
-		return !projectRepo.existsById(projectId);
+		Optional<Project> projOpt = projectRepo.findById(projectId);
+		if (projOpt.isPresent()) {
+			Project project = projOpt.get();
+			project.setEnabled(false);
+			projectRepo.saveAndFlush(project);
+		}
+		return true;
 	}
 
 	@Override

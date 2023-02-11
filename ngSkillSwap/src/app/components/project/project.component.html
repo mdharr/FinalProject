@@ -89,7 +89,7 @@
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
 <label>{{ skill.name }}</label>
-  <input required (change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
+  <input required(change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
 </div>
 </div>
 <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
@@ -142,3 +142,8 @@
     <button class="btn btn-danger" (click)="editProject = null">
       Cancel
     </button>
+    <button type="button" class="btn btn-info"
+    (click)="archiveAction(project, project.id)"
+  >
+    Project Completed!
+  </button>

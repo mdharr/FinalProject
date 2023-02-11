@@ -98,8 +98,8 @@ public class ProjectController {
 		return updateProject;
 	}
 	
-	@DeleteMapping("project/{id}")
-	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
+	@PutMapping("projects/{id}")
+	public void archiveProject (Principal principal, @PathVariable int id, HttpServletResponse res) {
 		try {
 			if (projectService.archive(id)) {
 				res.setStatus(204);

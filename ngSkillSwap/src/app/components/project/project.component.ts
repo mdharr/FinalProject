@@ -159,6 +159,18 @@ export class ProjectComponent implements OnInit {
   //   });
   // }
 
+  archiveAction(project: Project, projectId: number): void {
+    this.projectService.archive(project).subscribe({
+      next: (project) => {
+        project.enabled = false;
+        this.reload();
+      },
+      error: (fail) => {
+        console.error('ProjectComponent.archiveAction: error archiving');
+        console.error(fail);
+      },
+    });
+  }
 
   displaySkills() {
     this.skillService.indexAll().subscribe({

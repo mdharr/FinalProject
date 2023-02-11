@@ -60,6 +60,8 @@ public class Project {
 	@JsonIgnore
 	@OneToMany(mappedBy = "project")
 	private List<Comment> comments;
+	
+	private Boolean enabled;
 
 	public List<Comment> getComments() {
 		return comments;
@@ -193,6 +195,14 @@ public class Project {
 	
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
+	}
+
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	public Project(int id, String name, LocalDate datePosted, String description, Boolean activeStatus,
