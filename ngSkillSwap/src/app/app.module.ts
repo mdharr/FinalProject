@@ -19,6 +19,11 @@ import { AboutComponent } from './components/about/about.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DatePipe } from '@angular/common';
+<<<<<<< HEAD
+import { CommentsComponent } from './components/comments/comments.component';
+=======
+import { FeedComponent } from './components/feed/feed.component';
+>>>>>>> 9eda2eda0be79da738117a24471b9d4b67b66146
 
 @NgModule({
   declarations: [
@@ -34,6 +39,11 @@ import { DatePipe } from '@angular/common';
     AboutComponent,
     NotFoundComponent,
     ProfileComponent,
+<<<<<<< HEAD
+    CommentsComponent,
+=======
+    FeedComponent,
+>>>>>>> 9eda2eda0be79da738117a24471b9d4b67b66146
   ],
   imports: [
     BrowserModule,

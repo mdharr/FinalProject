@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
+import { FeedComponent } from './components/feed/feed.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'project', component: ProjectComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'user', component: UserComponent },
+  { path: 'feed', component: FeedComponent},
   { path: '**', component: NotFoundComponent }, //page not found route
 ];
 
