@@ -3,8 +3,11 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse d-flex" id="navbarTogglerDemo01">
-    <a class="navbar-brand" [routerLink]="['/home']">Home</a>
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <!-- <a class="nav-link" [routerLink]="['/feed']">All Projects</a> -->
+        <a class="nav-link" [routerLink]="['/home']">Home</a>
+      </li>
       <li class="nav-item" *ngIf="loggedIn()">
         <!-- <a class="nav-link" [routerLink]="['/feed']">All Projects</a> -->
         <a class="nav-link" [routerLink]="['/projects-all']">Project Board</a>

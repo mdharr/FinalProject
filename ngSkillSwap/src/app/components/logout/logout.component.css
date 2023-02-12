@@ -1,6 +1,12 @@
 button {
   color: black;
   background-color:  #D4D4D6;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+button:hover {
+  color: white;
+  background-color:  crimson;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 #logoutBtn {

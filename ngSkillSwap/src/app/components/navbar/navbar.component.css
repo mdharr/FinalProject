@@ -7,16 +7,16 @@ a:visited {
   color: white;
 }
 a:hover {
-  color: #C79360;
+  color: crimson;
 }
 
 a:active {
-  color: #C79360;
+  color: crimson;
 }
 
 
 nav > div {
-  margin-left: 20px;
+  margin-left: 0px;
   background-color: #08243B;
 }
 
@@ -33,8 +33,30 @@ nav > div {
   justify-content: right;
 }
 
-.nav-item {
+/* .navbar-brand {
+  width: 8vw;
+}
 
+.nav-link {
+  width: ;
+} */
+
+ul {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: left;
+}
+
+#navbarTogglerDemo01 {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  font-size: 20px;
+  text-align: center;
+  width: 9rem;
 }
 
 

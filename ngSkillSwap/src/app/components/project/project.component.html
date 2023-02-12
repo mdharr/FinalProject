@@ -98,7 +98,16 @@
   </div>
   </form>
 <!-- End of Add Project Form -->
-
+<!-- Michael's Experiment w/ Cards for Projects -->
+<div id="projectCardDiv" *ngIf="!selected">
+  <div class="card zoom" style="width: 18rem;" *ngFor="let project of projectList">
+    <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-text">{{project.name}}</h5>
+      <p class="card-text">{{project.description}}</p>
+    </div>
+  </div>
+</div>
 <!-- Edit Project Form -->
 <!-- <h1>Edit Poject which will be hidden</h1> -->
 <form *ngIf="editProject">
@@ -147,3 +156,5 @@
   >
     Project Completed!
   </button>
+
+

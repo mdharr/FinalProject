@@ -12,3 +12,8 @@ mdb-carousel {
 #spaceDiv {
   height: 500px;
 }
+
+#titleContainer {
+  display: flex;
+  justify-content: center;
+}
