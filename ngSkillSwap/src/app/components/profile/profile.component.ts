@@ -8,6 +8,10 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { ProjectService } from 'src/app/services/project.service';
+import { Skill } from 'src/app/models/skill';
+import { SkillService } from 'src/app/services/skill.service';
+import { ViewportScroller } from '@angular/common';
+
 
 @Component({
   selector: 'app-profile',
@@ -21,13 +25,22 @@ export class ProfileComponent implements OnInit {
   userProjectList: Project[] = [];
   selected: null | User = null;
   editUser: null | User = null;
+  display = true;
+  projects: Project[] = [];
+  skills: Skill[] = [];
+
   constructor(
     private userService: UserService,
+    private projectService: ProjectService,
     private http: HttpClient,
     private authService: AuthService,
+    private skillService: SkillService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller
   ) {}
+
+  public onClick(elementId: string): void { this.viewportScroller.scrollToAnchor(elementId); }
 
   getHttpOptions() {
     let options = {
@@ -42,12 +55,24 @@ export class ProfileComponent implements OnInit {
     this.authService.getLoggedInUser().subscribe({
       next: (user) => {
         this.loggedInUser = user;
+        console.log(user);
+
       },
       error: (error) => {
         console.log('Error getting loggedInUser Profile Component');
         console.log(error);
       },
     });
+    this.display = false;
+    this.projectService.indexAll().subscribe({
+      next: (projects) => {
+        this.projects = projects;
+        this.display = true;},
+    error: (error) => {
+      console.log(error);
+      console.log("Error loading all projects")
+    }
+  })
   }
   reload(): void {
     this.authService.getLoggedInUser().subscribe({
@@ -73,5 +98,9 @@ export class ProfileComponent implements OnInit {
         console.log(error);
       },
     });
+  }
+  scrollToElement($element: { scrollIntoView: (arg0: { behavior: string; block: string; inline: string; }) => void; }): void {
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
   }
 }

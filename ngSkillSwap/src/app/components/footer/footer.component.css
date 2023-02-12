@@ -3,13 +3,22 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #426F63;
+  background-color: hsl(212deg 11% 58%);
   color: white;
   text-align: center;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   z-index: 50;
-  height: 50px;
-  border-top: 1px solid black;
+  height: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
 }

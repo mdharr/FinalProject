@@ -66,7 +66,7 @@ public class User {
 //	@JoinTable(name = "user_skill", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 //	private List<Skill> skills;
 
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "user")
 	private List<UserSkill> userSkills;
 

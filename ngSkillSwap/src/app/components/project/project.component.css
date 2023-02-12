@@ -15,7 +15,7 @@ table {
 th,
 td {
   padding: 15px;
-  background-color: rgba(77, 178, 187, 0.398);
+  background-color: white;
   color: rgb(6, 5, 5);
 }
 
@@ -25,7 +25,7 @@ th {
 
 thead,
   th {
-    background-color: #D9D9D9;
+    background-color: #5E6F7C;
 
   }
 
@@ -36,4 +36,24 @@ thead,
   font-size: xx-large;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   color: antiquewhite;
+}
+
+#projectCardDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+}
+
+.zoom {
+	transition: transform .2s;
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.05);
+}
+
+.card {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
