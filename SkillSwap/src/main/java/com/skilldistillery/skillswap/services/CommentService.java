@@ -17,4 +17,13 @@ public interface CommentService {
 	
 	public boolean destroy(String username, int commentId, int projectId);
 
+	//------Comments About Users---------
+	public Set<Comment> indexOfCommentsAboutUser(String username);
+
+	boolean destroyCommentAboutUser(String username, int commentId, int userId);
+
+	public Comment updateCommentAboutUser(String username, int commentId, Comment comment, int userId);
+
+	public Comment createCommentAboutUser(String username, Comment comment, int userId);
+
 }

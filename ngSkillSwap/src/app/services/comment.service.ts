@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Project } from '../models/project';
 import { AuthService } from './auth.service';
 import { ProjectService } from './project.service';
 import { UserService } from './user.service';
@@ -11,7 +12,7 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class CommentService {
-  private url = environment.baseUrl + 'api/users';
+  private url = environment.baseUrl + 'api';
 
   constructor(
     private projectService: ProjectService,
@@ -44,16 +45,56 @@ export class CommentService {
     );
   }
 
-  index(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.url, this.getHttpOptions()).pipe(
-      catchError((err: any) => {
-        console.log(err);
-        return throwError(
-          () => new Error('UserService.index(): error retrieving user: ' + err)
-        );
-      })
-    );
+  // projects/{pid}/comments
+  projectCommentIndex(projectId: number): Observable<Comment[]> {
+    return this.http
+      .get<Comment[]>(
+        this.url + 'projects/' + projectId + '/comments',
+        this.getHttpOptions()
+      )
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () => new Error('error retrieving comments for user: ' + err)
+          );
+        })
+      );
   }
+
+  userCommentIndex(userId: number): Observable<Comment[]> {
+    return this.http
+      .get<Comment[]>(
+        this.url + 'users/' + userId + '/comments',
+        this.getHttpOptions()
+      )
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () =>
+              new Error('UserService.index(): error retrieving user: ' + err)
+          );
+        })
+      );
+  }
+
+  // index(): Observable<Comment[]> {
+  //   return this.http
+  //     .get<Comment[]>(
+  //       this.url + 'projects/' + projectId + '/comments',
+  //       this.getHttpOptions()
+  //     )
+  //     .pipe(
+  //       catchError((err: any) => {
+  //         console.log(err);
+  //         return throwError(
+  //           () =>
+  //             new Error('UserService.index(): error retrieving user: ' + err)
+  //         );
+  //       })
+  //     );
+  // }
 
   show(id: number): Observable<Comment> {
     return this.http.get<Comment>(`${this.url}/${id}`).pipe(
