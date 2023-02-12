@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SkillComponent } from './components/skill/skill.component';
 import { UserComponent } from './components/user/user.component';
 
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
@@ -28,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), RouterModule.forRoot(routes, { anchorScrolling: 'enabled'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

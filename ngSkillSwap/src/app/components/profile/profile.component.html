@@ -126,8 +126,37 @@
     Cancel
   </button>
 </form> -->
+<nav>
+  <ul>
+    <li (click)="onClick('section1')">
+      <div class="home-icon">
+        <i style="font-size:40px;" class="material-icons">&#xe7fd;</i>
+      </div>
+    </li>
+    <li (click)="onClick('section2')">
+      <div>
+        <i style="font-size:40px;" class="material-icons">&#xf10b;</i>
+      </div>
+    </li>
+    <li (click)="onClick('section3')">
+      <div class="work-icon">
+        <i style="font-size:40px;" class="material-icons description">&#xe873;</i>
+      </div>
+    </li>
+    <li (click)="onClick('section4')">
+      <div class="mail-icon">
+        <i style="font-size:40px;" class="material-icons email">&#xe0be;</i>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<section>
+  <!-- <h1>3d rotating navigation</h1>
+  <h2>+ CSS Icons</h2> -->
+</section>
 <div class="d-flex flex-row justify-content-center" style="padding-top: 100px; padding-bottom: 100px;">
-<div id="page-top" class="w-75">
+<div id="page-top" class="w-75" style="background-color: #86929e !important">
   <!-- Navigation-->
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -161,7 +190,7 @@
   <!-- Page Content-->
   <div class="container-fluid p-0 w-80 d-flex flex-column justify-content-end">
       <!-- About-->
-      <section class="resume-section" id="about">
+      <section class="resume-section" id="section1">
           <div class="resume-section-content">
             <img id="userProfileImage" class="zoom" src="{{loggedInUser.profileImage}}">
               <h1 class="mb-0">
@@ -183,7 +212,7 @@
       </section>
       <hr class="m-0" />
       <!-- Experience-->
-      <section class="resume-section" id="experience">
+      <section class="resume-section" id="section2">
           <div class="resume-section-content">
               <h2 class="mb-5">Previous Projects</h2>
               <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of projects">
@@ -230,7 +259,7 @@
       </section>
       <hr class="m-0" /> -->
       <!-- Skills-->
-      <section class="resume-section" id="skills">
+      <section class="resume-section" id="section3">
           <div class="resume-section-content">
               <h2 class="mb-5">Skills</h2>
               <div class="subheading mb-3"></div>
@@ -253,7 +282,7 @@
       </section> -->
       <hr class="m-0" />
       <!-- Awards-->
-      <section class="resume-section" id="awards">
+      <section class="resume-section" id="section4">
           <div class="resume-section-content">
               <h2 class="mb-5">Contact</h2>
               <div class="fa-ul mb-0">
