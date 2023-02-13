@@ -31,7 +31,7 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="project_id")
 	private Project project;

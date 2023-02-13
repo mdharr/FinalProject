@@ -3,12 +3,24 @@
 </div>
 <!-- Michael's Experiment w/ Cards for Projects -->
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected">
+<div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
   <div id="cardDiv" class="card zoom" style="width: 18rem;" *ngFor="let project of projectList" (click)="displayProject(project)">
     <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-text">{{project.name}}</h5>
       <p class="card-text">{{project.description}}</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="parentContainer">
+<div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
+  <div id="cardDiv" class="card zoom" style="width: 18rem;">
+    <img class="card-img-top" src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif" alt="Not found">
+    <div class="card-body">
+      <h5 class="card-text">No projects found</h5>
+      <p class="card-text">Visit the project board to create a new project!</p>
     </div>
   </div>
 </div>
@@ -24,20 +36,20 @@
   <table>
     <thead>
       <tr>
-        <th>Name: </th>
+        <th>Name:</th>
         <th>Description:</th>
-        <th>Date Started: </th>
-        <th>Active Status: </th>
+        <th>Date Started:</th>
+        <th>Active Status:</th>
       </tr>
     </thead>
-      <tbody class="scrolling-box">
-        <tr *ngFor="let project of projectList">
-          <td (click)="displayProject(project)">{{ project.name }}</td>
-          <td>{{ project.description }}</td>
-          <td>{{ project.startDate | date : "shortDate" }}</td>
-          <td>{{ project.activeStatus }}</td>
-        </tr>
-      </tbody>
+    <tbody class="scrolling-box">
+      <tr *ngFor="let project of projectList">
+        <td (click)="displayProject(project)">{{ project.name }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ project.startDate | date : "shortDate" }}</td>
+        <td>{{ project.activeStatus }}</td>
+      </tr>
+    </tbody>
   </table>
 </div> -->
 <!-- End of user project list -->
@@ -52,17 +64,17 @@
         <th>Image</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Date Posted</th>
+
         <th>Start Date</th>
         <th>Projected Completion</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img class="zoom" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
+      <tr class = "selectedProjectTable" style="height: auto">
+        <td><img class="zoom" id="projectImg" style="width: 150px;" src="{{ selected.imagePrimary }}"></td>
         <td>{{ selected.name }}</td>
         <td>{{ selected.description }}</td>
-        <td>{{ selected.datePosted | date : "shortDate"}}</td>
+
         <td>{{ selected.startDate | date : "shortDate"}}</td>
         <td>{{ selected.projectedDate | date : "shortDate"}}</td>
       </tr>
@@ -73,7 +85,7 @@
 </div>
 <!-- End of information about a selected project -->
 
-<br>
+<br />
 
 <button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>
 <!-- Add Project Form -->
@@ -82,7 +94,14 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
-      <input required type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Name of Project"
+        [(ngModel)]="project.name"
+      />
     </div>
     <div class="form-group col-md-6">
       <label for="inputDescription">Description</label>
@@ -92,18 +111,65 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputImage">Image</label>
-      <input required type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="project.imagePrimary">
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="imagePrimary"
+        placeholder="Image"
+        [(ngModel)]="project.imagePrimary"
+      />
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputStartDate">Projected Start Date:</label>
-      <input required type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="project.startDate">
+      <input
+        required
+        type="date"
+        class="form-control"
+        name="startDate"
+        placeholder="Projected Start Date"
+        [(ngModel)]="project.startDate"
+      />
     </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputProjectedEndDate">Projected Completion Date:</label>
-      <input required type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="project.projectedDate">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputProjectedEndDate">Projected Completion Date:</label>
+        <input
+          required
+          type="date"
+          class="form-control"
+          name="projectedDate"
+          placeholder="Projected Completion Date"
+          [(ngModel)]="project.projectedDate"
+        />
+      </div>
+      <div *ngIf="projectCreated">
+        <div *ngFor="let skill of skillList">
+          <label>{{ skill.name }}</label>
+          <input
+            required(change)="skillUpdate(skill.id, project.id)"
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <button
+        *ngIf="projectCreated"
+        type="submit"
+        class="btn btn-primary"
+        (click)="reload()"
+      >
+        Submit
+      </button>
+      <button
+        *ngIf="!projectCreated"
+        type="submit"
+        class="btn btn-primary"
+        (click)="addProject(project)"
+      >
+        Submit
+      </button>
     </div>
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
@@ -112,9 +178,9 @@
 </div>
 </div>
 <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
-    <button *ngIf="!projectCreated" type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
+<button *ngIf="!projectCreated" type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
   </div>
-  </div>
+
   </form>
 </div>
 <!-- End of Add Project Form -->
@@ -125,19 +191,43 @@
 <div id="editProjectForm" *ngIf="editProject">
 <form>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label for="inputName">Name of Project: </label>
-      <input type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="editProject.name">
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Name of Project"
+        [(ngModel)]="editProject.name"
+      />
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputDescription">Desciption</label>
-      <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="editProject.description">
+    <div>
+      <label for="inputDescription">Description:</label>
+      <textarea class="form-control" rows="5" id="inputDescription"  name="description"
+      placeholder="Description"
+      [(ngModel)]="editProject.description"></textarea>
+      <!-- <input
+        type="textarea"
+        class="form-control"
+         rows="5"
+         id="inputDescription"
+        name="description"
+        placeholder="Description"
+        [(ngModel)]="editProject.description"
+      /> -->
+
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputImage">Image</label>
-      <input type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="editProject.imagePrimary">
+      <label for="inputImage">Image:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="imagePrimary"
+        placeholder="Image"
+        [(ngModel)]="editProject.imagePrimary"
+      />
     </div>
   </div>
   <div class="form-row">
@@ -151,9 +241,11 @@
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="editProject.projectedDate">
     </div>
     <div >
-      <div *ngFor="let skill of skillList">
-      <label>{{ skill.name }}</label>
+      <h6>Required Skill: </h6>
+      <div class = "checkbox" *ngFor="let skill of skillList">
+      <!-- <label>{{ skill.name }}</label> -->
       <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
+      <label class = "skillname">{{ skill.name }}</label>
       <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
       </div>
     </div>

@@ -6,14 +6,15 @@ import { SkillService } from 'src/app/services/skill.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { User } from 'src/app/models/user';
+import { Comment } from 'src/app/models/comment';
 
+import { CommentService } from 'src/app/services/comment.service';
 @Component({
   selector: 'app-projects-all',
   templateUrl: './projects-all.component.html',
-  styleUrls: ['./projects-all.component.css']
+  styleUrls: ['./projects-all.component.css'],
 })
 export class ProjectsAllComponent {
-
   title = 'ngSkillSwap';
 
   projects: Project[] = [];
@@ -24,17 +25,31 @@ export class ProjectsAllComponent {
 
   projectsToBeDeleted: Project[] = [];
 
+  comments: Comment[] = [];
+  newComment: Comment = new Comment();
   loggedInUser: User = new User();
 
   skills: Skill[] = [];
 
-  constructor(private projectService: ProjectService, private authService: AuthService, private route: ActivatedRoute, private router: Router, private skillService: SkillService,) { }
+  skillList: Skill[] = [];
+
+  projectCreated = false;
+  addProjectMod: Project | null = null;
+
+  constructor(
+    private commentService: CommentService,
+    private projectService: ProjectService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private skillService: SkillService
+  ) {}
 
   ngOnInit() {
     this.reload();
     let idString = this.route.snapshot.paramMap.get('id');
     console.log('project ID' + idString);
-    if(idString) {
+    if (idString) {
       // let projectId = Number(idString);
       // let projectId = Number.parseInt(idString);
       let projectId = +idString;
@@ -46,10 +61,10 @@ export class ProjectsAllComponent {
           error: (fail) => {
             console.log(fail);
             this.router.navigateByUrl('projectNotFound');
-          }
+          },
         });
       } else {
-        this.router.navigateByUrl('invalidProjectId')
+        this.router.navigateByUrl('invalidProjectId');
       }
     }
 
@@ -59,15 +74,14 @@ export class ProjectsAllComponent {
       next: (user) => {
         this.loggedInUser = user;
         console.log(user);
-
       },
       error: (error) => {
         console.log('Error getting loggedInUser Profile Component');
         console.log(error);
       },
     });
-   }
-   // RELOAD METHOD MIGHT NEED SOME TINKERING
+  }
+  // RELOAD METHOD MIGHT NEED SOME TINKERING
   reload() {
     this.projectService.indexAll().subscribe({
       next: (projects) => {
@@ -76,15 +90,33 @@ export class ProjectsAllComponent {
       error: (err) => {
         console.error('Error loading projects list');
         console.error(err);
-      }
+      },
     });
   }
   // ...
   displayProject(project: Project) {
     this.selected = project;
+   // console.log('calling displayProject');
+     console.log(project.id);
+     console.log(this.selected.id)
+    this.getComments(this.selected.id);
+  }
+  // ...
+
+  getComments(id: number){
+    this.commentService.projectCommentIndex(id).subscribe({
+      next: (comments) => {
+this.comments = comments;
+                },
+      error: (err) => {
+        console.error('Error loading project comments');
+        console.error(err);
+      },
+    });
   }
 
-  // ...
+
+
   displayTable() {
     this.selected = null;
   }
@@ -102,11 +134,26 @@ export class ProjectsAllComponent {
         this.reload();
       },
       error: (nojoy) => {
-        console.error('ProjectListComponent.addProject: error creating project');
+        console.error(
+          'ProjectListComponent.addProject: error creating project'
+        );
         console.error(nojoy);
-      }
+      },
     });
     this.newProject = new Project();
+  }
+
+  skillUpdate(skillId: number, projectId: number) {
+    this.projectService.updateSkill(skillId, projectId).subscribe({
+      next: (data) => {
+        this.newProject = data;
+      },
+
+      error: (nojoy) => {
+        console.error('ProjectComponent.skillUpdate: Error updating skills');
+        console.error(nojoy);
+      },
+    });
   }
 
   editProject: Project | null = null;
@@ -117,7 +164,7 @@ export class ProjectsAllComponent {
   updateProject(project: Project, goToDetail = true): void {
     this.projectService.update(project).subscribe({
       next: (updatedProject) => {
-        if(goToDetail) {
+        if (goToDetail) {
           this.selected = updatedProject;
         } else {
           this.selected = null;
@@ -126,10 +173,12 @@ export class ProjectsAllComponent {
         this.reload();
       },
       error: (toobad) => {
-        console.error('ProjectListComponent.updateProject: error updating project');
+        console.error(
+          'ProjectListComponent.updateProject: error updating project'
+        );
         console.error(toobad);
-      }
-    })
+      },
+    });
   }
 
   deleteProject(project: Project): void {
@@ -141,14 +190,16 @@ export class ProjectsAllComponent {
         this.reload();
       },
       error: (fail) => {
-        console.error('ProjectListComponent.deleteProject: error deleting project');
-      }
+        console.error(
+          'ProjectListComponent.deleteProject: error deleting project'
+        );
+      },
     });
   }
 
   addProjectToDelete(project: Project) {
-    for(let i = 0; i < this.projectsToBeDeleted.length; i++) {
-      if(project.id === this.projectsToBeDeleted[i].id) {
+    for (let i = 0; i < this.projectsToBeDeleted.length; i++) {
+      if (project.id === this.projectsToBeDeleted[i].id) {
         this.projectsToBeDeleted.splice(i, 1);
         return;
       }
@@ -156,15 +207,12 @@ export class ProjectsAllComponent {
     this.projectsToBeDeleted.push(project);
     console.log(project);
     console.log(this.projectsToBeDeleted);
-
-
   }
 
   deleteProjects(): void {
-    for(let i = 0; i < this.projectsToBeDeleted.length; i++) {
+    for (let i = 0; i < this.projectsToBeDeleted.length; i++) {
       let project = this.projectsToBeDeleted[i];
       this.deleteProject(project);
     }
   }
-
 }

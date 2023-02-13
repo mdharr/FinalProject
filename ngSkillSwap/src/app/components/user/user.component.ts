@@ -3,7 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Project } from 'src/app/models/project';
 import { User } from 'src/app/models/user';
+import { Comment } from 'src/app/models/comment';
+
 import { AuthService } from 'src/app/services/auth.service';
+import { CommentService } from 'src/app/services/comment.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { UserService } from 'src/app/services/user.service';
 import { environment } from 'src/environments/environment';
@@ -21,6 +24,7 @@ export class UserComponent implements OnInit {
   newUser: User = new User();
   editUser: User | null = null;
   user: User | null = null;
+  comments: Comment[] = [];
 
   constructor(
     private userService: UserService,
@@ -28,7 +32,8 @@ export class UserComponent implements OnInit {
     private http: HttpClient,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private commentService: CommentService
   ) {}
 
   ngOnInit(): void {
@@ -92,6 +97,18 @@ export class UserComponent implements OnInit {
       error: (error) => {
         console.log('Error getting loggedInUser Profile Component');
         console.log(error);
+      },
+    });
+  }
+
+  getCommentsForUser() {
+    this.commentService.userCommentIndex(this.selected!.id).subscribe({
+      next: (comments) => {
+        this.comments = comments;
+      },
+      error: (err) => {
+        console.error(err);
+        console.error('error retrieving comments for user');
       },
     });
   }

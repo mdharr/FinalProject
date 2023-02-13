@@ -50,7 +50,7 @@
           <td>
             <!-- <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
+            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important" (click)="displayProject(project)"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
           </td>
         </tr>
       </tbody>
@@ -83,7 +83,17 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <h1>COMMENTS</h1>
+      <p *ngFor="let comment of comments">
+        {{comment.comment }} <br>
+      </p>
+        <p *ngIf="comments.length <= 0">
+          <strong>No comments found!</strong>
+      </p>
+    </div>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
+
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Join</button>
@@ -102,9 +112,10 @@
   <button class="btn btn-primary" (click)="updateProject(editProject)">Save</button>
   <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
 </div>
+
 <div id="createProjectFormParent">
   <h4>Create <span style="color:#F5BF74;">Project</span></h4>
-<div id="createProjectForm" *ngIf="createProject" class="box">
+  <div id="createProjectForm" *ngIf="createProject" class="box">
   <form>
   <label class="form-label" for="task">Name</label>
   <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
@@ -112,9 +123,47 @@
   <input class="form-control" type="text" name="addProject.description" [(ngModel)]="newProject.description" required><br>
   <label for="imageUrl">Image URL</label><br>
   <input class="form-control" type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
-    <br>
+  <label class="form-label" for="startDate">Start Date</label>
+ <input class="form-control" type="date" name= "addProject.startDate" [(ngModel)]="newProject.startDate" required>
+ <label class="form-label" for="projectedDate">Projected Completion Date</label>
+ <input class="form-control" type="date" name= "addProject.projectedDate" [(ngModel)]="newProject.projectedDate" required>
+  <br>
   <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button>
   <button class="btn btn-danger" (click)="createProject = false">Back</button>
 </form>
 </div>
 </div>
+
+
+<!-- Info about selected project -->
+<!-- <div class="container" *ngIf="selected">
+  <table class="content-table">
+    <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date Posted</th>
+        <th>Start Date</th>
+        <th>Projected Completion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img class="zoom" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
+        <td>{{ selected.name }}</td>
+        <td>{{ selected.description }}</td>
+        <td>{{ selected.datePosted | date : "shortDate"}}</td>
+        <td>{{ selected.startDate | date : "shortDate"}}</td>
+        <td>{{ selected.projectedDate | date : "shortDate"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-alt" (click)="setEditProject()">Edit</button>
+  <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
+</div> -->
+<!-- End of information about a selected project -->
+<br />
+
+<button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>

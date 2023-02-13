@@ -1,1 +1,62 @@
-<p>comments works!</p>
+<div class="container-sm-lg">
+  <div class="row bootstrap snippets bootdeys">
+    <div class="flexbox-md">
+      <div class="comment-wrapper">
+        <div class="panel panel-info">
+          <div class="panel-heading">Comment panel</div>
+          <div class="panel-body">
+            <textarea
+              class="form-control"
+              placeholder="write a comment..."
+              rows="3"
+            ></textarea>
+            <br />
+            <button type="button" class="btn btn-info pull-right">Post</button>
+            <div class="clearfix"></div>
+            <hr />
+
+            <!-- Create ngIf statement to add html for comments on Projects -->
+            <ul class="media-list" *ngFor="let comment of projectComments">
+              <li class="media">
+                <a href="#" class="pull-left">
+                  <img src="" alt="" class="img-circle" />
+                </a>
+                <div class="media-body">
+                  <span class="text-muted pull-right">
+                    <small class="text-muted">30 min ago</small>
+                  </span>
+                  <strong class="text-success">{{ userId.username }}</strong>
+                  <p>
+                    {{ comment }}
+                  </p>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Create ngIf statement to add html for comments on User -->
+            <ul
+              class="media-list"
+              ngIf="selected = user"
+              *ngFor="let comment of userComments"
+            >
+              <li class="media">
+                <a href="#" class="pull-left">
+                  <img src="" alt="" class="img-circle" />
+                </a>
+                <div class="media-body">
+                  <span class="text-muted pull-right">
+                    <small class="text-muted">30 min ago</small>
+                  </span>
+                  <strong class="text-success">{{ userId.username }}</strong>
+                  <p>
+                    {{ comment }}
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

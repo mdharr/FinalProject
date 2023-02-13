@@ -5,6 +5,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { Project } from '../models/project';
+import { Comment } from '../models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ private otherUrl = environment.baseUrl;
   }
   //all projects
   indexAll(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.url, this.getHttpOptions()).pipe(
+    return this.http.get<Project[]>(this.url).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
