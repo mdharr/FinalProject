@@ -28,8 +28,8 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let project of projects">
+      <tbody *ngFor="let project of projects">
+        <tr *ngIf="project.enabled">
           <td>
             <span class="custom-checkbox">
               <input type="checkbox" id="checkbox1" name="options[]" value="1" (change)="addProjectToDelete(project)">
