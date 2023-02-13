@@ -231,7 +231,7 @@
         </div>
 
         <div class="resume-section-content"  *ngIf="!loggedInUser.profileImage">
-            <h1 class="mb-0">Click here to complete your profile!</h1>
+            <h1 class="mb-0"><a class="nav-link" (click)="open(myprofilemodal)">Click here to complete your profile!</a></h1>
         </div>
       </section>
 
@@ -344,3 +344,84 @@
   </div>
 </div>
 </div>
+
+<ng-template #myprofilemodal let-modal>
+  <div>
+  <div class="modal-header" style="background-color: #F5BF74;">
+    <h4 style="color: black" class="modal-title" id="modal-basic-title">Update Profile</h4>
+    <button type="button" class="close btn btn-danger zoom" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">x</span>
+    </button>
+  </div>
+  <div class="modal-body" style="background-color: #08243B;">
+    <form style="align-items: center;">
+      <h1 class="a11y-hidden">Login Form</h1>
+      <div>
+        <label class="label-email">
+          <input type="email" class="text" name="email" [(ngModel)]="loggedInUser.email" placeholder="Email" tabindex="1" required/>
+          <span class="required">Email</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-email">
+          <input type="text" class="text" name="firstName" [(ngModel)]="loggedInUser.firstName" placeholder="first name" tabindex="1" required />
+          <span class="required">First Name</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-email">
+          <input type="text" class="text" name="lastName" [(ngModel)]="loggedInUser.lastName" placeholder="last name" tabindex="1" required />
+          <span class="required">Last Name</span>
+        </label>
+      </div>
+      <div *ngIf="loggedInUser.address">
+        <label class="label-email">
+          <input type="text" class="text" name="street" [(ngModel)]="loggedInUser.address.street" placeholder="street" tabindex="1" required />
+          <span class="required">Street</span>
+        </label>
+      </div>
+      <div *ngIf="loggedInUser.address">
+        <label class="label-email">
+          <input type="text" class="text" name="city" [(ngModel)]="loggedInUser.address.city" placeholder="city" tabindex="1" required />
+          <span class="required">City</span>
+        </label>
+      </div>
+      <div *ngIf="loggedInUser.address">
+        <label class="label-email">
+          <input type="text" class="text" name="state" [(ngModel)]="loggedInUser.address.state" placeholder="state" tabindex="1"/>
+          <span class="required">State</span>
+        </label>
+      </div>
+      <div *ngIf="loggedInUser.address">
+        <label class="label-email">
+          <input type="text" class="text" name="zip" [(ngModel)]="loggedInUser.address.zip" placeholder="zip code" tabindex="1" required />
+          <span class="required">Zip</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-email">
+          <input type="text" class="text" name="profileImage" [(ngModel)]="loggedInUser.profileImage" placeholder="image url" tabindex="1" required />
+          <span class="required">Profile Picture</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-email">
+          <input type="text" class="text" name="bio" [(ngModel)]="loggedInUser.bio" placeholder="bio" tabindex="1" required />
+          <span class="required">Bio</span>
+        </label>
+      </div>
+      <div>
+        <label class="label-email">
+          <input type="text" class="text" name="userSkills" [(ngModel)]="loggedInUser.userSkills" placeholder="skills" tabindex="1" required />
+          <span class="required">Skills</span>
+        </label>
+      </div>
+
+      <input class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
+    </form>
+  </div>
+  <div class="modal-footer" style="background-color: #F5BF74;">
+    <button type="button" class="btn btn-danger zoom" (click)="modal.close('Save click')">Cancel</button>
+  </div>
+</div>
+</ng-template>
