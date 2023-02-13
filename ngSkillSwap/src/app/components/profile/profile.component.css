@@ -96,7 +96,7 @@
 hr {
   margin: 1rem 0;
   color: inherit;
-  background-color: currentColor;
+  background-color: crimson;
   border: 0;
   opacity: 0.25;
 }
@@ -11388,28 +11388,6 @@ p.lead {
     display: block;
   }
 }
-.social-icons .social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: #495057;
-  color: #fff;
-  border-radius: 100%;
-  font-size: 1.5rem;
-  margin-right: 1.5rem;
-}
-.social-icons .social-icon:last-child {
-  margin-right: 0;
-}
-.social-icons .social-icon:hover {
-  background-color: #bd5d38;
-}
-
-.dev-icons {
-  font-size: 3rem;
-}
 
 section.resume-section {
   display: flex;
@@ -11419,6 +11397,7 @@ section.resume-section {
   padding-top: 5rem;
   padding-bottom: 5rem;
   max-width: 75rem;
+  background-color: lightgrey;
 }
 section.resume-section .resume-section-content {
   width: 100%;
@@ -11431,8 +11410,8 @@ section.resume-section .resume-section-content {
 }
 @media (min-width: 992px) {
   section.resume-section {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
@@ -11449,8 +11428,34 @@ section.resume-section .resume-section-content {
 }
 
 section {
-  position: relative;
+  /* position: relative; */
   left: 100px;
+}
+
+.dashed {
+  --b: 3px;  /* border thickness */
+  --s: 50px; /* size of the dashes */
+  --c1: #08243B;
+  --c2: #FEFEFE;
+
+  width: 250px;
+  aspect-ratio: 1;
+  position: relative;
+}
+.dashed::before {
+  content:"";
+  position: absolute;
+  inset: 0;
+  padding: var(--b);
+  background:
+    repeating-conic-gradient(var(--c1) 0 25%,var(--c2) 0 50%)
+    0 0/var(--s) var(--s) round;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* h1 {
@@ -11755,5 +11760,19 @@ nav ul li div { position: relative; }
 	border-style: solid;
 	border-width: 0 16px 9px 16px;
 	border-color: transparent transparent white transparent;
+}
+
+#profileHeader {
+  font-size: 50px;
+  font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FEFEFE;
+  margin-top: 15px;
+  margin-bottom: -64px;
+  text-transform: none !important;
+}
+
+#titleDiv {
+  display: flex;
+  justify-content: center;
 }
 

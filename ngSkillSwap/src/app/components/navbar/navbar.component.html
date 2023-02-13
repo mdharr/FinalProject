@@ -39,34 +39,34 @@
 
 <ng-template #mymodal let-modal>
   <div *ngIf="!loggedIn()">
-  <div class="modal-header">
+  <div class="modal-header" style="background-color: #F5BF74;">
     <h4 style="color: black" class="modal-title" id="modal-basic-title">Login</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">X</span>
+    <button type="button" class="close btn btn-danger zoom" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">x</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" style="background-color: #08243B;">
     <app-login></app-login>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  <div class="modal-footer" style="background-color: #F5BF74;">
+    <button type="button" class="btn btn-danger zoom" (click)="modal.close('Save click')">Cancel</button>
   </div>
 </div>
 </ng-template>
 
 <ng-template #myregistermodal let-modal>
   <div *ngIf="!loggedIn()">
-  <div class="modal-header">
+  <div class="modal-header" style="background-color: #F5BF74;">
     <h4 style="color: black" class="modal-title" id="modal-basic-title">Register</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">X</span>
+    <button type="button" class="close btn btn-danger zoom" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">x</span>
     </button>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" style="background-color: #08243B;">
     <app-register></app-register>
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+  <div class="modal-footer" style="background-color: #F5BF74;">
+    <button type="button" class="btn btn-danger zoom" (click)="modal.close('Save click')">Cancel</button>
   </div>
 </div>
 </ng-template>

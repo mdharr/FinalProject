@@ -10,8 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
+  projects: Project[] = [];
+
 constructor(private auth: AuthService, private homeServ: HomeService){}
- projects: Project[] = [];
 
 ngOnInit(){
 // this.testTestDeleteLater();

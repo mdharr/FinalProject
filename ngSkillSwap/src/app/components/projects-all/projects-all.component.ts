@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from 'src/app/models/project';
+import { Skill } from 'src/app/models/skill';
+import { SkillService } from 'src/app/services/skill.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-projects-all',
@@ -20,7 +24,11 @@ export class ProjectsAllComponent {
 
   projectsToBeDeleted: Project[] = [];
 
-  constructor(private projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
+  loggedInUser: User = new User();
+
+  skills: Skill[] = [];
+
+  constructor(private projectService: ProjectService, private authService: AuthService, private route: ActivatedRoute, private router: Router, private skillService: SkillService,) { }
 
   ngOnInit() {
     this.reload();
@@ -46,6 +54,18 @@ export class ProjectsAllComponent {
     }
 
     this.reload();
+
+    this.authService.getLoggedInUser().subscribe({
+      next: (user) => {
+        this.loggedInUser = user;
+        console.log(user);
+
+      },
+      error: (error) => {
+        console.log('Error getting loggedInUser Profile Component');
+        console.log(error);
+      },
+    });
    }
    // RELOAD METHOD MIGHT NEED SOME TINKERING
   reload() {

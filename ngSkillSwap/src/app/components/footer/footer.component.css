@@ -1,9 +1,10 @@
 .footer {
-  position: fixed;
   left: 0;
+  margin-left: 0px;
+  margin-bottom: 0px;
   bottom: 0;
   width: 100%;
-  background-color: hsl(212deg 11% 58%);
+  background-color: #F5BF74;
   color: white;
   text-align: center;
   display: flex;
@@ -20,5 +21,5 @@ a {
 
 a:hover {
   text-decoration: none;
-  color: white;
+  color: crimson;
 }
