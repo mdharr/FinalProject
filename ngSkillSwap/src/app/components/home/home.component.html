@@ -1,7 +1,37 @@
-<div class="container">
+<div id="mainDiv" class="container">
 <div id="titleContainer">
-<h1>SkillSwap</h1>
+<h1>Skill<span style="color: #F5BF74;">Swap</span></h1>
 </div>
+
+<!-- Carousel Michael -->
+
+
+<!-- <div class="container" style="display: flex;">
+  <div class="marquee" *ngFor="let project of projects">
+    <img class="img1" src="{{project.imagePrimary}}">
+    </div>
+  </div> -->
+
+<div style="width: 100%; background-color: aliceblue; border-left: 5px solid #F5BF74; border-right: 5px solid #F5BF74; border-top: 5px solid #F5BF74; border-bottom: 5px solid #F5BF74; padding-bottom: 70px; justify-content: center; border-radius: 15px;">
+<div class="image-scroller container" style="height: 100px; margin-top: 100px;">
+  <div class="scroller-left" *ngFor="let project of projects">
+    <div class="look">
+      <img src="{{project.imagePrimary}}"/>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="blockquoteDiv" style="margin-top: 100px">
+  <blockquote>
+    We created Skill Swap for people wanting to connect with others to educate and assist with the projects
+  that they want to do. Whether that be cooking, wood working, or electrical work we have the resources to help
+  you get started.
+  <cite>Cinnamon Swan</cite>
+</blockquote>
+</div>
+
+
 <!-- <div>
   Have you ever done a DIY project and halfway through thought that you could use some help? <br>
   Have you ever wanted to do a DIY project and decided not to because you didn't know where to start?<br>
@@ -12,11 +42,11 @@
   you get started.<br>
   If you are an expert, master, or novice we invite you to join our network and help swap skills!
   </div> -->
-<div *ngFor="let project of projects">
+<!-- <div *ngFor="let project of projects"> -->
 <!-- {{project.name}}
 <img src="{{project.imagePrimary}}" alt=""> -->
-</div>
-<br>
+<!-- </div> -->
+<!-- <br>
 <br>
 <div id="carouselDiv">
 <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
@@ -53,7 +83,7 @@
       <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
     </div>
   </mdb-carousel-item>
-</mdb-carousel>
-</div>
+</mdb-carousel> -->
+<!-- </div> -->
 <div id="spaceDiv"></div>
 </div>
