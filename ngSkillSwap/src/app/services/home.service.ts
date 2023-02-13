@@ -21,7 +21,7 @@ export class HomeService {
     return options;
   }
   index(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.url, this.getHttpOptions()).pipe(
+    return this.http.get<Project[]>(this.url).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
