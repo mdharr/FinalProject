@@ -38,9 +38,9 @@ export class ProjectComponent implements OnInit {
       console.log('userId: ' + idString);
       let userId = Number(idString);
       if (!isNaN(userId)) {
-        this.projectService.show(userId).subscribe({
+        this.projectService.projectsForUser().subscribe({
           next: (project) => {
-            this.selected = project;
+          //  this.selected = project;
             this.router.navigateByUrl('/project');
           },
           error: (fail) => {
