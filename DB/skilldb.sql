@@ -301,10 +301,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (5, 'leo', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Leonardo', 'Hamato', 1, 'leo@tnmt.com', 1, 'Happy go lucky electrician ', 'https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:kids-assets:/nick/properties/teenage-mutant-ninja-turtles/characters/leonardo-character-web-desktop.png?height=0&width=480&matte=true&crop=false', '2022-01-01', '2022-02-01', NULL, 1);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (2, 'mic', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Michelangelo', 'Hamato', 1, 'mic@tnmt.com', 1, 'I know lots of things', 'https://static.wikia.nocookie.net/tmnt2012series/images/8/88/2012_Michelangelo_clean_character_image.png/revision/latest?cb=20130809041043', NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (3, 'don', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Donatello', 'Hamato', 1, 'don@tnmt.com', 1, 'Looking for some comedy practice', 'https://static.wikia.nocookie.net/tmnt2012series/images/d/d6/Donnyboy.png/revision/latest?cb=20170428224932', NULL, NULL, NULL, NULL);
-INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (4, 'rap', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Raphael', 'Hamato', 1, 'rap@tnmt.com', 1, 'Happy to exchange workout tips for bread recipes', 'https://static.wikia.nocookie.net/tmnt2012series/images/6/63/Raph-rage.png/revision/latest?cb=20170428232825', NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (5, 'leo', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Leonardo', 'Hamato', 1, 'leo@tnmt.com', 1, 'Happy go lucky electrician ', 'https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:kids-assets:/nick/properties/teenage-mutant-ninja-turtles/characters/leonardo-character-web-desktop.png?height=0&width=480&matte=true&crop=false', '2023-01-01', '2023-01-01', NULL, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (2, 'mic', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Michelangelo', 'Hamato', 1, 'mic@tnmt.com', 1, 'Art, literature, language', 'https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:kids-assets:/nick/properties/teenage-mutant-ninja-turtles/characters/michelangelo-character-web-desktop.png?height=0&width=480&matte=true&crop=false', '2023-01-01', '2023-01-01', NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (3, 'don', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Donatello', 'Hamato', 1, 'don@tnmt.com', 1, 'Tech wiz and general genius. Responsible for most technology and machinery. ', 'https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:kids-assets:/nick/properties/teenage-mutant-ninja-turtles/characters/donatello-character-web-desktop.png?height=0&width=480&matte=true&crop=false', '2023-01-01', '2023-01-01', NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (4, 'rap', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'Raphael', 'Hamato', 1, 'rap@tnmt.com', 1, 'Happy to exchange workout tips for bread recipes', 'https://nick-intl.mtvnimages.com/uri/mgid:file:gsp:kids-assets:/nick/properties/teenage-mutant-ninja-turtles/characters/raphael-character-web-desktop.png?height=0&width=480&matte=true&crop=false', '2023-01-01', '2023-01-01', NULL, NULL);
 INSERT INTO `user` (`id`, `username`, `password`, `first_name`, `last_name`, `availability`, `email`, `enabled`, `bio`, `profile_image`, `created_date`, `last_active`, `role`, `address_id`) VALUES (1, 'admin', '$2a$10$4SMKDcs9jT18dbFxqtIqDeLEynC7MUrCEUbv1a/bhO.x9an9WGPvm', 'admin', 'admin', 1, 'admin@admin.com', 1, 'admin', NULL, '2023-02-07', '2023-02-07', 'ADMIN', 1);
 
 COMMIT;
@@ -315,17 +315,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (1, 'woodworking', 'basic power tool uses, sanding, painting', 'https://www.familyhandyman.com/wp-content/uploads/2022/02/10-Woodworking-Portable-Power-Tools-e1645736309828.jpg');
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (2, 'cooking', 'whip up a delightful pastry ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (3, 'computing', 'JAVA, OOP expert', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (4 , 'electrician', 'can walk you through basic electric installs ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (5, 'sewing', 'Repair and darn back to new', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (6, 'painting', 'Expert interior and exterior painter', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (7, 'dog training', 'Training basics', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (8, 'home construction', 'home building from foundation to roof', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (9, 'mechanic', 'Fix cars, trucks, and RVs', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (10, 'gardening', 'homesteading officianado ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (11, 'tutoring', NULL, NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Woodworking', 'basic power tool uses, sanding, painting', 'https://www.familyhandyman.com/wp-content/uploads/2022/02/10-Woodworking-Portable-Power-Tools-e1645736309828.jpg');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (2, 'Cooking', 'whip up a delightful pastry ', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (3, 'Computing', 'JAVA, OOP expert', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (4 , 'Electrician', 'can walk you through basic electric installs ', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Sewing', 'Repair and darn back to new', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Painting', 'Expert interior and exterior painter', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (7, 'Dog training', 'Training basics', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (8, 'Home construction', 'home building from foundation to roof', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (9, 'Mechanic', 'Fix cars, trucks, and RVs', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (10, 'Gardening', 'homesteading officianado ', NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (11, 'Tutoring', NULL, NULL);
 
 COMMIT;
 
@@ -391,6 +391,11 @@ COMMIT;
 START TRANSACTION;
 USE `skilldb`;
 INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (1, 1, 1, 'this is a description');
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (2, 2, NULL, NULL);
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (3, 3, NULL, NULL);
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (4, 7, NULL, NULL);
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (5, 8, NULL, NULL);
+INSERT INTO `user_skill` (`user_id`, `skill_id`, `experience_level_id`, `description`) VALUES (2, 5, NULL, NULL);
 
 COMMIT;
 
