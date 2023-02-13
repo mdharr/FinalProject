@@ -12170,7 +12170,8 @@ figure .shirt-2 {
 }
 
 #updateProfileBtn {
-  background-color: green !important;
+  background-color: #08243B !important;
+  border: 1px solid white;
   color: white !important;
   font-size: 12px;
   transition: transform .2s;
@@ -12180,6 +12181,8 @@ figure .shirt-2 {
 
 #updateProfileBtn:hover {
   transform: scale(1.05);
-  color: white !important;
+  background-color: #FEFEFE !important;
+  color: #330000 !important;
+  border: 1px solid #330000;
 }
 
