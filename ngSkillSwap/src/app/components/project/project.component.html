@@ -1,29 +1,47 @@
 <div *ngIf="displayTable" id="titleContainer">
-  <h1>My <span style="color: #F5BF74;">Projects</span></h1>
+  <h1>My <span style="color: #f5bf74">Projects</span></h1>
 </div>
 <!-- Michael's Experiment w/ Cards for Projects -->
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
-  <div id="cardDiv" class="card zoom" style="width: 18rem;" *ngFor="let project of projectList" (click)="displayProject(project)">
-    <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-text">{{project.name}}</h5>
-      <p class="card-text">{{project.description}}</p>
+  <div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
+    <div
+      id="cardDiv"
+      class="card zoom"
+      style="width: 18rem"
+      *ngFor="let project of projectList"
+      (click)="displayProject(project)"
+    >
+      <img
+        class="card-img-top"
+        src="{{ project.imagePrimary }}"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-text">{{ project.name }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
-  <div id="cardDiv" class="card zoom" style="width: 18rem;">
-    <img class="card-img-top" src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif" alt="Not found">
-    <div class="card-body">
-      <h5 class="card-text">No projects found</h5>
-      <p class="card-text">Visit the project board to create a new project!</p>
+  <a class="nav-link" [routerLink]="['/projects-all']">
+    <div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
+      <div id="cardDiv" class="card zoom" style="width: 18rem">
+        <img
+          class="card-img-top"
+          src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif"
+          alt="Not found"
+        />
+        <div class="card-body">
+          <h5 class="card-text">No projects found</h5>
+          <p class="card-text">
+            Visit the project board to create a new project!
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+  </a>
 </div>
 
 <!-- Teasers -->
@@ -58,7 +76,10 @@
 
 <div class="container" *ngIf="selected">
   <table class="content-table">
-    <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
+    <caption>
+      Project
+      <span style="color: #f5bf74">Summary</span>
+    </caption>
     <thead>
       <tr>
         <th>Image</th>
@@ -70,86 +91,131 @@
       </tr>
     </thead>
     <tbody>
-      <tr class = "selectedProjectTable" style="height: auto">
-        <td><img class="zoom" id="projectImg" style="width: 150px;" src="{{ selected.imagePrimary }}"></td>
+      <tr class="selectedProjectTable" style="height: auto">
+        <td>
+          <img
+            class="zoom"
+            id="projectImg"
+            style="width: 150px"
+            src="{{ selected.imagePrimary }}"
+          />
+        </td>
         <td>{{ selected.name }}</td>
         <td>{{ selected.description }}</td>
 
-        <td>{{ selected.startDate | date : "shortDate"}}</td>
-        <td>{{ selected.projectedDate | date : "shortDate"}}</td>
+        <td>{{ selected.startDate | date : "shortDate" }}</td>
+        <td>{{ selected.projectedDate | date : "shortDate" }}</td>
       </tr>
     </tbody>
   </table>
   <button class="btn btn-alt" (click)="setEditProject()">Edit</button>
-  <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
+  <button class="btn btn-alt" (click)="displayTable(); editProject = null">
+    Back
+  </button>
 </div>
 <!-- End of information about a selected project -->
 
 <br />
 
-<button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>
+<button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">
+  Add a project!
+</button>
 <!-- Add Project Form -->
 <div id="addProjectForm">
-<form  *ngIf="addProjectMod">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputName">Name of Project: </label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="name"
-        placeholder="Name of Project"
-        [(ngModel)]="project.name"
-      />
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputDescription">Description</label>
-      <input required type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputImage">Image</label>
-      <input
-        required
-        type="text"
-        class="form-control"
-        name="imagePrimary"
-        placeholder="Image"
-        [(ngModel)]="project.imagePrimary"
-      />
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputStartDate">Projected Start Date:</label>
-      <input
-        required
-        type="date"
-        class="form-control"
-        name="startDate"
-        placeholder="Projected Start Date"
-        [(ngModel)]="project.startDate"
-      />
+  <form *ngIf="addProjectMod">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputName">Name of Project: </label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Name of Project"
+          [(ngModel)]="project.name"
+        />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputDescription">Description</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          name="description"
+          placeholder="Description"
+          [(ngModel)]="project.description"
+        />
+      </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputProjectedEndDate">Projected Completion Date:</label>
+        <label for="inputImage">Image</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          name="imagePrimary"
+          placeholder="Image"
+          [(ngModel)]="project.imagePrimary"
+        />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputStartDate">Projected Start Date:</label>
         <input
           required
           type="date"
           class="form-control"
-          name="projectedDate"
-          placeholder="Projected Completion Date"
-          [(ngModel)]="project.projectedDate"
+          name="startDate"
+          placeholder="Projected Start Date"
+          [(ngModel)]="project.startDate"
         />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputProjectedEndDate">Projected Completion Date:</label>
+          <input
+            required
+            type="date"
+            class="form-control"
+            name="projectedDate"
+            placeholder="Projected Completion Date"
+            [(ngModel)]="project.projectedDate"
+          />
+        </div>
+        <div *ngIf="projectCreated">
+          <div *ngFor="let skill of skillList">
+            <label>{{ skill.name }}</label>
+            <input
+              required(change)="skillUpdate(skill.id, project.id)"
+              type="checkbox"
+            />
+          </div>
+        </div>
+        <button
+          *ngIf="projectCreated"
+          type="submit"
+          class="btn btn-primary"
+          (click)="reload()"
+        >
+          Submit
+        </button>
+        <button
+          *ngIf="!projectCreated"
+          type="submit"
+          class="btn btn-primary"
+          (click)="addProject(project)"
+        >
+          Submit
+        </button>
       </div>
       <div *ngIf="projectCreated">
         <div *ngFor="let skill of skillList">
           <label>{{ skill.name }}</label>
           <input
-            required(change)="skillUpdate(skill.id, project.id)"
+            required
+            (change)="skillUpdate(skill.id, project.id)"
             type="checkbox"
           />
         </div>
@@ -171,16 +237,6 @@
         Submit
       </button>
     </div>
-<div *ngIf="projectCreated" >
-  <div *ngFor="let skill of skillList">
-<label>{{ skill.name }}</label>
-  <input required (change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
-</div>
-</div>
-<button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
-<button *ngIf="!projectCreated" type="submit" class="btn btn-primary" (click)="addProject(project)">Submit</button>
-  </div>
-
   </form>
 </div>
 <!-- End of Add Project Form -->
@@ -188,25 +244,30 @@
 <!-- Edit Project Form -->
 <!-- <h1>Edit Poject which will be hidden</h1> -->
 <div id="editFormParentDiv">
-<div id="editProjectForm" *ngIf="editProject">
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-12">
-      <label for="inputName">Name of Project: </label>
-      <input
-        type="text"
-        class="form-control"
-        name="name"
-        placeholder="Name of Project"
-        [(ngModel)]="editProject.name"
-      />
-    </div>
-    <div>
-      <label for="inputDescription">Description:</label>
-      <textarea class="form-control" rows="5" id="inputDescription"  name="description"
-      placeholder="Description"
-      [(ngModel)]="editProject.description"></textarea>
-      <!-- <input
+  <div id="editProjectForm" *ngIf="editProject">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="inputName">Name of Project: </label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            placeholder="Name of Project"
+            [(ngModel)]="editProject.name"
+          />
+        </div>
+        <div>
+          <label for="inputDescription">Description:</label>
+          <textarea
+            class="form-control"
+            rows="5"
+            id="inputDescription"
+            name="description"
+            placeholder="Description"
+            [(ngModel)]="editProject.description"
+          ></textarea>
+          <!-- <input
         type="textarea"
         class="form-control"
          rows="5"
@@ -215,52 +276,77 @@
         placeholder="Description"
         [(ngModel)]="editProject.description"
       /> -->
-
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputImage">Image:</label>
-      <input
-        type="text"
-        class="form-control"
-        name="imagePrimary"
-        placeholder="Image"
-        [(ngModel)]="editProject.imagePrimary"
-      />
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputStartDate">Projected Start Date:</label>
-      <input type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="editProject.startDate">
-    </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputProjectedEndDate">Projected Completion Date:</label>
-      <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="editProject.projectedDate">
-    </div>
-    <div >
-      <h6>Required Skill: </h6>
-      <div class = "checkbox" *ngFor="let skill of skillList">
-      <!-- <label>{{ skill.name }}</label> -->
-      <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
-      <label class = "skillname">{{ skill.name }}</label>
-      <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
+        </div>
       </div>
-    </div>
-  </div>
-    <button class="btn btn-success" (click)="updateProject(editProject)">Save</button>
-    <button class="btn btn-danger" (click)="editProject = null">Cancel</button>
-    <button type="button" class="btn btn-info"
-    (click)="archiveAction(project, project.id)">Project Completed!</button>
-  </div>
-  </form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputImage">Image:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="imagePrimary"
+            placeholder="Image"
+            [(ngModel)]="editProject.imagePrimary"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputStartDate">Projected Start Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            name="startDate"
+            placeholder="Projected Start Date"
+            [(ngModel)]="editProject.startDate"
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputProjectedEndDate"
+              >Projected Completion Date:</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              name="projectedDate"
+              placeholder="Projected Completion Date"
+              [(ngModel)]="editProject.projectedDate"
+            />
+          </div>
+          <div>
+            <h6>Required Skill:</h6>
+            <div class="checkbox" *ngFor="let skill of skillList">
+              <!-- <label>{{ skill.name }}</label> -->
+              <input
+                (change)="skillUpdate(skill.id, editProject.id)"
+                type="checkbox"
+                [checked]="checkSkill(skill)"
+              />
+              <label class="skillname">{{ skill.name }}</label>
+              <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="updateProject(editProject)">
+          Save
+        </button>
+        <button class="btn btn-danger" (click)="editProject = null">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          (click)="archiveAction(project, project.id)"
+        >
+          Project Completed!
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
-
-  <!-- <h4><em>Comments</em></h4>
+<!-- <h4><em>Comments</em></h4>
 	<div class="container">
 		<div ng-repeat="comment in vm.comments" class="card row">
 			<span class="commentcolTitle col-md-4">{{comment.name}}</span>
