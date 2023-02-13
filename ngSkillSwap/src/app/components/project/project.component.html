@@ -190,7 +190,7 @@
       />
     </div>
     <div>
-      <label for="inputDescription">Description</label>
+      <label for="inputDescription">Description:</label>
       <textarea class="form-control" rows="5" id="inputDescription"  name="description"
       placeholder="Description"
       [(ngModel)]="editProject.description"></textarea>
@@ -208,7 +208,7 @@
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputImage">Image</label>
+      <label for="inputImage">Image:</label>
       <input
         type="text"
         class="form-control"
@@ -229,10 +229,11 @@
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="editProject.projectedDate">
     </div>
     <div >
+      <h6>Required Skill: </h6>
       <div class = "checkbox" *ngFor="let skill of skillList">
       <!-- <label>{{ skill.name }}</label> -->
       <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
-      <label>{{ skill.name }}</label>
+      <label class = "skillname">{{ skill.name }}</label>
       <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
       </div>
     </div>
