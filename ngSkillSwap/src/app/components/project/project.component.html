@@ -64,17 +64,17 @@
         <th>Image</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Date Posted</th>
+
         <th>Start Date</th>
         <th>Projected Completion</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td><img class="zoom" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
+      <tr class = "selectedProjectTable" style="height: auto">
+        <td><img class="zoom" id="projectImg" style="width: 150px;" src="{{ selected.imagePrimary }}"></td>
         <td>{{ selected.name }}</td>
         <td>{{ selected.description }}</td>
-        <td>{{ selected.datePosted | date : "shortDate"}}</td>
+
         <td>{{ selected.startDate | date : "shortDate"}}</td>
         <td>{{ selected.projectedDate | date : "shortDate"}}</td>
       </tr>
@@ -201,20 +201,26 @@
         [(ngModel)]="editProject.name"
       />
     </div>
-    <div class="form-group col-md-12">
-      <label for="inputDescription">Description</label>
-      <input
-        type="text"
+    <div>
+      <label for="inputDescription">Description:</label>
+      <textarea class="form-control" rows="5" id="inputDescription"  name="description"
+      placeholder="Description"
+      [(ngModel)]="editProject.description"></textarea>
+      <!-- <input
+        type="textarea"
         class="form-control"
+         rows="5"
+         id="inputDescription"
         name="description"
         placeholder="Description"
         [(ngModel)]="editProject.description"
-      />
+      /> -->
+
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputImage">Image</label>
+      <label for="inputImage">Image:</label>
       <input
         type="text"
         class="form-control"
@@ -235,10 +241,11 @@
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="editProject.projectedDate">
     </div>
     <div >
+      <h6>Required Skill: </h6>
       <div class = "checkbox" *ngFor="let skill of skillList">
       <!-- <label>{{ skill.name }}</label> -->
       <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
-      <label>{{ skill.name }}</label>
+      <label class = "skillname">{{ skill.name }}</label>
       <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
       </div>
     </div>

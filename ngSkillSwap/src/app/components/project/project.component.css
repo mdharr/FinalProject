@@ -1,6 +1,8 @@
 .container {
   margin-left: auto;
   margin-right: auto;
+  justify-content: center;
+
 }
 
 
@@ -18,6 +20,12 @@
   justify-content: center;
 }
 
+.selectedProjectTable{
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .zoom {
 	transition: transform .2s;
 	margin: 0 auto;
@@ -57,6 +65,7 @@
 #editProjectForm {
   height: auto;
   display: flex;
+
   justify-content: center;
   background-color: #fff;
   border: 2px solid #F5BF74;
@@ -476,7 +485,12 @@ caption {
   position: left;
   border-radius: 5px;
   margin-right: 10px;
+  padding-right: 5px;
 
 
 
+}
+
+.skillname {
+  padding-left: 5px;
 }

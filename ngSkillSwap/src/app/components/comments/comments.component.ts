@@ -7,6 +7,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { UserService } from 'src/app/services/user.service';
 import { Project } from 'src/app/models/project';
+import { Comment } from 'src/app/models/comment';
 
 @Component({
   selector: 'app-comments',
@@ -50,6 +51,8 @@ export class CommentsComponent {
       console.error(darn);
     };
   }
+
+
 
   // deleteUser(id: number) {
   //   this.userService.destroy(id).subscribe({

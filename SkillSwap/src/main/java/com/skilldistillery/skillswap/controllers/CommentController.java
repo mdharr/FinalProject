@@ -1,6 +1,7 @@
 package com.skilldistillery.skillswap.controllers;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +35,8 @@ public class CommentController {
 	private CommentService commentService;
 	
 	@GetMapping("projects/{pid}/comments")
-	public Set<Comment> index(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("pid") int projectId) {
-		return commentService.index(principal.getName());
+	public List<Comment> index(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("pid") int projectId) {
+		return commentService.getAllCommentsForProject(projectId);
 		
 	}	
 	
