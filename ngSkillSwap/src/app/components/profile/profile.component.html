@@ -197,7 +197,23 @@
       <section class="resume-section" id="section1">
         <div class="resume-section-content"  *ngIf="loggedInUser.profileImage">
           <img id="userProfileImage" class="zoom" src="{{loggedInUser.profileImage}}">
-            <h1 class="mb-0">
+            <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
+                {{loggedInUser.firstName}}
+                <span class="text-primary" style="color: #ffa500 !important;">{{loggedInUser.lastName}}</span>
+            </h1>
+            <h1 *ngIf="loggedInUser.username === 'don'" class="mb-0">
+                {{loggedInUser.firstName}}
+                <span class="text-primary" style="color: #aa1bdd !important;">{{loggedInUser.lastName}}</span>
+            </h1>
+            <h1 *ngIf="loggedInUser.username === 'rap'" class="mb-0">
+                {{loggedInUser.firstName}}
+                <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
+            </h1>
+            <h1 *ngIf="loggedInUser.username === 'leo'" class="mb-0">
+                {{loggedInUser.firstName}}
+                <span class="text-primary" style="color: #00aae6 !important;">{{loggedInUser.lastName}}</span>
+            </h1>
+            <h1 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-0">
                 {{loggedInUser.firstName}}
                 <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
             </h1>
@@ -224,7 +240,11 @@
       <!-- Experience-->
       <section class="resume-section" id="section2">
           <div class="resume-section-content">
-              <h2 class="mb-5">Previous Projects</h2>
+              <h2 *ngIf="loggedInUser.username === 'mic'" class="mb-5">Previous <span style="color: #ffa500;">Projects</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'don'" class="mb-5">Previous <span style="color: #aa1bdd;">Projects</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">Previous <span style="color: #00aae6;">Projects</span></h2>
+              <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
               <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of projects">
                   <div class="flex-grow-1">
                       <h3 class="mb-0" *ngIf="!project.activeStatus">{{project.name}}</h3>
@@ -271,7 +291,11 @@
       <!-- Skills-->
       <section class="resume-section" id="section3">
           <div class="resume-section-content" *ngIf="loggedInUser.userSkills">
-              <h2 class="mb-5">Skills</h2>
+              <h2 *ngIf="loggedInUser.username === 'mic'" class="mb-5">My <span style="color: #ffa500;">Skills</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'don'" class="mb-5">My <span style="color: #aa1bdd;">Skills</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">My <span style="color: crimson;">Skills</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">My <span style="color: #00aae6;">Skills</span></h2>
+              <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">My <span style="color: crimson;">Skills</span></h2>
               <div class="subheading mb-3"></div>
               <ul class="fa-ul mb-0">
                   <li *ngFor="let userSkill of loggedInUser.userSkills">
@@ -298,7 +322,11 @@
       <!-- Awards-->
       <section class="resume-section" id="section4">
           <div class="resume-section-content">
-              <h2 class="mb-5">Contact</h2>
+              <h2 *ngIf="loggedInUser.username === 'mic'" class="mb-5">Contact <span style="color: #ffa500;">Me</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'don'" class="mb-5">Contact <span style="color: #aa1bdd;">Me</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">Contact <span style="color: crimson;">Me</span></h2>
+              <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">Contact <span style="color: #00aae6;">Me</span></h2>
+              <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">Contact <span style="color: crimson;">Me</span></h2>
               <div class="fa-ul mb-0">
                   <h4 *ngIf="loggedInUser.availability">
                       <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
