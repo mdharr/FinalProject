@@ -11435,7 +11435,7 @@ section {
 .dashed {
   --b: 3px;  /* border thickness */
   --s: 50px; /* size of the dashes */
-  --c1: #08243B;
+  --c1: #426b3e;
   --c2: #FEFEFE;
 
   width: 250px;
