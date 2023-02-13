@@ -85,10 +85,11 @@
     </table>
     <div>
       <h1>COMMENTS</h1>
-      Here is where comments will go
       <p *ngFor="let comment of comments">
         {{comment.comment }}
-      <strong> GETTING TO THE COMMENT</strong>
+      </p>
+        <p *ngIf="comments.length >= 0">
+          <strong>No comments found!</strong>
       </p>
     </div>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
