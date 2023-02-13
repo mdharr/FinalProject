@@ -11768,6 +11768,7 @@ nav ul li div { position: relative; }
   color: #FEFEFE;
   margin-top: 15px;
   margin-bottom: -64px;
+  text-transform: none !important;
 }
 
 #titleDiv {
