@@ -1,3 +1,4 @@
+import { CommentService } from './../../services/comment.service';
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/models/project';
 import { ProjectService } from 'src/app/services/project.service';
@@ -20,6 +21,7 @@ export class ProjectComponent implements OnInit {
   log: any;
   skillList: Skill[] = [];
   projectCreated = false;
+  comments: Comment[] = [];
 
   constructor(
     private projectService: ProjectService,
@@ -27,6 +29,7 @@ export class ProjectComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private skillService: SkillService,
+    private commentService: CommentService
   ) {}
 
   ngOnInit(): void {
@@ -67,6 +70,18 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  getCommentsForProject() {
+    this.commentService.projectCommentIndex(this.selected!.id).subscribe({
+      next: (comments) => {
+        this.comments = comments;
+      },
+      error: (err) => {
+        console.error(err);
+        console.error('error retrieving comments for project: ' + err);
+      },
+    });
+  }
+
   displayProject(project: Project) {
     this.selected = project;
   }
@@ -76,7 +91,7 @@ export class ProjectComponent implements OnInit {
   }
 
   setAddProject() {
-    this.addProjectMod =  Object.assign({}, this.selected);
+    this.addProjectMod = Object.assign({}, this.selected);
   }
 
   addProject(project: Project) {
@@ -84,7 +99,6 @@ export class ProjectComponent implements OnInit {
       next: (data) => {
         this.project = data;
         this.projectCreated = true;
-
       },
 
       error: (nojoy) => {
@@ -94,25 +108,24 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  skillUpdate(skillId : number, projectId : number) {
-    this.projectService.updateSkill(skillId, projectId).subscribe ({
+  skillUpdate(skillId: number, projectId: number) {
+    this.projectService.updateSkill(skillId, projectId).subscribe({
       next: (data) => {
         this.project = data;
-    },
+      },
 
-    error: (nojoy) => {
-      console.error('ProjectComponent.skillUpdate: Error updating skills');
-      console.error(nojoy);
-    },
-  });
+      error: (nojoy) => {
+        console.error('ProjectComponent.skillUpdate: Error updating skills');
+        console.error(nojoy);
+      },
+    });
   }
-
 
   setEditProject() {
     this.editProject = Object.assign({}, this.selected);
   }
 
-  updateProject(project: Project,): void {
+  updateProject(project: Project): void {
     const httpOptions = {
       headers: {
         'Content-Type': 'application/json',
@@ -120,9 +133,7 @@ export class ProjectComponent implements OnInit {
     };
     this.projectService.update(project).subscribe({
       next: (updatedProject) => {
-
-          this.selected = updatedProject;
-
+        this.selected = updatedProject;
 
         (this.editProject = null), this.reload();
       },
@@ -133,18 +144,16 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  checkSkill(skill : Skill) {
-  if (this.editProject) {
-    for ( let i = 0; i < this.editProject.skills.length; i++) {
-      if (this.editProject?.skills[i].id === skill.id) {
-        return true;
+  checkSkill(skill: Skill) {
+    if (this.editProject) {
+      for (let i = 0; i < this.editProject.skills.length; i++) {
+        if (this.editProject?.skills[i].id === skill.id) {
+          return true;
+        }
+      }
     }
-
-    }
-  }
     return false;
   }
-
 
   // deleteProject(id: number) {
   //   this.projectService.destroy(id).subscribe({
@@ -181,25 +190,25 @@ export class ProjectComponent implements OnInit {
         console.error('Error loading skill list: ');
         console.error(err);
       },
-  })
-}
+    });
+  }
 
-// Potential solution for comment section
-// vm.addComment = function(id, comment){
-//   postService.leaveCommentsOnPost(id, comment)
-//   .then(function(res){
-//     vm.selectPost(vm.selectedPost)
-//     loadPosts();
-//   })
-//   .catch(console.log);
-// }
+  // Potential solution for comment section
+  // vm.addComment = function(id, comment){
+  //   postService.leaveCommentsOnPost(id, comment)
+  //   .then(function(res){
+  //     vm.selectPost(vm.selectedPost)
+  //     loadPosts();
+  //   })
+  //   .catch(console.log);
+  // }
 
-// vm.deleteComment = function(cid){
-//   postService.deleteComment(vm.selectedPost.id, cid)
-//   .then(function(res){
-//     vm.selectPost(vm.selectedPost)
-//     loadPosts();
-//   })
-//   .catch(console.log);
-// }
+  // vm.deleteComment = function(cid){
+  //   postService.deleteComment(vm.selectedPost.id, cid)
+  //   .then(function(res){
+  //     vm.selectPost(vm.selectedPost)
+  //     loadPosts();
+  //   })
+  //   .catch(console.log);
+  // }
 }

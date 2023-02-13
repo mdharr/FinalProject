@@ -67,6 +67,40 @@ public class CommentServiceImpl implements CommentService {
 		commentRepo.deleteById(commentId);
 		return !commentRepo.existsById(commentId);
 	}
+
+	//-------------------Comments About User------------------------
+	
+	@Override
+	public Set<Comment> indexOfCommentsAboutUser(String username) {
+		return commentRepo.findByUser_Username(username);
+	}
+	
+	@Override
+	public Comment createCommentAboutUser(String username, Comment comment, int userId) {
+		User user = userRepo.findByUsername(username);
+		Optional<User> userOpt = userRepo.findById(userId);
+		if (userOpt.isPresent()) {
+			user = userOpt.get();
+		}
+		if(user != null) {
+			comment.setUser(user);
+			return commentRepo.saveAndFlush(comment);
+		}
+		return null;
+	}
+	
+	@Override
+	public Comment updateCommentAboutUser(String username, int commentId, Comment comment, int userId) {
+		Comment existing = show(username, commentId);
+		existing.setComment(comment.getComment());
+		return commentRepo.save(existing);
+	}
+	
+	@Override
+	public boolean destroyCommentAboutUser(String username, int commentId, int userId) {
+		commentRepo.deleteById(commentId);
+		return !commentRepo.existsById(commentId);
+	}
 	
 
 }

@@ -14,64 +14,42 @@
             <button type="button" class="btn btn-info pull-right">Post</button>
             <div class="clearfix"></div>
             <hr />
-            <ul class="media-list">
+
+            <!-- Create ngIf statement to add html for comments on Projects -->
+            <ul class="media-list" *ngFor="let comment of projectComments">
               <li class="media">
                 <a href="#" class="pull-left">
-                  <img
-                    src="https://bootdey.com/img/Content/user_1.jpg"
-                    alt=""
-                    class="img-circle"
-                  />
+                  <img src="" alt="" class="img-circle" />
                 </a>
-                <p></p>
                 <div class="media-body">
                   <span class="text-muted pull-right">
                     <small class="text-muted">30 min ago</small>
                   </span>
-                  <strong class="text-success">@MartinoMont</strong>
+                  <strong class="text-success">{{ userId.username }}</strong>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet,
-                    <a href="#">#consecteturadipiscing </a>.
+                    {{ comment }}
                   </p>
                 </div>
               </li>
+            </ul>
+
+            <!-- Create ngIf statement to add html for comments on User -->
+            <ul
+              class="media-list"
+              ngIf="selected = user"
+              *ngFor="let comment of userComments"
+            >
               <li class="media">
                 <a href="#" class="pull-left">
-                  <img
-                    src="https://bootdey.com/img/Content/user_2.jpg"
-                    alt=""
-                    class="img-circle"
-                  />
+                  <img src="" alt="" class="img-circle" />
                 </a>
                 <div class="media-body">
                   <span class="text-muted pull-right">
                     <small class="text-muted">30 min ago</small>
                   </span>
-                  <strong class="text-success">@LaurenceCorreil</strong>
+                  <strong class="text-success">{{ userId.username }}</strong>
                   <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Lorem ipsum dolor <a href="#">#ipsumdolor </a>adipiscing
-                    elit.
-                  </p>
-                </div>
-              </li>
-              <li class="media">
-                <a href="#" class="pull-left">
-                  <img
-                    src="https://bootdey.com/img/Content/user_3.jpg"
-                    alt=""
-                    class="img-circle"
-                  />
-                </a>
-                <div class="media-body">
-                  <span class="text-muted pull-right">
-                    <small class="text-muted">30 min ago</small>
-                  </span>
-                  <strong class="text-success">@JohnNida</strong>
-                  <p>
-                    Lorem ipsum dolor <a href="#">#sitamet</a> sit amet,
-                    consectetur adipiscing elit.
+                    {{ comment }}
                   </p>
                 </div>
               </li>
