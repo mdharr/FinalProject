@@ -195,7 +195,7 @@
   <div class="container-fluid p-0 w-80 d-flex flex-column justify-content-end">
       <!-- About-->
       <section class="resume-section" id="section1">
-        <div class="resume-section-content"  *ngIf="loggedInUser.profileImage">
+        <div class="resume-section-content">
           <img id="userProfileImage" class="zoom" src="{{loggedInUser.profileImage}}">
             <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
                 {{loggedInUser.firstName}}
@@ -230,11 +230,7 @@
             </div> -->
         </div>
 
-        <div class="resume-section-content"  *ngIf="!loggedInUser.profileImage">
-            <h1 class="mb-0"><a class="nav-link" (click)="open(myprofilemodal)">Click here to complete your profile!</a></h1>
-        </div>
       </section>
-
 
       <hr class="m-0" />
       <!-- Experience-->
@@ -344,12 +340,15 @@
   </div>
 </div>
 </div>
+<div id="updateProfileBtnContainer">
+  <button id="updateProfileBtn" class="btn"><a (click)="open(myprofilemodal)">Update Profile</a></button>
+</div>
 
 <ng-template #myprofilemodal let-modal>
   <div>
   <div class="modal-header" style="background-color: #F5BF74;">
     <h4 style="color: black" class="modal-title" id="modal-basic-title">Update Profile</h4>
-    <button type="button" class="close btn btn-danger zoom" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <button type="button" class="close btn btn-danger zoom" style="margin-right: 0;" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">x</span>
     </button>
   </div>
