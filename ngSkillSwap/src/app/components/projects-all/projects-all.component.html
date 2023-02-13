@@ -50,7 +50,7 @@
           <td>
             <!-- <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important" (click)="deleteProjects()"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
+            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important" (click)="displayProject(project)"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
           </td>
         </tr>
       </tbody>
@@ -86,9 +86,9 @@
     <div>
       <h1>COMMENTS</h1>
       <p *ngFor="let comment of comments">
-        {{comment.comment }}
+        {{comment.comment }} <br>
       </p>
-        <p *ngIf="comments.length >= 0">
+        <p *ngIf="comments.length <= 0">
           <strong>No comments found!</strong>
       </p>
     </div>
