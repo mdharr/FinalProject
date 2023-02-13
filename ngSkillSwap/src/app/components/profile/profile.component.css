@@ -12157,3 +12157,29 @@ figure .shirt-2 {
   transform: skew(10deg) rotate(-15deg)
 }
 
+#updateProfileBtnContainer {
+  color: white !important;
+  position: fixed;
+  bottom: 50px;
+  right: 40px;
+}
+
+#updateProfileBtnContainer:hover {
+  position: fixed;
+  color: white !important;
+}
+
+#updateProfileBtn {
+  background-color: green !important;
+  color: white !important;
+  font-size: 12px;
+  transition: transform .2s;
+  height: 50px;
+  width: auto;
+}
+
+#updateProfileBtn:hover {
+  transform: scale(1.05);
+  color: white !important;
+}
+

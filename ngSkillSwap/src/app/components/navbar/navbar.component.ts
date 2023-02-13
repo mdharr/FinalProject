@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,8 +12,14 @@ export class NavbarComponent {
 
   public isCollapsed = false;
 
-  constructor(private authService: AuthService, private modalService: NgbModal) {
+  isHomeRoute() {
+    return this.router.url === '/';
+  }
 
+  constructor(private authService: AuthService,
+              private modalService: NgbModal,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
 
