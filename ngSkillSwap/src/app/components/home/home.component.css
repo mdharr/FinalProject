@@ -10,10 +10,17 @@ mdb-carousel {
 }
 
 #spaceDiv {
-  height: 500px;
+  height: 200px;
 }
 
 #titleContainer {
   display: flex;
   justify-content: center;
+}
+
+h1 {
+  font-size: 50px;
+  font-family: 'Lato', sans-serif !important;
+  color: #FEFEFE;
+  margin-top: 15px;
 }

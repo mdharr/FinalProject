@@ -1,3 +1,7 @@
+<div id="titleDiv">
+  <h1 id="profileHeader">My Profile</h1>
+  </div>
+
 <!-- <div class="row" *ngIf="!selected">
   <div class="col-sm-4">
     <div class="row">
@@ -156,7 +160,7 @@
   <h2>+ CSS Icons</h2> -->
 </section>
 <div class="d-flex flex-row justify-content-center" style="padding-top: 100px; padding-bottom: 100px;">
-<div id="page-top" class="w-75" style="background-color: #86929e !important">
+<div id="page-top" class="w-75 dashed" style="background-color: #86929e !important">
   <!-- Navigation-->
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -195,19 +199,19 @@
             <img id="userProfileImage" class="zoom" src="{{loggedInUser.profileImage}}">
               <h1 class="mb-0">
                   {{loggedInUser.firstName}}
-                  <span class="text-primary" style="color: #C79360 !important;">{{loggedInUser.lastName}}</span>
+                  <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
               </h1>
               <div class="subheading mb-5" *ngIf="loggedInUser.address">
                 {{loggedInUser.address.street}} · {{loggedInUser.address.city}} · {{loggedInUser.address.state}} · {{loggedInUser.address.zip}}
                   <a href="mailto:name@email.com">{{loggedInUser.email}}</a>
               </div>
               <p class="lead mb-5">{{loggedInUser.bio}}</p>
-              <div class="social-icons">
+              <!-- <div class="social-icons">
                   <a class="social-icon zoom" href="#!"><i class="fab fa-linkedin-in"></i></a>
                   <a class="social-icon zoom" href="#!"><i class="fab fa-github"></i></a>
                   <a class="social-icon zoom" href="#!"><i class="fab fa-twitter"></i></a>
                   <a class="social-icon zoom" href="#!"><i class="fab fa-facebook-f"></i></a>
-              </div>
+              </div> -->
           </div>
       </section>
       <hr class="m-0" />

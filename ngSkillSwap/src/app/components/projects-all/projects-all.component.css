@@ -1,9 +1,19 @@
 h1 {
   font-size: 50px;
-  font-family: 'Press Start 2P', cursive;
-  text-shadow: 5px 5px white;
-  color: #ff0000;
+  font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #FEFEFE;
   margin-top: 15px;
+}
+
+
+.zoom {
+	transition: transform .2s;
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.15);
+	/* color: black !important; */
 }
 
 .material-icons {
@@ -11,7 +21,6 @@ h1 {
 }
 
 .box {
-  border: 10px solid #202124;
   min-height: 500px;
   margin: 100px;
   padding: 100px;
@@ -31,7 +40,7 @@ h1 {
 }
 .table-title {
 padding-bottom: 15px;
-background:  #5E6F7C;
+background:#F5BF74;
 color: #fff;
 padding: 16px 30px;
 margin: -20px -25px 10px;
@@ -53,7 +62,7 @@ min-width: 50px;
 border-radius: 2px;
 border: none;
 outline: none !important;
-margin-left: 10px;
+margin-left: 20px;
 }
 .table-title .btn i {
 float: left;
@@ -254,4 +263,87 @@ font-weight: normal;
 
 #projectImage {
   max-width: 100px;
+}
+
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  margin-right: 20px;
+  text-transform: uppercase;
+}
+.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #648880;
+}
+
+#titleDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: #FEFEFE;
+}
+
+.content-table thead tr {
+  background-color:  #F5BF74;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  color: black;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid  #F5BF74;
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold;
+  color: #F5BF74;
+}
+
+caption {
+  color: #FEFEFE;
+}
+
+#projectImg {
+  width: 100px;
 }

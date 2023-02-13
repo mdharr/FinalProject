@@ -1,13 +1,16 @@
 a {
   cursor: pointer;
-  color: white;
+  color: #330000 !important;
+  font-size: 14px;
+  text-transform: uppercase !important;
+  font-family: 'Lato', sans-serif !important;
 }
 
 a:visited {
-  color: white;
+  color: #330000;
 }
 a:hover {
-  color: crimson;
+  color: crimson !important;
 }
 
 a:active {
@@ -17,11 +20,12 @@ a:active {
 
 nav > div {
   margin-left: 0px;
-  background-color: #08243B;
+  background-color: #F5BF74;
+  padding: 0;
 }
 
 .navbar {
-  background-color: #08243B;
+  background-color: #F5BF74;
 }
 
 #loginDiv {
@@ -46,6 +50,7 @@ ul {
   flex-wrap: nowrap;
   justify-content: space-between;
   align-items: left;
+  padding: 0;
 }
 
 #navbarTogglerDemo01 {
@@ -57,6 +62,55 @@ ul {
   font-size: 20px;
   text-align: center;
   width: 9rem;
+  padding: 0;
+}
+
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.btn-default {
+  border: 0;
+  background: black;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: black;
+}
+.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #F5BF74;
+}
+
+.btn:hover {
+  color: black;
+}
+
+#logoImage {
+  width: 50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+.zoom {
+	transition: transform .2s;
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.35);
+	color: black !important;
 }
 
 

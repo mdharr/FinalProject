@@ -1,10 +1,25 @@
+<div *ngIf="displayTable" id="titleContainer">
+  <h1>My Projects</h1>
+</div>
+<!-- Michael's Experiment w/ Cards for Projects -->
+<div id="parentContainer">
+<div id="projectCardDiv" *ngIf="!selected">
+  <div id="cardDiv" class="card zoom" style="width: 18rem;" *ngFor="let project of projectList" (click)="displayProject(project)">
+    <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-text">{{project.name}}</h5>
+      <p class="card-text">{{project.description}}</p>
+    </div>
+  </div>
+</div>
+</div>
 
+<!-- Teasers -->
 
-<h3>Here are your current projects.</h3>
-<h5>For more information about a project please click on project name</h5>
+<!-- <h5>For more information about a project please click on project name</h5> -->
 
 <!-- Shows list of user's projects -->
-<div class="container1" *ngIf="!selected">
+<!-- <div class="container1" *ngIf="!selected">
   <h2 class="projectList" id = "projectList">Project List</h2>
   <table>
     <thead>
@@ -24,41 +39,45 @@
         </tr>
       </tbody>
   </table>
-</div>
+</div> -->
 <!-- End of user project list -->
 
 <!-- Shows individual information about a selected project -->
+
 <div class="container" *ngIf="selected">
-  <table>
+  <table class="content-table">
+    <caption>Project Summary</caption>
     <thead>
-     <tr>
-      <!-- <th>Date posted:</th> -->
-      <th>Name:</th>
-      <th>Desciption:</th>
-      <th>Start Date:</th>
-      <th>Projected Completion Date:</th>
-      <th>Image: </th>
-
-    </tr>
-</thead>
-  <tbody>
-   <tr>
-     <td>{{ selected.name }}</td>
-     <td>{{ selected.description}}</td>
-     <td>{{ selected.startDate | date : "shortDate" }}</td>
-     <td>{{ selected.projectedDate | date : "shortDate"}}</td>
-     <td>{{ selected.imagePrimary }}</td>
-
-    </tr>
-<button class="btn btn-primary" (click)="setEditProject()">Edit</button>
-<button class="btn btn-primary" (click)="displayTable(); editProject = null">Back</button></tbody></table>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Date Posted</th>
+        <th>Start Date</th>
+        <th>Projected Completion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><img class="zoom" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
+        <td>{{ selected.name }}</td>
+        <td>{{ selected.description }}</td>
+        <td>{{ selected.datePosted | date : "shortDate"}}</td>
+        <td>{{ selected.startDate | date : "shortDate"}}</td>
+        <td>{{ selected.projectedDate | date : "shortDate"}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-alt" (click)="setEditProject()">Edit</button>
+  <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
 </div>
 <!-- End of information about a selected project -->
 
 <br>
 
-<button class="btn btn-primary" (click)="setAddProject()">Add a project!</button>
+<button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>
 <!-- Add Project Form -->
+<div id="addProjectForm">
 <form  *ngIf="addProjectMod">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -89,7 +108,7 @@
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
 <label>{{ skill.name }}</label>
-  <input required(change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
+  <input required (change)="skillUpdate(skill.id, project.id)" type="checkbox"  >
 </div>
 </div>
 <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload()">Submit</button>
@@ -97,19 +116,12 @@
   </div>
   </div>
   </form>
-<!-- End of Add Project Form -->
-<!-- Michael's Experiment w/ Cards for Projects -->
-<div id="projectCardDiv" *ngIf="!selected">
-  <div class="card zoom" style="width: 18rem;" *ngFor="let project of projectList">
-    <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-text">{{project.name}}</h5>
-      <p class="card-text">{{project.description}}</p>
-    </div>
-  </div>
 </div>
+<!-- End of Add Project Form -->
+
 <!-- Edit Project Form -->
 <!-- <h1>Edit Poject which will be hidden</h1> -->
+<div id="editProjectForm">
 <form *ngIf="editProject">
   <div class="form-row">
     <div class="form-group col-md-6">
@@ -139,22 +151,19 @@
     </div>
     <div >
       <div *ngFor="let skill of skillList">
-    <label>{{ skill.name }}</label>
+      <label>{{ skill.name }}</label>
       <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
       <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
+      </div>
     </div>
-    </div>
-    </div>
-    <button class="btn btn-success" (click)="updateProject(editProject)">
-      Save
-    </button>
-    <button class="btn btn-danger" (click)="editProject = null">
-      Cancel
-    </button>
+  </div>
+    <button class="btn btn-success" (click)="updateProject(editProject)">Save</button>
+    <button class="btn btn-danger" (click)="editProject = null">Cancel</button>
     <button type="button" class="btn btn-info"
-    (click)="archiveAction(project, project.id)"
-  >
-    Project Completed!
-  </button>
+    (click)="archiveAction(project, project.id)">Project Completed!</button>
+  </div>
+  </form>
+  </div>
+
 
 

@@ -1,4 +1,4 @@
-button {
+/* button {
   color: black;
   background-color:  #D4D4D6;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -7,9 +7,37 @@ button:hover {
   color: white;
   background-color:  crimson;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
+} */
 
 #logoutBtn {
   margin-right: 20px !important;
 
+}
+
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+.btn-default {
+  border: 0;
+  background: #648880;
+  padding: 11px 30px;
+  font-size: 14px;
+}
+.btn-default:hover {
+  background: #77a198;
+}
+.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #648880;
 }
