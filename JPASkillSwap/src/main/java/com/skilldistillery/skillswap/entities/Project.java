@@ -57,7 +57,6 @@ public class Project {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "project")
 	private List<Comment> comments;
 	

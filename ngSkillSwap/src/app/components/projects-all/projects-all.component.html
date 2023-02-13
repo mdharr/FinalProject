@@ -83,7 +83,16 @@
         </tr>
       </tbody>
     </table>
+    <div>
+      <h1>COMMENTS</h1>
+      Here is where comments will go
+      <p *ngFor="let comment of comments">
+        {{comment.comment }}
+      <strong> GETTING TO THE COMMENT</strong>
+      </p>
+    </div>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
+
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Join</button>
@@ -155,7 +164,6 @@ Project create
   <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
 </div>
 <!-- End of information about a selected project -->
-
 <br />
 
 <button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>

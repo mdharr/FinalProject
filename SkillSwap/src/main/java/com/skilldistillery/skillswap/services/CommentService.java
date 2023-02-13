@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.services;
 
+import java.util.List;
 import java.util.Set;
 
 import com.skilldistillery.skillswap.entities.Comment;
@@ -25,5 +26,7 @@ public interface CommentService {
 	public Comment updateCommentAboutUser(String username, int commentId, Comment comment, int userId);
 
 	public Comment createCommentAboutUser(String username, Comment comment, int userId);
+
+	List<Comment> getAllCommentsForProject(int projectId);
 
 }
