@@ -28,6 +28,12 @@ export class ProjectsAllComponent {
 
   skills: Skill[] = [];
 
+  skillList: Skill[] = [];
+
+  projectCreated = false;
+
+  addProjectMod: Project | null = null;
+
   constructor(private projectService: ProjectService, private authService: AuthService, private route: ActivatedRoute, private router: Router, private skillService: SkillService,) { }
 
   ngOnInit() {
@@ -107,6 +113,19 @@ export class ProjectsAllComponent {
       }
     });
     this.newProject = new Project();
+  }
+
+  skillUpdate(skillId: number, projectId: number) {
+    this.projectService.updateSkill(skillId, projectId).subscribe({
+      next: (data) => {
+        this.newProject = data;
+      },
+
+      error: (nojoy) => {
+        console.error('ProjectComponent.skillUpdate: Error updating skills');
+        console.error(nojoy);
+      },
+    });
   }
 
   editProject: Project | null = null;
