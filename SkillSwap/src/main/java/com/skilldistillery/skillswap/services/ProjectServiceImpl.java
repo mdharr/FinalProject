@@ -127,4 +127,21 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		return project;
 	}
+
+	@Override
+	public Project addUser(String username, int projectId) {
+		Optional<Project> projectOpt = projectRepo.findById(projectId);
+		User userOpt = userRepo.findByUsername(username);
+		User user = null;
+		Project project = null;
+	    if	(userOpt != null && projectOpt.isPresent()) {
+	    	user = userOpt;
+	    	project = projectOpt.get();
+	    	project.addUser(user);
+	    } 
+	    userRepo.saveAndFlush(user);
+		
+		
+		return project;
+	}
 }

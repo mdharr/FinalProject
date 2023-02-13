@@ -37,8 +37,7 @@ public class ProjectController {
 	}
 
 	@GetMapping("projects/authenticated")
-	public List<Project> showByUsername(Principal principal, HttpServletRequest req,
-			HttpServletResponse res) {
+	public List<Project> showByUsername(Principal principal, HttpServletRequest req, HttpServletResponse res) {
 		List<Project> proj = projectService.findByUsername(principal.getName());
 		if (proj.isEmpty()) {
 			res.setStatus(404);
@@ -57,9 +56,8 @@ public class ProjectController {
 
 	@PostMapping("projects")
 	public Project createProject(
-			//@PathVariable int id,
-			Principal principal, @RequestBody Project project, HttpServletResponse res,
-			HttpServletRequest req) {
+			// @PathVariable int id,
+			Principal principal, @RequestBody Project project, HttpServletResponse res, HttpServletRequest req) {
 		Project newProject = null;
 		try {
 			newProject = projectService.createProject(principal.getName(), project);
@@ -73,21 +71,19 @@ public class ProjectController {
 		}
 		return newProject;
 	}
-	
-	@PutMapping ("projects/projectId/{pId}/skillId/{sId}")
-	public Project updateSkills(Principal principal, @PathVariable("sId") int skillId, 
-			@PathVariable("pId") int projectId, HttpServletResponse res,
-			HttpServletRequest req) {
-		
-			Project proj = projectService.updateSkills(skillId, projectId);
-			res.setStatus(200);
-			return proj;
-		} 
-	
+
+	@PutMapping("projects/projectId/{pId}/skillId/{sId}")
+	public Project updateSkills(Principal principal, @PathVariable("sId") int skillId,
+			@PathVariable("pId") int projectId, HttpServletResponse res, HttpServletRequest req) {
+
+		Project proj = projectService.updateSkills(skillId, projectId);
+		res.setStatus(200);
+		return proj;
+	}
 
 	@PutMapping("projects")
-	public Project update(Principal principal, @RequestBody Project project,
-			HttpServletRequest req, HttpServletResponse res) {
+	public Project update(Principal principal, @RequestBody Project project, HttpServletRequest req,
+			HttpServletResponse res) {
 		Project updateProject = null;
 		try {
 			updateProject = projectService.update(principal.getName(), project);
@@ -97,9 +93,9 @@ public class ProjectController {
 		}
 		return updateProject;
 	}
-	
+
 	@PutMapping("projects/{id}")
-	public void archiveProject (Principal principal, @PathVariable int id, HttpServletResponse res) {
+	public void archiveProject(Principal principal, @PathVariable int id, HttpServletResponse res) {
 		try {
 			if (projectService.archive(id)) {
 				res.setStatus(204);
@@ -110,5 +106,13 @@ public class ProjectController {
 			e.printStackTrace();
 			res.setStatus(400);
 		}
+	}
+
+	@PutMapping("projects/{pid}/users/")
+	public Project addUser(@RequestBody Project project, Principal principal, @PathVariable("pid") int projectId,
+			HttpServletResponse res, HttpServletRequest req) {
+		Project proj = projectService.addUser(principal.getName(), projectId);
+		res.setStatus(200);
+		return proj;
 	}
 }
