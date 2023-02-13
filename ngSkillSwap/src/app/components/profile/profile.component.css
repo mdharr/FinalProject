@@ -10,7 +10,7 @@
 }
 
 .zoom:hover {
-	transform: scale(1.15);
+	transform: scale(1.05);
 	color: black !important;
 }
 
@@ -12155,5 +12155,32 @@ figure .shirt-2 {
 figure .shirt-2 {
   left: 52.5%;
   transform: skew(10deg) rotate(-15deg)
+}
+
+#updateProfileBtnContainer {
+  color: white !important;
+  position: fixed;
+  bottom: 50px;
+  right: 40px;
+}
+
+#updateProfileBtnContainer:hover {
+  position: fixed;
+  color: white !important;
+}
+
+#updateProfileBtn {
+  background-color: #08243B !important;
+  border: 1px solid white;
+  color: white !important;
+  font-size: 12px;
+  height: 50px;
+  width: auto;
+}
+
+#updateProfileBtn:hover {
+  background-color: #FEFEFE !important;
+  color: #330000 !important;
+  border: 1px solid #330000;
 }
 
