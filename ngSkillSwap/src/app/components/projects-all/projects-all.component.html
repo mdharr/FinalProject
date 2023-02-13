@@ -59,7 +59,7 @@
 </div>
 <div class="container" *ngIf="selected && !editProject" class="box">
 
-  <div class="container" *ngIf="selected">
+  <div class="container" *ngIf="selected" >
     <table class="content-table">
       <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
       <thead>
@@ -70,6 +70,7 @@
           <th>Date Posted</th>
           <th>Start Date</th>
           <th>Projected Completion</th>
+          <th>Project Members</th>
         </tr>
       </thead>
       <tbody>
@@ -80,6 +81,10 @@
           <td>{{ selected.datePosted | date : "shortDate"}}</td>
           <td>{{ selected.startDate | date : "shortDate"}}</td>
           <td>{{ selected.projectedDate | date : "shortDate"}}</td>
+          <td> <ul><li *ngFor="let user of selected.users">
+            {{ user.username }}
+          </li></ul> </td>
+
         </tr>
       </tbody>
     </table>
@@ -98,7 +103,7 @@
 </div>
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
-    <button class="btn btn-alt" (click)="displayTable(); editProject = null">Join</button>
+    <button class="btn btn-alt" (click)="addUser(selected)">Join</button>
   </div>
 
 <!-- </div> -->

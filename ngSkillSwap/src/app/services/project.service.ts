@@ -121,6 +121,24 @@ private otherUrl = environment.baseUrl;
     )
    }
 
+   addUser(project: Project) {
+    return this.http.put<Project>(`${this.url}/projectId/${project.id}/users`, project, this.getHttpOptions()).pipe(
+    catchError((err: any) => {
+    console.log(err);
+    return throwError(
+      () =>
+      new Error(
+        'ProjectService.addUser(): error adding user to project: ' + err
+        )
+    );
+  })
+)
+
+}
+
+
+
+
  archive(project : Project):Observable<Project>  {
   const httpOptions = {
     headers: {

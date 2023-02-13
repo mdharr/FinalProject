@@ -1,5 +1,6 @@
 import { Skill } from "./skill";
 import { Comment } from "./comment";
+import { User } from "./user";
 
 export class Project {
   id: number;
@@ -12,8 +13,10 @@ export class Project {
   startDate: string;
   projectedDate: string;
   skills: Skill[];
-  comment: Comment[];
+  comments: Comment[];
   enabled: boolean;
+  users: User[];
+
 
   constructor(
     id: number = 0,
@@ -27,7 +30,8 @@ export class Project {
     projectedDate: string = '',
     skills: Skill[] = [],
     comments: Comment[] = [],
-    enabled: boolean = false
+    enabled: boolean = false,
+    users: User[] = []
   ) {
     this.id = id;
     this.name = name;
@@ -40,6 +44,7 @@ export class Project {
     this.projectedDate = projectedDate;
     this.skills = skills;
     this.enabled = enabled;
-    this.comment = comments;
+    this.comments = comments;
+    this.users = users;
   }
 }

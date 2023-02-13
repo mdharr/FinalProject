@@ -18,7 +18,8 @@ export class ProjectsAllComponent {
   title = 'ngSkillSwap';
 
   projects: Project[] = [];
-
+  project: Project | null = null;
+  users: User[] = []
   selected: null | Project = null;
 
   newProject: Project = new Project();
@@ -94,13 +95,15 @@ export class ProjectsAllComponent {
     });
   }
   // ...
-  displayProject(project: Project) {
+  displayProject(project: Project | null) {
     this.selected = project;
    // console.log('calling displayProject');
-     console.log(project.id);
-     console.log(this.selected.id)
+     console.log(project);
+    //  console.log(this.selected.id)
+    if( this.selected && this.selected.id ){
     this.getComments(this.selected.id);
   }
+}
   // ...
 
   getComments(id: number){
@@ -174,6 +177,24 @@ this.comments = comments;
     });
   }
 
+  addUser(project : Project){
+    // if (project.id != null) {
+    //   this.project.users = data.users;
+    // }
+    this.projectService.addUser(project).subscribe({
+
+      next: (data) => {
+
+        this.project = data;
+      },
+    error: (nojoy) => {
+      console.error('ProjectComponent.addUser: Error adding user');
+      console.error(nojoy);
+
+    }
+  });
+  }
+
   editProject: Project | null = null;
   setEditProject(): void {
     this.editProject = Object.assign({}, this.selected);
@@ -185,9 +206,9 @@ this.comments = comments;
     this.projectService.update(project).subscribe({
       next: (updatedProject) => {
         if (goToDetail) {
-          this.selected = updatedProject;
+          this.displayProject(updatedProject);
         } else {
-          this.selected = null;
+          this.displayProject(null);
         }
         this.editProject = null;
         this.reload();
