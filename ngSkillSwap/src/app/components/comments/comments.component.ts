@@ -31,26 +31,26 @@ export class CommentsComponent {
     private route: ActivatedRoute
   ) {}
 
-  createComment(newComment: Comment, loggedInUser: User): void {
-    console.log('Creating new comment:');
-    console.log(loggedInUser);
-    this.commentService.createComment(newComment).subscribe({
-      next: (comment: Comment) => {
-        console.log(comment);
-        this.comments.push(comment);
-        this.userComments.push(comment);
-        this.authService.getLoggedInUser;
-      },
-      error: (fail) => {
-        console.error('CommentComponent.createComment(), fail');
-        console.log(fail);
-      },
-    });
-    error: (darn: Error) => {
-      console.error('RegisterComponent.register(): Error registering account');
-      console.error(darn);
-    };
-  }
+  // createComment(newComment: Comment, loggedInUser: User): void {
+  //   console.log('Creating new comment:');
+  //   console.log(loggedInUser);
+  //   this.commentService.createComment(newComment).subscribe({
+  //     next: (comment: Comment) => {
+  //       console.log(comment);
+  //       this.comments.push(comment);
+  //       this.userComments.push(comment);
+  //       this.authService.getLoggedInUser;
+  //     },
+  //     error: (fail) => {
+  //       console.error('CommentComponent.createComment(), fail');
+  //       console.log(fail);
+  //     },
+  //   });
+  //   error: (darn: Error) => {
+  //     console.error('RegisterComponent.register(): Error registering account');
+  //     console.error(darn);
+  //   };
+  // }
 
 
 

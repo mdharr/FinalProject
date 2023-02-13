@@ -115,7 +115,25 @@ this.comments = comments;
     });
   }
 
-
+  createComment(comment: Comment, selected: Project) {
+    let id = this.selected?.id;
+   if(id){
+     comment.project.id = id;
+   }
+    console.log(comment)
+    this.commentService.createComment(comment).subscribe({
+      next: (data) => {
+         this.newComment.project.id = selected.id;
+         this.newComment.userId = this.loggedInUser.id;
+        this.newComment = new Comment();
+        this.reload();
+      },
+      error: (nojoy) => {
+        console.error('ProjectComponent.createComment: Error creating comment');
+        console.error(nojoy);
+      }
+    });
+  }
 
   displayTable() {
     this.selected = null;
@@ -160,6 +178,8 @@ this.comments = comments;
   setEditProject(): void {
     this.editProject = Object.assign({}, this.selected);
   }
+
+
 
   updateProject(project: Project, goToDetail = true): void {
     this.projectService.update(project).subscribe({

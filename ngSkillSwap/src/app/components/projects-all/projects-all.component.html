@@ -83,7 +83,6 @@
         </tr>
       </tbody>
     </table>
-    <div>
       <h1>COMMENTS</h1>
       <p *ngFor="let comment of comments">
         {{comment.comment }} <br>
@@ -91,15 +90,18 @@
         <p *ngIf="comments.length <= 0">
           <strong>No comments found!</strong>
       </p>
-    </div>
+    <form>
+<textarea name="newComment.comment" id="" cols="30" rows="10" [(ngModel)]="newComment.comment"></textarea>
+<button (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
+</form>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
-
+</div>
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Join</button>
   </div>
 
-</div>
+<!-- </div> -->
 
 <div *ngIf="selected && editProject" class="box">
   <label class="form-label" for="task">Name</label>

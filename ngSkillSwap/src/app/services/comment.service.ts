@@ -36,7 +36,12 @@ export class CommentService {
   }
 
   createComment(comment: Comment): Observable<Comment> {
-    return this.http.post<Comment>(this.url, this.getHttpOptions()).pipe(
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    return this.http.post<Comment>(this.url + '/projects/'+ comment.project.id+'/comments', comment, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
