@@ -17,7 +17,7 @@ constructor(private auth: AuthService, private homeServ: HomeService){}
 ngOnInit(){
 // this.testTestDeleteLater();
   this.reload();
-  console.log("**************************reloading");
+  // console.log("**************************reloading");
   // this.checkLogin();
 }
 reload(): void{

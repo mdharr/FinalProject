@@ -29,7 +29,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), RouterModule.forRoot(routes, { anchorScrolling: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, { useHash: true, onSameUrlNavigation:"reload",anchorScrolling: 'enabled' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

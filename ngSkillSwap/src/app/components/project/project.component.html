@@ -179,7 +179,7 @@
 <div id="editProjectForm" *ngIf="editProject">
 <form>
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-md-12">
       <label for="inputName">Name of Project: </label>
       <input
         type="text"
@@ -189,8 +189,8 @@
         [(ngModel)]="editProject.name"
       />
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputDescription">Desciption</label>
+    <div class="form-group col-md-12">
+      <label for="inputDescription">Description</label>
       <input
         type="text"
         class="form-control"
@@ -223,9 +223,10 @@
       <input type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="editProject.projectedDate">
     </div>
     <div >
-      <div *ngFor="let skill of skillList">
-      <label>{{ skill.name }}</label>
+      <div class = "checkbox" *ngFor="let skill of skillList">
+      <!-- <label>{{ skill.name }}</label> -->
       <input (change)="skillUpdate(skill.id, editProject.id)" type="checkbox" [checked] = "checkSkill(skill)">
+      <label>{{ skill.name }}</label>
       <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
       </div>
     </div>
