@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -69,6 +70,11 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 	//-------------------Comments About User------------------------
+	
+	@Override
+	public List<Comment> getAllCommentsForProject(int projectId){
+		return commentRepo.findByProject_Id(projectId);
+	}
 	
 	@Override
 	public Set<Comment> indexOfCommentsAboutUser(String username) {
