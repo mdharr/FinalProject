@@ -3,12 +3,24 @@
 </div>
 <!-- Michael's Experiment w/ Cards for Projects -->
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected">
+<div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
   <div id="cardDiv" class="card zoom" style="width: 18rem;" *ngFor="let project of projectList" (click)="displayProject(project)">
     <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-text">{{project.name}}</h5>
       <p class="card-text">{{project.description}}</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="parentContainer">
+<div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
+  <div id="cardDiv" class="card zoom" style="width: 18rem;">
+    <img class="card-img-top" src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif" alt="Not found">
+    <div class="card-body">
+      <h5 class="card-text">No projects found</h5>
+      <p class="card-text">Visit the project board to create a new project!</p>
     </div>
   </div>
 </div>
