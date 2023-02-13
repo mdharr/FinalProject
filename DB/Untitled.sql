@@ -77,11 +77,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `project`
+-- Table `›`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `project` ;
+DROP TABLE IF EXISTS `›` ;
 
-CREATE TABLE IF NOT EXISTS `project` (
+CREATE TABLE IF NOT EXISTS `›` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
   `date_posted` DATE NULL,
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   INDEX `fk_comment_comment1_idx` (`in_reply_to_id` ASC),
   CONSTRAINT `fk_comment_project1`
     FOREIGN KEY (`project_id`)
-    REFERENCES `project` (`id`)
+    REFERENCES `›` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comment_User1`
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `project_image` (
   INDEX `fk_project_image_projects1_idx` (`project_id` ASC),
   CONSTRAINT `fk_project_image_projects1`
     FOREIGN KEY (`project_id`)
-    REFERENCES `project` (`id`)
+    REFERENCES `›` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `project_member` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_has_project_project1`
     FOREIGN KEY (`project_id`)
-    REFERENCES `project` (`id`)
+    REFERENCES `›` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -265,7 +265,7 @@ CREATE TABLE IF NOT EXISTS `project_has_skill` (
   INDEX `fk_project_has_skill_project1_idx` (`project_id` ASC),
   CONSTRAINT `fk_project_has_skill_project1`
     FOREIGN KEY (`project_id`)
-    REFERENCES `project` (`id`)
+    REFERENCES `›` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_project_has_skill_skill1`
@@ -331,21 +331,21 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `project`
+-- Data for table `›`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (1, 'Help with Java programming', '2023-02-07', 'I am struggling really hard this semester with programming. Willing to pay by the hour. Name your rate!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497235624153128/pexels-christina-morillo-1181298.jpg', '2023-02-01', '2023-03-01', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (2, 'Need help with geometry ', '2023-02-07', 'Geometry is having its way with my 10th grader and his finals are right around the corner. Anyone with a background in geometry and has teaching experience please contact me ASAP!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497374589829120/pexels-max-fischer-5212338.jpg', '2023-02-01', '2023-04-01', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (3, 'Changing my transmission', '2023-02-10', 'My transmission finally went out, looking for soe help repairing it! I know the basics about cars but this is a bit out of my wheel house. ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497407062122597/pexels-sergey-korolev-14456303.jpg', '2023-02-10', '2023-04-05', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (4, 'Seeking Culinary Artist', '2023-01-20', 'I\'m tired of eating the same old food. Looking for someone with culinary expertise to share some tips and maybe help me meal plan.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497406000971866/pexels-rene-asmussen-2544829.jpg', '2023-02-05', '2023-04-02', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (5, 'Broke my window, need it fixed. ', '2023-02-03', 'The neighborhood kids are at it again. This is the third window this year! Please help an old man out.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497406487515156/pexels-sadi-gokpnar-14252446.jpg', '2023-02-03', '2023-02-17', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (6, 'New Home, no paint.', '2023-02-05', 'The house is beautiful from the outside, but it could definitely use a splash of color on the interior. Help wanted!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497444735365190/pexels-tima-miroshnichenko-6474471.jpg', '2023-02-01', '2023-03-01', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (7, 'These A/C Units Have To Go', '2023-02-10', 'Have a mountain of A/C units that need to be out of here by the weekend. Can help load them! ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497475731271710/pexels-tom-fisk-11256510.jpg', '2023-02-10', '2023-02-20', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (8, 'Electrical help needed', '2023-02-09', 'I keep having issues throwing a breaker, need help figuring that out!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497309670379570/pexels-kelly-2898199.jpg', '2023-02-11', '2023-02-28', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (9, 'Dog walking/training', '2023-02-08', 'Looking for someone who is good with dogs to help me train my sweet little monsters. ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497234579751002/pexels-blue-bird-7210535.jpg', '2023-02-13', '2023-02-26', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (10, 'Seamstress Wanted', '2023-02-06', 'Tore a hole in my shirt while jumping over a chainlink fence. I blame the neighbor for not locking up their mean old dog!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497235221487686/pexels-brian-magill-13005863.jpg', '2023-02-10', '2023-03-01', 1);
-INSERT INTO `project` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (11, 'Gardening support', '2023-02-10', 'Wanting to prep a large garden, need some hep.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497375856504902/pexels-quang-nguyen-vinh-2134798.jpg', '2023-02-10', '2023-05-15', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (1, 'Help with Java programming', '2023-02-07', 'I am struggling really hard this semester with programming. Willing to pay by the hour. Name your rate!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497235624153128/pexels-christina-morillo-1181298.jpg', '2023-02-01', '2023-03-01', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (2, 'Need help with geometry ', '2023-02-07', 'Geometry is having its way with my 10th grader and his finals are right around the corner. Anyone with a background in geometry and has teaching experience please contact me ASAP!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497374589829120/pexels-max-fischer-5212338.jpg', '2023-02-01', '2023-04-01', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (3, 'Changing my transmission', '2023-02-10', 'My transmission finally went out, looking for soe help repairing it! I know the basics about cars but this is a bit out of my wheel house. ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497407062122597/pexels-sergey-korolev-14456303.jpg', '2023-02-10', '2023-04-05', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (4, 'Seeking Culinary Artist', '2023-01-20', 'I\'m tired of eating the same old food. Looking for someone with culinary expertise to share some tips and maybe help me meal plan.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497406000971866/pexels-rene-asmussen-2544829.jpg', '2023-02-05', '2023-04-02', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (5, 'Broke my window, need it fixed. ', '2023-02-03', 'The neighborhood kids are at it again. This is the third window this year! Please help an old man out.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497406487515156/pexels-sadi-gokpnar-14252446.jpg', '2023-02-03', '2023-02-17', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (6, 'New Home, no paint.', '2023-02-05', 'The house is beautiful from the outside, but it could definitely use a splash of color on the interior. Help wanted!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497444735365190/pexels-tima-miroshnichenko-6474471.jpg', '2023-02-01', '2023-03-01', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (7, 'These A/C Units Have To Go', '2023-02-10', 'Have a mountain of A/C units that need to be out of here by the weekend. Can help load them! ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497475731271710/pexels-tom-fisk-11256510.jpg', '2023-02-10', '2023-02-20', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (8, 'Electrical help needed', '2023-02-09', 'I keep having issues throwing a breaker, need help figuring that out!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497309670379570/pexels-kelly-2898199.jpg', '2023-02-11', '2023-02-28', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (9, 'Dog walking/training', '2023-02-08', 'Looking for someone who is good with dogs to help me train my sweet little monsters. ', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497234579751002/pexels-blue-bird-7210535.jpg', '2023-02-13', '2023-02-26', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (10, 'Seamstress Wanted', '2023-02-06', 'Tore a hole in my shirt while jumping over a chainlink fence. I blame the neighbor for not locking up their mean old dog!', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497235221487686/pexels-brian-magill-13005863.jpg', '2023-02-10', '2023-03-01', 1);
+INSERT INTO `›` (`id`, `name`, `date_posted`, `description`, `active_status`, `user_id`, `image_primary`, `start_date`, `projected_date`, `enabled`) VALUES (11, 'Gardening support', '2023-02-10', 'Wanting to prep a large garden, need some hep.', 1, 2, 'https://cdn.discordapp.com/attachments/1072258955679633449/1074497375856504902/pexels-quang-nguyen-vinh-2134798.jpg', '2023-02-10', '2023-05-15', 1);
 
 COMMIT;
 
@@ -427,7 +427,6 @@ INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (4, 2);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (5, 8);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (6, 6);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (7, 8);
-INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (8, 4);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (9, 7);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (10, 5);
 INSERT INTO `project_has_skill` (`project_id`, `skill_id`) VALUES (11, 10);
