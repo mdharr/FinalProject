@@ -61,7 +61,7 @@
 
   <div class="container" *ngIf="selected">
     <table class="content-table">
-      <caption>Project Summary</caption>
+      <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
       <thead>
         <tr>
           <th>Image</th>
@@ -102,15 +102,19 @@
   <button class="btn btn-primary" (click)="updateProject(editProject)">Save</button>
   <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
 </div>
-
-<div *ngIf="createProject" class="box">
+<div id="createProjectFormParent">
+  <h4>Create <span style="color:#F5BF74;">Project</span></h4>
+<div id="createProjectForm" *ngIf="createProject" class="box">
+  <form>
   <label class="form-label" for="task">Name</label>
   <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
   <label class="form-label" for="description">Description</label>
   <input class="form-control" type="text" name="addProject.description" [(ngModel)]="newProject.description" required><br>
-  <label for="imageUrl">Image URL</label>
-  <input type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
-
-  <button class="btn btn-primary" (click)="addProject(newProject)">Save</button>
-  <button class="btn btn-primary" (click)="createProject = false">Back</button>
+  <label for="imageUrl">Image URL</label><br>
+  <input class="form-control" type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
+    <br>
+  <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button>
+  <button class="btn btn-danger" (click)="createProject = false">Back</button>
+</form>
+</div>
 </div>

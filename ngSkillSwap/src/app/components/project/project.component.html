@@ -85,7 +85,7 @@
       <input required type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputDescription">Desciption</label>
+      <label for="inputDescription">Description</label>
       <input required type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
     </div>
   </div>
@@ -121,8 +121,9 @@
 
 <!-- Edit Project Form -->
 <!-- <h1>Edit Poject which will be hidden</h1> -->
-<div id="editProjectForm">
-<form *ngIf="editProject">
+<div id="editFormParentDiv">
+<div id="editProjectForm" *ngIf="editProject">
+<form>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
@@ -164,6 +165,29 @@
   </div>
   </form>
   </div>
+</div>
 
 
+  <!-- <h4><em>Comments</em></h4>
+	<div class="container">
+		<div ng-repeat="comment in vm.comments" class="card row">
+			<span class="commentcolTitle col-md-4">{{comment.name}}</span>
+			<span class="commentcol col-md-7">{{comment.content}}</span>
+		    <button class="btn btn-danger delete" ng-click="vm.deleteComment(comment.id)">X</button>
+	</div>
 
+	<div>
+		<h5><em>Leave a comment</em></h5>
+
+		<form width="60%" class="container">
+		  <div class="form-group">
+		    <label>Name</label>
+		    <input type="text" class="form-control" ng-model="comment.name">
+		  </div>
+		  <div class="form-group">
+		    <label>Content</label>
+		    <input type="text" class="form-control"  ng-model="comment.content">
+		  </div>
+		  <button type="submit" class="btn btn-primary" ng-click="vm.addComment(vm.selectedPost.id, comment); comment={}">Submit</button>
+		</form>
+	</div> -->

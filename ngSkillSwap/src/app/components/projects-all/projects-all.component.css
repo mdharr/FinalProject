@@ -347,3 +347,30 @@ caption {
 #projectImg {
   width: 100px;
 }
+
+#createProjectFormParent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+#createProjectFormParent > h4 {
+  margin-top: 20px;
+  margin-bottom: -50px;
+}
+
+#createProjectForm {
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #F5BF74;
+  padding: 20px;
+  color: black;
+  width: 600px;
+}
+
+#saveNewProjectBtn {
+  margin-right: 15px;
+}

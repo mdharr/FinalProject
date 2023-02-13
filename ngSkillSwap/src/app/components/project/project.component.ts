@@ -183,4 +183,23 @@ export class ProjectComponent implements OnInit {
       },
   })
 }
+
+// Potential solution for comment section
+// vm.addComment = function(id, comment){
+//   postService.leaveCommentsOnPost(id, comment)
+//   .then(function(res){
+//     vm.selectPost(vm.selectedPost)
+//     loadPosts();
+//   })
+//   .catch(console.log);
+// }
+
+// vm.deleteComment = function(cid){
+//   postService.deleteComment(vm.selectedPost.id, cid)
+//   .then(function(res){
+//     vm.selectPost(vm.selectedPost)
+//     loadPosts();
+//   })
+//   .catch(console.log);
+// }
 }

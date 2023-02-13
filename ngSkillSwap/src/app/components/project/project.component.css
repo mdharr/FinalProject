@@ -118,8 +118,20 @@ thead,
   justify-content: center;
 }
 
+#editFormParentDiv {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
 #editProjectForm {
   height: auto;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #F5BF74;
+  padding: 20px;
+  color: black;
 }
 
 #addProjectForm {

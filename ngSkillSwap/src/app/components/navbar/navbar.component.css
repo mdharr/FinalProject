@@ -67,7 +67,7 @@ ul {
 
 .btn {
   border-radius: 5px;
-  color: #fff;
+  border: 1px solid black;
   cursor: pointer;
   display: inline-block;
   font-weight: 400;
@@ -82,7 +82,8 @@ ul {
   font-size: 14px;
 }
 .btn-default:hover {
-  background: black;
+  background: white;
+  color: white;
 }
 .btn-alt {
   border: 1px solid #fff;
@@ -93,10 +94,6 @@ ul {
   color: #F5BF74;
 }
 
-.btn:hover {
-  color: black;
-}
-
 #logoImage {
   width: 50px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -105,11 +102,10 @@ ul {
 
 .zoom {
 	transition: transform .2s;
-	margin: 0 auto;
 }
 
 .zoom:hover {
-	transform: scale(1.35);
+	transform: scale(1.15);
 	color: black !important;
 }
 
