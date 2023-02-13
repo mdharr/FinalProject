@@ -78,5 +78,53 @@ public class CommentController {
 		commentRepo.deleteById(commentId);
 		return !commentRepo.existsById(commentId);
 	}
+	
+	//---------------------- COMMENTS ON USER -----------------------
+	
+	@GetMapping("users/{id}/comments")
+	public Set<Comment> indexOfCommentsAboutUser(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("id") int userId) {
+		return commentService.index(principal.getName());
+		
+	}	
+	
+	@PostMapping("users/{id}/comments")
+	public Comment createCommentAboutUser(Principal principal, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, @PathVariable ("id") int userId) {
+		
+		try {
+			commentService.create(principal.getName(), comment, userId);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			url.append("/").append(comment.getId());
+			res.setHeader("Location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			comment = null;
+		}
+		return comment;
+	}
+	
+	@PutMapping("users/{uid}/comments/{cid}")
+	public Comment updateCommentAboutUser(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("uid") int userId, @PathVariable("cid") int commentId, @RequestBody Comment comment) {
+		
+		try {
+			comment = commentService.update(principal.getName(), commentId, comment, userId);
+			if(comment == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			comment = null;
+		}
+		
+		return comment;
+	}
+	
+	@DeleteMapping("users/{uid}/comments/{cid}")
+	public boolean destroyCommentAboutUser(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable("uid") int userId, @PathVariable("cid") int commentId) {
+		commentRepo.deleteById(commentId);
+		return !commentRepo.existsById(commentId);
+	}
 
 }

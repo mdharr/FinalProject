@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div *ngIf="displayTable" id="titleContainer">
   <h1>My <span style="color: #F5BF74;">Projects</span></h1>
 </div>
@@ -21,23 +22,31 @@
 <!-- Shows list of user's projects -->
 <!-- <div class="container1" *ngIf="!selected">
   <h2 class="projectList" id = "projectList">Project List</h2>
+=======
+<h3>Here are your current projects.</h3>
+<h5>For more information about a project please click on project name</h5>
+
+<!-- Shows list of user's projects -->
+<div class="container1" *ngIf="!selected">
+  <h2 class="projectList" id="projectList">Project List</h2>
+>>>>>>> ryansBranch
   <table>
     <thead>
       <tr>
-        <th>Name: </th>
+        <th>Name:</th>
         <th>Description:</th>
-        <th>Date Started: </th>
-        <th>Active Status: </th>
+        <th>Date Started:</th>
+        <th>Active Status:</th>
       </tr>
     </thead>
-      <tbody class="scrolling-box">
-        <tr *ngFor="let project of projectList">
-          <td (click)="displayProject(project)">{{ project.name }}</td>
-          <td>{{ project.description }}</td>
-          <td>{{ project.startDate | date : "shortDate" }}</td>
-          <td>{{ project.activeStatus }}</td>
-        </tr>
-      </tbody>
+    <tbody class="scrolling-box">
+      <tr *ngFor="let project of projectList">
+        <td (click)="displayProject(project)">{{ project.name }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ project.startDate | date : "shortDate" }}</td>
+        <td>{{ project.activeStatus }}</td>
+      </tr>
+    </tbody>
   </table>
 </div> -->
 <!-- End of user project list -->
@@ -49,16 +58,26 @@
     <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
     <thead>
       <tr>
+<<<<<<< HEAD
         <th>Image</th>
         <th>Name</th>
         <th>Description</th>
         <th>Date Posted</th>
         <th>Start Date</th>
         <th>Projected Completion</th>
+=======
+        <!-- <th>Date posted:</th> -->
+        <th>Name:</th>
+        <th>Desciption:</th>
+        <th>Start Date:</th>
+        <th>Projected Completion Date:</th>
+        <th>Image:</th>
+>>>>>>> ryansBranch
       </tr>
     </thead>
     <tbody>
       <tr>
+<<<<<<< HEAD
         <td><img class="zoom" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
         <td>{{ selected.name }}</td>
         <td>{{ selected.description }}</td>
@@ -70,41 +89,135 @@
   </table>
   <button class="btn btn-alt" (click)="setEditProject()">Edit</button>
   <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
+=======
+        <td>{{ selected.name }}</td>
+        <td>{{ selected.description }}</td>
+        <td>{{ selected.startDate | date : "shortDate" }}</td>
+        <td>{{ selected.projectedDate | date : "shortDate" }}</td>
+        <td>{{ selected.imagePrimary }}</td>
+      </tr>
+      <button class="btn btn-primary" (click)="setEditProject()">Edit</button>
+      <button
+        class="btn btn-primary"
+        (click)="displayTable(); editProject = null"
+      >
+        Back
+      </button>
+    </tbody>
+  </table>
+  <!-- Comments for selected project -->
+  <app-comments [selectedProject]="selected"></app-comments>
+>>>>>>> ryansBranch
 </div>
 <!-- End of information about a selected project -->
 
-<br>
+<br />
 
+<<<<<<< HEAD
 <button *ngIf="!displayTable" class="btn btn-primary" (click)="setAddProject()">Add a project!</button>
 <!-- Add Project Form -->
 <div id="addProjectForm">
 <form  *ngIf="addProjectMod">
+=======
+<button class="btn btn-primary" (click)="setAddProject()">
+  Add a project!
+</button>
+<!-- Add Project Form -->
+<form *ngIf="addProjectMod">
+>>>>>>> ryansBranch
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
-      <input required type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="project.name">
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Name of Project"
+        [(ngModel)]="project.name"
+      />
     </div>
     <div class="form-group col-md-6">
+<<<<<<< HEAD
       <label for="inputDescription">Description</label>
       <input required type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="project.description">
+=======
+      <label for="inputDescription">Desciption</label>
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="description"
+        placeholder="Description"
+        [(ngModel)]="project.description"
+      />
+>>>>>>> ryansBranch
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputImage">Image</label>
-      <input required type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="project.imagePrimary">
+      <input
+        required
+        type="text"
+        class="form-control"
+        name="imagePrimary"
+        placeholder="Image"
+        [(ngModel)]="project.imagePrimary"
+      />
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputStartDate">Projected Start Date:</label>
-      <input required type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="project.startDate">
+      <input
+        required
+        type="date"
+        class="form-control"
+        name="startDate"
+        placeholder="Projected Start Date"
+        [(ngModel)]="project.startDate"
+      />
     </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputProjectedEndDate">Projected Completion Date:</label>
-      <input required type="date" class="form-control" name="projectedDate" placeholder="Projected Completion Date" [(ngModel)]="project.projectedDate">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputProjectedEndDate">Projected Completion Date:</label>
+        <input
+          required
+          type="date"
+          class="form-control"
+          name="projectedDate"
+          placeholder="Projected Completion Date"
+          [(ngModel)]="project.projectedDate"
+        />
+      </div>
+      <div *ngIf="projectCreated">
+        <div *ngFor="let skill of skillList">
+          <label>{{ skill.name }}</label>
+          <input
+            required(change)="skillUpdate(skill.id, project.id)"
+            type="checkbox"
+          />
+        </div>
+      </div>
+      <button
+        *ngIf="projectCreated"
+        type="submit"
+        class="btn btn-primary"
+        (click)="reload()"
+      >
+        Submit
+      </button>
+      <button
+        *ngIf="!projectCreated"
+        type="submit"
+        class="btn btn-primary"
+        (click)="addProject(project)"
+      >
+        Submit
+      </button>
     </div>
+<<<<<<< HEAD
 <div *ngIf="projectCreated" >
   <div *ngFor="let skill of skillList">
 <label>{{ skill.name }}</label>
@@ -117,6 +230,10 @@
   </div>
   </form>
 </div>
+=======
+  </div>
+</form>
+>>>>>>> ryansBranch
 <!-- End of Add Project Form -->
 
 <!-- Edit Project Form -->
@@ -127,22 +244,41 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputName">Name of Project: </label>
-      <input type="text" class="form-control" name="name" placeholder="Name of Project" [(ngModel)]="editProject.name">
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        placeholder="Name of Project"
+        [(ngModel)]="editProject.name"
+      />
     </div>
     <div class="form-group col-md-6">
       <label for="inputDescription">Desciption</label>
-      <input type="text" class="form-control" name="description" placeholder="Description" [(ngModel)]="editProject.description">
+      <input
+        type="text"
+        class="form-control"
+        name="description"
+        placeholder="Description"
+        [(ngModel)]="editProject.description"
+      />
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputImage">Image</label>
-      <input type="text" class="form-control" name="imagePrimary" placeholder="Image" [(ngModel)]="editProject.imagePrimary">
+      <input
+        type="text"
+        class="form-control"
+        name="imagePrimary"
+        placeholder="Image"
+        [(ngModel)]="editProject.imagePrimary"
+      />
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputStartDate">Projected Start Date:</label>
+<<<<<<< HEAD
       <input type="date" class="form-control" name="startDate" placeholder="Projected Start Date" [(ngModel)]="editProject.startDate">
     </div>
   <div class="form-row">
@@ -191,3 +327,49 @@
 		  <button type="submit" class="btn btn-primary" ng-click="vm.addComment(vm.selectedPost.id, comment); comment={}">Submit</button>
 		</form>
 	</div> -->
+=======
+      <input
+        type="date"
+        class="form-control"
+        name="startDate"
+        placeholder="Projected Start Date"
+        [(ngModel)]="editProject.startDate"
+      />
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputProjectedEndDate">Projected Completion Date:</label>
+        <input
+          type="date"
+          class="form-control"
+          name="projectedDate"
+          placeholder="Projected Completion Date"
+          [(ngModel)]="editProject.projectedDate"
+        />
+      </div>
+      <div>
+        <div *ngFor="let skill of skillList">
+          <label>{{ skill.name }}</label>
+          <input
+            (change)="skillUpdate(skill.id, editProject.id)"
+            type="checkbox"
+            [checked]="checkSkill(skill)"
+          />
+          <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success" (click)="updateProject(editProject)">
+      Save
+    </button>
+    <button class="btn btn-danger" (click)="editProject = null">Cancel</button>
+    <button
+      type="button"
+      class="btn btn-info"
+      (click)="archiveAction(project, project.id)"
+    >
+      Project Completed!
+    </button>
+  </div>
+</form>
+>>>>>>> ryansBranch
