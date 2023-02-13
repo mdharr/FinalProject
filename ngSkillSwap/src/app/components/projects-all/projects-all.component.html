@@ -28,8 +28,8 @@
           <th>Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let project of projects">
+      <tbody *ngFor="let project of projects">
+        <tr *ngIf="project.enabled">
           <td>
             <span class="custom-checkbox">
               <input type="checkbox" id="checkbox1" name="options[]" value="1" (change)="addProjectToDelete(project)">
@@ -50,7 +50,7 @@
           <td>
             <!-- <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
-            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important" (click)="deleteProjects()"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
+            <a class="btn btn-info zoom" data-toggle="modal" style="color: white; font-size: 10px !important"><i class="material-icons">&#xe0ca;</i> <span>Comment</span></a>
           </td>
         </tr>
       </tbody>
