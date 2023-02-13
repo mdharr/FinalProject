@@ -113,9 +113,9 @@
   <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
 </div>
 
-<div id="createProjectFormParent">
-  <div id="createProjectForm" *ngIf="createProject" class="box">
-    <h4>Create <span style="color:#F5BF74;">Project</span></h4>
+<div id="createProjectFormParent" *ngIf="createProject">
+  <h4>Create <span style="color:#F5BF74;">Project</span></h4><br>
+  <div id="createProjectForm" class="box">
   <form>
   <label class="form-label" for="task">Name</label>
   <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
