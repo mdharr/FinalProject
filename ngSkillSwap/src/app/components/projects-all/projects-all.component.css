@@ -23,7 +23,6 @@ h1 {
 .box {
   min-height: 500px;
   margin: 100px;
-  padding: 100px;
   font-family: monospace;
   font-size: 20px;
   text-align: center;
@@ -292,6 +291,29 @@ font-weight: normal;
 .btn-alt:hover {
   background: #fff;
   color: #648880;
+}
+
+img {
+  --g: 0px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #F5BF74; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+img:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
 }
 
 #titleDiv {

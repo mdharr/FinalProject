@@ -110,6 +110,8 @@ export class ProjectsAllComponent {
     this.commentService.projectCommentIndex(id).subscribe({
       next: (comments) => {
 this.comments = comments;
+console.log(this.comments);
+
                 },
       error: (err) => {
         console.error('Error loading project comments');

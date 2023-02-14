@@ -46,7 +46,7 @@
           <ng-template #noSkills>
             <td (click)="displayProject(project)" class="ellipsis"><span>No skills</span></td>
           </ng-template>
-          <td (click)="displayProject(project)"><img class="zoom" id="projectImage" src="{{project.imagePrimary}}"></td>
+          <td (click)="displayProject(project)"><img style="--b: 5px;" class="" id="projectImage" src="{{project.imagePrimary}}"></td>
           <td>
             <!-- <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
@@ -59,8 +59,8 @@
 </div>
 <div class="container" *ngIf="selected && !editProject" class="box">
 
-  <div class="container" *ngIf="selected">
-    <table class="content-table">
+  <div class="container" *ngIf="selected" style="font-family: 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', 'Liberation Sans', Arial, sans-serif !important; max-width: 1000px !important;">
+    <table class="content-table" style="max-width: 1000px !important; max-height: 400px !important;">
       <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
       <thead>
         <tr>
@@ -75,19 +75,26 @@
       </thead>
       <tbody>
         <tr>
-          <td><img class="" id="projectImg" style="width: 300px;" src="{{ selected.imagePrimary }}"></td>
+          <td><img class="" id="projectImg" style="width: 200px;" src="{{ selected.imagePrimary }}"></td>
           <td>{{ selected.name }}</td>
           <td>{{ selected.description }}</td>
           <td>{{ selected.datePosted | date : "shortDate"}}</td>
           <td>{{ selected.startDate | date : "shortDate"}}</td>
           <td>{{ selected.projectedDate | date : "shortDate"}}</td>
-          <td> <ul><li *ngFor="let user of selected.users">
+          <td> <ul *ngFor="let user of selected.users"><li>
             {{ user.username }}
           </li></ul> </td>
 
         </tr>
       </tbody>
     </table>
+    <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
+    <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
+    <button class="btn btn-alt" (click)="addUser(selected)">Join</button>
+    <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
+    <br>
+    <br>
+    <br>
 
     <!-- comments section start  -->
       <h1>COMMENTS</h1>
@@ -101,16 +108,11 @@
     <form>
 <textarea name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment"></textarea>
 <br>
-<button (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
+<button class="btn btn-alt" (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
 </form>
 <!-- comments section end  -->
-
-    <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
-</div>
-    <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
-    <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
-    <button class="btn btn-alt" (click)="addUser(selected)">Join</button>
   </div>
+</div>
 
 <!-- </div> -->
 

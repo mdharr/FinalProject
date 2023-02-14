@@ -1,3 +1,4 @@
+import { ProjectComponent } from './../project/project.component';
 import { UserService } from './../../services/user.service';
 import { User } from 'src/app/models/user';
 import { Component, OnInit } from '@angular/core';
@@ -90,7 +91,9 @@ export class ProfileComponent implements OnInit {
       console.log(error);
       console.log("Error loading all projects")
     }
-  })
+    })
+  this.checkUserAvailability();
+  this.getCompletedProjects();
   }
   reload(): void {
     this.authService.getLoggedInUser().subscribe({
@@ -154,11 +157,28 @@ export class ProfileComponent implements OnInit {
 
   // KEEP WORKING ON THIS
   checkUserAvailability() {
+    let j = 0;
     for(let i = 0; i < this.loggedInUser.projects.length; i++) {
-      if(this.loggedInUser.projects[i]) {
-
+      if(this.loggedInUser.projects[i].enabled) {
+        j++;
       }
-
+    }
+    if(j === 0) {
+      this.loggedInUser.availability = true;
+    } else {
+      this.loggedInUser.availability = false;
     }
   }
+
+  getCompletedProjects(){
+    this.projectService.completedProjects().subscribe({
+      next: (projects) => {
+        this.completedProjects = projects;
+      },
+      error: (err) => {
+        console.error(err);
+        console.error('error retrieving completed projects: ' + err);
+      }
+  });
+}
 }
