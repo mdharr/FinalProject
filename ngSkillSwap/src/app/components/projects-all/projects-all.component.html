@@ -90,7 +90,7 @@
     </table>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
-    <button class="btn btn-alt" (click)="addUser(selected)">Join</button>
+    <button class="btn btn-alt" (click)="addUser(selected, loggedInUser)">Join</button>
     <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
     <br>
     <br>
