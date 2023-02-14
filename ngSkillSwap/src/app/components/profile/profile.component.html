@@ -269,7 +269,7 @@
               <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">Previous <span style="color: #00aae6;">Projects</span></h2>
               <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
               <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of loggedInUser.projects">
-                  <div class="flex-grow-1">
+                  <div class="flex-grow-1" *ngFor="let project of loggedInUser.projects">
                       <h3 class="mb-0" *ngIf="!project.enabled">{{project.name}}</h3>
                       <div class="subheading mb-3" *ngIf="!project.enabled">{{project.datePosted}}</div>
                       <p *ngIf="!project.enabled">{{project.description}}</p>
@@ -328,9 +328,8 @@
               <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">My <span style="color: crimson;">Skills</span></h2>
               <div class="subheading mb-3"></div>
               <ul class="fa-ul mb-0">
-                  <li *ngFor="let userSkill of loggedInUser.userSkills">
-                      <span class="fa-li"><i class="fas fa-check"></i></span>
-                      {{userSkill.skill.name}}
+                  <li style="list-style: none;" *ngFor="let userSkill of loggedInUser.userSkills">
+                      <h5><span style="vertical-align:middle"><i class="material-icons chevron_right">&#xe5cc;</i></span> {{userSkill.skill.name}}</h5>
                   </li>
               </ul>
           </div>
@@ -444,13 +443,13 @@
           <span class="required">Bio</span>
         </label>
       </div>
-      <div *ngFor="let skills of loggedInUser.userSkills">
+      <!-- <div *ngFor="let skills of loggedInUser.userSkills">
         <label class="label-email">
           <input type="text" class="text" name="userSkills" [(ngModel)]="skills.skill.name" placeholder="skills.skill.name" tabindex="1" required />
           <span class="required">Skills</span>
         </label>
-      </div>
-      <input class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
+      </div> -->
+      <input style="margin-top: 10px;" class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
     </form>
   </div>
   <div class="modal-footer" style="background-color: #F5BF74;">

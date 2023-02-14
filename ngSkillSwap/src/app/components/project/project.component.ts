@@ -42,7 +42,7 @@ export class ProjectComponent implements OnInit {
       if (!isNaN(userId)) {
         this.projectService.projectsForUser().subscribe({
           next: (project) => {
-          //  this.selected = project;
+            //  this.selected = project;
             this.router.navigateByUrl('/project');
           },
           error: (fail) => {
@@ -85,7 +85,7 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  getCompletedProjects(){
+  getCompletedProjects() {
     this.projectService.completedProjects().subscribe({
       next: (projects) => {
         this.completedProjects = projects;
@@ -93,9 +93,9 @@ export class ProjectComponent implements OnInit {
       error: (err) => {
         console.error(err);
         console.error('error retrieving completed projects: ' + err);
-      }
-  });
-}
+      },
+    });
+  }
 
   displayProject(project: Project) {
     this.selected = project;
@@ -184,11 +184,13 @@ export class ProjectComponent implements OnInit {
   //   });
   // }
 
-  archiveAction(project: Project, projectId: number): void {
+  archiveAction(project: Project): void {
     this.projectService.archive(project).subscribe({
       next: (project) => {
-        this.completedProjects.push(project);
+        //this.completedProjects.push(project);
+        this.displayTable();
         this.reload();
+        this.getCompletedProjects();
       },
       error: (fail) => {
         console.error('ProjectComponent.archiveAction: error archiving');
