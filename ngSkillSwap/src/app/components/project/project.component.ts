@@ -24,7 +24,7 @@ export class ProjectComponent implements OnInit {
   skillList: Skill[] = [];
   projectCreated = false;
   comments: Comment[] = [];
-
+  completedProjects: Project[] = [];
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
@@ -56,6 +56,7 @@ export class ProjectComponent implements OnInit {
     }
     this.displaySkills();
     this.reload();
+    this.getCompletedProjects();
   }
 
   reload() {
@@ -83,6 +84,18 @@ export class ProjectComponent implements OnInit {
       },
     });
   }
+
+  getCompletedProjects(){
+    this.projectService.completedProjects().subscribe({
+      next: (projects) => {
+        this.completedProjects = projects;
+      },
+      error: (err) => {
+        console.error(err);
+        console.error('error retrieving completed projects: ' + err);
+      }
+  })
+}
 
   displayProject(project: Project) {
     this.selected = project;

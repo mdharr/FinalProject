@@ -283,3 +283,7 @@
 		  <button type="submit" class="btn btn-primary" ng-click="vm.addComment(vm.selectedPost.id, comment); comment={}">Submit</button>
 		</form>
 	</div> -->
+<h1>CompletedProjects</h1>
+  <div *ngFor="let project of completedProjects">
+    {{project.name}}
+  </div>

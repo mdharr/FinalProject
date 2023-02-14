@@ -53,7 +53,14 @@ public class ProjectController {
 		}
 		return proj;
 	}
-
+	
+	@GetMapping("projects/completed")
+	public List<Project> showByCompleted(HttpServletRequest req, HttpServletResponse res, Principal principal){
+		String username = principal.getName();
+		List<Project> proj = projectService.findCompletedProjects(username);
+		return proj;
+	}
+	
 	@PostMapping("projects")
 	public Project createProject(
 			// @PathVariable int id,

@@ -54,6 +54,20 @@ private otherUrl = environment.baseUrl;
     );
   }
 
+  completedProjects(): Observable<Project[]>{
+    return this.http.get<Project[]>(this.url + "/completed", this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+          new Error(
+            'ProjectService.index(): error retrieving project list:'+ err
+            )
+            );
+          })
+        );
+      }
+
   show(id: number): Observable<Project> {
     return this.http.get<Project>(`${this.url}/${id}`, this.getHttpOptions()).pipe(
       catchError((err: any) => {
@@ -156,6 +170,5 @@ private otherUrl = environment.baseUrl;
       );
     })
   )}
-
 
 }

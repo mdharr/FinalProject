@@ -12,6 +12,6 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	
 	List<Project> findByDescriptionContaining(String name);
 	
-	
+	List<Project> findByEnabledFalse();
 	
 }
