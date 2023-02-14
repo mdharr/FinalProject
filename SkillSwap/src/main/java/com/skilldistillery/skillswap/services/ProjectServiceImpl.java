@@ -71,6 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if (userOpt != null) {
 			user = userOpt;
 			project.setUser(user);
+			project.setEnabled(true);
 			projectNew = projectRepo.saveAndFlush(project);
 		}
 		return projectNew;

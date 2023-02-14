@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User register(User user) {
+		user.setAvailability(true);
 		return userRepo.saveAndFlush(user);
 	}
 
