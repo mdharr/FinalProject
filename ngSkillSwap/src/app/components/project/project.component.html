@@ -113,7 +113,7 @@
   <button class="btn btn-alt" (click)="displayTable(); editProject = null">
     Back
   </button>
-  <button *ngIf="!project.enabled" class="btn btn-alt" (click)="archiveAction(selected)">Completed</button>
+  <button *ngIf="selected.enabled" class="btn btn-alt" (click)="archiveAction(selected)">Completed</button>
 </div>
 <!-- End of information about a selected project -->
 
@@ -374,10 +374,23 @@
     justify-content: center;
   "
 >
-  <h1>CompletedProjects</h1>
-  <div *ngFor="let project of completedProjects">
-    <ul *ngIf="!project.enabled">
-      <li>{{ project.name }}</li>
-    </ul>
+
+
+<div *ngIf="!selected" id="titleContainer">
+  <h1>Completed <span style="color: #f5bf74">Projects</span></h1>
+</div>
+<div id="parentContainer">
+  <div id="projectCardDiv" *ngFor="let project of projectList" >
+    <div *ngIf="!selected && projectList.length > 0 && !project.enabled"
+      id="cardDiv"
+      class="card zoom"
+      style="width: 18rem"
+      (click)="displayProject(project)">
+      <img class="card-img-top" src="{{ project.imagePrimary }}" alt="Card image cap"/>
+      <div style="padding: 10px" class="card-body">
+        <h5 class="card-text">{{ project.name }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+      </div>
+    </div>
   </div>
 </div>

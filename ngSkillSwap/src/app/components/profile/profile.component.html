@@ -276,10 +276,11 @@
                   </div>
                   <div class="flex-shrink-0"><span class="text-primary" *ngIf="!project.enabled">{{project.startDate}} - {{project.projectedDate}}</span></div>
               </div>
-              <h5>Completed Projects</h5>
               <div *ngFor="let project of completedProjects">
-                <ul *ngIf="project.user.id === loggedInUser.id && !project.enabled">
-                  <li>{{project.name}}</li>
+                <ul style="list-style: none;" *ngIf="project.user.id === loggedInUser.id && !project.enabled">
+                  <li><h5><span style="vertical-align:middle"><i class="material-icons chevron_right">&#xe5cc;</i></span> {{project.name}}</h5></li>
+                  <li><p>{{project.description}}</p></li>
+                  <li style="margin-bottom: 20px;"><p>{{project.startDate | date:"shortDate"}} - {{project.projectedDate  | date:"shortDate"}}</p></li>
                 </ul>
 
               </div>
