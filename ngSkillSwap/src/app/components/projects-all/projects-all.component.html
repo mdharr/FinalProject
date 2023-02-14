@@ -1,6 +1,8 @@
 <div id="titleDiv">
 <h1>Projects <span style="color: #F5BF74;">Board</span></h1>
 </div>
+<div *ngFor="let skill of skillList"><input type="checkbox">{{skill.name}} </div>
+
 
 <div class="container" *ngIf="!createProject">
   <div class="table-wrapper" *ngIf="!selected">

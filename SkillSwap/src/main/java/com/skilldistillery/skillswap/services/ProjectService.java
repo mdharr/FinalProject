@@ -23,5 +23,7 @@ public interface ProjectService {
 	Project addUser(String username, int projectId);
 
 	List<Project> findCompletedProjects(String username);
+
+	List<Project> findBySkills(String name);
 	
 }

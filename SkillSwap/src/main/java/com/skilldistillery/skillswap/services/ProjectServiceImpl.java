@@ -58,6 +58,16 @@ public class ProjectServiceImpl implements ProjectService {
 
 	}
 
+	@Override 
+	public List<Project> findBySkills(String name){
+		List<Project> proj = new ArrayList<>();
+		List<Project> present = projectRepo.findBySkills_NameLike(name);
+		if(!present.isEmpty()) {
+			proj.addAll(present);
+		}
+		return proj;
+	}
+	
 	@Override
 	public List<Project> findByDescription(String name) {
 		List<Project> project = new ArrayList<>();

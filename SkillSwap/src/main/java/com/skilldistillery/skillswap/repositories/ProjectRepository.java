@@ -14,4 +14,5 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 	
 	List<Project> findByEnabledFalse();
 	
+	List<Project> findBySkills_NameLike(String name);
 }
