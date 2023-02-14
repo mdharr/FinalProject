@@ -21,5 +21,7 @@ public interface ProjectService {
 	Project updateSkills(int skillId, int projectId);
 	
 	Project addUser(String username, int projectId);
+
+	List<Project> findCompletedProjects(String username);
 	
 }

@@ -40,6 +40,20 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
+	public List<Project> findCompletedProjects(String username) {
+		List<Project> completed = new ArrayList<>();
+		List<Project> usersProjects = findByUsername(username);
+		for (Project project : usersProjects) {
+			System.out.println(project);
+			if (project.getEnabled() == false) {
+				completed.add(project);
+			} 
+		}
+		return completed;
+
+	}
+
+	@Override
 	public List<Project> findByDescription(String name) {
 		List<Project> project = new ArrayList<>();
 		List<Project> projectOpt = projectRepo.findByDescriptionContaining(name);
@@ -102,29 +116,28 @@ public class ProjectServiceImpl implements ProjectService {
 		Optional<Project> projectOpt = projectRepo.findById(projectId);
 		Skill skill = null;
 		Project project = null;
-		
+
 		if (skillOpt.isPresent() && projectOpt.isPresent()) {
 			skill = skillOpt.get();
 			project = projectOpt.get();
-			
+
 			if (project.getSkills().contains(skill)) {
 				project.removeSkill(skill);
 				skill.removeProject(project);
-	
+
 			} else {
 				project.addSkill(skill);
 				skill.addProject(project);
-				System.out.println(skill +"-------------------------");
-			}  
+				System.out.println(skill + "-------------------------");
+			}
 			System.out.println(project.getSkills());
 			skillRepo.saveAndFlush(skill);
-			//projectRepo.saveAndFlush(project);
-		
+			// projectRepo.saveAndFlush(project);
+
 			projectOpt = projectRepo.findById(projectId);
 			project = projectOpt.get();
 		}
-		
-		
+
 		return project;
 	}
 
@@ -134,14 +147,13 @@ public class ProjectServiceImpl implements ProjectService {
 		User userOpt = userRepo.findByUsername(username);
 		User user = null;
 		Project project = null;
-	    if	(userOpt != null && projectOpt.isPresent()) {
-	    	user = userOpt;
-	    	project = projectOpt.get();
-	    	project.addUser(user);
-	    } 
-	    userRepo.saveAndFlush(user);
-		
-		
+		if (userOpt != null && projectOpt.isPresent()) {
+			user = userOpt;
+			project = projectOpt.get();
+			project.addUser(user);
+		}
+		userRepo.saveAndFlush(user);
+
 		return project;
 	}
 }
