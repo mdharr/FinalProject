@@ -327,16 +327,63 @@
               <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">My <span style="color: crimson;">Skills</span></h2>
               <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">My <span style="color: #00aae6;">Skills</span></h2>
               <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">My <span style="color: crimson;">Skills</span></h2>
-              <div class="subheading mb-3"></div>
-              <ul class="fa-ul mb-0">
-                  <li style="list-style: none;" *ngFor="let userSkill of loggedInUser.userSkills">
-                      <h5><span style="vertical-align:middle"><i class="material-icons chevron_right">&#xe5cc;</i></span> {{userSkill.skill.name}}</h5>
-                  </li>
-              </ul>
-          </div>
-          <!--LOOK AT LOGIC HERE-->
-          <div class="resume-section-content"  *ngIf="!loggedInUser.userSkills.length">
-              <h1 class="mb-0">Click here to add your skills!</h1>
+              <div>
+              <div *ngIf="loggedInUser.username === 'mic'" id="parentContainer" >
+                <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
+                  <div id="cardDiv" class="card zoom" style="width: 18rem">
+                    <img class="card-img-top img1" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <div style="padding: 10px" class="card-body">
+                      <h5 class="card-text">{{ userSkill.skill.name }}</h5>
+                      <p class="card-text">{{ userSkill.skill.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="loggedInUser.username === 'don'" id="parentContainer" >
+                <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
+                  <div id="cardDiv" class="card zoom" style="width: 18rem">
+                    <img class="card-img-top img2" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <div style="padding: 10px" class="card-body">
+                      <h5 class="card-text">{{ userSkill.skill.name }}</h5>
+                      <p class="card-text">{{ userSkill.skill.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="loggedInUser.username === 'rap'" id="parentContainer" >
+                <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
+                  <div id="cardDiv" class="card zoom" style="width: 18rem">
+                    <img class="card-img-top img3" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <div style="padding: 10px" class="card-body">
+                      <h5 class="card-text">{{ userSkill.skill.name }}</h5>
+                      <p class="card-text">{{ userSkill.skill.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="loggedInUser.username === 'leo'" id="parentContainer" >
+                <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
+                  <div id="cardDiv" class="card zoom" style="width: 18rem">
+                    <img class="card-img-top img4" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <div style="padding: 10px" class="card-body">
+                      <h5 class="card-text">{{ userSkill.skill.name }}</h5>
+                      <p class="card-text">{{ userSkill.skill.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" id="parentContainer">
+                <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
+                  <div id="cardDiv" class="card zoom" style="width: 18rem">
+                    <img class="card-img-top" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <div style="padding: 10px" class="card-body">
+                      <h5 class="card-text">{{ userSkill.skill.name }}</h5>
+                      <p class="card-text">{{ userSkill.skill.description }}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
       </section>
       <hr class="m-0" />
