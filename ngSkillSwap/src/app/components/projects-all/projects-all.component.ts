@@ -97,8 +97,10 @@ export class ProjectsAllComponent {
   // ...
   displayProject(project: Project | null) {
     this.selected = project;
-   // console.log('calling displayProject');
-     console.log(project);
+    if(this.selected) {
+      console.log("user name")
+    //  console.log(this.selected.user.firstName);
+    }
     //  console.log(this.selected.id)
     if( this.selected && this.selected.id ){
     this.getComments(this.selected.id);

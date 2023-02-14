@@ -35,6 +35,8 @@ public class SkillServiceImpl implements SkillService {
 		for (Skill skill : allSkills) {
 			if(skill.getName() == name) {
 				allSkills.add(skill);
+			} else {
+				return null;
 			}
 		}
 		return allSkills;

@@ -12,7 +12,7 @@ export class Comment {
     id: number = 0,
     datePosted: string = '',
     comment: string = '',
-    project: Project = new Project (),
+    project: Project = new Project(),
     userId: number = 0,
     inReplyToId: number = 0
   ) {
