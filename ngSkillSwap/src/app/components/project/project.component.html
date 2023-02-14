@@ -61,22 +61,22 @@
     <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
     <thead>
       <tr>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Description</th>
+        <th style="text-align: center; vertical-align: middle;">Image</th>
+        <th style="text-align: center; vertical-align: middle;">Name</th>
+        <th style="text-align: center; vertical-align: middle;">Description</th>
 
-        <th>Start Date</th>
-        <th>Projected Completion</th>
+        <th style="text-align: center; vertical-align: middle;">Start Date</th>
+        <th style="text-align: center; vertical-align: middle;">Projected Completion</th>
       </tr>
     </thead>
     <tbody>
       <tr class="selectedProjectTable" style="height: auto">
         <td style="text-align: center; vertical-align: middle;"><img class="" id="projectImg" style="width: 150px;" src="{{ selected.imagePrimary }}"></td>
-        <td>{{ selected.name }}</td>
-        <td>{{ selected.description }}</td>
+        <td style="text-align: center; vertical-align: middle;">{{ selected.name }}</td>
+        <td style="text-align: center; vertical-align: middle;">{{ selected.description }}</td>
 
-        <td>{{ selected.startDate | date : "shortDate"}}</td>
-        <td>{{ selected.projectedDate | date : "shortDate"}}</td>
+        <td style="text-align: center; vertical-align: middle;">{{ selected.startDate | date : "shortDate"}}</td>
+        <td style="text-align: center; vertical-align: middle;">{{ selected.projectedDate | date : "shortDate"}}</td>
       </tr>
     </tbody>
   </table>

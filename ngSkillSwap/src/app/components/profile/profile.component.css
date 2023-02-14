@@ -11458,6 +11458,14 @@ section {
   pointer-events: none;
 }
 
+.mainDiv {
+  border-top: 5px solid #fff;
+  border-left: 5px solid #fff;
+  border-bottom: 5px solid #F5BF74;
+  border-right: 5px solid #F5BF74;
+
+}
+
 /* h1 {
   margin:80px 0 10px 0;
   font-size: 52px;

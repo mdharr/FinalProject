@@ -1,0 +1,68 @@
+* {
+  background-color: #f6ad08;
+}
+
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+section .scroll {
+  width: 100%;
+  display: flex;
+}
+section .scroll div {
+  background-color: #f6ad08;
+  color: #000;
+  font-size: 4em;
+  font-weight: 900;
+  white-space: nowrap;
+  text-transform: uppercase;
+  animation: animate 40s linear infinite;
+  animation-delay: -40s;
+}
+section .scroll div:nth-child(2) {
+  animation: animate2 40s linear infinite;
+  animation-delay: -20s;
+}
+section .scroll div span {
+  -webkit-text-stroke: 2px #000;
+  color: transparent;
+}
+@keyframes animate {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+@keyframes animate2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+section .scroll.text1 {
+  transform: rotate(30deg) translateY(200px) translateX(200px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+section .scroll.text2 {
+  transform: rotate(-25deg) translateY(120px) translateX(-200px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+section .scroll.text3 {
+  transform: rotate(25deg) translateY(300px) translateX(-200px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+section .scroll.text4 {
+  transform: rotate(-2deg) translateY(-150px) translateX(-200px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+section .scroll.text5 {
+  transform: rotate(5deg) translateY(250px) translateX(-200px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}

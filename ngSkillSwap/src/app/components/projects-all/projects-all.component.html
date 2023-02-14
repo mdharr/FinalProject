@@ -20,33 +20,33 @@
         <tr>
           <th>
           </th>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Skill</th>
-          <th>Image</th>
-          <th>Actions</th>
+          <th style="text-align: center; vertical-align: middle;">Id</th>
+          <th style="text-align: center; vertical-align: middle;">Name</th>
+          <th style="text-align: center; vertical-align: middle;">Description</th>
+          <th style="text-align: center; vertical-align: middle;">Skill</th>
+          <th style="text-align: center; vertical-align: middle;">Image</th>
+          <th style="text-align: center; vertical-align: middle;">Actions</th>
         </tr>
       </thead>
       <tbody *ngFor="let project of projects">
         <tr *ngIf="project.enabled">
-          <td>
+          <td style="text-align: center; vertical-align: middle;">
             <span class="custom-checkbox">
               <input type="checkbox" id="checkbox1" name="options[]" value="1" (change)="addProjectToDelete(project)">
               <label for="checkbox1"></label>
             </span>
           </td>
-          <td (click)="displayProject(project)">{{project.id}}</td>
-          <td (click)="displayProject(project)" class="ellipsis">{{project.name}}</td>
-          <td (click)="displayProject(project)" class="ellipsis">{{project.description}}</td>
+          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)">{{project.id}}</td>
+          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)" class="ellipsis">{{project.name}}</td>
+          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)" class="ellipsis">{{project.description}}</td>
           <!-- ASK ABOUT THIS!!! -->
           <ng-container *ngFor="let projectSkill of project.skills">
-            <td *ngIf="project.skills; else noSkills" (click)="displayProject(project)" class="ellipsis">{{projectSkill.name}}</td>
+            <td style="text-align: center; vertical-align: middle;" *ngIf="project.skills; else noSkills" (click)="displayProject(project)" class="ellipsis">{{projectSkill.name}}</td>
           </ng-container>
           <ng-template #noSkills>
-            <td (click)="displayProject(project)" class="ellipsis"><span>No skills</span></td>
+            <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)" class="ellipsis"><span>No skills</span></td>
           </ng-template>
-          <td (click)="displayProject(project)"><img style="--b: 5px;" class="" id="projectImage" src="{{project.imagePrimary}}"></td>
+          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)"><img style="--b: 5px;" class="" id="projectImage" src="{{project.imagePrimary}}"></td>
           <td>
             <!-- <a class="edit" data-toggle="modal" (click)="displayProject(project)"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
             <a class="delete" data-toggle="modal" (click)="deleteProject(project)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a> -->
@@ -75,14 +75,14 @@
       </thead>
       <tbody>
         <tr>
-          <td><img class="" id="projectImg" style="width: 200px;" src="{{ selected.imagePrimary }}"></td>
-          <td>{{ selected.name }}</td>
-          <td>{{ selected.description }}</td>
-          <td>{{ selected.datePosted | date : "shortDate"}}</td>
-          <td>{{ selected.startDate | date : "shortDate"}}</td>
-          <td>{{ selected.projectedDate | date : "shortDate"}}</td>
-          <td> <ul *ngFor="let user of selected.users"><li>
-            {{ user.username }}
+          <td style="text-align: center; vertical-align: middle;"><img class="" id="projectImg" style="width: 200px;" src="{{ selected.imagePrimary }}"></td>
+          <td style="text-align: center; vertical-align: middle;">{{ selected.name }}</td>
+          <td style="text-align: left; vertical-align: middle;">{{ selected.description }}</td>
+          <td style="text-align: center; vertical-align: middle;">{{ selected.datePosted | date : "shortDate"}}</td>
+          <td style="text-align: center; vertical-align: middle;">{{ selected.startDate | date : "shortDate"}}</td>
+          <td style="text-align: center; vertical-align: middle;">{{ selected.projectedDate | date : "shortDate"}}</td>
+          <td style="text-align: left; vertical-align: middle;"> <ul *ngFor="let user of selected.users"><li style="list-style: none; text-transform: capitalize;">
+            [{{ user.firstName }}]
           </li></ul> </td>
 
         </tr>
