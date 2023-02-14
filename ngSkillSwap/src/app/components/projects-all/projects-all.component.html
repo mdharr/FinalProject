@@ -105,7 +105,7 @@
       <form>
         <textarea spellcheck="false" name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment" placeholder="Enter your comment here..."></textarea>
         <br>
-        <button class="btn btn-alt" (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
+        <button class="btn btn-alt" (click)="createComment(newComment, selected) ">Submit</button>
       </form>
     </div>
     <div style="max-width: 1000px;">
@@ -159,7 +159,17 @@
  <label class="form-label" for="projectedDate">Projected Completion Date</label>
  <input class="form-control" type="date" name= "addProject.projectedDate" [(ngModel)]="newProject.projectedDate" required>
   <br>
-  <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button>
+  <div *ngIf="projectCreated">
+    <div *ngFor="let skill of skillList">
+
+      <input required (change)="skillUpdate(skill.id, project?.id)" type="checkbox"/>
+      <label>{{ skill.name }}</label>
+    </div>
+  </div>
+  <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload() ; !selected">Submit</button>
+  <button *ngIf="!projectCreated" type="submit" class="btn btn-primary"(click)="addProject(newProject)">Save</button>
+
+  <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->
   <button class="btn btn-danger" (click)="createProject = false">Back</button>
 </form>
 </div>

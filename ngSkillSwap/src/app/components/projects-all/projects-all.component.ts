@@ -19,7 +19,7 @@ export class ProjectsAllComponent {
 
   projects: Project[] = [];
   project: Project | null = null;
-  users: User[] = []
+  users: User[] = [];
   selected: null | Project = null;
 
   newProject: Project = new Project();
@@ -48,6 +48,7 @@ export class ProjectsAllComponent {
 
   ngOnInit() {
     this.reload();
+    this.displaySkills();
     let idString = this.route.snapshot.paramMap.get('id');
     console.log('project ID' + idString);
     if (idString) {
@@ -98,24 +99,23 @@ export class ProjectsAllComponent {
   // ...
   displayProject(project: Project | null) {
     this.selected = project;
-    if(this.selected) {
-      console.log("user name")
-    //  console.log(this.selected.user.firstName);
+    if (this.selected) {
+      console.log('user name');
+      //  console.log(this.selected.user.firstName);
     }
     //  console.log(this.selected.id)
-    if( this.selected && this.selected.id ){
-    this.getComments(this.selected.id);
+    if (this.selected && this.selected.id) {
+      this.getComments(this.selected.id);
+    }
   }
-}
   // ...
 
-  getComments(id: number){
+  getComments(id: number) {
     this.commentService.projectCommentIndex(id).subscribe({
       next: (comments) => {
-this.comments = comments;
-console.log(this.comments);
-
-                },
+        this.comments = comments;
+        console.log(this.comments);
+      },
       error: (err) => {
         console.error('Error loading project comments');
         console.error(err);
@@ -125,22 +125,23 @@ console.log(this.comments);
 
   createComment(comment: Comment, selected: Project) {
     let id = this.selected?.id;
-   if(id){
-     comment.project.id = id;
-   }
-    console.log(comment)
+    if (id) {
+      comment.project.id = id;
+    }
+    console.log(comment);
     this.commentService.createComment(comment).subscribe({
       next: (data) => {
-         this.newComment.project.id = selected.id;
-         this.newComment.user.id = this.loggedInUser.id;
+        this.newComment.project.id = selected.id;
+        this.newComment.user.id = this.loggedInUser.id;
         this.newComment = new Comment();
+        this.displayProject(selected)
 
-        // this.displayProject(this.selected);
+
       },
       error: (nojoy) => {
         console.error('ProjectComponent.createComment: Error creating comment');
         console.error(nojoy);
-      }
+      },
     });
   }
 
@@ -157,8 +158,10 @@ console.log(this.comments);
 
     this.projectService.create(project).subscribe({
       next: (data) => {
+        this.projectCreated = true;
         this.newProject = new Project();
-        this.reload();
+        this.project = data;
+        // this.reload();
       },
       error: (nojoy) => {
         console.error(
@@ -170,7 +173,7 @@ console.log(this.comments);
     this.newProject = new Project();
   }
 
-  skillUpdate(skillId: number, projectId: number) {
+  skillUpdate(skillId: number, projectId: number = 0) {
     this.projectService.updateSkill(skillId, projectId).subscribe({
       next: (data) => {
         this.newProject = data;
@@ -183,13 +186,12 @@ console.log(this.comments);
     });
   }
 
-  addUser(project: Project, user : User){
+  addUser(project: Project, user: User) {
     // if (project.id != null) {
     //   this.project.users = data.users;
     // }
     console.log(project);
     this.projectService.addUser(project).subscribe({
-
       next: (data) => {
         console.log(data);
         // project.users = data.users;
@@ -197,20 +199,17 @@ console.log(this.comments);
         this.displayTable();
         this.reload();
       },
-    error: (nojoy) => {
-      console.error('ProjectComponent.addUser: Error adding user');
-      console.error(nojoy);
-
-    }
-  });
+      error: (nojoy) => {
+        console.error('ProjectComponent.addUser: Error adding user');
+        console.error(nojoy);
+      },
+    });
   }
 
   editProject: Project | null = null;
   setEditProject(): void {
     this.editProject = Object.assign({}, this.selected);
   }
-
-
 
   updateProject(project: Project, goToDetail = true): void {
     this.projectService.update(project).subscribe({
@@ -265,5 +264,17 @@ console.log(this.comments);
       let project = this.projectsToBeDeleted[i];
       this.deleteProject(project);
     }
+  }
+
+  displaySkills() {
+    this.skillService.indexAll().subscribe({
+      next: (skillList) => {
+        this.skillList = skillList;
+      },
+      error: (err) => {
+        console.error('Error loading skill list: ');
+        console.error(err);
+      },
+    });
   }
 }
