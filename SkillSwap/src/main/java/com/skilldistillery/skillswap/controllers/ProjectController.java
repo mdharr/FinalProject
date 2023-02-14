@@ -61,6 +61,15 @@ public class ProjectController {
 		return proj;
 	}
 	
+	@GetMapping("projects/skills/{name}")
+	public List<Project> showBySkill(@PathVariable String name, HttpServletRequest req, HttpServletResponse res){
+		List<Project> proj = projectService.findBySkills(name);
+		if(proj.isEmpty()) {
+			res.setStatus(404);
+		}
+		return proj;
+	}
+	
 	@PostMapping("projects")
 	public Project createProject(
 			// @PathVariable int id,
