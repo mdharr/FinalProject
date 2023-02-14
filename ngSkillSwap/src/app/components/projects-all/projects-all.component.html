@@ -11,7 +11,7 @@
         </div>
         <div class="col-sm-6">
           <a class="btn btn-success zoom" data-toggle="modal" (click)="createProject = true"><i class="material-icons">&#xE147;</i> <span>Add New Project</span></a>
-          <a class="btn btn-danger zoom" data-toggle="modal" (click)="deleteProjects()"><i class="material-icons">&#xE15C;</i> <span>Archive</span></a>
+          <a class="btn btn-danger zoom" data-toggle="modal" (click)="deleteProjects()" *ngIf="loggedInUser.role === 'ADMIN'"><i class="material-icons">&#xE15C;</i> <span>Archive</span></a>
         </div>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <tr>
           <th>
           </th>
-          <th style="text-align: center; vertical-align: middle;">Id</th>
+          <th style="text-align: center; vertical-align: middle;">Project Owner</th>
           <th style="text-align: center; vertical-align: middle;">Name</th>
           <th style="text-align: center; vertical-align: middle;">Description</th>
           <th style="text-align: center; vertical-align: middle;">Skill</th>
@@ -31,12 +31,13 @@
       <tbody *ngFor="let project of projects">
         <tr *ngIf="project.enabled">
           <td style="text-align: center; vertical-align: middle;">
-            <span class="custom-checkbox">
+            <span class="custom-checkbox" *ngIf="loggedInUser.role === 'ADMIN'">
               <input type="checkbox" id="checkbox1" name="options[]" value="1" (change)="addProjectToDelete(project)">
               <label for="checkbox1"></label>
             </span>
           </td>
-          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)">{{project.id}}</td>
+          <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)">
+         </td>
           <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)" class="ellipsis">{{project.name}}</td>
           <td style="text-align: center; vertical-align: middle;" (click)="displayProject(project)" class="ellipsis">{{project.description}}</td>
           <!-- ASK ABOUT THIS!!! -->
