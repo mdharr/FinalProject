@@ -241,13 +241,13 @@
               <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
               <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">Previous <span style="color: #00aae6;">Projects</span></h2>
               <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
-              <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of projects">
+              <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of loggedInUser.projects">
                   <div class="flex-grow-1">
-                      <h3 class="mb-0" *ngIf="!project.activeStatus">{{project.name}}</h3>
-                      <div class="subheading mb-3" *ngIf="!project.activeStatus">{{project.datePosted}}</div>
-                      <p *ngIf="!project.activeStatus">{{project.description}}</p>
+                      <h3 class="mb-0" *ngIf="!project.enabled">{{project.name}}</h3>
+                      <div class="subheading mb-3" *ngIf="!project.enabled">{{project.datePosted}}</div>
+                      <p *ngIf="!project.enabled">{{project.description}}</p>
                   </div>
-                  <div class="flex-shrink-0"><span class="text-primary" *ngIf="!project.activeStatus">{{project.startDate}} - {{project.projectedDate}}</span></div>
+                  <div class="flex-shrink-0"><span class="text-primary" *ngIf="!project.enabled">{{project.startDate}} - {{project.projectedDate}}</span></div>
               </div>
               <!-- <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                   <div class="flex-grow-1">

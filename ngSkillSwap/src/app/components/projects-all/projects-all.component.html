@@ -93,16 +93,15 @@
       <h1>COMMENTS</h1>
       <!-- <caption>Comment <span style="color: #F5BF74;">Section</span></caption> -->
       <p *ngFor="let comment of comments">
-        {{comment.comment }} <br>
+        User {{comment.userId}} posted: {{comment.comment }} on {{comment.datePosted | date : "shortDate"}}<br>
       </p>
         <p *ngIf="comments.length <= 0">
-          <strong>No comments found!</strong>
+          <strong>Be the first to comment!</strong>
       </p>
     <form>
-<textarea name="newComment.comment" id="" cols="60" rows="5" [(ngModel)]="newComment.comment" placeholder="Enter comments here:"></textarea>
+<textarea name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment"></textarea>
 <br>
-<button class="btn btn-alt" (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
-<br>
+<button (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
 </form>
 <!-- comments section end  -->
 
