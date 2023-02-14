@@ -1,6 +1,6 @@
 <div id="titleDiv">
   <h1 id="profileHeader">My <span style="color: #F5BF74;">Profile</span></h1>
-  </div>
+</div>
 
 <!-- <div class="row" *ngIf="!selected">
   <div class="col-sm-4">
@@ -159,8 +159,30 @@
   <!-- <h1>3d rotating navigation</h1>
   <h2>+ CSS Icons</h2> -->
 </section>
+
+<!-- <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
+  {{loggedInUser.firstName}}
+  <span class="text-primary" style="color: #ffa500 !important;">{{loggedInUser.lastName}}</span>
+</h1>
+<h1 *ngIf="loggedInUser.username === 'don'" class="mb-0">
+  {{loggedInUser.firstName}}
+  <span class="text-primary" style="color: #aa1bdd !important;">{{loggedInUser.lastName}}</span>
+</h1>
+<h1 *ngIf="loggedInUser.username === 'rap'" class="mb-0">
+  {{loggedInUser.firstName}}
+  <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
+</h1>
+<h1 *ngIf="loggedInUser.username === 'leo'" class="mb-0">
+  {{loggedInUser.firstName}}
+  <span class="text-primary" style="color: #00aae6 !important;">{{loggedInUser.lastName}}</span>
+</h1>
+<h1 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-0">
+  {{loggedInUser.firstName}}
+  <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
+</h1> -->
+
 <div class="d-flex flex-row justify-content-center" style="padding-top: 100px; padding-bottom: 100px;">
-<div id="page-top" class="w-75 dashed" style="background-color: #86929e !important">
+<div id="page-top" class="w-75 mainDiv" style="background-color: #86929e !important">
   <!-- Navigation-->
   <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a class="navbar-brand js-scroll-trigger" href="#page-top">
@@ -196,7 +218,12 @@
       <!-- About-->
       <section class="resume-section" id="section1">
         <div class="resume-section-content">
-          <img id="userProfileImage" class="zoom" src="{{loggedInUser.profileImage}}">
+          <span *ngIf="loggedInUser.username === 'mic'"><img class="img1" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+          <span *ngIf="loggedInUser.username === 'don'"><img class="img2" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+          <span *ngIf="loggedInUser.username === 'rap'"><img class="img3" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+          <span *ngIf="loggedInUser.username === 'leo'"><img class="img4" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+          <span *ngIf="loggedInUser.username != 'leo' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'mic'"><img id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+
             <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
                 {{loggedInUser.firstName}}
                 <span class="text-primary" style="color: #ffa500 !important;">{{loggedInUser.lastName}}</span>
@@ -241,13 +268,20 @@
               <h2 *ngIf="loggedInUser.username === 'rap'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
               <h2 *ngIf="loggedInUser.username === 'leo'" class="mb-5">Previous <span style="color: #00aae6;">Projects</span></h2>
               <h2 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-5">Previous <span style="color: crimson;">Projects</span></h2>
-              <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of projects">
+              <div class="d-flex flex-column flex-md-row justify-content-between mb-5" *ngFor="let project of loggedInUser.projects">
                   <div class="flex-grow-1">
-                      <h3 class="mb-0" *ngIf="!project.activeStatus">{{project.name}}</h3>
-                      <div class="subheading mb-3" *ngIf="!project.activeStatus">{{project.datePosted}}</div>
-                      <p *ngIf="!project.activeStatus">{{project.description}}</p>
+                      <h3 class="mb-0" *ngIf="!project.enabled">{{project.name}}</h3>
+                      <div class="subheading mb-3" *ngIf="!project.enabled">{{project.datePosted}}</div>
+                      <p *ngIf="!project.enabled">{{project.description}}</p>
                   </div>
-                  <div class="flex-shrink-0"><span class="text-primary" *ngIf="!project.activeStatus">{{project.startDate}} - {{project.projectedDate}}</span></div>
+                  <div class="flex-shrink-0"><span class="text-primary" *ngIf="!project.enabled">{{project.startDate}} - {{project.projectedDate}}</span></div>
+              </div>
+              <h5>Completed Projects</h5>
+              <div *ngFor="let project of completedProjects">
+                <ul *ngIf="project.userId === loggedInUser.id && !project.enabled">
+                  <li>{{project.name}}</li>
+                </ul>
+
               </div>
               <!-- <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                   <div class="flex-grow-1">
@@ -344,6 +378,7 @@
   <button id="updateProfileBtn" class="btn"><a (click)="open(myprofilemodal)">Update Profile</a></button>
 </div>
 
+
 <ng-template #myprofilemodal let-modal>
   <div>
   <div class="modal-header" style="background-color: #F5BF74;">
@@ -409,13 +444,12 @@
           <span class="required">Bio</span>
         </label>
       </div>
-      <div>
+      <div *ngFor="let skills of loggedInUser.userSkills">
         <label class="label-email">
-          <input type="text" class="text" name="userSkills" [(ngModel)]="loggedInUser.userSkills" placeholder="skills" tabindex="1" required />
+          <input type="text" class="text" name="userSkills" [(ngModel)]="skills.skill.name" placeholder="skills.skill.name" tabindex="1" required />
           <span class="required">Skills</span>
         </label>
       </div>
-
       <input class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
     </form>
   </div>

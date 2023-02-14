@@ -9,17 +9,19 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillswap.entities.User;
 import com.skilldistillery.skillswap.services.AuthService;
+import com.skilldistillery.skillswap.services.UserService;
 
 @RestController
 @CrossOrigin({"*", "http://localhost"})
 public class AuthController {
   @Autowired
   private AuthService authService;
+  @Autowired 
+  private UserService userService;
   
 	@PostMapping("register")
 	public User register(@RequestBody User user, HttpServletResponse res) {
@@ -33,12 +35,15 @@ public class AuthController {
 	 
 	@GetMapping("authenticate")
 	public User authenticate(Principal principal, HttpServletResponse res) {
+		
 	  if (principal == null) { // no Authorization header sent
 	     res.setStatus(401);
 	     res.setHeader("WWW-Authenticate", "Basic");
 	     return null;
 	  }
-	  return authService.getUserByUsername(principal.getName());
+	  User loggedInUser =  authService.getUserByUsername(principal.getName());
+	  userService.updateLogInTime(loggedInUser);
+	  return loggedInUser;
 	}
 
 }

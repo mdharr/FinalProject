@@ -23,7 +23,6 @@ h1 {
 .box {
   min-height: 500px;
   margin: 100px;
-  padding: 100px;
   font-family: monospace;
   font-size: 20px;
   text-align: center;
@@ -294,6 +293,29 @@ font-weight: normal;
   color: #648880;
 }
 
+img {
+  --g: 0px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #F5BF74; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+img:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+
 #titleDiv {
   display: flex;
   justify-content: center;
@@ -304,6 +326,7 @@ font-weight: normal;
   margin: 25px 0;
   font-size: 0.9em;
   min-width: 400px;
+  /* font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;; */
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -314,7 +337,7 @@ font-weight: normal;
   background-color:  #F5BF74;
   color: black;
   text-align: left;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .content-table th,
@@ -336,7 +359,7 @@ font-weight: normal;
 }
 
 .content-table tbody tr.active-row {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #F5BF74;
 }
 
@@ -373,4 +396,9 @@ caption {
 
 #saveNewProjectBtn {
   margin-right: 15px;
+}
+body {
+  background: #FEFEFE;
+  color: #888;
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

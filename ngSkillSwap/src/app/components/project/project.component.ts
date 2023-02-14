@@ -94,7 +94,7 @@ export class ProjectComponent implements OnInit {
         console.error(err);
         console.error('error retrieving completed projects: ' + err);
       }
-  })
+  });
 }
 
   displayProject(project: Project) {
@@ -114,6 +114,7 @@ export class ProjectComponent implements OnInit {
       next: (data) => {
         this.project = data;
         this.projectCreated = true;
+        this.project.enabled = true;
       },
 
       error: (nojoy) => {
@@ -186,7 +187,7 @@ export class ProjectComponent implements OnInit {
   archiveAction(project: Project, projectId: number): void {
     this.projectService.archive(project).subscribe({
       next: (project) => {
-        project.enabled = false;
+        this.completedProjects.push(project);
         this.reload();
       },
       error: (fail) => {
@@ -208,7 +209,7 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  // Potential solution for comment section
+  // Potential solution for comment section taken from Xtreme9Lives
   // vm.addComment = function(id, comment){
   //   postService.leaveCommentsOnPost(id, comment)
   //   .then(function(res){

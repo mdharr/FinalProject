@@ -11458,6 +11458,14 @@ section {
   pointer-events: none;
 }
 
+.mainDiv {
+  border-top: 5px solid #fff;
+  border-left: 5px solid #fff;
+  border-bottom: 5px solid #F5BF74;
+  border-right: 5px solid #F5BF74;
+
+}
+
 /* h1 {
   margin:80px 0 10px 0;
   font-size: 52px;
@@ -12184,3 +12192,170 @@ figure .shirt-2 {
   border: 1px solid #330000;
 }
 
+img {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #945f31;; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+img:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+.img1 {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #ffa500; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+.img1:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+.img2 {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #aa1bdd; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+.img2:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+.img3 {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: crimson; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+.img3:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+.img4 {
+  --g: 4px;     /* the gap */
+  --b: 12px;    /* border thickness*/
+  --c: #00aae6; /* the color */
+
+
+  padding: calc(var(--g) + var(--b));
+  --_c: #0000 0 25%, var(--c) 0 50%;
+  --_g1: repeating-linear-gradient(90deg ,var(--_c)) repeat-x;
+  --_g2: repeating-linear-gradient(180deg,var(--_c)) repeat-y;
+  background:
+    var(--_g1) var(--_p, 25%) 0   ,var(--_g2) 0    var(--_p,125%),
+    var(--_g1) var(--_p,125%) 100%,var(--_g2) 100% var(--_p, 25%);
+  background-size: 200% var(--b),var(--b) 200%;
+  cursor: pointer;
+  filter: grayscale(50%);
+  transition: .3s;
+}
+.img4:hover {
+  --_p: 75%;
+  filter: grayscale(0%);
+}
+
+.btn1 {
+  width: 150px;
+  height: 50px;
+  border: 1px solid #333;
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 0;
+  transition: 1s;
+}
+
+.btn1::before, .btn1::after {
+  position: absolute;
+  background: #eee;
+  z-index: -1;
+  transition: 1s;
+  content: '';
+}
+
+.btn1::before {
+  height: 50px;
+  width: 130px;
+}
+
+.btn1::after {
+  width: 150px;
+  height: 30px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+.btn1:hover::before {
+  width: 0px;
+  background: #fff;
+}
+
+.btn1:hover::after {
+  height: 0px;
+  background: #fff;
+}
+
+.btn1:hover {
+  background: #fff;
+}

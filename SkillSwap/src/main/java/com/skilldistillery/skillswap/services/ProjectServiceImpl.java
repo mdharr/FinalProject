@@ -71,6 +71,7 @@ public class ProjectServiceImpl implements ProjectService {
 		if (userOpt != null) {
 			user = userOpt;
 			project.setUser(user);
+			project.setEnabled(true);
 			projectNew = projectRepo.saveAndFlush(project);
 		}
 		return projectNew;
@@ -95,6 +96,7 @@ public class ProjectServiceImpl implements ProjectService {
 			update.setImagePrimary(project.getImagePrimary());
 			update.setStartDate(project.getStartDate());
 			update.setProjectedDate(project.getProjectedDate());
+			update.setEnabled(project.getEnabled());
 		}
 		return projectRepo.save(update);
 	}
