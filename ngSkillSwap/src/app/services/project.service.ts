@@ -1,7 +1,7 @@
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError, concatAll } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { Project } from '../models/project';
@@ -55,6 +55,22 @@ private otherUrl = environment.baseUrl;
     );
   }
 
+  projectBySkill(skill: String): Observable<Project[]> {
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+    return this.http.get<Project[]>(this.url + "/skills/" + skill, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () =>
+          new Error(
+            'ProjectService.getProjectBySKill(): error retrieving project list:'+ err
+            ))
+          }))
+    }
   completedProjects(): Observable<Project[]>{
     return this.http.get<Project[]>(this.url + "/completed", this.getHttpOptions()).pipe(
       catchError((err: any) => {
