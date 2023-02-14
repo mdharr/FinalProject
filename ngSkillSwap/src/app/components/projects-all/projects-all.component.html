@@ -1,11 +1,13 @@
 <div id="titleDiv">
 <h1>Projects <span style="color: #F5BF74;">Board</span></h1>
 </div>
-<div *ngFor="let skill of skillList"><button (click)="findBySkill(skill.name)">{{skill.name}} </button>
+<!-- <div *ngFor="let skill of skillList"><button (click)="findBySkill(skill.name)">{{skill.name}} </button> -->
   <!-- <div *ngFor="let proj of projectsBySkill">
     {{proj.name}}
   </div> -->
-</div>
+<!-- </div> -->
+<!-- pipe test -->
+<!-- <span (click)="selectedSearch = skillsSearch" *ngFor="let skill of skills">{{skill.name}} | </span> -->
 
 
 <div class="container" *ngIf="!createProject">
