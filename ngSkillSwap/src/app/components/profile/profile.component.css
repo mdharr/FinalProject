@@ -12359,3 +12359,26 @@ img:hover {
 .btn1:hover {
   background: #fff;
 }
+
+#cardDiv {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+#parentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width:100%;
+  padding: 50px;
+}
+
+#skillCardDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  color: black;
+  width: auto;
+  padding: 10px;
+}
