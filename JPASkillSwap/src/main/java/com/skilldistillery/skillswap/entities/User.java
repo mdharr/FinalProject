@@ -17,6 +17,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -47,8 +50,10 @@ public class User {
 	@Column(name = "profile_image")
 	private String profileImage;
 
+	@CreationTimestamp
 	@Column(name = "created_date")
 	private LocalDateTime createdDate;
+
 
 	@Column(name = "last_active")
 	private LocalDate lastActive;

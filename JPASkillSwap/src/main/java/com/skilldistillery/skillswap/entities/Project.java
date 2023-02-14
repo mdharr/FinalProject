@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -27,7 +29,8 @@ public class Project {
 	private int id;
 
 	private String name;
-
+	
+	@CreationTimestamp
 	@Column(name = "date_posted")
 	private LocalDate datePosted;
 
