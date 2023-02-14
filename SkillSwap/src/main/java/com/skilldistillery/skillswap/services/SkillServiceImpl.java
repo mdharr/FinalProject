@@ -33,7 +33,7 @@ public class SkillServiceImpl implements SkillService {
 		List <Skill> allSkills = skillRepo.findAll();
 		for (Skill skill : allSkills) {
 			if(skill.getName() == name) {
-				allSkills.add(skill);
+				allSkills.add(skill);			
 			} else {
 				return null;
 			}

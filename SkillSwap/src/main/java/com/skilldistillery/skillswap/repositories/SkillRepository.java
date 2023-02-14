@@ -6,6 +6,6 @@ import com.skilldistillery.skillswap.entities.Skill;
 
 public interface SkillRepository extends JpaRepository<Skill, Integer> {
 	
-	Skill findByName(String name);
+	Skill findByNameLike(String name);
 
 }
