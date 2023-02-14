@@ -17,6 +17,6 @@ public interface SkillService {
 	
 	public boolean destroy(int id);
 
-	public Skill findSkill(String name);
+	public List <Skill> findSkills(String name);
 
 }

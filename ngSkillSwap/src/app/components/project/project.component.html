@@ -3,25 +3,43 @@
 </div>
 <!-- Michael's Experiment w/ Cards for Projects -->
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
-  <div id="cardDiv" class="card zoom" style="width: 18rem;" *ngFor="let project of projectList" (click)="displayProject(project)">
-    <img class="card-img-top" src="{{project.imagePrimary}}" alt="Card image cap">
-    <div style="padding: 10px;" class="card-body">
-      <h5 class="card-text">{{project.name}}</h5>
-      <p class="card-text">{{project.description}}</p>
+  <div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
+    <div
+      id="cardDiv"
+      class="card zoom"
+      style="width: 18rem"
+      *ngFor="let project of projectList"
+      (click)="displayProject(project)"
+    >
+      <img
+        class="card-img-top"
+        src="{{ project.imagePrimary }}"
+        alt="Card image cap"
+      />
+      <div style="padding: 10px" class="card-body">
+        <h5 class="card-text">{{ project.name }}</h5>
+        <p class="card-text">{{ project.description }}</p>
+      </div>
     </div>
   </div>
 </div>
 
 <div id="parentContainer">
-<div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
-  <div id="cardDiv" class="card zoom" style="width: 18rem;">
-    <img class="card-img-top" src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif" alt="Not found">
-    <div style="padding: 10px;" class="card-body">
-      <h5 class="card-text">No projects found</h5>
-      <p class="card-text">Visit the project board to create a new project!</p>
+  <div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
+    <div id="cardDiv" class="card zoom" style="width: 18rem">
+      <img
+        class="card-img-top"
+        src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif"
+        alt="Not found"
+      />
+      <div style="padding: 10px" class="card-body">
+        <h5 class="card-text">No projects found</h5>
+        <p class="card-text">
+          Visit the project board to create a new project!
+        </p>
+      </div>
     </div>
-  </a>
+  </div>
 </div>
 
 <!-- Teasers -->
@@ -62,22 +80,39 @@
     </caption>
     <thead>
       <tr>
-        <th style="text-align: center; vertical-align: middle;">Image</th>
-        <th style="text-align: center; vertical-align: middle;">Name</th>
-        <th style="text-align: center; vertical-align: middle;">Description</th>
+        <th style="text-align: center; vertical-align: middle">Image</th>
+        <th style="text-align: center; vertical-align: middle">Name</th>
+        <th style="text-align: center; vertical-align: middle">Description</th>
 
-        <th style="text-align: center; vertical-align: middle;">Start Date</th>
-        <th style="text-align: center; vertical-align: middle;">Projected Completion</th>
+        <th style="text-align: center; vertical-align: middle">Start Date</th>
+        <th style="text-align: center; vertical-align: middle">
+          Projected Completion
+        </th>
       </tr>
     </thead>
     <tbody>
       <tr class="selectedProjectTable" style="height: auto">
-        <td style="text-align: center; vertical-align: middle;"><img class="" id="projectImg" style="width: 150px;" src="{{ selected.imagePrimary }}"></td>
-        <td style="text-align: center; vertical-align: middle;">{{ selected.name }}</td>
-        <td style="text-align: center; vertical-align: middle;">{{ selected.description }}</td>
+        <td style="text-align: center; vertical-align: middle">
+          <img
+            class=""
+            id="projectImg"
+            style="width: 150px"
+            src="{{ selected.imagePrimary }}"
+          />
+        </td>
+        <td style="text-align: center; vertical-align: middle">
+          {{ selected.name }}
+        </td>
+        <td style="text-align: center; vertical-align: middle">
+          {{ selected.description }}
+        </td>
 
-        <td style="text-align: center; vertical-align: middle;">{{ selected.startDate | date : "shortDate"}}</td>
-        <td style="text-align: center; vertical-align: middle;">{{ selected.projectedDate | date : "shortDate"}}</td>
+        <td style="text-align: center; vertical-align: middle">
+          {{ selected.startDate | date : "shortDate" }}
+        </td>
+        <td style="text-align: center; vertical-align: middle">
+          {{ selected.projectedDate | date : "shortDate" }}
+        </td>
       </tr>
     </tbody>
   </table>
@@ -251,14 +286,73 @@
       /> -->
         </div>
       </div>
-    </div>
-  </div>
-    <button class="btn btn-success" (click)="updateProject(editProject)">Save</button>
-    <button class="btn btn-danger" (click)="editProject = null">Cancel</button>
-    <button type="button" class="btn btn-info" name="enabled"
-    (click)="archiveAction(project, project.id)" [(ngModel)]="editProject.enabled">Project Completed!</button>
-  </div>
-  </form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputImage">Image:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="imagePrimary"
+            placeholder="Image"
+            [(ngModel)]="editProject.imagePrimary"
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputStartDate">Projected Start Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            name="startDate"
+            placeholder="Projected Start Date"
+            [(ngModel)]="editProject.startDate"
+          />
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputProjectedEndDate"
+              >Projected Completion Date:</label
+            >
+            <input
+              type="date"
+              class="form-control"
+              name="projectedDate"
+              placeholder="Projected Completion Date"
+              [(ngModel)]="editProject.projectedDate"
+            />
+          </div>
+          <div>
+            <h6>Required Skill:</h6>
+            <div class="checkbox" *ngFor="let skill of skillList">
+              <!-- <label>{{ skill.name }}</label> -->
+              <input
+                (change)="skillUpdate(skill.id, editProject.id)"
+                type="checkbox"
+                [checked]="checkSkill(skill)"
+              />
+              <label class="skillname">{{ skill.name }}</label>
+              <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success" (click)="updateProject(editProject)">
+          Save
+        </button>
+        <button class="btn btn-danger" (click)="editProject = null">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          name="enabled"
+          (click)="archiveAction(project, project.id)"
+          [(ngModel)]="editProject.enabled"
+        >
+          Project Completed!
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -285,11 +379,20 @@
 		  <button type="submit" class="btn btn-primary" ng-click="vm.addComment(vm.selectedPost.id, comment); comment={}">Submit</button>
 		</form>
 	</div> -->
-  <div class="container" style="height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+<div
+  class="container"
+  style="
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  "
+>
   <h1>CompletedProjects</h1>
   <div *ngFor="let project of completedProjects">
     <ul *ngIf="!project.enabled">
-      <li>{{project.name}}</li>
+      <li>{{ project.name }}</li>
     </ul>
   </div>
 </div>

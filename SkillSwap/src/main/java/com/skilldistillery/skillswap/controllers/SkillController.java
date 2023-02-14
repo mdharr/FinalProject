@@ -76,6 +76,11 @@ public class SkillController {
 		return skill;
 	}
 	
+	@GetMapping("skills")
+	public List <Skill> search(String name) {
+		return skillService.findSkills(name);
+	}
+	
 	@DeleteMapping("skills/{id}")
 	public void destroy(@PathVariable Integer id, HttpServletResponse res) {
 		try {
