@@ -2,13 +2,12 @@
   <h1>My <span style="color: #f5bf74">Projects</span></h1>
 </div>
 <!-- Michael's Experiment w/ Cards for Projects -->
-<div id="parentContainer">
-  <div id="projectCardDiv" *ngIf="!selected && projectList.length > 0">
+<div id="parentContainer" *ngFor="let project of projectList">
+  <div id="projectCardDiv"  *ngIf="!selected && projectList.length > 0 && project.enabled">
     <div
       id="cardDiv"
       class="card zoom"
       style="width: 18rem"
-      *ngFor="let project of projectList"
       (click)="displayProject(project)"
     >
       <img
@@ -23,7 +22,6 @@
     </div>
   </div>
 </div>
-
 <div id="parentContainer">
   <div id="projectCardDiv" *ngIf="!selected && projectList.length <= 0">
     <div id="cardDiv" class="card zoom" style="width: 18rem">
@@ -120,6 +118,7 @@
   <button class="btn btn-alt" (click)="displayTable(); editProject = null">
     Back
   </button>
+  <button (click)="archiveAction(selected)">Completed</button>
 </div>
 <!-- End of information about a selected project -->
 
@@ -346,7 +345,7 @@
           type="button"
           class="btn btn-info"
           name="enabled"
-          (click)="archiveAction(project, project.id)"
+          (click)="archiveAction(project)"
           [(ngModel)]="editProject.enabled"
         >
           Project Completed!

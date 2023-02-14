@@ -28,7 +28,7 @@ public class ProjectServiceImpl implements ProjectService {
 	private SkillRepository skillRepo;
 	@Autowired
 	private ProjectMemberRepository projectMemRepo;
-	
+
 	@Override
 	public List<Project> index() {
 		return projectRepo.findAll();
@@ -52,7 +52,7 @@ public class ProjectServiceImpl implements ProjectService {
 			System.out.println(project);
 			if (project.getEnabled() == false) {
 				completed.add(project);
-			} 
+			}
 		}
 		return completed;
 
@@ -155,19 +155,19 @@ public class ProjectServiceImpl implements ProjectService {
 		User user = null;
 		ProjectMember member = new ProjectMember();
 		Project project = null;
-		System.out.println("USERNAME*******"+username);
-		System.out.println("Project ID*******"+ projectId);
+		System.out.println("USERNAME*******" + username);
+		System.out.println("Project ID*******" + projectId);
 		if (userOpt != null && projectOpt.isPresent()) {
 			user = userOpt;
 			project = projectOpt.get();
-		//	project.addUser(user);
+			// project.addUser(user);
 			ProjectMemberId id = new ProjectMemberId();
 			id.setProjectId(projectId);
 			id.setUserId(user.getId());
 			member.setProject(project);
 			member.setUser(user);
 			member.setId(id);
-			
+
 		}
 		projectMemRepo.saveAndFlush(member);
 

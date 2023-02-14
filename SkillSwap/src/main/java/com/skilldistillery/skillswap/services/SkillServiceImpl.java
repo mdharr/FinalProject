@@ -1,6 +1,5 @@
 package com.skilldistillery.skillswap.services;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
