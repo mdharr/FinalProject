@@ -99,7 +99,7 @@ export class ProjectsAllComponent {
     this.selected = project;
     if(this.selected) {
       console.log("user name")
-      console.log(this.selected.userId);
+    //  console.log(this.selected.user.firstName);
     }
     //  console.log(this.selected.id)
     if( this.selected && this.selected.id ){

@@ -278,7 +278,7 @@
               </div>
               <h5>Completed Projects</h5>
               <div *ngFor="let project of completedProjects">
-                <ul *ngIf="project.userId === loggedInUser.id && !project.enabled">
+                <ul *ngIf="project.user.id === loggedInUser.id && !project.enabled">
                   <li>{{project.name}}</li>
                 </ul>
 
