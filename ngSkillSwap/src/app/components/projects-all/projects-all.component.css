@@ -510,3 +510,9 @@ textarea::-webkit-scrollbar {
   right: 0 !important;
 }
 
+textarea:focus {
+  outline: none !important;
+  border:2px solid white;
+  box-shadow: 0 0 4px black;
+}
+
