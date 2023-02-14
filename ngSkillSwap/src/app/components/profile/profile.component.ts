@@ -135,4 +135,14 @@ export class ProfileComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+  // KEEP WORKING ON THIS
+  checkUserAvailability() {
+    for(let i = 0; i < this.loggedInUser.projects.length; i++) {
+      if(this.loggedInUser.projects[i]) {
+
+      }
+
+    }
+  }
 }

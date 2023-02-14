@@ -90,13 +90,14 @@
     </table>
       <h1>COMMENTS</h1>
       <p *ngFor="let comment of comments">
-        {{comment.comment }} <br>
+        User {{comment.userId}} posted: {{comment.comment }} on {{comment.datePosted | date : "shortDate"}}<br>
       </p>
         <p *ngIf="comments.length <= 0">
-          <strong>No comments found!</strong>
+          <strong>Be the first to comment!</strong>
       </p>
     <form>
-<textarea name="newComment.comment" id="" cols="30" rows="10" [(ngModel)]="newComment.comment"></textarea>
+<textarea name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment"></textarea>
+<br>
 <button (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
 </form>
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->

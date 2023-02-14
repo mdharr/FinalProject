@@ -101,6 +101,7 @@ export class ProjectComponent implements OnInit {
       next: (data) => {
         this.project = data;
         this.projectCreated = true;
+        this.project.enabled = true;
       },
 
       error: (nojoy) => {
