@@ -304,6 +304,7 @@ font-weight: normal;
   margin: 25px 0;
   font-size: 0.9em;
   min-width: 400px;
+  /* font-family: "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;; */
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -314,7 +315,7 @@ font-weight: normal;
   background-color:  #F5BF74;
   color: black;
   text-align: left;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .content-table th,
@@ -336,7 +337,7 @@ font-weight: normal;
 }
 
 .content-table tbody tr.active-row {
-  font-weight: bold;
+  /* font-weight: bold; */
   color: #F5BF74;
 }
 
@@ -373,4 +374,9 @@ caption {
 
 #saveNewProjectBtn {
   margin-right: 15px;
+}
+body {
+  background: #FEFEFE;
+  color: #888;
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

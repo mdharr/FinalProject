@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -110,5 +111,15 @@ public class UserServiceImpl implements UserService {
 	public boolean deleteAdmin(int id) {
 		userRepo.deleteById(id);
 		return !userRepo.existsById(id);
+	}
+
+	@Override
+	public void updateLogInTime(User user) {
+		Optional<User> userOpt = userRepo.findById(user.getId());
+		if (userOpt.isPresent()) {
+			User u = userOpt.get();
+			u.setLastActive(LocalDate.now());
+			userRepo.saveAndFlush(u);
+		}
 	}
 }

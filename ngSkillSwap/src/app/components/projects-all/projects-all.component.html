@@ -59,7 +59,7 @@
 </div>
 <div class="container" *ngIf="selected && !editProject" class="box">
 
-  <div class="container" *ngIf="selected" >
+  <div class="container" *ngIf="selected">
     <table class="content-table">
       <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
       <thead>
@@ -88,7 +88,10 @@
         </tr>
       </tbody>
     </table>
+
+    <!-- comments section start  -->
       <h1>COMMENTS</h1>
+      <!-- <caption>Comment <span style="color: #F5BF74;">Section</span></caption> -->
       <p *ngFor="let comment of comments">
         User {{comment.userId}} posted: {{comment.comment }} on {{comment.datePosted | date : "shortDate"}}<br>
       </p>
@@ -100,6 +103,8 @@
 <br>
 <button (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
 </form>
+<!-- comments section end  -->
+
     <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
 </div>
     <button *ngIf="selected.userId === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button>
