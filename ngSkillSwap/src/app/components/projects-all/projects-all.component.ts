@@ -179,15 +179,19 @@ console.log(this.comments);
     });
   }
 
-  addUser(project : Project){
+  addUser(project: Project, user : User){
     // if (project.id != null) {
     //   this.project.users = data.users;
     // }
+    console.log(project);
     this.projectService.addUser(project).subscribe({
 
       next: (data) => {
-
+        console.log(data);
+        // project.users = data.users;
         this.project = data;
+        this.displayTable();
+        this.reload();
       },
     error: (nojoy) => {
       console.error('ProjectComponent.addUser: Error adding user');

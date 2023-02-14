@@ -115,8 +115,8 @@ public class ProjectController {
 		}
 	}
 
-	@PutMapping("projects/projectId/{pid}/users")
-	public Project addUser(@RequestBody Project project, Principal principal, @PathVariable("pid") int projectId,
+	@PutMapping("projects/{pid}/users")
+	public Project addUser(Principal principal, @PathVariable("pid") int projectId,
 			HttpServletResponse res, HttpServletRequest req) {
 		Project proj = projectService.addUser(principal.getName(), projectId);
 		res.setStatus(200);

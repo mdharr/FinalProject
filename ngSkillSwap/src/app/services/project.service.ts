@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { Project } from '../models/project';
 import { Comment } from '../models/comment';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -136,7 +137,12 @@ private otherUrl = environment.baseUrl;
    }
 
    addUser(project: Project) {
-    return this.http.put<Project>(`${this.url}/projectId/${project.id}/users`, project, this.getHttpOptions()).pipe(
+    const httpOptions = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    return this.http.put<Project>(`${this.url}/${project.id}/users`, project, this.getHttpOptions()).pipe(
     catchError((err: any) => {
     console.log(err);
     return throwError(

@@ -29,7 +29,7 @@ public class Project {
 	private int id;
 
 	private String name;
-	
+
 	@CreationTimestamp
 	@Column(name = "date_posted")
 	private LocalDate datePosted;
@@ -49,11 +49,8 @@ public class Project {
 	private LocalDate projectedDate;
 
 	@ManyToMany
-	@JoinTable(name="project_has_skill", 
-	joinColumns=@JoinColumn(name="project_id"),
-	inverseJoinColumns= @JoinColumn(name="skill_id"))
+	@JoinTable(name = "project_has_skill", joinColumns = @JoinColumn(name = "project_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private List<Skill> skills;
-	
 
 	@JsonIgnore
 	@ManyToOne
@@ -62,7 +59,7 @@ public class Project {
 
 	@OneToMany(mappedBy = "project")
 	private List<Comment> comments;
-	
+
 	private Boolean enabled;
 
 	public List<Comment> getComments() {
@@ -74,7 +71,7 @@ public class Project {
 	}
 
 	@ManyToMany
-	@JoinTable(name = "project_member", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
+	@JoinTable(name = "project_member", joinColumns = @JoinColumn(name = "project_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
 
 	@OneToMany(mappedBy = "project")
@@ -191,10 +188,11 @@ public class Project {
 	public void setProjectImages(List<ProjectImage> projectImages) {
 		this.projectImages = projectImages;
 	}
+
 	public List<Skill> getSkills() {
 		return skills;
 	}
-	
+
 	public void setSkills(List<Skill> skills) {
 		this.skills = skills;
 	}
@@ -257,7 +255,7 @@ public class Project {
 			comment.setProject(null);
 		}
 	}
-	
+
 	public void addSkill(Skill skill) {
 		if (skills == null) {
 			skills = new ArrayList<>();
@@ -274,7 +272,5 @@ public class Project {
 			skill.removeProject(this);
 		}
 	}
-	
-	
-	
+
 }
