@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillswap.entities.Project;
+import com.skilldistillery.skillswap.entities.ProjectMember;
+import com.skilldistillery.skillswap.entities.ProjectMemberId;
 import com.skilldistillery.skillswap.entities.Skill;
 import com.skilldistillery.skillswap.entities.User;
+import com.skilldistillery.skillswap.repositories.ProjectMemberRepository;
 import com.skilldistillery.skillswap.repositories.ProjectRepository;
 import com.skilldistillery.skillswap.repositories.SkillRepository;
 import com.skilldistillery.skillswap.repositories.UserRepository;
@@ -23,7 +26,9 @@ public class ProjectServiceImpl implements ProjectService {
 	private UserRepository userRepo;
 	@Autowired
 	private SkillRepository skillRepo;
-
+	@Autowired
+	private ProjectMemberRepository projectMemRepo;
+	
 	@Override
 	public List<Project> index() {
 		return projectRepo.findAll();
@@ -148,13 +153,23 @@ public class ProjectServiceImpl implements ProjectService {
 		Optional<Project> projectOpt = projectRepo.findById(projectId);
 		User userOpt = userRepo.findByUsername(username);
 		User user = null;
+		ProjectMember member = new ProjectMember();
 		Project project = null;
+		System.out.println("USERNAME*******"+username);
+		System.out.println("Project ID*******"+ projectId);
 		if (userOpt != null && projectOpt.isPresent()) {
 			user = userOpt;
 			project = projectOpt.get();
-			project.addUser(user);
+		//	project.addUser(user);
+			ProjectMemberId id = new ProjectMemberId();
+			id.setProjectId(projectId);
+			id.setUserId(user.getId());
+			member.setProject(project);
+			member.setUser(user);
+			member.setId(id);
+			
 		}
-		userRepo.saveAndFlush(user);
+		projectMemRepo.saveAndFlush(member);
 
 		return project;
 	}
