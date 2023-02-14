@@ -67,12 +67,22 @@
 #editProjectForm {
   height: auto;
   display: flex;
-
+  flex-direction: column;
   justify-content: center;
   background-color: #fff;
-  border: 2px solid #F5BF74;
+  border: 10px solid #F5BF74;
+  border-radius: 10px;
   padding: 20px;
   color: black;
+}
+
+#editFormHeader {
+  background-color: #F5BF74;
+  color: #fff;
+}
+
+.form-row > div {
+  margin-bottom: 20px;
 }
 
 #addProjectForm {

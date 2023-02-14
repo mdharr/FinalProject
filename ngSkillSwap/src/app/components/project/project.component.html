@@ -229,7 +229,7 @@
 <!-- Edit Project Form -->
 <!-- <h1>Edit Poject which will be hidden</h1> -->
 <div id="editFormParentDiv">
-  <div id="editProjectForm" *ngIf="editProject">
+  <div style="min-width: 500px;" id="editProjectForm" *ngIf="editProject">
     <form>
       <div class="form-row">
         <div class="form-group col-md-12">
@@ -242,7 +242,7 @@
             [(ngModel)]="editProject.name"
           />
         </div>
-        <div>
+        <div style="margin-bottom: 20px;">
           <label for="inputDescription">Description:</label>
           <textarea
             class="form-control"
@@ -301,6 +301,7 @@
           </div>
           <div>
             <h6>Required Skill:</h6>
+            <div style="display: flex; flex-wrap: wrap; width: 300px; justify-content:baseline;">
             <div class="checkbox" *ngFor="let skill of skillList">
               <!-- <label>{{ skill.name }}</label> -->
               <input
@@ -312,13 +313,16 @@
               <!-- <input (change)="skillUpdate(skill.id)" type="checkbox" checked = "{{ editProject.skills.includes(skill) }}" > -->
             </div>
           </div>
+          </div>
         </div>
+        <div style="display: flex; justify-content: center;">
         <button class="btn btn-success" (click)="updateProject(editProject)">
           Save
         </button>
         <button class="btn btn-danger" (click)="editProject = null">
           Cancel
         </button>
+      </div>
       </div>
     </form>
   </div>
@@ -363,8 +367,8 @@
   <h1>Completed <span style="color: #f5bf74">Projects</span></h1>
 </div>
 <div id="parentContainer">
-  <div id="projectCardDiv" *ngFor="let project of projectList" >
-    <div *ngIf="!selected && projectList.length > 0 && !project.enabled"
+  <div id="projectCardDiv" *ngFor="let project of completedProjects" >
+    <div *ngIf="!selected"
       id="cardDiv"
       class="card zoom"
       style="width: 18rem"
@@ -373,6 +377,23 @@
       <div style="padding: 10px" class="card-body">
         <h5 class="card-text">{{ project.name }}</h5>
         <p class="card-text">{{ project.description }}</p>
+      </div>
+    </div>
+    <div *ngIf="completedProjects.length <= 0"
+      id="cardDiv"
+      class="card zoom"
+      style="width: 18rem"
+      (click)="displayProject(project)">
+      <img
+        class="card-img-top"
+        src="https://media.tenor.com/nqmhZ7rVfE8AAAAC/scoobydoo-looking-for-clues.gif"
+        alt="Image not found"
+      />
+      <div style="padding: 10px" class="card-body">
+        <h5 class="card-text">No completed projects</h5>
+        <p class="card-text">
+          Projects will be visible here upon completion!
+        </p>
       </div>
     </div>
   </div>
