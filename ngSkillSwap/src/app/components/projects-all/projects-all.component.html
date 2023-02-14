@@ -166,7 +166,7 @@
       <label>{{ skill.name }}</label>
     </div>
   </div>
-  <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="reload() ; !selected">Submit</button>
+  <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="displayProject(newProject) ; !createProject">Submit</button>
   <button *ngIf="!projectCreated" type="submit" class="btn btn-primary"(click)="addProject(newProject)">Save</button>
 
   <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->

@@ -153,7 +153,7 @@ export class ProjectsAllComponent {
     this.editProject = Object.assign({}, this.selected);
   }
 
-  addProject(project: Project) {
+  addProject(project: Project ) {
     console.log(project);
 
     this.projectService.create(project).subscribe({
