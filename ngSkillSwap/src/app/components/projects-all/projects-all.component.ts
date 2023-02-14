@@ -94,6 +94,7 @@ export class ProjectsAllComponent {
       },
     });
   }
+
   // ...
   displayProject(project: Project | null) {
     this.selected = project;
@@ -129,9 +130,10 @@ console.log(this.comments);
     this.commentService.createComment(comment).subscribe({
       next: (data) => {
          this.newComment.project.id = selected.id;
-         this.newComment.userId = this.loggedInUser.id;
+         this.newComment.user.id = this.loggedInUser.id;
         this.newComment = new Comment();
-        this.reload();
+
+        // this.displayProject(this.selected);
       },
       error: (nojoy) => {
         console.error('ProjectComponent.createComment: Error creating comment');

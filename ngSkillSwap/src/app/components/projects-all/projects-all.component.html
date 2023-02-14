@@ -97,19 +97,35 @@
     <br>
 
     <!-- comments section start  -->
-      <h1>COMMENTS</h1>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <div class="wrapper" style="margin-bottom: 100px">
+      <h1>Comments</h1>
       <!-- <caption>Comment <span style="color: #F5BF74;">Section</span></caption> -->
-      <p *ngFor="let comment of comments">
-        User {{comment.userId}} posted: {{comment.comment }} on {{comment.datePosted | date : "shortDate"}}<br>
+
+      <form>
+        <textarea spellcheck="false" name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment" placeholder="Enter your comment here..."></textarea>
+        <br>
+        <button class="btn btn-alt" (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
+      </form>
+    </div>
+    <div style="max-width: 1000px;">
+      <ul class="posts frame" *ngFor="let comment of comments">
+        <div style="display: flex;">
+          <div style="display: flex; align-items: center; margin-right: 10px;">
+          <img style="width: 100px; height: 100px;" src="{{comment.user.profileImage}}">
+        </div>
+          <li class="bs_test mask">
+            <h3>{{comment.user.firstName}}</h3>
+            <p>{{comment.comment}}</p>
+            <p id="commentDate">on {{comment.datePosted | date : "shortDate"}}</p>
+          </li>
+       </div>
+      </ul>
+      <p *ngIf="comments.length <= 0">
+        <strong>Be the first to comment!</strong>
       </p>
-        <p *ngIf="comments.length <= 0">
-          <strong>Be the first to comment!</strong>
-      </p>
-    <form>
-<textarea name="newComment.comment" id="" cols="70" rows="10" [(ngModel)]="newComment.comment"></textarea>
-<br>
-<button class="btn btn-alt" (click)="createComment(newComment, selected) ; displayTable()">Submit</button>
-</form>
+    </div>
+    </div>
 <!-- comments section end  -->
   </div>
 </div>

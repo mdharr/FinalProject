@@ -29,7 +29,6 @@ public class Comment {
 	private String comment;
 
 	//map user
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
