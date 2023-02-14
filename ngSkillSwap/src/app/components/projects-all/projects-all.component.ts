@@ -39,6 +39,8 @@ export class ProjectsAllComponent {
   projectCreated = false;
   addProjectMod: Project | null = null;
 
+  selectedSearch: string = 'all'
+
   constructor(
     private commentService: CommentService,
     private projectService: ProjectService,
@@ -292,4 +294,18 @@ export class ProjectsAllComponent {
     }
 
   )}
+
+  skillsSearch = [
+    'Woodworking',
+    'Cooking',
+    'Computing',
+    'Electrician',
+    'Sewing',
+    'Painting',
+    'Dog training',
+    'Home construction',
+    'Mechanic',
+    'Gardening',
+    'Tutoring'
+  ];
 }

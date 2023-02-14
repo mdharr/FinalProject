@@ -23,6 +23,7 @@ import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommentsComponent } from './components/comments/comments.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { ProjectSearchPipe } from './project-search.pipe';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FeedComponent } from './components/feed/feed.component';
     FooterComponent,
     CommentsComponent,
     FeedComponent,
+    ProjectSearchPipe,
 
   ],
   imports: [
