@@ -44,8 +44,8 @@ class ProjectTest {
 
 	@Test
 	void test_project_entity_mapping() {
-		assertNotNull(project);
-		assertEquals("Want to get better at italian", project.getName());
+		assertNotNull(project); 
+		assertEquals("Need help with geometry ", project.getName());
 
 	}
 
