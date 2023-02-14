@@ -315,17 +315,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skilldb`;
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Woodworking', 'basic power tool uses, sanding, painting', 'https://www.familyhandyman.com/wp-content/uploads/2022/02/10-Woodworking-Portable-Power-Tools-e1645736309828.jpg');
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (2, 'Cooking', 'whip up a delightful pastry ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (3, 'Computing', 'JAVA, OOP expert', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (4 , 'Electrician', 'can walk you through basic electric installs ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Sewing', 'Repair and darn back to new', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Painting', 'Expert interior and exterior painter', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (7, 'Dog training', 'Training basics', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (8, 'Home construction', 'home building from foundation to roof', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (9, 'Mechanic', 'Fix cars, trucks, and RVs', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (10, 'Gardening', 'homesteading officianado ', NULL);
-INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (11, 'Tutoring', NULL, NULL);
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (1, 'Woodworking', 'basic power tool uses, sanding, painting', 'https://images.pexels.com/photos/1094770/pexels-photo-1094770.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (2, 'Cooking', 'whip up a delightful pastry ', 'https://images.pexels.com/photos/2284166/pexels-photo-2284166.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (3, 'Computing', 'JAVA, OOP expert', 'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (4 , 'Electrician', 'can walk you through basic electric installs ', 'https://images.pexels.com/photos/257886/pexels-photo-257886.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (5, 'Sewing', 'Repair and darn back to new', 'https://images.pexels.com/photos/1266139/pexels-photo-1266139.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (6, 'Painting', 'Expert interior and exterior painter', 'https://images.pexels.com/photos/1669754/pexels-photo-1669754.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (7, 'Dog training', 'Training basics', 'https://images.pexels.com/photos/264005/pexels-photo-264005.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (8, 'Home construction', 'home building from foundation to roof', 'https://images.pexels.com/photos/534220/pexels-photo-534220.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (9, 'Mechanic', 'Fix cars, trucks, and RVs', 'https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (10, 'Gardening', 'homesteading officianado ', 'https://images.pexels.com/photos/1105019/pexels-photo-1105019.jpeg?auto=compress&cs=tinysrgb&w=800');
+INSERT INTO `skill` (`id`, `name`, `description`, `image_url`) VALUES (11, 'Tutoring', NULL, 'https://images.pexels.com/photos/4778424/pexels-photo-4778424.jpeg?auto=compress&cs=tinysrgb&w=800');
 
 COMMIT;
 

@@ -5,19 +5,21 @@
 
 }
 
-
 #projectCardDiv {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   color: black;
-  width: 1200px;
+  width: auto;
   padding: 10px;
 }
 
 #parentContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  width:100%;
+  padding: 50px;
 }
 
 .selectedProjectTable{
@@ -46,8 +48,8 @@
 #titleContainer {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 #cardDiv {
