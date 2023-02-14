@@ -24,6 +24,8 @@ export class ProjectsAllComponent {
 
   newProject: Project = new Project();
 
+  projectsBySkill: Project[] = [];
+
   projectsToBeDeleted: Project[] = [];
 
   comments: Comment[] = [];
@@ -36,6 +38,8 @@ export class ProjectsAllComponent {
 
   projectCreated = false;
   addProjectMod: Project | null = null;
+
+  selectedSearch: string = 'all'
 
   constructor(
     private commentService: CommentService,
@@ -277,4 +281,31 @@ export class ProjectsAllComponent {
       },
     });
   }
+
+  findBySkill(skill: string){
+    this.projectService.projectBySkill(skill).subscribe({
+      next: (project) => {
+        this.projectsBySkill = project;
+        console.log(this.projectsBySkill);
+      },
+      error: (err) => {
+      console.error('Error loading project by skill: ');
+    console.error(err);}
+    }
+
+  )}
+
+  skillsSearch = [
+    'Woodworking',
+    'Cooking',
+    'Computing',
+    'Electrician',
+    'Sewing',
+    'Painting',
+    'Dog training',
+    'Home construction',
+    'Mechanic',
+    'Gardening',
+    'Tutoring'
+  ];
 }
