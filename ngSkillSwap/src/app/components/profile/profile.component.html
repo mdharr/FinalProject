@@ -444,13 +444,13 @@
           <span class="required">Bio</span>
         </label>
       </div>
-      <div *ngFor="let skills of loggedInUser.userSkills">
+      <!-- <div *ngFor="let skills of loggedInUser.userSkills">
         <label class="label-email">
           <input type="text" class="text" name="userSkills" [(ngModel)]="skills.skill.name" placeholder="skills.skill.name" tabindex="1" required />
           <span class="required">Skills</span>
         </label>
-      </div>
-      <input class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
+      </div> -->
+      <input style="margin-top: 10px;" class="zoom" type="submit" value="Update" (click)="editInformation(loggedInUser)"/>
     </form>
   </div>
   <div class="modal-footer" style="background-color: #F5BF74;">
