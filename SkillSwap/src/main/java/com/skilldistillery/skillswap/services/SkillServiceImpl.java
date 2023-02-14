@@ -1,5 +1,6 @@
 package com.skilldistillery.skillswap.services;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,16 @@ public class SkillServiceImpl implements SkillService {
 	}
 	
 	@Override
-	public Skill findSkill(String name) {
-		return skillRepo.findByName(name);
+	public List <Skill> findSkills(String name) {
+		List <Skill> allSkills = skillRepo.findAll();
+		for (Skill skill : allSkills) {
+			if(skill.getName() == name) {
+				allSkills.add(skill);
+			} else {
+				return null;
+			}
+		}
+		return allSkills;
 	}
 
 	@Override

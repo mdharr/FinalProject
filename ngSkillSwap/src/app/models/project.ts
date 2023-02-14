@@ -8,7 +8,7 @@ export class Project {
   datePosted: string;
   description: string;
   activeStatus: boolean;
-  userId: number;
+  user: User;
   imagePrimary: string;
   startDate: string;
   projectedDate: string;
@@ -24,7 +24,7 @@ export class Project {
     datePosted:string = '',
     description: string = '',
     activeStatus: boolean = false,
-    userId: number = 0,
+    user: User = new User(),
     imagePrimary: string = '',
     startDate: string = '',
     projectedDate: string = '',
@@ -38,7 +38,7 @@ export class Project {
     this.datePosted = datePosted;
     this.description = description;
     this.activeStatus = activeStatus;
-    this.userId = userId;
+    this.user = user;
     this.imagePrimary = imagePrimary;
     this.startDate = startDate;
     this.projectedDate = projectedDate;

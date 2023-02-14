@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Project {
@@ -52,7 +52,7 @@ public class Project {
 	@JoinTable(name = "project_has_skill", joinColumns = @JoinColumn(name = "project_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
 	private List<Skill> skills;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"projectOwner","projectsHelper"})
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;

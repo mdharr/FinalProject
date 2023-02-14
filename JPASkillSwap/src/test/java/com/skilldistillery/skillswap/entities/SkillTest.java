@@ -19,6 +19,7 @@ class SkillTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
 	private Skill skill;
+	private Skill skill2;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,6 +35,7 @@ class SkillTest {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		skill = em.find(Skill.class, 1);
+		skill2 = em.find(Skill.class, 2);
 	}
 
 	@AfterEach
@@ -45,7 +47,7 @@ class SkillTest {
 	@Test
 	void test_Skill_entity_mapping() {
 		assertNotNull(skill);
-		assertEquals("woodworking", skill.getName());
+		assertEquals("Woodworking", skill.getName());
 	}
 	@Test
 	void test_Skill_description() {
@@ -56,7 +58,7 @@ class SkillTest {
 	@Test
 	void test_Skill_Mapping_ManyToMany_Project() {
 		assertNotNull(skill);
-		assertTrue(skill.getProjects().size() > 0);
+		assertTrue(skill2.getProjects().size() > 0);
 	}
 
 }
