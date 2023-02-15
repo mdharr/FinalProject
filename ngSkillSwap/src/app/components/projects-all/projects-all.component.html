@@ -1,4 +1,4 @@
-<div id="titleDiv">
+<div *ngIf="!createProject" id="titleDiv">
 <h1>Projects <span style="color: #F5BF74;">Board</span></h1>
 </div>
 <!-- <div *ngFor="let skill of skillList"><button (click)="findBySkill(skill.name)">{{skill.name}} </button> -->
@@ -151,38 +151,42 @@
   <button class="btn btn-primary" (click)="updateProject(editProject)">Save</button>
   <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
 </div> -->
+<div>
+  <div style="margin-top: 20px; margin-bottom: -100px;" *ngIf="createProject" id="titleDiv">
+    <h1>Create <span style="color: #F5BF74;">Project</span></h1>
+    </div>
 
-<div id="createProjectFormParent" *ngIf="createProject">
-  <h4>Create <span style="color:#F5BF74;">Project</span></h4><br>
+
+<div id="createFormParentDiv" *ngIf="createProject">
   <div id="createProjectForm" class="box">
-  <form>
-  <label class="form-label" for="task">Name</label>
-  <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
-  <label class="form-label" for="description">Description</label>
-  <input class="form-control" type="text" name="addProject.description" [(ngModel)]="newProject.description" required><br>
-  <label for="imageUrl">Image URL</label><br>
-  <input class="form-control" type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
-  <label class="form-label" for="startDate">Start Date</label>
- <input class="form-control" type="date" name= "addProject.startDate" [(ngModel)]="newProject.startDate" required>
- <label class="form-label" for="projectedDate">Projected Completion Date</label>
- <input class="form-control" type="date" name= "addProject.projectedDate" [(ngModel)]="newProject.projectedDate" required>
-  <br>
-  <div *ngIf="projectCreated">
-    <div *ngFor="let skill of skillList">
+      <form>
+      <label class="form-label" for="task">Name</label>
+      <input class="form-control" type="text" name="addProject.name" [(ngModel)]="newProject.name" required><br>
+      <label class="form-label" for="description">Description</label>
+      <input class="form-control" type="text" name="addProject.description" [(ngModel)]="newProject.description" required><br>
+      <label for="imageUrl">Image URL</label><br>
+      <input class="form-control" type="text" name="addProject.imagePrimary" [(ngModel)]="newProject.imagePrimary" required><br>
+      <label class="form-label" for="startDate">Start Date</label>
+    <input class="form-control" type="date" name= "addProject.startDate" [(ngModel)]="newProject.startDate" required>
+    <label class="form-label" for="projectedDate">Projected Completion Date</label>
+    <input class="form-control" type="date" name= "addProject.projectedDate" [(ngModel)]="newProject.projectedDate" required>
+      <br>
+      <div *ngIf="projectCreated">
+        <div *ngFor="let skill of skillList">
 
-      <input required (change)="skillUpdate(skill.id, project?.id)" type="checkbox"/>
-      <label>{{ skill.name }}</label>
+          <input required (change)="skillUpdate(skill.id, project?.id)" type="checkbox"/>
+          <label>{{ skill.name }}</label>
+        </div>
+      </div>
+      <button *ngIf="projectCreated" type="submit" class="btn btn-success" (click)="displayProject(newProject) ; !createProject">Submit</button>
+      <button *ngIf="!projectCreated" type="submit" class="btn btn-success"(click)="addProject(newProject)">Save</button>
+
+      <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->
+      <button class="btn btn-danger" (click)="createProject = false">Back</button>
+     </form>
     </div>
   </div>
-  <button *ngIf="projectCreated" type="submit" class="btn btn-primary" (click)="displayProject(newProject) ; !createProject">Submit</button>
-  <button *ngIf="!projectCreated" type="submit" class="btn btn-primary"(click)="addProject(newProject)">Save</button>
-
-  <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->
-  <button class="btn btn-danger" (click)="createProject = false">Back</button>
-</form>
 </div>
-</div>
-
 <!--BEGIN-->
 
 <!-- <div id="editFormParentDiv">

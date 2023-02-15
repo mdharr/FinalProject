@@ -264,6 +264,24 @@ font-weight: normal;
   max-width: 100px;
 }
 
+#createFormParentDiv {
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+#createProjectForm {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  border: 10px solid #F5BF74 !important;
+  border-radius: 10px !important;
+  padding: 50px 100px 50px 100px !important;
+  color: black;
+}
+
 .btn {
   border-radius: 5px;
   color: #fff;
