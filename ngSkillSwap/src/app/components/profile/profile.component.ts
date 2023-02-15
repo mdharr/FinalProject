@@ -121,6 +121,7 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+
   scrollToElement($element: { scrollIntoView: (arg0: { behavior: string; block: string; inline: string; }) => void; }): void {
     console.log($element);
     $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});

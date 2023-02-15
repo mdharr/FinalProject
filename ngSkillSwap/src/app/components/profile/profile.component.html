@@ -375,7 +375,7 @@
               <div *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" id="parentContainer">
                 <div id="skillCardDiv" *ngFor="let userSkill of loggedInUser.userSkills">
                   <div id="cardDiv" class="card zoom" style="width: 18rem">
-                    <img class="card-img-top" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
+                    <img class="card-img-top img4" src="{{ userSkill.skill.imageUrl }}" alt="Card image cap"/>
                     <div style="padding: 10px" class="card-body">
                       <h5 class="card-text">{{ userSkill.skill.name }}</h5>
                       <p class="card-text">{{ userSkill.skill.description }}</p>
