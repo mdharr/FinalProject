@@ -379,7 +379,8 @@
         <p class="card-text">{{ project.description }}</p>
       </div>
     </div>
-    <div *ngIf="completedProjects.length <= 0"
+  </div>
+  <div *ngIf="completedProjects.length <= 0 && !selected"
       id="cardDiv"
       class="card zoom"
       style="width: 18rem"
@@ -396,5 +397,4 @@
         </p>
       </div>
     </div>
-  </div>
 </div>
