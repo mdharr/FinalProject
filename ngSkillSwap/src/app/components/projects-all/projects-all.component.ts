@@ -37,6 +37,7 @@ export class ProjectsAllComponent {
   skillList: Skill[] = [];
 
   projectCreated = false;
+  showForm: boolean = false;
   addProjectMod: Project | null = null;
 
   selectedSearch: string = 'all'
@@ -112,6 +113,11 @@ export class ProjectsAllComponent {
       this.getComments(this.selected.id);
     }
   }
+
+  resetForm() {
+    this.newProject = new Project();
+    this.projectCreated = false;
+  }
   // ...
 
   getComments(id: number) {
@@ -150,7 +156,11 @@ export class ProjectsAllComponent {
   }
 
   displayTable() {
-    this.selected = null;
+    // this.selected = new Project();
+    console.log(this.projects);
+    location.reload();
+
+
   }
   createProject: boolean = false;
   setAddProject(): void {
@@ -163,7 +173,7 @@ export class ProjectsAllComponent {
     this.projectService.create(project).subscribe({
       next: (data) => {
         this.projectCreated = true;
-        this.newProject = new Project();
+        // this.newProject = new Project();
         this.project = data;
         // this.reload();
       },
@@ -174,7 +184,6 @@ export class ProjectsAllComponent {
         console.error(nojoy);
       },
     });
-    this.newProject = new Project();
   }
 
   skillUpdate(skillId: number, projectId: number = 0) {
@@ -201,7 +210,7 @@ export class ProjectsAllComponent {
         // project.users = data.users;
         this.project = data;
         this.displayTable();
-        this.reload();
+        // this.reload();
       },
       error: (nojoy) => {
         console.error('ProjectComponent.addUser: Error adding user');

@@ -18,7 +18,7 @@
           <h2><b>Projects</b></h2>
         </div>
         <div class="col-sm-6">
-          <a class="btn btn-success zoom" data-toggle="modal" (click)="createProject = true"><i class="material-icons">&#xE147;</i> <span>Add New Project</span></a>
+          <a class="btn btn-success zoom" data-toggle="modal" (click)="createProject = true; showForm = true;"><i class="material-icons">&#xE147;</i> <span>Add New Project</span></a>
           <a class="btn btn-danger zoom" data-toggle="modal" (click)="deleteProjects()" *ngIf="loggedInUser.role === 'ADMIN'"><i class="material-icons">&#xE15C;</i> <span>Archive</span></a>
         </div>
       </div>
@@ -72,13 +72,13 @@
       <caption>Project <span style="color: #F5BF74;">Summary</span></caption>
       <thead>
         <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date Posted</th>
-          <th>Start Date</th>
-          <th>Projected Completion</th>
-          <th>Project Members</th>
+          <th style="text-align: center; vertical-align: middle">Image</th>
+          <th style="text-align: center; vertical-align: middle">Name</th>
+          <th style="text-align: center; vertical-align: middle">Description</th>
+          <th style="text-align: center; vertical-align: middle">Date Posted</th>
+          <th style="text-align: center; vertical-align: middle">Start Date</th>
+          <th style="text-align: center; vertical-align: middle">Projected Completion</th>
+          <th style="text-align: center; vertical-align: middle">Project Members</th>
         </tr>
       </thead>
       <tbody>
@@ -96,10 +96,9 @@
         </tr>
       </tbody>
     </table>
-    <!-- NEED HELP WITH ALLOWING ADMIN OR USER THAT CREATED PROJECT TO DISPLAY EDIT BUTTON!!! -->
-    <!-- <button *ngIf="selected.user.id === loggedInUser.id || loggedInUser.role === 'admin'" class="btn btn-alt" (click)="setEditProject()">Edit</button> -->
+    <!-- NEED HELP HERE!!! -->
     <button class="btn btn-alt" (click)="addUser(selected, loggedInUser)">Join</button>
-    <button class="btn btn-alt" (click)="displayTable(); editProject = null">Back</button>
+    <button class="btn btn-alt" (click)="displayTable(); editProject = null; reload();">Back</button>
     <br>
     <br>
     <br>
@@ -151,13 +150,13 @@
   <button class="btn btn-primary" (click)="updateProject(editProject)">Save</button>
   <button class="btn btn-primary" (click)="editProject = null">Cancel</button>
 </div> -->
-<div>
+<div  *ngIf="createProject && showForm">
   <div style="margin-top: 20px; margin-bottom: -100px;" *ngIf="createProject" id="titleDiv">
     <h1>Create <span style="color: #F5BF74;">Project</span></h1>
     </div>
 
 
-<div id="createFormParentDiv" *ngIf="createProject">
+<div id="createFormParentDiv">
   <div id="createProjectForm" class="box">
       <form>
       <label class="form-label" for="task">Name</label>
@@ -178,8 +177,8 @@
           <label>{{ skill.name }}</label>
         </div>
       </div>
-      <button *ngIf="projectCreated" type="submit" class="btn btn-success" (click)="displayProject(newProject) ; !createProject">Submit</button>
-      <button *ngIf="!projectCreated" type="submit" class="btn btn-success"(click)="addProject(newProject)">Save</button>
+      <button *ngIf="!projectCreated" type="submit" class="btn btn-success"(click)="addProject(newProject)">Add Skills</button>
+      <button *ngIf="projectCreated" type="submit" class="btn btn-success" (click)="displayProject(newProject); showForm = false;">Save</button>
 
       <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->
       <button class="btn btn-danger" (click)="createProject = false">Back</button>
