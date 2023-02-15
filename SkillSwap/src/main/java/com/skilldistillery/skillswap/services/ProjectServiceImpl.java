@@ -49,7 +49,6 @@ public class ProjectServiceImpl implements ProjectService {
 		List<Project> completed = new ArrayList<>();
 		List<Project> usersProjects = findByUsername(username);
 		for (Project project : usersProjects) {
-			System.out.println(project);
 			if (project.getEnabled() == false) {
 				completed.add(project);
 			}
@@ -145,11 +144,8 @@ public class ProjectServiceImpl implements ProjectService {
 			} else {
 				project.addSkill(skill);
 				skill.addProject(project);
-				System.out.println(skill + "-------------------------");
 			}
-			System.out.println(project.getSkills());
 			skillRepo.saveAndFlush(skill);
-			// projectRepo.saveAndFlush(project);
 
 			projectOpt = projectRepo.findById(projectId);
 			project = projectOpt.get();
@@ -165,8 +161,6 @@ public class ProjectServiceImpl implements ProjectService {
 		User user = null;
 		ProjectMember member = new ProjectMember();
 		Project project = null;
-		System.out.println("USERNAME*******" + username);
-		System.out.println("Project ID*******" + projectId);
 		if (userOpt != null && projectOpt.isPresent()) {
 			user = userOpt;
 			project = projectOpt.get();

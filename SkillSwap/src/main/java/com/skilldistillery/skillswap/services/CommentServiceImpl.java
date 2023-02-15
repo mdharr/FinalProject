@@ -16,14 +16,13 @@ import com.skilldistillery.skillswap.repositories.UserRepository;
 
 @Service
 public class CommentServiceImpl implements CommentService {
-	
-	
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private CommentRepository commentRepo;
-	
+
 	@Autowired
 	private ProjectRepository projectRepo;
 
@@ -43,19 +42,18 @@ public class CommentServiceImpl implements CommentService {
 	public Comment create(String username, Comment comment, int projectId) {
 		User user = userRepo.findByUsername(username);
 		Project project = null;
-		System.out.println("-------------------------------------------------------------------" + user);
 		Optional<Project> projectOpt = projectRepo.findById(projectId);
 		if (projectOpt.isPresent()) {
 			project = projectOpt.get();
 		}
-		if(user != null) {
+		if (user != null) {
 			comment.setUser(user);
 			comment.setProject(project);
 			return commentRepo.saveAndFlush(comment);
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Comment update(String username, int commentId, Comment comment, int projectId) {
 		Comment existing = show(username, commentId);
@@ -69,18 +67,18 @@ public class CommentServiceImpl implements CommentService {
 		return !commentRepo.existsById(commentId);
 	}
 
-	//-------------------Comments About User------------------------
-	
+	// -------------------Comments About User------------------------
+
 	@Override
-	public List<Comment> getAllCommentsForProject(int projectId){
+	public List<Comment> getAllCommentsForProject(int projectId) {
 		return commentRepo.findByProject_Id(projectId);
 	}
-	
+
 	@Override
 	public Set<Comment> indexOfCommentsAboutUser(String username) {
 		return commentRepo.findByUser_Username(username);
 	}
-	
+
 	@Override
 	public Comment createCommentAboutUser(String username, Comment comment, int userId) {
 		User user = userRepo.findByUsername(username);
@@ -88,25 +86,24 @@ public class CommentServiceImpl implements CommentService {
 		if (userOpt.isPresent()) {
 			user = userOpt.get();
 		}
-		if(user != null) {
+		if (user != null) {
 			comment.setUser(user);
 			return commentRepo.saveAndFlush(comment);
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Comment updateCommentAboutUser(String username, int commentId, Comment comment, int userId) {
 		Comment existing = show(username, commentId);
 		existing.setComment(comment.getComment());
 		return commentRepo.save(existing);
 	}
-	
+
 	@Override
 	public boolean destroyCommentAboutUser(String username, int commentId, int userId) {
 		commentRepo.deleteById(commentId);
 		return !commentRepo.existsById(commentId);
 	}
-	
 
 }

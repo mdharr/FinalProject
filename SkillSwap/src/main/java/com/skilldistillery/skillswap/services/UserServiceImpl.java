@@ -51,7 +51,6 @@ public class UserServiceImpl implements UserService {
 		if (userOpt != null) {
 			user = userOpt;
 		}
-		System.out.println(user.getFirstName());
 		return user;
 	}
 	
@@ -79,9 +78,7 @@ public class UserServiceImpl implements UserService {
 	public User updateOwn(String username, User user) {
 		
 		User userUpdate = userRepo.findByUsername(username);
-		System.out.println(username + "username ");
 		Address addressCheck = user.getAddress();
-		System.out.println(addressCheck);
 		if (addressCheck != null) {
 			userUpdate.setAddress(addressRepo.saveAndFlush(user.getAddress()));
 		}

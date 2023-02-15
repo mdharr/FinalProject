@@ -21,40 +21,38 @@ import com.skilldistillery.skillswap.entities.User;
 import com.skilldistillery.skillswap.services.AddressService;
 import com.skilldistillery.skillswap.services.UserService;
 
-@CrossOrigin({"*", "http://localhost/"})
+@CrossOrigin({ "*", "http://localhost/" })
 @RestController
 @RequestMapping("api")
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private AddressService addressService;
-	
+
 	@GetMapping("users")
 	public List<User> index() {
 		return userService.index();
 	}
-	
+
 	@GetMapping("users/{username}")
 	public User show(Principal principal, @PathVariable String username, HttpServletResponse res) {
-		System.out.println(principal.getName());
 		User user = userService.showByUsername(username);
 		if (user == null) {
 			res.setStatus(404);
 		}
 		return user;
 	}
-	
+
 	@PostMapping("users")
 	public User register(@RequestBody User user, HttpServletResponse res, HttpServletRequest req) {
 
 		try {
 			addressService.createAddress(user.getAddress());
 			userService.register(user);
-			
-			
+
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/").append(user.getId());
@@ -65,28 +63,26 @@ public class UserController {
 		}
 		return user;
 	}
-	
 
 	@PutMapping("users/")
 	public User userUpdate(Principal principal, @RequestBody User user, HttpServletResponse res) {
-System.out.println(user);
 		try {
 			user = userService.updateOwn(principal.getName(), user);
-			
+
 			if (user == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			user= null;
-		
+			user = null;
+
 		}
 		return user;
 	}
-	
+
 	@PutMapping("users/{id}")
-	public void archiveUser (Principal principal, @PathVariable int id, HttpServletResponse res) {
+	public void archiveUser(Principal principal, @PathVariable int id, HttpServletResponse res) {
 		try {
 			if (userService.archiveUser(id)) {
 				res.setStatus(204);
@@ -98,5 +94,5 @@ System.out.println(user);
 			res.setStatus(400);
 		}
 	}
- 
+
 }

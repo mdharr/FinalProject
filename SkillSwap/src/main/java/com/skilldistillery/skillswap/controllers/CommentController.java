@@ -42,7 +42,6 @@ public class CommentController {
 	
 	@PostMapping("projects/{id}/comments")
 	public Comment create(Principal principal, HttpServletRequest req, HttpServletResponse res, @RequestBody Comment comment, @PathVariable ("id") int projectId) {
-		System.out.println(comment);
 		try {
 			commentService.create(principal.getName(), comment, projectId);
 			res.setStatus(201);
