@@ -112,6 +112,7 @@ export class ProfileComponent implements OnInit {
     this.userService.update(user).subscribe({
       next: (user) => {
         user = this.loggedInUser;
+        this.modalService.dismissAll();
         this.reload();
       },
       error: (error) => {
