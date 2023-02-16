@@ -1,5 +1,5 @@
 # FinalProject
-
+Hello World
 ## Description
 Skill Swap is an application designed to connect people in an effort to educate and assist them with their projects around the home. It is an asynchronous application that has been deployed on AWS.
 On Skill Swap you are able to create an account using the register button that pops up with a modal asking for you for your email, a unique username, and a password. The accounts have passwords that are encrypted using Spring Security and saved as a string so that way we are not saving the raw password and it is not able to be leaked.
