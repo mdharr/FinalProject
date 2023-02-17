@@ -79,13 +79,23 @@
                 {{loggedInUser.firstName}}
                 <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
             </h1>
+            <h1 *ngIf="loggedInUser.firstName.length <= 0">First Name
+                <span *ngIf="loggedInUser.lastName.length <= 0" class="text-primary" style="color: crimson !important;">Last Name</span>
+            </h1>
             <div class="subheading mb-5" *ngIf="loggedInUser.address">
               {{loggedInUser.address.street}} · {{loggedInUser.address.city}} · {{loggedInUser.address.state}} · {{loggedInUser.address.zip}}
                 <a href="mailto:name@email.com">{{loggedInUser.email}}</a>
             </div>
-            <p class="lead mb-5">{{loggedInUser.bio}}</p>
+            <div class="subheading mb-5" *ngIf="!loggedInUser.address">
+              Address here on completion
+              <div *ngIf="loggedInUser.email.length <= 0">
+                <a href="mailto:name@email.com">Email here</a>
+              </div>
+            </div>
+            <div *ngIf="loggedInUser.bio.length <= 0">
+            <p class="lead mb-5">Bio here</p>
+          </div>
         </div>
-
       </section>
 
       <hr class="m-0" />
@@ -111,8 +121,12 @@
                   <li><p>{{project.description}}</p></li>
                   <li style="margin-bottom: 20px;"><p>{{project.startDate | date:"shortDate"}} - {{project.projectedDate  | date:"shortDate"}}</p></li>
                 </ul>
-
               </div>
+              <ul style="list-style: none;" *ngIf="completedProjects.length <= 0">
+                <li><h5><span style="vertical-align:middle"><i class="material-icons chevron_right">&#xe5cc;</i></span> Project name here</h5></li>
+                <li><p>Project description here</p></li>
+                <li style="margin-bottom: 20px;"><p>Project date here</p></li>
+              </ul>
           </div>
       </section>
       <hr class="m-0" />
