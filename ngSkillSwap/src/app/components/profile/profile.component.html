@@ -91,10 +91,16 @@
               <div *ngIf="loggedInUser.email.length <= 0">
                 <a href="mailto:name@email.com">Email here</a>
               </div>
+              <div *ngIf="loggedInUser.email.length > 0">
+                <a href="mailto:name@email.com">{{loggedInUser.email}}</a>
+              </div>
             </div>
             <div *ngIf="loggedInUser.bio.length <= 0">
             <p class="lead mb-5">Bio here</p>
-          </div>
+            </div>
+            <div *ngIf="loggedInUser.bio.length > 0">
+            <p class="lead mb-5">{{loggedInUser.bio}}</p>
+            </div>
         </div>
       </section>
 
