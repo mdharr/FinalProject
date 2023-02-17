@@ -51,11 +51,13 @@
 
       <section class="resume-section" id="section1">
         <div class="resume-section-content">
+          <span *ngIf="loggedInUser.profileImage.length === 0"><img
+          id="userProfileImage" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg"></span>
           <span *ngIf="loggedInUser.username === 'mic'"><img class="img1" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
           <span *ngIf="loggedInUser.username === 'don'"><img class="img2" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
           <span *ngIf="loggedInUser.username === 'rap'"><img class="img3" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
           <span *ngIf="loggedInUser.username === 'leo'"><img class="img4" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
-          <span *ngIf="loggedInUser.username != 'leo' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'mic'"><img id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
+          <span *ngIf="loggedInUser.username != 'leo' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'mic' && loggedInUser.profileImage.length > 0"><img id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
 
             <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
                 {{loggedInUser.firstName}}
