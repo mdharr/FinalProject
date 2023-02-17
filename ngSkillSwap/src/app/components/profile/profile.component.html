@@ -2,134 +2,6 @@
   <h1 id="profileHeader">My <span style="color: #F5BF74;">Profile</span></h1>
 </div>
 
-<!-- <div class="row" *ngIf="!selected">
-  <div class="col-sm-4">
-    <div class="row">
-      <div class="row">
-        <h1>{{ loggedInUser.firstName }} {{ loggedInUser.lastName }}</h1>
-         <img src="{{ loggedInUser.profileImage }}" alt="not found"/><br />
-        <div class="text-center text-white">
-          <h4>User Profile</h4>
-          <p>
-             {{ loggedInUser.profileImage }}
-            {{ loggedInUser.bio }}
-
-            <br />
-            User info: {{ selected }}
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-8">
-    <div class="row">
-      <h3 class="text-center text-white">Projects</h3>
-      <div class="card-group">
-        <div class="card">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This content is a little bit
-              longer.
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-        <div class="card">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This card has supporting text below as a natural lead-in to
-              additional content.
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-        <div class="card">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              This is a wider card with supporting text below as a natural
-              lead-in to additional content. This card has even longer content
-              than the first to show that equal height action.
-            </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <button (click)="selected = loggedInUser">Edit Information</button>
-</div>
-
-<form *ngIf="selected">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <input type="number" name="id" [(ngModel)]="loggedInUser.id" hidden />
-      <label for="inputFirstName">First Name</label>
-      <input
-        type="text"
-        class="form-control"
-        name="firstName"
-        placeholder="First Name"
-        [(ngModel)]="loggedInUser.firstName"
-      />
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputLastName">Last Name</label>
-      <input
-        type="text"
-        class="form-control"
-        name="lastName"
-        placeholder="Last Name"
-        [(ngModel)]="loggedInUser.lastName"
-      />
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail">Email</label>
-      <input
-        type="email"
-        class="form-control"
-        name="email"
-        placeholder="Email"
-        [(ngModel)]="loggedInUser.email"
-      />
-    </div>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputDescription">Description</label>
-    <textarea
-      type="text"
-      class="form-control"
-      name="bio"
-      placeholder="Introduce yourself..."
-      [(ngModel)]="loggedInUser.bio"
-      rows="2"
-    ></textarea>
-  </div>
-  <button
-    type="submit"
-    class="btn btn-primary"
-    (click)="editInformation(loggedInUser); selected = null"
-  >
-    Submit Changes
-  </button>
-  <button type="submit" class="btn btn-danger" (click)="selected = null">
-    Cancel
-  </button>
-</form> -->
 <nav>
   <ul>
     <li (click)="onClick('section1')">
@@ -156,51 +28,12 @@
 </nav>
 
 <section>
-  <!-- <h1>3d rotating navigation</h1>
-  <h2>+ CSS Icons</h2> -->
-</section>
 
-<!-- <h1 *ngIf="loggedInUser.username === 'mic'" class="mb-0">
-  {{loggedInUser.firstName}}
-  <span class="text-primary" style="color: #ffa500 !important;">{{loggedInUser.lastName}}</span>
-</h1>
-<h1 *ngIf="loggedInUser.username === 'don'" class="mb-0">
-  {{loggedInUser.firstName}}
-  <span class="text-primary" style="color: #aa1bdd !important;">{{loggedInUser.lastName}}</span>
-</h1>
-<h1 *ngIf="loggedInUser.username === 'rap'" class="mb-0">
-  {{loggedInUser.firstName}}
-  <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
-</h1>
-<h1 *ngIf="loggedInUser.username === 'leo'" class="mb-0">
-  {{loggedInUser.firstName}}
-  <span class="text-primary" style="color: #00aae6 !important;">{{loggedInUser.lastName}}</span>
-</h1>
-<h1 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-0">
-  {{loggedInUser.firstName}}
-  <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
-</h1> -->
+</section>
 
 <div class="d-flex flex-row justify-content-center" style="padding-top: 100px; padding-bottom: 100px;">
 <div id="page-top" class="w-75 mainDiv" style="background-color: #86929e !important">
-  <!-- Navigation-->
-  <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-          <span class="d-block d-lg-none">Clarence Taylor</span>
-          <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/profile.jpg" alt="..." /></span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
-              <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-          </ul>
-      </div>
-  </nav> -->
+
   <div>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <h1>test</h1>
