@@ -215,7 +215,7 @@
   </div>
   <!-- Page Content-->
   <div class="container-fluid p-0 w-80 d-flex flex-column justify-content-end">
-      <!-- About-->
+
       <section class="resume-section" id="section1">
         <div class="resume-section-content">
           <span *ngIf="loggedInUser.username === 'mic'"><img class="img1" id="userProfileImage" src="{{loggedInUser.profileImage}}"></span>
@@ -249,12 +249,6 @@
                 <a href="mailto:name@email.com">{{loggedInUser.email}}</a>
             </div>
             <p class="lead mb-5">{{loggedInUser.bio}}</p>
-            <!-- <div class="social-icons">
-                <a class="social-icon zoom" href="#!"><i class="fab fa-linkedin-in"></i></a>
-                <a class="social-icon zoom" href="#!"><i class="fab fa-github"></i></a>
-                <a class="social-icon zoom" href="#!"><i class="fab fa-twitter"></i></a>
-                <a class="social-icon zoom" href="#!"><i class="fab fa-facebook-f"></i></a>
-            </div> -->
         </div>
 
       </section>
