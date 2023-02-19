@@ -588,3 +588,67 @@ img:hover {
 .headerDiv:hover {
   animation-play-state: running;
 }
+
+@keyframes bg {
+  0% {
+      background-size:    0 3px,
+                          3px 0,
+                          0 3px,
+                          3px 0;
+  }
+  25% {
+      background-size:    100% 3px,
+                          3px 0,
+                          0 3px,
+                          3px 0;
+  }
+  50% {
+      background-size:    100% 3px,
+                          3px 100%,
+                          0 3px,
+                          3px 0;
+  }
+  75% {
+      background-size:    100% 3px,
+                          3px 100%,
+                          100% 3px,
+                          3px 0;
+  }
+  100% {
+      background-size:    100% 3px,
+                          3px 100%,
+                          100% 3px,
+                          3px 100%;
+  }
+}
+
+.headerDiv2 {
+  width: 60%;
+  margin: 2rem auto;
+  padding: 2em;
+
+  background-repeat: no-repeat;
+  background-image:   linear-gradient(to right, #C9C9C9 100%, #C9C9C9 100%),
+                      linear-gradient(to bottom, #F5BF74 100%, #F5BF74 100%),
+                      linear-gradient(to right, #F5BF74 100%, #F5BF74 100%),
+                      linear-gradient(to bottom, #C9C9C9 100%, #C9C9C9 100%);
+  background-size:    100% 3px,
+                      3px 100%,
+                      100% 3px,
+                      3px 100%;
+  background-position:    0 0,
+                          100% 0,
+                          100% 100%,
+                          0 100%;
+  animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+  animation-play-state: paused;
+}
+
+.headerDiv2:hover {
+  animation-play-state: running;
+}
+
+.yellowHR {
+  height: 1px;
+  background-color:#F5BF74;
+}
