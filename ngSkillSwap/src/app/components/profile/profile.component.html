@@ -77,10 +77,10 @@
             </h1>
             <h1 *ngIf="loggedInUser.username != 'mic' && loggedInUser.username != 'don' && loggedInUser.username != 'rap' && loggedInUser.username != 'leo'" class="mb-0">
                 {{loggedInUser.firstName}}
-                <span class="text-primary" style="color: crimson !important;">{{loggedInUser.lastName}}</span>
+                <span class="text-primary" style="color: #F5BF74 !important;">{{loggedInUser.lastName}}</span>
             </h1>
             <h1 *ngIf="loggedInUser.firstName.length <= 0">First Name
-                <span *ngIf="loggedInUser.lastName.length <= 0" class="text-primary" style="color: crimson !important;">Last Name</span>
+                <span *ngIf="loggedInUser.lastName.length <= 0" class="text-primary" style="color: #F5BF74 !important;">Last Name</span>
             </h1>
             <div class="subheading mb-5" *ngIf="loggedInUser.address">
               {{loggedInUser.address.street}} · {{loggedInUser.address.city}} · {{loggedInUser.address.state}} · {{loggedInUser.address.zip}}

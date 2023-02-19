@@ -12195,7 +12195,7 @@ figure .shirt-2 {
 img {
   --g: 4px;     /* the gap */
   --b: 12px;    /* border thickness*/
-  --c: #945f31;; /* the color */
+  --c: #F5BF74;; /* the color */
 
 
   padding: calc(var(--g) + var(--b));
