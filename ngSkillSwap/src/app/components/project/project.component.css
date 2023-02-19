@@ -582,7 +582,7 @@ img:hover {
                           100% 100%,
                           0 100%;
   animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 .headerDiv:hover {
@@ -641,7 +641,7 @@ img:hover {
                           100% 100%,
                           0 100%;
   animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 .headerDiv2:hover {

@@ -179,7 +179,6 @@ blockquote {
     width: 25%;
     margin: 2rem auto;
     padding: 2em;
-
     background-repeat: no-repeat;
     background-image:   linear-gradient(to right, #C9C9C9 100%, #C9C9C9 100%),
                         linear-gradient(to bottom, #F5BF74 100%, #F5BF74 100%),
@@ -193,8 +192,10 @@ blockquote {
                             100% 0,
                             100% 100%,
                             0 100%;
+
     animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
-    animation-play-state: paused;
+
+    animation-play-state: running;
 }
 
 .headerDiv:hover {
