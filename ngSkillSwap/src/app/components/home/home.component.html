@@ -12,7 +12,7 @@
     </div>
   </div> -->
 
-<div style="width: 100%; background-color: aliceblue; border-left: 5px solid #F5BF74; border-right: 5px solid #F5BF74; border-top: 5px solid #F5BF74; border-bottom: 5px solid #F5BF74; padding-bottom: 70px; justify-content: center; border-radius: 15px;">
+<div id="imageScrollerDiv" style="width: 100%; background-color: aliceblue; border-left: 5px solid #F5BF74; border-right: 5px solid #F5BF74; border-top: 5px solid #F5BF74; border-bottom: 5px solid #F5BF74; padding-bottom: 70px; justify-content: center; border-radius: 15px;">
 <div class="image-scroller container" style="height: 100px; margin-top: 100px;">
   <div class="scroller-left" *ngFor="let project of projects">
     <div class="look">
@@ -22,7 +22,8 @@
 </div>
 </div>
 
-<div id="blockquoteDiv" style="margin-top: 50px">
+<div id="blockquoteParentDiv" style="margin-top: 50px">
+  <div id="blockquoteDiv" class="zoom">
   <blockquote>
     We created Skill Swap for people wanting to connect with others to educate and assist with the projects
   that they want to do. Whether that be cooking, wood working, or electrical work we have the resources to help
@@ -30,60 +31,7 @@
   <cite>Cinnamon Swan</cite>
 </blockquote>
 </div>
+</div>
 
-
-<!-- <div>
-  Have you ever done a DIY project and halfway through thought that you could use some help? <br>
-  Have you ever wanted to do a DIY project and decided not to because you didn't know where to start?<br>
-  Have you ever wanted to learn a skill that you didn't know before and wanted expert help?
-  <h2>If yes, then this may be the app for you!</h2>
-  We created Skill Swap for people wanting to connect with others to educate and assist with the projects
-  that they want to do. Whether that be cooking, wood working, or electrical work we have the resources to help
-  you get started.<br>
-  If you are an expert, master, or novice we invite you to join our network and help swap skills!
-  </div> -->
-<!-- <div *ngFor="let project of projects"> -->
-<!-- {{project.name}}
-<img src="{{project.imagePrimary}}" alt=""> -->
-
-<!-- <br>
-<div id="carouselDiv">
-<mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
-  <mdb-carousel-item>
-    <img
-      src="https://assets.hgtv.ca/wp-content/uploads/2022/03/1.png"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>First slide label</h5>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://assets.hgtv.ca/wp-content/uploads/2022/03/Trim-DIY-Fireplace-Mantle-Courtney-Ryall.png"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Second slide label</h5>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </div>
-  </mdb-carousel-item>
-  <mdb-carousel-item>
-    <img
-      src="https://assets.hgtv.ca/wp-content/uploads/2022/03/5.png"
-      class="d-block w-100"
-      alt="..."
-    />
-    <div class="carousel-caption d-none d-md-block">
-      <h5>Third slide label</h5>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </div>
-  </mdb-carousel-item>
-</mdb-carousel> -->
-<!-- </div> -->
-<!-- End of Carousel -->
 <div id="spaceDiv"></div>
 </div>

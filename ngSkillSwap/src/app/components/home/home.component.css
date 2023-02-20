@@ -101,6 +101,10 @@ clip-path: inset(0 0 0 0);
  clip-path: inset(10px);
 }
 
+#imageScrollerDiv {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 blockquote {
   font-family: Georgia, serif;
   font-size: 18px;
@@ -123,6 +127,16 @@ blockquote {
   top: -20px;
   color: #F5BF74;
   }
+  /* blockquote:after {
+  display: block;
+  padding-left: 10px;
+  content: "\201D";
+  font-size: 80px;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  color: #F5BF74;
+  } */
 
   blockquote cite {
   color: #F5BF74;
@@ -135,11 +149,21 @@ blockquote {
   content: "\2014 \2009";
   }
 
-  #blockquoteDiv {
+  #blockquoteParentDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 50px;
+  }
+
+  #blockquoteDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left:2px solid #F5BF74;
+    width: 550px;
+    background-color: hsla(207, 76%, 13%, 0.63);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
   @keyframes bg {
@@ -200,4 +224,13 @@ blockquote {
 
 .headerDiv:hover {
     animation-play-state: running;
+}
+
+.zoom {
+	transition: transform .2s;
+	margin: 0 auto;
+}
+
+.zoom:hover {
+	transform: scale(1.15);
 }
