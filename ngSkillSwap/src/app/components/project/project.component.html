@@ -35,34 +35,6 @@
   </div>
 </div>
 
-<!-- Teasers -->
-
-<!-- <h5>For more information about a project please click on project name</h5> -->
-
-<!-- Shows list of user's projects -->
-<!-- <div class="container1" *ngIf="!selected">
-  <h2 class="projectList" id = "projectList">Project List</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Name:</th>
-        <th>Description:</th>
-        <th>Date Started:</th>
-        <th>Active Status:</th>
-      </tr>
-    </thead>
-    <tbody class="scrolling-box">
-      <tr *ngFor="let project of projectList">
-        <td (click)="displayProject(project)">{{ project.name }}</td>
-        <td>{{ project.description }}</td>
-        <td>{{ project.startDate | date : "shortDate" }}</td>
-        <td>{{ project.activeStatus }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div> -->
-<!-- End of user project list -->
-
 <!-- Shows individual information about a selected project -->
 
 <div class="container" *ngIf="selected">
@@ -252,15 +224,7 @@
             placeholder="Description"
             [(ngModel)]="editProject.description"
           ></textarea>
-          <!-- <input
-        type="textarea"
-        class="form-control"
-         rows="5"
-         id="inputDescription"
-        name="description"
-        placeholder="Description"
-        [(ngModel)]="editProject.description"
-      /> -->
+
         </div>
       </div>
       <div class="form-row">
@@ -328,29 +292,6 @@
   </div>
 </div>
 
-<!-- <h4><em>Comments</em></h4>
-	<div class="container">
-		<div ng-repeat="comment in vm.comments" class="card row">
-			<span class="commentcolTitle col-md-4">{{comment.name}}</span>
-			<span class="commentcol col-md-7">{{comment.content}}</span>
-		    <button class="btn btn-danger delete" ng-click="vm.deleteComment(comment.id)">X</button>
-	</div>
-
-	<div>
-		<h5><em>Leave a comment</em></h5>
-
-		<form width="60%" class="container">
-		  <div class="form-group">
-		    <label>Name</label>
-		    <input type="text" class="form-control" ng-model="comment.name">
-		  </div>
-		  <div class="form-group">
-		    <label>Content</label>
-		    <input type="text" class="form-control"  ng-model="comment.content">
-		  </div>
-		  <button type="submit" class="btn btn-primary" ng-click="vm.addComment(vm.selectedPost.id, comment); comment={}">Submit</button>
-		</form>
-	</div> -->
 <div
   class="container"
   style="
