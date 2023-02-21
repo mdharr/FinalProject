@@ -15,10 +15,7 @@ export class HomeComponent implements OnInit{
 constructor(private auth: AuthService, private homeServ: HomeService){}
 
 ngOnInit(){
-// this.testTestDeleteLater();
   this.reload();
-  // console.log("**************************reloading");
-  // this.checkLogin();
 }
 reload(): void{
   this.homeServ.index().subscribe({
