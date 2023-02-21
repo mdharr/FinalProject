@@ -57,8 +57,7 @@ export class ProjectsAllComponent {
     let idString = this.route.snapshot.paramMap.get('id');
     console.log('project ID' + idString);
     if (idString) {
-      // let projectId = Number(idString);
-      // let projectId = Number.parseInt(idString);
+
       let projectId = +idString;
       if (!isNaN(projectId)) {
         this.projectService.show(projectId).subscribe({
@@ -88,7 +87,7 @@ export class ProjectsAllComponent {
       },
     });
   }
-  // RELOAD METHOD MIGHT NEED SOME TINKERING
+
   reload() {
     this.projectService.indexAll().subscribe({
       next: (projects) => {
@@ -106,9 +105,9 @@ export class ProjectsAllComponent {
     this.selected = project;
     if (this.selected) {
       console.log('user name');
-      //  console.log(this.selected.user.firstName);
+
     }
-    //  console.log(this.selected.id)
+
     if (this.selected && this.selected.id) {
       this.getComments(this.selected.id);
     }
@@ -118,7 +117,6 @@ export class ProjectsAllComponent {
     this.newProject = new Project();
     this.projectCreated = false;
   }
-  // ...
 
   getComments(id: number) {
     this.commentService.projectCommentIndex(id).subscribe({
@@ -156,7 +154,7 @@ export class ProjectsAllComponent {
   }
 
   displayTable() {
-    // this.selected = new Project();
+
     console.log(this.projects);
     location.reload();
 
@@ -173,9 +171,8 @@ export class ProjectsAllComponent {
     this.projectService.create(project).subscribe({
       next: (data) => {
         this.projectCreated = true;
-        // this.newProject = new Project();
         this.project = data;
-        // this.reload();
+
       },
       error: (nojoy) => {
         console.error(
@@ -200,17 +197,14 @@ export class ProjectsAllComponent {
   }
 
   addUser(project: Project, user: User) {
-    // if (project.id != null) {
-    //   this.project.users = data.users;
-    // }
+
     console.log(project);
     this.projectService.addUser(project).subscribe({
       next: (data) => {
         console.log(data);
-        // project.users = data.users;
         this.project = data;
         this.displayTable();
-        // this.reload();
+
       },
       error: (nojoy) => {
         console.error('ProjectComponent.addUser: Error adding user');
@@ -246,9 +240,7 @@ export class ProjectsAllComponent {
 
   deleteProject(project: Project): void {
     console.log(project);
-    // REFACTOR ARCHIVE METHOD TO TAKE IN A PROJECT ID
     this.projectService.archive(project).subscribe({
-      // nothing to return in 'next' parenthesis because return is void
       next: () => {
         this.reload();
       },
