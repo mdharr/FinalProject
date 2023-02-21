@@ -114,14 +114,6 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    // this.userService.destroy(id).subscribe({
-    //   next: () => {
-    //     this.reload();
-    //   },
-    //   error: (fail) => {
-    //     console.error('User Component.deleteUser: error deleting:');
-    //     console.error(fail);
-    //   },
-    // });
+
   }
 }
