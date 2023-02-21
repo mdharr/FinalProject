@@ -5,11 +5,9 @@
   <div class="collapse navbar-collapse d-flex" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item">
-        <!-- <a class="nav-link" [routerLink]="['/feed']">All Projects</a> -->
         <a class="nav-link" [routerLink]="['/home']">Home</a>
       </li>
       <li class="nav-item" *ngIf="loggedIn()">
-        <!-- <a class="nav-link" [routerLink]="['/feed']">All Projects</a> -->
         <a class="nav-link" [routerLink]="['/projects-all']">Project Board</a>
       </li>
       <li class="nav-item" *ngIf="loggedIn()">
@@ -19,12 +17,8 @@
         <a class="nav-link" [routerLink]="['/profile']">My Profile</a>
       </li>
       <li class="nav-item" *ngIf="!loggedIn()">
-        <!-- <a class="nav-link" [routerLink]="['/register']">Register</a> -->
         <a class="nav-link" (click)="open(myregistermodal)">Register</a>
       </li>
-      <!-- <li class="nav-item" *ngIf="!loggedIn()">
-        <app-login></app-login>
-      </li> -->
       <li class="nav-item" *ngIf="!loggedIn()">
         <a class="nav-link" (click)="open(mymodal)">Login</a>
       </li>
