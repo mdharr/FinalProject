@@ -57,19 +57,6 @@ export class ProfileComponent implements OnInit {
     return options;
   }
 
-//   getCompletedProjects(){
-//     this.projectService.completedProjects().subscribe({
-//       next: (projects) => {
-//         this.completedProjects = projects;
-//       },
-//       error: (err) => {
-//         console.error(err);
-//         console.error('error retrieving completed projects: ' + err);
-//       }
-//   })
-// }
-
-
   ngOnInit(): void {
     this.authService.getLoggedInUser().subscribe({
       next: (user) => {
