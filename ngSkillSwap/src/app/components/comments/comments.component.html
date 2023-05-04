@@ -36,7 +36,7 @@
             <!-- Create ngIf statement to add html for comments on User -->
             <ul
               class="media-list"
-              ngIf="selected = user"
+              ngIf="selected === user"
               *ngFor="let comment of userComments"
             >
               <li class="media">

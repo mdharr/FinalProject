@@ -93,7 +93,7 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
-
+// this needs work
   editInformation(user: User): void {
     console.log('in editInformation');
     this.userService.update(user).subscribe({

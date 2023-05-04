@@ -157,6 +157,7 @@
       <button *ngIf="!projectCreated" type="submit" class="btn btn-success"(click)="addProject(newProject)">Add Skills</button>
       <button *ngIf="projectCreated" type="submit" class="btn btn-success" (click)="displayProject(newProject); showForm = false;">Save</button>
 
+      <!-- <button id="saveNewProjectBtn" class="btn btn-primary" (click)="addProject(newProject)">Save</button> -->
       <button class="btn btn-danger" (click)="createProject = false">Back</button>
      </form>
     </div>
